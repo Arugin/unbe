@@ -9,19 +9,15 @@
         = stylesheet_link_tag "application", :media => "all"
 
   %body{:class => "#{controller_name} #{action_name}"}
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-
     #main{:role => "main"}
-      .container
-        .content
-          .row
-            .span12
-              #messages
-                = render 'layouts/messages'
-            .span12
-              = yield
+      .span12
+        .row-fluid
+          .span12
+            = render 'layouts/header'
+        #messages
+          = render 'layouts/messages'
+      .span12
+        = yield
 
     #footer.clearfix
       &copy;
