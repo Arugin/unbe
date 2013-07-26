@@ -1,0 +1,17 @@
+---
+applications:
+  .:
+    name: unbe
+    framework:
+      name: rails3
+      info:
+        mem: 256M
+        description: Rails Application
+        exec: 
+    infra: eu-aws
+    url: ${name}.${target-base}
+    mem: 512M
+    instances: 1
+    services:
+      unbe:
+        type: mongodb

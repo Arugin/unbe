@@ -1,0 +1,8 @@
+= simple_form_for(@user, :validate => true) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name, :label => "First and last name"
+    = f.input :second_name
+
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
