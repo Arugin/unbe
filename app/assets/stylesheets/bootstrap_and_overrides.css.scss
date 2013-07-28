@@ -1,4 +1,184 @@
 @import "bootstrap";
 body {
-  padding-top: 60px;
+  $author-font: 12px Tahoma;
+  $font: Verdana, sans-serif;
+  $light-date-color: #ababab;
+  $link-color: #666666;
+
+  .author{
+    display: block;
+    font: $author-font;
+    color: $light-date-color;
+    margin-left: 2px;
+    margin-right: 20px;
+    float: left;
+  }
+
+  .small-description{
+    @extend .author;
+    margin-top: 20px;
+  }
+
+  .publishDate{
+    @extend .author;
+  }
+
+  .description{
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 160%;
+    overflow: hidden;
+    margin-top: 8px;
+    float: left;
+    font-family: $font;
+  }
+
+  #container{
+    padding-bottom: 60px;
+  }
+
+  #footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    height:60px;
+  }
+
+  #main-menu {
+    font-size: 24px;
+    a{
+      padding-right: 25px;
+      padding-left: 25px;
+      margin-right: 6px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .user-profile{
+    .fullname{
+      margin-left: 157px;
+      color: #777;
+      font-size: 25px;
+      margin-top: 20px;
+      margin-bottom: 16px;
+      float: left;
+    }
+  }
+
+  .clear{
+    clear: both;
+  }
+
+  .normal-h2{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-style: normal;
+    vertical-align: baseline;
+    outline: 0;
+  }
+
+  .user_header{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-top: -17px;
+    position: relative;
+
+    .avatar{
+      display: block;
+      float: left;
+      margin-right: 11px;
+      position: relative;
+    }
+
+    .username{
+      @extend .normal-h2;
+      float: left;
+      margin-right: 6px;
+      font-size: 36px;
+      line-height: 40px;
+
+      a{
+        text-decoration: none;
+        color: $link-color;
+      }
+    }
+
+    @extend .clear;
+  }
+
+  dl{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 16px;
+    padding-bottom: 1px;
+    overflow: hidden;
+    dt{
+      float: left;
+      font-size: 13px;
+      color: $link-color;
+      font-weight: bold;
+      text-align: right;
+      width: 145px;
+      margin-top: 10px;
+    }
+    dd{
+      margin-left: 157px;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+  }
+  #logo {
+    margin-top: 15px;
+  }
+
+  #announcement{
+    @extend #logo;
+  }
+
+  #myCarousel{
+    max-width: 800px;
+  }
+
+  #reg{
+    padding-top: 10px;
+  }
+
+  form{
+
+  }
+
+  .articles{
+    .header {
+      font-weight: bold;
+    }
+    .publishDate{
+      @extend .author;
+      font-size: 10px;
+      width: 100%;
+    }
+    .btn-group{
+      .btn{
+        font-size: 11px;
+        padding-bottom: 2px;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 2px;
+      }
+    }
+    .options{
+      margin-top: 5px;
+      float:left;
+    }
+  }
+
+  .thumb{
+    margin-top: 15px;
+  }
 }

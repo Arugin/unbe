@@ -57,6 +57,7 @@ db/mongodumps/
 
 # scm revert files
 **.orig
+Thumbs.db
 
 # Mac finder artifacts
 .DS_Store

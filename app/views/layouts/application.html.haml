@@ -1,29 +1,28 @@
 !!!
 %html
   %head
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta
       %title
         Unbe
         = yield :title
       %meta
         = stylesheet_link_tag "application", :media => "all"
+        = javascript_include_tag "application", :media => "all"
 
   %body{:class => "#{controller_name} #{action_name}"}
-    #main{:role => "main"}
+    #main.row-fluid
       .span12
         .row-fluid
           .span12
             = render 'layouts/header'
         #messages
           = render 'layouts/messages'
-      .span12
-        = yield
-
-    #footer.clearfix
-      &copy;
-      SwiftTest Inc. 2013
-      .pull-right
-        Version:
-        = "0.0.1"
-  .spinner#spinner
-    %img{:src => '/images/spinner.gif'}
+        .row-fluid#container
+          .span11.offset1
+            .row-fluid
+              .span8
+                = yield
+              .span3
+        .row-fluid#footer
+          .span11.offset1
+            = render 'layouts/footer'
