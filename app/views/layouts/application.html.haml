@@ -6,8 +6,8 @@
         Unbe
         = yield :title
       %meta
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application", :media => "all"
+        = stylesheet_link_tag "/assets/application", :media => "all"
+        = javascript_include_tag "/assets/application", :media => "all"
 
   %body{:class => "#{controller_name} #{action_name}"}
     #main.row-fluid
@@ -23,6 +23,7 @@
               .span8
                 = yield
               .span3
+                = yield :right_bar
         .row-fluid#footer
           .span11.offset1
             = render 'layouts/footer'
