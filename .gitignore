@@ -76,5 +76,7 @@ Thumbs.db
 
 *.*~
 
+public/assets/*
+
 
 data
