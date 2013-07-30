@@ -4,14 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, :required => true, :autofocus => true %>
+    <%= f.input :name, :required => true, :autofocus => true, :label => "Имя" %>
     <%= f.input :email, :required => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
+    <%= f.input :password, :required => true, :label => "Пароль" %>
+    <%= f.input :password_confirmation, :required => true, :label => "Подтверждение пароля" %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Зарегистрироваться" %>
   </div>
 <% end %>
 

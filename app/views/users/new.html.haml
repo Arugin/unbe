@@ -1,8 +1,12 @@
+<h3>Новый пользователь</h3>
+
 = simple_form_for(@user, :validate => true) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :name, :label => "First and last name"
-    = f.input :second_name
+    = f.input :name, :label => "Имя"
+    = f.input :email, :required => true
+    = f.input :password, :required => true
+    = f.input :password_confirmation, :required => true
 
   .form-actions
-    = f.button :submit, :class => 'btn-primary'
+    = f.submit "Создать пользователя", :class => 'btn-primary'

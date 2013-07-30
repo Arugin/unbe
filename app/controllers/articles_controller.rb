@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
   end
 
   def create
@@ -15,5 +16,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def news
+    #@articles = Article.where article_type:
   end
 end

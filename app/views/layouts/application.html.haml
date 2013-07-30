@@ -15,12 +15,12 @@
         .row-fluid
           .span12
             = render 'layouts/header'
-        #messages
-          = render 'layouts/messages'
         .row-fluid#container
           .span11.offset1
             .row-fluid
               .span8
+                #messages
+                  = render 'layouts/messages'
                 = yield
               .span3
                 = yield :right_bar
