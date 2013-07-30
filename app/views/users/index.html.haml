@@ -1,0 +1,19 @@
+.row
+  .span12
+    .pull-right
+      = link_to new_user_path, :class=>'btn btn-primary' do
+        %i.icon-file-new
+        New User
+
+%table.table
+  %thead
+    %th Name
+    %th Email
+    %th Registration
+    %th{:width => 250}
+
+    - @users.each do |user|
+      %tr
+        %td= truncate(user.name, :length => 30, :omission => '...')
+        %td= truncate(user.email, :length => 30, :omission => '...')
+        %td= user.created_at.localtime

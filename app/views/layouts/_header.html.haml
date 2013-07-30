@@ -31,4 +31,41 @@
   #logo.span3
     = image_tag("/images/main/unbe.png", :alt => "unbe logo")
 
+.row-fluid
+  .span7.offset1
+    %ul.nav.nav-pills#main-menu
+      %li
+        %a{:href => "#", :title=>"Последние новости"}
+          %span Новости
+      %li
+        %a{:href => "#", :title=>"Почитать статьи"}
+          %span Статьи
+      %li
+        %a{:href => "#", :title=>"Поучавствовать в проектах"}
+          %span Проекты
+      %li
+        %a{:href => "#", :title=>"Об unbe"}
+          %span Сообщество
+
+  .row-fluid
+    .span3#reg
+      - unless user_signed_in?
+        %div
+          %ul.nav.nav-pills
+            %li
+              = link_to 'Войти', main_app.new_user_session_path
+            %li
+              = link_to 'Зарегистрироваться', main_app.new_user_registration_path
+      - if user_signed_in?
+        %div
+          %ul.nav.nav-pills
+            %li
+              %a{:href => "#", :title=>"Личный кабинет"}
+                %span Личный кабинет
+            %li
+              = link_to main_app.destroy_user_session_path, :method=>'delete' do
+                &nbsp Выйти
+
+
+
 
