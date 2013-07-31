@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
   end
 
   def new
@@ -19,6 +20,6 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    #@articles = Article.where article_type:
+    @articles = Article.last_news
   end
 end

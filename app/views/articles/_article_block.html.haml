@@ -1,0 +1,11 @@
+.row-fluid
+  %h4
+    = link_to article_path(article) do
+      %span= article.title
+  .author
+    %a{:href=>"#"}
+      =article.cycle.author.name
+  .publishDate
+    =article.created_at.localtime
+  .description
+    =article.content.html_safe

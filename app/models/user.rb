@@ -21,7 +21,7 @@ class User
   field :remember_created_at, :type => Time
 
   ## Trackable
-  field :sign_in_count, :type => Integer, :default => 0
+  field :sign_in_count, :type => Integer, :default => 6
   field :current_sign_in_at, :type => Time
   field :last_sign_in_at, :type => Time
   field :current_sign_in_ip, :type => String

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -14,4 +15,7 @@ class Article
   belongs_to :article_area
   belongs_to :article_type
   belongs_to :cycle
+
+  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first)
+
 end
