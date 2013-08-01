@@ -35,7 +35,7 @@
   .span7.offset1
     %ul.nav.nav-pills#main-menu
       %li
-        %a{:href => "#", :title=>"Последние новости"}
+        = link_to main_app.news_articles_path do
           %span Новости
       %li
         %a{:href => "#", :title=>"Почитать статьи"}
@@ -53,18 +53,20 @@
         %div
           %ul.nav.nav-pills
             %li
-              = link_to 'Войти', main_app.new_user_session_path
+              = link_to main_app.new_user_session_path do
+                %span Войти
             %li
-              = link_to 'Зарегистрироваться', main_app.new_user_registration_path
+              = link_to main_app.new_user_registration_path do
+                %span Зарегистрироваться
       - if user_signed_in?
         %div
           %ul.nav.nav-pills
             %li
-              %a{:href => "#", :title=>"Личный кабинет"}
+              = link_to main_app.profile_path do
                 %span Личный кабинет
             %li
               = link_to main_app.destroy_user_session_path, :method=>'delete' do
-                &nbsp Выйти
+                %span Выйти
 
 
 

@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class ProfilesController < ApplicationController
   def user_cycles
 
   end
