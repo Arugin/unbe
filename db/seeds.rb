@@ -95,4 +95,5 @@ begin
                   isPublished: true,
                   isApproved: true
                  })
+  puts "Articles were created"
 end

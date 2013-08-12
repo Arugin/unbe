@@ -16,6 +16,12 @@ class Article
   belongs_to :article_type
   belongs_to :cycle
 
-  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first)
+  #scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first)
+  #scope :last_news, where(:"article_type.title" => :NEWS)
+
+  def self.last_news
+    #where(:article_type => ArticleType.where({:title => "NEWS"}).first)
+    all
+  end
 
 end

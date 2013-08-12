@@ -1,1 +1,11 @@
-.user-profile User profile here
+#profile
+  .user_header
+    %a.avatar{:href=>"#"}
+      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
+    %h2.username
+      %a{:href=>"#"}
+      = name
+    .clear
+  .content-left
+    @menu(user)
+    @content
