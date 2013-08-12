@@ -1,9 +1,15 @@
 @import "bootstrap";
-body {
-  $author-font: 12px Tahoma;
-  $font: Verdana, sans-serif;
-  $light-date-color: #ababab;
-  $link-color: #666666;
+
+$author-font: 12px Tahoma;
+$font: Verdana, sans-serif;
+$light-date-color: #ababab;
+$link-color: #666666;
+
+body{
+  #main a{
+    text-decoration: none;
+    color: $link-color;
+  }
 
   .author{
     display: block;
@@ -12,6 +18,9 @@ body {
     margin-left: 2px;
     margin-right: 20px;
     float: left;
+    a{
+      color: $light-date-color;
+    }
   }
 
   .small-description{
@@ -181,4 +190,5 @@ body {
   .thumb{
     margin-top: 15px;
   }
+
 }

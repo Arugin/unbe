@@ -38,12 +38,15 @@ end
 
 # UI gems
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-mongoid'
 gem 'client_side_validations-simple_form'
+gem 'jquery-datatables-rails'
+
 
 
 ### development and test
