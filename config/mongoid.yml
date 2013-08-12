@@ -1,3 +1,4 @@
+<% if ENV['MONGOHQ_URL'] %>
 production:
   sessions:
     default:
@@ -5,6 +6,7 @@ production:
       options:
         skip_version_check: true
         safe: true
+<% end %>
 
 development:
   sessions:
@@ -19,12 +21,3 @@ test:
       hosts:
         - localhost:27017
       database: unbe_test
-
-proxied-appfog:
-  sessions:
-    default:
-      hosts:
-        - 127.0.0.1:10000
-      database: db
-      username:
-      password:

@@ -6,6 +6,7 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 
+ruby '1.9.3'
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -20,6 +21,7 @@ gem 'thin', '>= 1.5.0'
 gem 'cancan', '>= 1.6.8'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
+gem "heroku"
 
 
 # Gems used only for assets and not required
