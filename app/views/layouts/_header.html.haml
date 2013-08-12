@@ -60,8 +60,9 @@
         %div
           %ul.nav.nav-pills
             %li
-              = link_to main_app.profile_path do
-                %span Личный кабинет
+              = link_to main_app.office_path do
+                %span
+                  = current_user.name
             %li
               = link_to main_app.destroy_user_session_path, :method=>'delete' do
                 %span Выйти

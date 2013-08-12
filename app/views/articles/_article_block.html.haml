@@ -4,8 +4,8 @@
       %span= article.title
   .author
     %a{:href=>"#"}
-      =article.cycle.author.name
+      = article.cycle.author.name
   .publishDate
-    =article.created_at.localtime
+    = article.created_at.localtime
   .description
-    =article.content.html_safe
+    = article.content.html_safe

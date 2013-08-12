@@ -26,6 +26,10 @@ Unbe::Application.routes.draw do
 
   get '/profile', to: 'profiles#user_profile', as: 'profile'
 
+
+  get '/office', to: 'office#index', as: 'office'
+  get '/office/articles', to: 'office#articles',as: 'office_articles'
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

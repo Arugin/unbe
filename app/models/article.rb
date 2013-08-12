@@ -2,6 +2,8 @@
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
+  include Concerns::Searchable
 
   field :title, type: String
   field :content, type: String
@@ -16,6 +18,8 @@ class Article
   belongs_to :article_type
   belongs_to :cycle
 
-  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first)
+  search_in :title
+
+  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc])
 
 end

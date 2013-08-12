@@ -22,4 +22,7 @@ class ArticlesController < ApplicationController
   def news
     @articles = Article.last_news
   end
+
+  def edit
+  end
 end
