@@ -20,16 +20,16 @@ begin
   type_news = ArticleType.create ({:title => 'NEWS'})
 
   puts 'CREATING Article Areas'
-  area_no = ArticleArea.create ({:title => 'NO_AREA'})
-  area_news = ArticleArea.create ({:title => 'NEWS'})
-  ArticleArea.create ({:title => 'DIRECTION'})
-  ArticleArea.create ({:title => 'SHOOTING'})
-  ArticleArea.create ({:title => 'SOUND'})
-  ArticleArea.create ({:title => 'ACTING'})
-  ArticleArea.create ({:title => 'SCREENWRITING'})
-  ArticleArea.create ({:title => 'PROPS'})
-  ArticleArea.create ({:title => 'POSTPRODUCTION'})
-  ArticleArea.create ({:title => 'MANAGEMENT'})
+  area_no = ArticleArea.create ({:title => :NO_AREA})
+  area_news = ArticleArea.create ({:title => :NEWS})
+  ArticleArea.create ({:title => :DIRECTION})
+  ArticleArea.create ({:title => :SHOOTING})
+  ArticleArea.create ({:title => :SOUND})
+  ArticleArea.create ({:title => :ACTING})
+  ArticleArea.create ({:title => :SCREENWRITING})
+  ArticleArea.create ({:title => :PROPS})
+  ArticleArea.create ({:title => :POSTPRODUCTION})
+  ArticleArea.create ({:title => :MANAGEMENT})
 
   puts 'CREATING Default user'
   user = User.create! :name => 'Arugin', :email => 'unbecinema@gmail.com', :password => 'welcome', :password_confirmation => 'welcome'

@@ -1,2 +1,4 @@
-%h1 Articles#index
-%p Find me in app/views/articles/index.html.haml
+%h1 Articles page
+
+- content_for(:right_bar) do
+   = render :partial => 'right_bar'

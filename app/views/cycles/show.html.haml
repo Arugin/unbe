@@ -1,2 +1,5 @@
-%h1 Cycles#show
-%p Find me in app/views/cycles/show.html.haml
+= render :partial => 'cycle_block',:locals => { :cycle => @cycle }
+
+.shifted
+  - @cycle.ordered_articles.each do |article|
+    = render :partial => 'articles/article_block',:locals => { :article => article }

@@ -25,7 +25,7 @@
                         %p.small-description ARTICLE_CHANGED
                 %td
                     - unless article.isPublished
-                        = link_to edit_article_path(article) do
+                        = link_to publish_article_path(article) do
                             = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
                     - else
                         = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}

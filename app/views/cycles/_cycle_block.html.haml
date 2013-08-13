@@ -1,0 +1,11 @@
+.row-fluid
+    %h4
+        - if cycle.title == 'NO_CYCLE'
+            %span= t :NO_CYCLE
+        - else
+            %span= cycle.title
+    .description
+        - if cycle.description == 'NO_CYCLE_DESC'
+            = t :NO_CYCLE_DESC
+        - else
+            =cycle.description.html_safe

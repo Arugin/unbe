@@ -22,13 +22,20 @@ Unbe::Application.routes.draw do
     collection do
       get 'news'
     end
+    member do
+      get 'publish'
+    end
   end
 
   get '/profile', to: 'profiles#user_profile', as: 'profile'
 
-
+  # Office routes
   get '/office', to: 'office#index', as: 'office'
   get '/office/articles', to: 'office#articles',as: 'office_articles'
+  get '/office/cycles', to: 'office#cycles',as: 'office_cycles'
+
+  # Profile routes
+  get 'profile', to: 'profile#user_profile',as: 'user_profile'
 
   # Sample resource route with options:
   #   resources :products do

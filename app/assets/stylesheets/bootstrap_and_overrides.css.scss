@@ -6,6 +6,10 @@ $light-date-color: #ababab;
 $link-color: #666666;
 
 body{
+  .shifted{
+    margin-left: 20px;
+  }
+
   #main a{
     text-decoration: none;
     color: $link-color;
