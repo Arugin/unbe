@@ -1,41 +1,44 @@
 %h4 Мои статьи
 .articles
     %table.table.table-striped
-        - @articles.each do |article|
-            %tr
-                %td
-                    .header
-                        = link_to article_path(article) do
-                            %span= article.title
-                    .publishDate
-                        = article.created_at.localtime
-                    .options
-                        .btn-group
-                            %button.btn
-                                = link_to edit_article_path article do
-                                    Изменить
-                            %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                                %span.caret
-                            %ul.dropdown-menu
-                                %li
-                                    = link_to edit_article_path(article) do
+        - if @articles.blank?
+            %p= t("NO_OFFICE_ARTICLES")
+        - else
+            - @articles.each do |article|
+                %tr
+                    %td
+                        .header
+                            = link_to article_path(article) do
+                                %span= article.title
+                        .publishDate
+                            = article.created_at.localtime
+                        .options
+                            .btn-group
+                                %button.btn
+                                    = link_to edit_article_path article do
                                         Изменить
-                %td
-                    - if article.isUpdated
-                        %p.small-description ARTICLE_CHANGED
-                %td
-                    - unless article.isPublished
-                        = link_to publish_article_path(article) do
+                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                                    %span.caret
+                                %ul.dropdown-menu
+                                    %li
+                                        = link_to edit_article_path(article) do
+                                            Изменить
+                    %td
+                        - if article.isUpdated
+                            %p.small-description ARTICLE_CHANGED
+                    %td
+                        - unless article.isPublished
+                            = link_to publish_article_path(article) do
+                                = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
+                        - else
                             = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
-                    - else
-                        = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
 
-                %td
-                    - if article.isUpdated
-                        .thumb
-                            =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
-                    - else
-                        = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
+                    %td
+                        - if article.isUpdated
+                            .thumb
+                                =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
+                        - else
+                            = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
 
 - content_for(:right_bar) do
     = render :partial => 'right_bar'

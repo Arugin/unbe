@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
+      Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => @user})
     else
       render action: "new"
     end

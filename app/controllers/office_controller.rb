@@ -6,10 +6,10 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user, params)
+    @articles = Article.search_for(current_user, {scope: 'current_user'})
   end
 
   def cycles
-    @cycles = Cycle.search_for(current_user, params)
+    @cycles = Cycle.search_for(current_user, {scope: 'current_user'})
   end
 end

@@ -11,6 +11,8 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :assign_empty_cycle
+
   field :name, type: String
   field :second_name, type: String
   field :email, type: String
@@ -46,5 +48,10 @@ class User
   validates_presence_of :encrypted_password
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+
+  def assign_empty_cycle
+    cycle = Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => self})
+    puts "aro",cycle
+  end
 
 end

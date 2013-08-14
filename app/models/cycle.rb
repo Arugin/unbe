@@ -2,7 +2,6 @@ class Cycle
   include Mongoid::Document
   include Mongoid::Timestamps
   include Concerns::Searchable
-  include Concerns::Privatable
   include Concerns::Ownerable
 
   field :title, type: String
