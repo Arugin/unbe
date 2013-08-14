@@ -1,6 +1,9 @@
 class User
   include Mongoid::Document
+  rolify
   include Mongoid::Timestamps
+
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -36,6 +39,7 @@ class User
 
   belongs_to :gender, class_name: "Gender"
   has_many :cycles
+  has_many :articles
 
   validates_presence_of :name
   validates_presence_of :email

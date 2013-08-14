@@ -1,5 +1,8 @@
 #encoding: utf-8
 class ArticlesController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:news,:index]
+
   def index
   end
 

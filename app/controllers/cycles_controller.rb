@@ -1,5 +1,8 @@
 #encoding: utf-8
 class CyclesController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def index
   end
 

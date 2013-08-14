@@ -48,7 +48,8 @@ begin
                   article_area: area_no,
                   created_at: DateTime.parse("2013-06-28 08:14:00"),
                   isPublished: true,
-                  isApproved: true
+                  isApproved: true,
+                  author: user
                  })
   Article.create({title: "Эпизод 1. \"Чудеса\"",
                   content: "Сегодня были отсняты материалы для эпизода 1. Ребята хорошо потрудились. Съемки заняли четыре часа времени, а бюджет эпизода впервые чуть было не сдвинулся со стандартной отметки в 0 руб. Но ребята справились с этой проблемой, с чем мы их и поздравляем.",
@@ -57,7 +58,8 @@ begin
                   article_area: area_news,
                   created_at: DateTime.parse("2011-03-25 12:00:00"),
                   isPublished: true,
-                  isApproved: true
+                  isApproved: true,
+                  author: user
                  })
   Article.create({title: "Эпизод 3 \"Ребятки\"",
                   content: "Завершен съемочный день третьего эпизода. Материалы готовы к монтажу, эффектам и переозвучке. Скоро на экранах!",
@@ -66,7 +68,8 @@ begin
                   article_area: area_news,
                   created_at: DateTime.parse("2011-04-03 09:53:00"),
                   isPublished: true,
-                  isApproved: true
+                  isApproved: true,
+                  author: user
                  })
   Article.create({title: "Проект \"Кум\" приостановлен",
                   content: "После монтирования и отсмотра материалов наступает момент, когда необходимо делать выводы и решать, в каком направлении будет двигаться проект. После тщательного анализа, просмотра и долгих споров было принято <i>решение</i>. В связи с отсутствием опыта, харизмы и камеры работы над сериалом \"Кум\" приостановлены на неопределенный срок",
@@ -75,7 +78,8 @@ begin
                   article_area: area_news,
                   created_at: DateTime.parse("2011-06-30 03:50:00"),
                   isPublished: true,
-                  isApproved: true
+                  isApproved: true,
+                  author: user
                  })
   Article.create({title: "Деятельность \"unbe\" приостановлена",
                   content: "С прискорбием сообщаем, что по не зависящим от нас обстоятельствам, деятельность unbe приостанавливается на неопределенный срок. Будем ждать новостей и <b>надеяться</b>.",
@@ -84,7 +88,8 @@ begin
                   article_area: area_news,
                   created_at: DateTime.parse("2011-08-31 03:15:00"),
                   isPublished: true,
-                  isApproved: true
+                  isApproved: true,
+                  author: user
                  })
   Article.create({title: "Деятельность сообщества unbe восстановлена",
                   content: "<p>На самом деле деятельность была восстановлена ещё 01.10.2012, с регистрацией официального <a href=\"http://www.youtube.com/user/unbecinema\" title=\"Канал на youtube\">канала</a>, но информационные ресурсы имеют тенденцию развиваться чуть более чем медленно, поэтому эта новость дошла сюда только сегодня. Открываем бутылку колы и отправляемся бороздить просторы кино, да будет оно не русским! </p><p>Путь же неудачи станут уроком, а не камнем преткновения, и пусть хорошие работы заполонят наш канал.</p>",
@@ -93,7 +98,8 @@ begin
                   article_area: area_news,
                   created_at: DateTime.parse("2013-07-21 18:36:00"),
                   isPublished: true,
-                  isApproved: true
+                  isApproved: true,
+                  author: user
                  })
   puts "Articles were created"
 end
