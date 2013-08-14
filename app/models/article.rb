@@ -2,8 +2,9 @@
 class Article
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Search
   include Concerns::Searchable
+  include Concerns::Privatable
+  include Concerns::Ownerable
 
   field :title, type: String
   field :content, type: String

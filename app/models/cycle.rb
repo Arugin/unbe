@@ -1,13 +1,13 @@
 class Cycle
   include Mongoid::Document
-  include Mongoid::Search
   include Mongoid::Timestamps
   include Concerns::Searchable
+  include Concerns::Privatable
+  include Concerns::Ownerable
 
   field :title, type: String
   field :description, type: String
 
-  belongs_to :author, class_name: "User"
   has_many :articles
 
   search_in :title
