@@ -17,4 +17,16 @@ class ApplicationController < ActionController::Base
     parsed_locale = request.host.split('.').last
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    access_denied(exception)
+  end
+
+  #we call this method to notify user that he has no auth over the resource
+  #in this case we redirect to App Login page
+  #can be overridden by engines, for example API will just 401
+  def access_denied(exception)
+    redirect_to  request.referer || root_path, :alert => exception.message
+  end
+
 end

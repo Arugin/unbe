@@ -1,7 +1,14 @@
-%ul.nav.nav-tabs.nav-stacked
-  %li
-    =link_to main_app.non_approved_articles_path do
-      Подтвердить статьи
+- if current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR
+  %ul.nav.nav-tabs.nav-stacked
+    %li
+      =link_to main_app.non_approved_articles_path do
+        Подтвердить статьи
+
+- if current_user.has_role? :ADMIN
+  %ul.nav.nav-tabs.nav-stacked
+    %li
+      =link_to main_app.users_path do
+        Пользователи
 
 %ul.nav.nav-tabs.nav-stacked
   %li
@@ -25,8 +32,3 @@
   %li
     %a{:href=>"#"}
       Настройки
-
-%ul.nav.nav-tabs.nav-stacked
-  %li
-    =link_to main_app.users_path do
-      Пользователи

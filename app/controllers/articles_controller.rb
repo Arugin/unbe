@@ -2,6 +2,7 @@
 class ArticlesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:news,:index]
+  load_and_authorize_resource :except => [:news, :index, :show]
 
   def index
   end

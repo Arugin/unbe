@@ -9,7 +9,7 @@
                     %td
                         .header
                             = link_to cycle_path(cycle) do
-                                cycle.current_title
+                                =cycle.correct_title
                         .publishDate
                             = cycle.created_at.localtime
                     %td

@@ -15,5 +15,6 @@ class OfficeController < ApplicationController
 
   def non_approved
     @articles = Article.non_approved
+    authorize! :approve, Article
   end
 end

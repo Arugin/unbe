@@ -29,7 +29,25 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new # guest user (not logged in)
-    if user.has_role? :admin
+
+    if user.has_role? :READER
+      can :read, Article
+      can :read, Cycle
+      can :read, User
+    end
+
+    can :manage, Article, :author => user
+    can :manage, Cycle, :author => user
+
+    can :read, Article
+    can :read, Cycle
+    can :read, User
+
+    cannot :approve, Article
+
+    if user.has_role? :MODERATOR
+      can :approve, Article
+    elsif user.has_role? :ADMIN
       can :manage, :all
     end
   end

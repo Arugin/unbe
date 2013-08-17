@@ -8,7 +8,7 @@ module Concerns
 
         #shows all objects for this user and all public objects of this class
         klass.scope :all_for, lambda { |user|
-          if user.has_role?(:admin)
+          if user.has_role?(:ADMIN)
             all
           else
             any_of({"$and" => [{:private => true}, {:owner => user}]}, {:private => false})

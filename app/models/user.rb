@@ -12,6 +12,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   after_create :assign_default_cycles
+  after_create :default_role
 
   field :name, type: String
   field :second_name, type: String
@@ -54,6 +55,10 @@ class User
       Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => self})
     end
     Cycle.create ({:title => 'ARCHIVE_CYCLE', :description =>"ARCHIVE_CYCLE_DESC",:author => self})
+  end
+
+  def default_role
+    self.add_role :READER
   end
 
 end

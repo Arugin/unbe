@@ -2,6 +2,7 @@
 class CyclesController < ApplicationController
 
   before_filter :authenticate_user!
+  load_and_authorize_resource :except => [:index, :show]
 
   def index
   end

@@ -20,7 +20,7 @@ class Article
 
   search_in :title
 
-  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc])
+  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc]).and({:isApproved => true})
   scope :non_approved, any_of({:isApproved => false},{:isUpdated => true}).and({:isPublished => true})
 
   def un_publish
