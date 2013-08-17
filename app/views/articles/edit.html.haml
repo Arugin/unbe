@@ -8,9 +8,11 @@
     = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: @article.article_type_id, label_method: lambda { |type| "#{t(type.title)}" }
     = f.association :cycle, collection: Cycle.search_for(current_user).order_by([:title, :asc]), input_html: { class: "span8" }, selected: @article.cycle._id, label_method: lambda { |cycle| cycle.correct_title }
     - unless @article.tmpContent.nil?
-      = f.input :tmpContent, as: :text, input_html: { class: "span12 mercury-region", id: 'editable_textarea', data: {type:'editable'} }
+      = f.input :tmpContent, as: :text, input_html: { class: "span12 mercury-region", id: 'tmpContent' }
     - else
-      = f.input :content, as: :text, input_html: { class: "span12 mercury-region", id: 'editable_textarea', data: {type:'editable'} }
+      = f.input :content, as: :text, input_html: { class: "span12 mercury-region", id: 'tmpContent' }
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
+
+= render :partial => 'common/text_aditor'
