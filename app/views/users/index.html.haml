@@ -1,19 +1,38 @@
-.row
-  .span12
-    .pull-right
-      = link_to new_user_path, :class=>'btn btn-primary' do
-        %i.icon-file-new
-        New User
-
 %table.table
   %thead
-    %th Name
+    %th Имя
     %th Email
-    %th Registration
-    %th{:width => 250}
+    %th Роль
+    %th Дата регистрации
+    %th
 
     - @users.each do |user|
       %tr
         %td= truncate(user.name, :length => 30, :omission => '...')
         %td= truncate(user.email, :length => 30, :omission => '...')
+        %td= t(user.highest_role)
         %td= user.created_at.localtime
+        %td
+          .options
+            .btn-group
+              %button.btn
+                %a{href:"#"} Блокировать
+              %button.btn.dropdown-toggle{data:{toggle:"dropdown"}}
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to change_role_user_path(user,  {role: :READER}) do
+                    = t("READER")
+                %li
+                  = link_to change_role_user_path(user,  {role: :USER}) do
+                    = t("USER")
+                %li
+                  = link_to change_role_user_path(user,  {role: :MODERATOR}) do
+                    = t("MODERATOR")
+                %li
+                  = link_to change_role_user_path(user,  {role: :ADMIN}) do
+                    = t("ADMIN")
+
+- content_for(:right_bar) do
+  = render :partial => 'office/right_bar'
+

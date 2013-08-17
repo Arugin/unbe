@@ -32,27 +32,31 @@ class Ability
 
     if user.has_role? :READER
 
+      can :read, Article
+      can :read, Cycle
+      can :read, User
+    end
+
+    if user.has_role? :USER
+
+      can :manage, Article, :author => user
+      can :manage, Cycle, :author => user
 
       can :read, Article
       can :read, Cycle
       can :read, User
 
-    elsif user.has_role? :USER or user.has_role? :MODERATOR
+      cannot :approve, Article
 
-    can :manage, Article, :author => user
-    can :manage, Cycle, :author => user
+    end
 
-    can :read, Article
-    can :read, Cycle
-    can :read, User
-
-    cannot :approve, Article
-
-    elsif user.has_role? :MODERATOR
+    if user.has_role? :MODERATOR
 
       can :approve, Article
 
-    elsif user.has_role? :ADMIN
+    end
+
+    if user.has_role? :ADMIN
 
       can :manage, :all
 

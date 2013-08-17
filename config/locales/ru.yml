@@ -48,11 +48,11 @@ ru:
     models:
       article: статью
 
-  #simple_form:
-  #  options:
-  #    article:
-  #      article_area:
-
+  # roles
+  USER: Пользователь
+  ADMIN: Администратор
+  MODERATOR: Модератор
+  READER: Read-only
 
   helpers:
     submit:
@@ -63,3 +63,5 @@ ru:
   unauthorized:
     manage:
       all: "У вас нет доступа к данной странице."
+
+  USER_ROLE_CHANGED: Пользователю успешно назначена другая роль

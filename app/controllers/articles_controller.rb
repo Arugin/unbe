@@ -63,6 +63,7 @@ class ArticlesController < ApplicationController
   end
 
   def approve
+    authorize! :approve, Article
     @article = Article.find(params[:id])
     @article.approve
     redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)

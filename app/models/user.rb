@@ -61,4 +61,41 @@ class User
     self.add_role :READER
   end
 
+  def highest_role
+    all_roles
+    curr_role = nil
+
+    all_roles.each do |role|
+      if has_role? role
+        curr_role = role
+        break
+      end
+    end
+    curr_role
+  end
+
+  #TODO: This not work correctly
+  def change_role(params)
+    to = params[:role]
+    remove_all_roles
+    all_roles.reverse.each do |role|
+      add_role role
+      if params[:role].to_s == role
+        break
+      end
+    end
+  end
+
+  protected
+
+  def remove_all_roles
+    roles.each do |role|
+      remove_role role
+    end
+  end
+
+  def all_roles
+    [:ADMIN, :MODERATOR, :USER, :READER]
+  end
+
 end
