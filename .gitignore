@@ -42,7 +42,6 @@ rerun.txt
 pickle-email-*.html
 data/projects/*
 data/tests/*
-public/assets    s
 .rvmrc
 /vendor/cache
 db/mongodumps/
