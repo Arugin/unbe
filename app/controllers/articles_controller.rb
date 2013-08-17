@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params[:article])
+    @article.author = current_user
 
     if @article.save
       redirect_to office_articles_path, notice: t(:ARTICLE_CREATE_SUCCESS)
@@ -27,8 +28,14 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
+    @old_article = @article.dup
+
     if @article.update_attributes(params[:article])
-      redirect_to @article, notice: t(:ARTICLE_UPDATE_SUCCESS)
+
+      unless @old_article == @article
+        @article.un_publish
+      end
+      redirect_to office_articles_path, notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
       render action: "edit"
     end
@@ -43,13 +50,21 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if @article.tmpContent.nil?
+      @article.tmpContent = @article.content
+    end
   end
 
   def publish
     @article = Article.find(params[:id])
-    @article.isPublished = true
-    @article.save
+    @article.publish
     redirect_to office_articles_path, notice: t(:ARTICLE_PUBLISH_SUCCESS)
+  end
+
+  def approve
+    @article = Article.find(params[:id])
+    @article.approve
+    redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
   end
 
 end

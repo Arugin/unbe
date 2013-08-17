@@ -16,7 +16,7 @@ class Cycle
   end
 
   def correct_title
-    if title == 'NO_CYCLE'
+    if ['NO_CYCLE','ARCHIVE_CYCLE'].include? title
       I18n.t title
     else
       title

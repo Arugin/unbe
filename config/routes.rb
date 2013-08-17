@@ -24,6 +24,7 @@ Unbe::Application.routes.draw do
     end
     member do
       get 'publish'
+      get 'approve'
     end
   end
 
@@ -33,6 +34,7 @@ Unbe::Application.routes.draw do
   get '/office', to: 'office#index', as: 'office'
   get '/office/articles', to: 'office#articles',as: 'office_articles'
   get '/office/cycles', to: 'office#cycles',as: 'office_cycles'
+  get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
 
   # Profile routes
   get 'profile', to: 'profile#user_profile',as: 'user_profile'

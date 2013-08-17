@@ -6,10 +6,14 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user, {scope: 'current_user'})
+    @articles = Article.search_for(current_user, {scope: 'current_user'}).order_by([:created_at, :desc])
   end
 
   def cycles
     @cycles = Cycle.search_for(current_user, {scope: 'current_user'})
+  end
+
+  def non_approved
+    @articles = Article.non_approved
   end
 end

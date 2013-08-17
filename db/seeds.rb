@@ -64,6 +64,7 @@ begin
                   created_at: DateTime.parse("2013-06-28 08:14:00"),
                   isPublished: true,
                   isApproved: true,
+                  isUpdated: false,
                   author: user
                  })
   Article.create({title: "Эпизод 1. \"Чудеса\"",
@@ -74,6 +75,7 @@ begin
                   created_at: DateTime.parse("2011-03-25 12:00:00"),
                   isPublished: true,
                   isApproved: true,
+                  isUpdated: false,
                   author: user
                  })
   Article.create({title: "Эпизод 3 \"Ребятки\"",
@@ -84,6 +86,7 @@ begin
                   created_at: DateTime.parse("2011-04-03 09:53:00"),
                   isPublished: true,
                   isApproved: true,
+                  isUpdated: false,
                   author: user
                  })
   Article.create({title: "Проект \"Кум\" приостановлен",
@@ -94,6 +97,7 @@ begin
                   created_at: DateTime.parse("2011-06-30 03:50:00"),
                   isPublished: true,
                   isApproved: true,
+                  isUpdated: false,
                   author: user
                  })
   Article.create({title: "Деятельность \"unbe\" приостановлена",
@@ -104,6 +108,7 @@ begin
                   created_at: DateTime.parse("2011-08-31 03:15:00"),
                   isPublished: true,
                   isApproved: true,
+                  isUpdated: false,
                   author: user
                  })
   Article.create({title: "Деятельность сообщества unbe восстановлена",
@@ -114,6 +119,7 @@ begin
                   created_at: DateTime.parse("2013-07-21 18:36:00"),
                   isPublished: true,
                   isApproved: true,
+                  isUpdated: false,
                   author: user
                  })
   puts "Articles were created"

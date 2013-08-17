@@ -25,7 +25,7 @@
                                             Изменить
                     %td
                         - if article.isUpdated
-                            %p.small-description ARTICLE_CHANGED
+                            %p.small-description= t 'ARTICLE_CHANGED'
                     %td
                         - unless article.isPublished
                             = link_to publish_article_path(article) do
@@ -34,7 +34,7 @@
                             = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
 
                     %td
-                        - if article.isUpdated
+                        - if article.isUpdated && article.isPublished
                             .thumb
                                 =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
                         - else

@@ -6,13 +6,11 @@
     = f.input :title, input_html: { class: "span8" }
     = f.association :article_area, collection: ArticleArea.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: @article.article_area._id, label_method: lambda { |area| "#{t(area.title)}" }
     = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: @article.article_type_id, label_method: lambda { |type| "#{t(type.title)}" }
-    = f.association :cycle, collection: Cycle.search_for(current_user).order_by([:title, :asc]), input_html: { class: "span8" }, selected: @article.cycle._id, label_method: lambda { |cycle| cycle.correct_title }
-    - unless @article.tmpContent.nil?
-      = f.input :tmpContent, as: :text, input_html: { class: "span12 mercury-region", id: 'tmpContent' }
-    - else
-      = f.input :content, as: :text, input_html: { class: "span12 mercury-region", id: 'tmpContent' }
+    = f.association :cycle, collection: Cycle.search_for(current_user,{scope:'current_user'}).order_by([:title, :asc]), input_html: { class: "span8" }, selected: @article.cycle._id, label_method: lambda { |cycle| cycle.correct_title }
+    = f.input :tmpContent, as: :text, input_html: { class: "span12", id: 'tmpContent' }
+
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
 
-= render :partial => 'common/text_aditor'
+= render :partial => 'common/text_editor'

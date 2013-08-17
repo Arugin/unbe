@@ -8,9 +8,9 @@ class Article
   field :title, type: String
   field :content, type: String
   field :tmpContent, type: String
-  field :isPublished, type: Boolean
-  field :isApproved, type: Boolean
-  field :isUpdated, type: Boolean
+  field :isPublished, type: Boolean, default: false
+  field :isApproved, type: Boolean, default: false
+  field :isUpdated, type: Boolean, default: false
   field :baseRating, type: Integer
   field :rating, type: Integer
 
@@ -21,5 +21,25 @@ class Article
   search_in :title
 
   scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc])
+  scope :non_approved, any_of({:isApproved => false},{:isUpdated => true}).and({:isPublished => true})
+
+  def un_publish
+    self.isPublished = false
+    self.isUpdated = true
+    self.save
+  end
+
+  def publish
+    self.isPublished = true
+    self.save
+  end
+
+  def approve
+    self.isUpdated = false
+    self.isApproved = true
+    self.content = self.tmpContent
+    self.tmpContent = nil
+    self.save
+  end
 
 end

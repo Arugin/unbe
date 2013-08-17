@@ -9,10 +9,7 @@
                     %td
                         .header
                             = link_to cycle_path(cycle) do
-                                - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
-                                    %span= t cycle.title
-                                - else
-                                    %span= cycle.title
+                                cycle.current_title
                         .publishDate
                             = cycle.created_at.localtime
                     %td
