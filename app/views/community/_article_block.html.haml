@@ -1,0 +1,11 @@
+.row-fluid
+  %h4
+    %span= article.title
+  .publishDate
+    = article.created_at.localtime
+  %br
+  .description
+    - unless article.content.nil?
+      = article.content.html_safe
+    - else
+      = article.tmpContent.html_safe

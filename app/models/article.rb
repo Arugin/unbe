@@ -13,6 +13,7 @@ class Article
   field :isUpdated, type: Boolean, default: false
   field :baseRating, type: Integer
   field :rating, type: Integer
+  field :system_tag, type: Symbol
 
   belongs_to :article_area
   belongs_to :article_type

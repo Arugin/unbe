@@ -39,10 +39,10 @@
         = link_to main_app.articles_path do
           %span Статьи
       %li
-        %a{:href => "#", :title=>"Поучавствовать в проектах"}
+        = link_to main_app.projects_path do
           %span Проекты
       %li
-        %a{:href => "#", :title=>"Об unbe"}
+        = link_to main_app.stats_community_path do
           %span Сообщество
 
   .row-fluid

@@ -31,10 +31,13 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.has_role? :READER
+
+
       can :read, Article
       can :read, Cycle
       can :read, User
-    end
+
+    elsif user.has_role? :USER or user.has_role? :MODERATOR
 
     can :manage, Article, :author => user
     can :manage, Cycle, :author => user
@@ -45,10 +48,14 @@ class Ability
 
     cannot :approve, Article
 
-    if user.has_role? :MODERATOR
+    elsif user.has_role? :MODERATOR
+
       can :approve, Article
+
     elsif user.has_role? :ADMIN
+
       can :manage, :all
+
     end
   end
 end

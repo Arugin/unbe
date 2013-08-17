@@ -28,7 +28,7 @@ Unbe::Application.routes.draw do
     end
   end
 
-  get '/profile', to: 'profiles#user_profile', as: 'profile'
+  resources :projects
 
   # Office routes
   get '/office', to: 'office#index', as: 'office'
@@ -38,6 +38,12 @@ Unbe::Application.routes.draw do
 
   # Profile routes
   get 'profile', to: 'profile#user_profile',as: 'user_profile'
+
+  # Community routes
+  get '/community/achievement', to: 'community#achievement',as: 'achieving_community'
+  get '/community/stats', to: 'community#stats',as: 'stats_community'
+  get '/community/about', to: 'community#about',as: 'about_community'
+  get '/community/rules', to: 'community#achievement',as: 'rules_community'
 
   # Sample resource route with options:
   #   resources :products do

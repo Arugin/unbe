@@ -65,6 +65,7 @@ begin
                   isPublished: true,
                   isApproved: true,
                   isUpdated: false,
+                  system_tag: :about,
                   author: user
                  })
   Article.create({title: "Эпизод 1. \"Чудеса\"",
