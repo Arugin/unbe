@@ -8,6 +8,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 begin
+  puts "creating roles"
+  Role.create(
+            [{:name => 'ADMIN'},
+             {:name => 'USER'},
+             {:name => 'MODERATOR'},
+             {:name => 'READER'}
+             ],
+            :without_protection => true)
+
+
   puts 'CREATING GENDERS'
   Gender.create ({:name => 'UNKNOWN'})
   Gender.create ({:name => 'MALE'})
@@ -33,6 +43,11 @@ begin
 
   puts 'CREATING Default user'
   user = User.create! :name => 'Arugin', :email => 'unbecinema@gmail.com', :password => 'welcome', :password_confirmation => 'welcome'
+  user2 = User.create! :name => 'Aro', :email => 'aro@example.com', :password => 'welcome', :password_confirmation => 'welcome'
+
+  puts "setiing user roles"
+  user.add_role :ADMIN
+  user2.add_role :USER
 
   puts 'CREATING cycles'
   no_cycle = Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => user})

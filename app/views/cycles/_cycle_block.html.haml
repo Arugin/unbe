@@ -1,11 +1,11 @@
 .row-fluid
     %h4
-        - if cycle.title == 'NO_CYCLE'
-            %span= t :NO_CYCLE
+        - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
+            %span= t cycle.title
         - else
             %span= cycle.title
     .description
-        - if cycle.description == 'NO_CYCLE_DESC'
-            = t :NO_CYCLE_DESC
+        - if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? cycle.description
+            %span= t cycle.description.html_safe
         - else
-            =cycle.description.html_safe
+            %span=cycle.description.html_safe

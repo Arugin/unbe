@@ -8,7 +8,7 @@ module Concerns
 
         #gives all objects that belong to the user
         klass.scope :of, lambda { |user|
-          where(:owner => user.id)
+          where(:author => user.id)
         }
 
       end

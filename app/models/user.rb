@@ -11,7 +11,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :assign_empty_cycle
+  after_create :assign_default_cycles
 
   field :name, type: String
   field :second_name, type: String
@@ -49,9 +49,11 @@ class User
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
 
-  def assign_empty_cycle
-    cycle = Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => self})
-    puts "aro",cycle
+  def assign_default_cycles
+    if self.name != 'Arugin'
+      Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => self})
+    end
+    Cycle.create ({:title => 'ARCHIVE_CYCLE', :description =>"ARCHIVE_CYCLE_DESC",:author => self})
   end
 
 end
