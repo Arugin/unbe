@@ -43,4 +43,25 @@ class Article
     self.save
   end
 
+  def short_content
+    delimiters = ['</p>', '<br />', '<br/>']
+    beginIndex = 0
+    endIndex = nil
+
+    delimiters.each do |delimiter|
+      endIndex = content.index delimiter
+
+      unless endIndex.nil?
+        endIndex += delimiter.length
+        break
+      end
+    end
+
+    if endIndex.nil?
+        return content
+    end
+
+    return content[beginIndex, endIndex]
+  end
+
 end

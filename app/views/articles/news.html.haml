@@ -2,4 +2,4 @@
   %p= t("NO_NEWS")
 - else
   -@articles.each do |news|
-    = render :partial => 'article_block',:locals => { :article => news }
+    = render :partial => 'article_short_block',:locals => { :article => news }

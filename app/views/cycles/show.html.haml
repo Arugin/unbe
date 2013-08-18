@@ -5,4 +5,4 @@
     .description
       %p= t("NO_CYCLE_ARTICLES")
   - @cycle.ordered_articles.each do |article|
-    = render :partial => 'articles/article_block',:locals => { :article => article }
+    = render :partial => 'articles/article_short_block',:locals => { :article => article }

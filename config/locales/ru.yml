@@ -87,3 +87,7 @@ ru:
   PUBLISH: Опуб.
   APPROVE: Подтв.
   NEW_ARTICLE: Новая статья
+
+  # MAIN
+  READ_MORE: Подробнее
+  COMMENTS: "%{count} комментариев"
