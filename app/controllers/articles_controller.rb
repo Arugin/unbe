@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ArticlesController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:news,:index]
+  before_filter :authenticate_user!, :except => [:news,:index, :show]
   load_and_authorize_resource :except => [:news, :index, :show]
 
   def index
