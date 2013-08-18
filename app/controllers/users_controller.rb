@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   def change_role
     authorize! :change_role, User
     @user = User.find(params[:id])
-    @user.change_role(params)
+    @user.change_role(params[:role])
     redirect_to users_path(@user), :notice => t(:USER_ROLE_CHANGED)
   end
 

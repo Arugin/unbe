@@ -46,8 +46,8 @@ begin
   user2 = User.create! :name => 'Aro', :email => 'aro@example.com', :password => 'welcome', :password_confirmation => 'welcome'
 
   puts "setiing user roles"
-  user.add_role :ADMIN
-  user2.add_role :USER
+  user.change_role :ADMIN
+  user2.change_role :USER
 
   puts 'CREATING cycles'
   no_cycle = Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => user})

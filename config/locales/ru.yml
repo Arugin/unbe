@@ -53,6 +53,7 @@ ru:
   ADMIN: Администратор
   MODERATOR: Модератор
   READER: Read-only
+  NO_ROLE: Никто
 
   helpers:
     submit:

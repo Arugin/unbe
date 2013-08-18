@@ -37,7 +37,7 @@ class Ability
       can :read, User
     end
 
-    if user.has_role? :USER
+    if user.has_role? :USER or user.has_role? :MODERATOR
 
       can :manage, Article, :author => user
       can :manage, Cycle, :author => user

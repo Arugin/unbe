@@ -62,40 +62,35 @@ class User
   end
 
   def highest_role
-    all_roles
     curr_role = nil
-
-    all_roles.each do |role|
-      if has_role? role
-        curr_role = role
-        break
-      end
+    roles.each do |role|
+      curr_role = role
     end
-    curr_role
+    unless curr_role.nil?
+      curr_role.name
+    else
+      :NO_ROLE
+    end
   end
 
-  #TODO: This not work correctly
-  def change_role(params)
-    to = params[:role]
-    remove_all_roles
-    all_roles.reverse.each do |role|
+  def change_role(role)
+    unless has_role? role
+      remove_all_roles
       add_role role
-      if params[:role].to_s == role
-        break
-      end
+      self.save
     end
   end
 
   protected
 
   def remove_all_roles
-    roles.each do |role|
-      remove_role role
+    unless roles.empty?
+      roles.each do |role|
+        puts "remove",role.name
+        self.revoke role.name
+      end
+      self.save
     end
-  end
-
-  def all_roles
-    [:ADMIN, :MODERATOR, :USER, :READER]
   end
 
 end
