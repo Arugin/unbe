@@ -24,6 +24,14 @@ class Cycle
     end
   end
 
+  def correct_description
+    if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? description
+      I18n.t description
+    else
+      description
+    end
+  end
+
   def self.default_id
     where(:title => :NO_CYCLE).first._id
   end

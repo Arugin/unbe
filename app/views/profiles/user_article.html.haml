@@ -1,0 +1,14 @@
+#profile
+  .user_header
+    %a.avatar{:href=>"#"}
+      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
+    %h2.username
+      = link_to user_profile_path(@user) do
+        = @user.name
+    .clear
+  .content-left
+    = render :partial => 'menu',:locals => { :user => @user }
+    .user-profile
+      .cycle-list
+        = render :partial => 'cycle_breadcrumbs',:locals => { :cycle => @article.cycle, :user => @user, :article => @article }
+        = render :partial => 'articles/article_block',:locals => { :article => @article }

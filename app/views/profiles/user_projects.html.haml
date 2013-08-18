@@ -1,0 +1,13 @@
+#profile
+  .user_header
+    %a.avatar{:href=>"#"}
+      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
+    %h2.username
+      = link_to user_profile_path(@user) do
+        = @user.name
+    .clear
+  .content-left
+    = render :partial => 'menu',:locals => { :user => @user }
+    .user-profile
+      .projects-list
+        Сообщество unbe пока ещё не готово к проектам

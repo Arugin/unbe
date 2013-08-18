@@ -20,7 +20,7 @@ begin
 
   puts 'CREATING GENDERS'
   Gender.create ({:name => 'UNKNOWN'})
-  Gender.create ({:name => 'MALE'})
+  male = Gender.create ({:name => 'MALE'})
   Gender.create ({:name => 'FEMALE'})
 
   puts 'CREATING Article Types'
@@ -44,7 +44,7 @@ begin
   ArticleArea.create ({:title => :MANAGEMENT})
 
   puts 'CREATING Default user'
-  user = User.create! :name => 'Arugin', :email => 'unbecinema@gmail.com', :password => 'welcome', :password_confirmation => 'welcome'
+  user = User.create! :name => 'Arugin', :email => 'unbecinema@gmail.com', :password => 'welcome', :password_confirmation => 'welcome', :first_name => 'Валерий', :second_name => 'Маяцкий', :from => 'Санкт-Петербург', :gender => male
   user2 = User.create! :name => 'Aro', :email => 'aro@example.com', :password => 'welcome', :password_confirmation => 'welcome'
 
   puts "setiing user roles"

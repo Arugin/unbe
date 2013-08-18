@@ -27,7 +27,7 @@
     %a{:href=>"#"}
       Избранное
   %li
-    %a{:href=>"#"}
+    = link_to user_profile_path(current_user) do
       Профиль
   %li
     %a{:href=>"#"}

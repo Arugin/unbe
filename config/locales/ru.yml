@@ -3,7 +3,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 ru:
-  NO_CYCLE: Без цикла
+  NO_CYCLE: Вне цикла
   NO_CYCLE_DESC: Здесь ютятся статьи, которым не нашлось места в других циклах
   ARCHIVE_CYCLE: Архив
   ARCHIVE_CYCLE_DESC: В этом разделе находятся статьи, которые, по вашему мнению, устарели или не имеют ценности для сообщества
@@ -91,3 +91,8 @@ ru:
   # MAIN
   READ_MORE: Подробнее
   COMMENTS: "%{count} комментариев"
+  NO_INFO: не указано
+
+  MALE: мужской
+  FEMALE: женский
+  UNKNOWN: не указан

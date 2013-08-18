@@ -3,8 +3,8 @@
     = link_to article_path(article) do
       %span= article.title
   .author
-    %a{:href=>"#"}
-      = article.cycle.author.name
+    = link_to user_profile_path(article.author) do
+      = article.author.name
   .publishDate
     = article.created_at.localtime
   .description

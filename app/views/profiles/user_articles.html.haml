@@ -1,0 +1,25 @@
+#profile
+  .user_header
+    %a.avatar{:href=>"#"}
+      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
+    %h2.username
+      = link_to user_profile_path(@user) do
+        = @user.name
+    .clear
+  .content-left
+    = render :partial => 'menu',:locals => { :user => @user }
+    .user-profile
+      .cycle-list
+        = render :partial => 'cycle_breadcrumbs',:locals => { :cycle => @cycle, :user => @user, :article => nil }
+        - if @cycle.articles.blank?
+          %p= t("NO_CYCLE_ARTICLES")
+        - else
+          - @cycle.articles.each do |article|
+            .row-fluid
+              %h4
+                = link_to user_article_path(article) do
+                  %span= article.title
+
+              .publishDate= article.created_at.localtime
+
+              .description= article.short_content.html_safe

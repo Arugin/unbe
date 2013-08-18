@@ -11,11 +11,13 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :assign_default_cycles
+  after_create :default_cycles
   after_create :default_role
+  after_create :default_gender
 
   field :name, type: String
   field :second_name, type: String
+  field :first_name, type: String
   field :email, type: String
   field :encrypted_password, type: String, default: ""
 
@@ -41,24 +43,14 @@ class User
   field :statusPoints, type: Integer
 
   belongs_to :gender, class_name: "Gender"
-  has_many :cycles
-  has_many :articles
+  has_many :cycles, class_name: "Cycle", inverse_of: :author
+  has_many :articles, inverse_of: :author
 
   validates_presence_of :name
   validates_presence_of :email
   validates_presence_of :encrypted_password
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
-
-  def assign_default_cycles
-    if self.name != 'Arugin'
-      Cycle.create_default_cycles self
-    end
-  end
-
-  def default_role
-    self.add_role :READER
-  end
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :gender, :from, :first_name, :second_name
 
   def highest_role
     curr_role = nil
@@ -87,6 +79,23 @@ class User
       roles.each do |role|
         self.revoke role.name
       end
+      self.save
+    end
+  end
+
+  def default_role
+    self.add_role :READER
+  end
+
+  def default_cycles
+    if self.name != 'Arugin'
+      Cycle.create_default_cycles self
+    end
+  end
+
+  def default_gender
+    if self.name != 'Arugin'
+      self.gender = Gender.find_by(name:'UNKNOWN')
       self.save
     end
   end

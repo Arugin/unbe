@@ -41,7 +41,11 @@ Unbe::Application.routes.draw do
   get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
 
   # Profile routes
-  get 'profile', to: 'profile#user_profile',as: 'user_profile'
+  get '/profile/:id', to: 'profiles#user_profile',as: 'user_profile'
+  get '/profile/cycles/:id', to: 'profiles#user_cycles',as: 'user_cycles'
+  get '/profile/articles/:id', to: 'profiles#user_articles',as: 'user_articles'
+  get '/profile/projects/:id', to: 'profiles#user_projects',as: 'user_projects'
+  get '/profile/article/:id', to: 'profiles#user_article',as: 'user_article'
 
   # Community routes
   get '/community/achievement', to: 'community#achievement',as: 'achieving_community'
