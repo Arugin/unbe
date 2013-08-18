@@ -11,6 +11,12 @@ ru:
   NO_OFFICE_ARTICLES: Не написано ещё ни одной статьи
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
 
+  # cycles
+  CYCLE_CREATE_SUCCESS: Цикл статей успешно создан
+  CYCLE_UPDATE_SUCCESS: Информация о цикле обновлена
+  NO_CYCLE_ARTICLES: В данном цикле ещё нет ни одной статьи
+  CAN_NOT_EDIT_SYSTEM_CYCLE: Невозможно отредактировать этот цикл
+
   #articles
   ARTICLE_PUBLISH_SUCCESS: Статья успешно опубликована. В ближайшее время она будет рассмотрена и подтверждена модератором
   ARTICLE_CREATE_SUCCESS: Статья успешно создана. Опубликуйте её, чтобы внести проведенные изменения
@@ -36,6 +42,8 @@ ru:
   LESSON: Урок
   OVERVIEW: Обзор
   NEWS: Новость
+  TRANSLATE: Перевод
+  NOTE: Заметка
 
   mongoid:
     attributes:
@@ -45,8 +53,12 @@ ru:
         article_type: Тип статьи
         tmpContent: Содержание
         cycle: Цикл статей
+      cycle:
+        title: Заголовок
+        description: Описание
     models:
       article: статью
+      cycle: цикл
 
   # roles
   USER: Пользователь
@@ -60,9 +72,18 @@ ru:
       article:
         create: "Создать %{model}"
         update: "Сохранить изменения"
+      cycle:
+        create: "Создать %{model}"
+        update: "Сохранить изменения"
 
   unauthorized:
     manage:
       all: "У вас нет доступа к данной странице."
 
   USER_ROLE_CHANGED: Пользователю успешно назначена другая роль
+
+  CREATED_AT: Создан
+  TITLE: Заголовок
+  PUBLISH: Опуб.
+  APPROVE: Подтв.
+  NEW_ARTICLE: Новая статья

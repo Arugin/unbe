@@ -28,6 +28,8 @@ begin
   ArticleType.create ({:title => 'LESSON'})
   ArticleType.create ({:title => 'OVERVIEW'})
   type_news = ArticleType.create ({:title => 'NEWS'})
+  ArticleType.create ({:title => 'TRANSLATE'})
+  ArticleType.create ({:title => 'NOTE'})
 
   puts 'CREATING Article Areas'
   area_no = ArticleArea.create ({:title => :NO_AREA})
@@ -50,10 +52,11 @@ begin
   user2.change_role :USER
 
   puts 'CREATING cycles'
-  no_cycle = Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => user})
+  no_cycle = Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => user, :system => true})
   news = Cycle.create ({:title => 'Новости', :description =>"Новости сообщества unbe и не только",:author => user})
   Cycle.create ({:title => 'Зеркальный фотоаппарат', :description =>"Как держать камеру в руках и стоит ли её вообще держать в руках",:author => user})
   Cycle.create ({:title => 'Режиссерское дело своими глазами', :description =>"Рассказы о режиссерском деле, пропущенные сквозь призму своего опыта",:author => user})
+  Cycle.create ({:title => 'ARCHIVE_CYCLE', :description =>"ARCHIVE_CYCLE_DESC",:author => user,:system => true})
 
   puts "CREATING articles"
   Article.create({title: "Об unbe",

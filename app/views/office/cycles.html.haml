@@ -13,17 +13,18 @@
                         .publishDate
                             = cycle.created_at.localtime
                     %td
-                        .options
-                            .btn-group
-                                %button.btn
-                                    = link_to edit_cycle_path cycle do
-                                        Изменить
-                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                                    %span.caret
-                                %ul.dropdown-menu
-                                    %li
-                                        = link_to edit_cycle_path(cycle) do
+                        - unless cycle.system?
+                            .options
+                                .btn-group
+                                    %button.btn
+                                        = link_to edit_cycle_path cycle do
                                             Изменить
+                                    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                                        %span.caret
+                                    %ul.dropdown-menu
+                                        %li
+                                            = link_to edit_cycle_path(cycle) do
+                                                Изменить
 
 - content_for(:right_bar) do
     = render :partial => 'right_bar'

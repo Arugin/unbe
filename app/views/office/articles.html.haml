@@ -1,11 +1,29 @@
 %h4 Мои статьи
+.row
+    .span12
+        .pull-right
+            = link_to new_article_path, :class=>'btn btn-primary' do
+                %i.icon-file-new
+                =t(:NEW_ARTICLE)
 .articles
     %table.table.table-striped
+        %thead
+            %th
+                %span
+                    %input{type: 'checkbox'}
+            %th{:width => "800px"}= t(:TITLE)
+            %th{:width => "100px"}
+            %th{:width => "30px"}
+            %th{:width => "30px"}
+            %th
         - if @articles.blank?
             %p= t("NO_OFFICE_ARTICLES")
         - else
             - @articles.each do |article|
                 %tr
+                    %td
+                        %span
+                            %input{type: 'checkbox', class: 'group-checker'}
                     %td
                         .header
                             = link_to article_path(article) do

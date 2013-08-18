@@ -52,9 +52,8 @@ class User
 
   def assign_default_cycles
     if self.name != 'Arugin'
-      Cycle.create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => self})
+      Cycle.create_default_cycles self
     end
-    Cycle.create ({:title => 'ARCHIVE_CYCLE', :description =>"ARCHIVE_CYCLE_DESC",:author => self})
   end
 
   def default_role
@@ -86,7 +85,6 @@ class User
   def remove_all_roles
     unless roles.empty?
       roles.each do |role|
-        puts "remove",role.name
         self.revoke role.name
       end
       self.save

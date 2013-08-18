@@ -1,5 +1,8 @@
 = render :partial => 'cycle_block',:locals => { :cycle => @cycle }
 
 .shifted
+  - if @cycle.ordered_articles.blank?
+    .description
+      %p= t("NO_CYCLE_ARTICLES")
   - @cycle.ordered_articles.each do |article|
     = render :partial => 'articles/article_block',:locals => { :article => article }

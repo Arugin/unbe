@@ -6,6 +6,7 @@ class Cycle
 
   field :title, type: String
   field :description, type: String
+  field :system, type: Boolean, default: false
 
   has_many :articles
 
@@ -25,6 +26,15 @@ class Cycle
 
   def self.default_id
     where(:title => :NO_CYCLE).first._id
+  end
+
+  def self.create_default_cycles(user)
+    create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => user, :system => true})
+    create ({:title => 'ARCHIVE_CYCLE', :description =>"ARCHIVE_CYCLE_DESC",:author => user, :system => true})
+  end
+
+  def system?
+    system
   end
 
 end
