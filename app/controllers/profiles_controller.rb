@@ -21,12 +21,8 @@ class ProfilesController < ApplicationController
     @user = @article.author
   end
 
-  def show_settings
-
-  end
-
-  def update_settings
-
+  def edit
+    @user = current_user
   end
 
 end

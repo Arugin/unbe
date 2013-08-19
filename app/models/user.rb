@@ -42,15 +42,15 @@ class User
   field :userAvatar, type: String
   field :statusPoints, type: Integer
 
-  belongs_to :gender, class_name: "Gender"
-  has_many :cycles, class_name: "Cycle", inverse_of: :author
+  belongs_to :gender
+  has_many :cycles, inverse_of: :author
   has_many :articles, inverse_of: :author
 
   validates_presence_of :name
   validates_presence_of :email
   validates_presence_of :encrypted_password
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :gender, :from, :first_name, :second_name
+  attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name
 
   def highest_role
     curr_role = nil

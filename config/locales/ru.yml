@@ -45,6 +45,10 @@ ru:
   TRANSLATE: Перевод
   NOTE: Заметка
 
+  # profile
+  USER_INFO_UPDATE_SUCCESS: Профиль успешно обновлен
+  USER_INFO_CAN_NOT_BE_UPDATED: Профиль обновить не удалось
+
   mongoid:
     attributes:
       article:
@@ -56,9 +60,16 @@ ru:
       cycle:
         title: Заголовок
         description: Описание
+      user:
+        name: Псевдоним
+        first_name: Имя
+        second_name: Фамилия
+        gender: Пол
+        from: Откуда
     models:
       article: статью
       cycle: цикл
+      user: профиль
 
   # roles
   USER: Пользователь
@@ -74,6 +85,8 @@ ru:
         update: "Сохранить изменения"
       cycle:
         create: "Создать %{model}"
+        update: "Сохранить изменения"
+      user:
         update: "Сохранить изменения"
 
   unauthorized:
