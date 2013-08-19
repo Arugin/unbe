@@ -1,4 +1,12 @@
-%h3 В процессе разработки
+- unless @article_area.nil?
+  %h4= t @article_area.title
+  - if @articles.blank?
+    %p= t("NO_ARTICLES_FOUND")
+  - else
+    - @articles.each do |article|
+      = render :partial => 'article_short_block',:locals => { :article => article }
+- else
+  = render :partial => 'article_index_block',:locals => { :articles => @articles }
 
 - content_for(:right_bar) do
-   = render :partial => 'right_bar'
+  = render :partial => 'right_bar',locals: { :article_areas => @article_areas }

@@ -25,6 +25,7 @@ Unbe::Application.routes.draw do
   resources :articles do
     collection do
       get 'news'
+      get 'by_area'
     end
     member do
       get 'publish'

@@ -24,6 +24,7 @@ ru:
   ARTICLE_APPROVE_SUCCESS: Статья подтверждена
   ARTICLE_CHANGED: Статья отредактирована
   NO_NON_APPROVEd_ARTICLES: Нет неподтвержденных статей
+  NO_ARTICLES_FOUND: В данном разделе ещё не написано ни одной статьи
 
   # articles types
   NEWS: Новости

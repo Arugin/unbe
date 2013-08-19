@@ -2,9 +2,11 @@
 class ArticlesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:news,:index, :show]
-  load_and_authorize_resource :except => [:news, :index, :show]
+  load_and_authorize_resource :except => [:news, :index, :show, :by_area]
 
   def index
+    @articles = Article.search_for(current_user, params)
+    @article_areas = ArticleArea.all
   end
 
   def show
@@ -67,6 +69,13 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.approve
     redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
+  end
+
+  def by_area
+    @article_areas = ArticleArea.all
+    @article_area =  ArticleArea.find(params[:article_area])
+    @articles = Article.where(article_area: @article_area).order_by([:created_at, :desc]).and({:isApproved => true})
+    render :index
   end
 
 end
