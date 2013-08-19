@@ -31,6 +31,7 @@ Unbe::Application.routes.draw do
       get 'publish'
       get 'approve'
     end
+    get 'new_news'
   end
 
   resources :projects

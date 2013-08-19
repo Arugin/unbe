@@ -1,0 +1,15 @@
+%h3 Создание статьи
+= simple_form_for(@article, :validate => true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, input_html: { class: "span8" }
+    = f.association :article_area, collection: ArticleArea.without_news.order_by([:title, :desc]), input_html: { class: "span8" }, selected: ArticleArea.default_id, label_method: lambda { |area| "#{t(area.title)}" }
+    = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: ArticleType.default_id, label_method: lambda { |type| "#{t(type.title)}" }
+    = f.input :cycle, input_html: { class: "span8", type: "hidden" }
+    = f.input :tmpContent, as: :text, input_html: { class: "span12", id: 'tmpContent' }
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"
+
+= render :partial => 'common/text_editor'
