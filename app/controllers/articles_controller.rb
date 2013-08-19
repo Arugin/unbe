@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.search_for(current_user, params)
-    @article_areas = ArticleArea.all
+    @article_areas = ArticleArea.without_news
   end
 
   def show

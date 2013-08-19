@@ -2,6 +2,8 @@ class ArticleArea
   include Mongoid::Document
   field :title, type: Symbol
 
+  scope :without_news, where(not({:title => :NEWS}))
+
   has_many :articles
 
   def self.default_id

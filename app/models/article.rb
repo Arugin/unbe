@@ -14,6 +14,7 @@ class Article
   field :baseRating, type: Integer
   field :rating, type: Integer
   field :system_tag, type: Symbol
+  field :to_news, type: Boolean, default: false
 
   belongs_to :article_area
   belongs_to :article_type
@@ -23,6 +24,8 @@ class Article
 
   scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc]).and({:isApproved => true})
   scope :non_approved, any_of({:isApproved => false},{:isUpdated => true}).and({:isPublished => true})
+
+  attr_protected :to_news, :baseRating, :isApproved, :rating
 
   def un_publish
     self.isPublished = false

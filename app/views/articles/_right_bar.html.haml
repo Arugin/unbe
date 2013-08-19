@@ -11,7 +11,6 @@
     =link_to main_app.articles_path do
       Все статьи
   - article_areas.each do |article_area|
-    - unless article_area.title == :NEWS
-      %li
-        =link_to main_app.by_area_articles_path(article_area: article_area) do
-          =t article_area.title
+    %li
+      =link_to main_app.by_area_articles_path(article_area: article_area) do
+        =t article_area.title
