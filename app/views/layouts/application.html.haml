@@ -6,8 +6,12 @@
         Unbe
         = yield :title
       %meta
-        = stylesheet_link_tag "/assets/application", :media => "all"
-        = javascript_include_tag "/assets/application", :media => "all"
+        - if Rails.env.production?
+          = stylesheet_link_tag "/assets/application", :media => "all"
+          = javascript_include_tag "/assets/application", :media => "all"
+        - else
+          = stylesheet_link_tag "application", :media => "all"
+          = javascript_include_tag "application"
 
   %body{:class => "#{controller_name} #{action_name}"}
     #main.row-fluid

@@ -1,0 +1,32 @@
+h1. unbe
+
+unbe - is the creative association of independent filmmaking.
+
+h2. Ruby on Rails
+
+This application requires:
+
+* Ruby version 1.9.3
+* Rails version 3.2
+
+Learn more about "Installing Rails":http://railsapps.github.com/installing-rails.html.
+
+h2. Database
+
+This application uses Mongo and Mongoid.
+
+h2. Development
+
+* Template Engine: Haml
+* Front-end Framework: Twitter Bootstrap
+* Form Builder: SimpleForm
+* Authentication: Devise
+* Authorization: CanCan
+
+h2. Getting Started
+
+Clone repository.
+Run 'bundle install'.
+Install MongoDB.
+Run 'rake db:setup'.
+Now you should be able to start rails server.
