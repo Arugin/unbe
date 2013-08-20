@@ -64,6 +64,9 @@ class ArticlesController < ApplicationController
   def publish
     @article = Article.find(params[:id])
     @article.publish
+    if can? :automatic_approve, Article
+      @article.approve
+    end
     redirect_to office_articles_path, notice: t(:ARTICLE_PUBLISH_SUCCESS)
   end
 

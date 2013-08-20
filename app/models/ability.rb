@@ -43,6 +43,7 @@ class Ability
       cannot :approve, Article
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
+      cannot :automatic_approve, Article
 
     end
 
