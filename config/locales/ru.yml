@@ -125,3 +125,7 @@ ru:
   # devise layouts
   DEVICE_LEAVE_BLANK_PASSWORD: Оставте это поле пустым, если не хотите менять пароль
   DEVICE_CONFIRM_PASSWORD: Введите свой текущий пароль, чтобы подтвердить изменения
+
+  time:
+    formats:
+      short: "%Y.%m.%d в %k:%M:%S"

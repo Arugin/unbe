@@ -11,7 +11,7 @@
                             = link_to cycle_path(cycle) do
                                 =cycle.correct_title
                         .publishDate
-                            = cycle.created_at.localtime
+                            = l cycle.created_at.in_time_zone, format: :short
                     %td
                         - unless cycle.system?
                             .options

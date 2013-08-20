@@ -12,7 +12,7 @@
       .fullname= "#{@user.first_name} #{@user.second_name}"
       %dl
         %dt Дата регистрации:
-        %dd= @user.created_at.localtime
+        %dd= l @user.created_at.in_time_zone, format: :short
         %dt Откуда:
         %dd
           - unless @user.from.nil?

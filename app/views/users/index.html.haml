@@ -8,10 +8,12 @@
 
     - @users.each do |user|
       %tr
-        %td= truncate(user.name, :length => 30, :omission => '...')
+        %td
+          = link_to user_profile_path(user) do
+            = truncate(user.name, :length => 30, :omission => '...')
         %td= truncate(user.email, :length => 30, :omission => '...')
         %td= t(user.highest_role)
-        %td= user.created_at.localtime
+        %td= l user.created_at.in_time_zone, format: :short
         %td
           .options
             .btn-group
