@@ -19,3 +19,6 @@
                 = link_to user_articles_path(cycle) do
                   %span= cycle.correct_title
               .description= cycle.correct_description
+
+- content_for(:right_bar) do
+  = render :partial => 'office/right_bar'

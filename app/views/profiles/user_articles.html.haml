@@ -23,3 +23,6 @@
               .publishDate= article.created_at.localtime
 
               .description= article.short_content.html_safe
+
+- content_for(:right_bar) do
+  = render :partial => 'office/right_bar'

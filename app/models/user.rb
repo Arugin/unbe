@@ -38,9 +38,9 @@ class User
 
   field :from, type: String
   field :is_active, type: Boolean
-
   field :userAvatar, type: String
   field :statusPoints, type: Integer
+  field :about, type: String
 
   belongs_to :gender
   has_many :cycles, inverse_of: :author
@@ -50,7 +50,7 @@ class User
   validates_presence_of :email
   validates_presence_of :encrypted_password
 
-  attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name
+  attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about
 
   def highest_role
     curr_role = nil

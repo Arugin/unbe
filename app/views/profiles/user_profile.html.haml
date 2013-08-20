@@ -22,3 +22,13 @@
         %dt Пол:
         %dd= t @user.gender.name
 
+        %dt О себе:
+        %dd
+          - unless @user.about.nil?
+            = @user.about.html_safe
+          - else
+            = t(:NO_ABOUT)
+
+- content_for(:right_bar) do
+  = render :partial => 'office/right_bar'
+

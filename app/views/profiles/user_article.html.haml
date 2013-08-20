@@ -12,3 +12,6 @@
       .cycle-list
         = render :partial => 'cycle_breadcrumbs',:locals => { :cycle => @article.cycle, :user => @user, :article => @article }
         = render :partial => 'articles/article_block',:locals => { :article => @article }
+
+- content_for(:right_bar) do
+  = render :partial => 'office/right_bar'

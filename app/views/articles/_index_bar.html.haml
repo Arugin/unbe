@@ -1,4 +1,4 @@
-- if not(current_user.nil?) and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
+- if user_signed_in? and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
   %ul.nav.nav-tabs.nav-stacked
     %li
       =link_to main_app.new_news_articles_path do

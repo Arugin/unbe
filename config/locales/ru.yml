@@ -67,10 +67,20 @@ ru:
         second_name: Фамилия
         gender: Пол
         from: Откуда
+        about: О себе
+        password_confirmation: Подтвердите пароль
+        password: Пароль
+        current_password: Текущий пароль
     models:
       article: статью
       cycle: цикл
       user: профиль
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: Данный email-адрес уже кем-то используется
 
   # roles
   USER: Пользователь
@@ -106,7 +116,12 @@ ru:
   READ_MORE: Подробнее
   COMMENTS: "%{count} комментариев"
   NO_INFO: не указано
+  NO_ABOUT: ещё ничего нет
 
   MALE: мужской
   FEMALE: женский
   UNKNOWN: не указан
+
+  # devise layouts
+  DEVICE_LEAVE_BLANK_PASSWORD: Оставте это поле пустым, если не хотите менять пароль
+  DEVICE_CONFIRM_PASSWORD: Введите свой текущий пароль, чтобы подтвердить изменения
