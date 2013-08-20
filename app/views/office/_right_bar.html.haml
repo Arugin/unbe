@@ -1,4 +1,4 @@
-- if current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR
+- if can? :approve, Article
   %ul.nav.nav-tabs.nav-stacked
     %li
       =link_to main_app.non_approved_articles_path do

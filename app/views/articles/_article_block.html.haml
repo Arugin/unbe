@@ -7,6 +7,7 @@
       = article.author.name
   .publishDate
     = article.created_at.localtime
+  .clear
   .description
     - unless article.content.nil?
       = article.content.html_safe

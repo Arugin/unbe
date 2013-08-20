@@ -41,6 +41,8 @@ class Ability
       can :manage, Cycle, :author => user
 
       cannot :approve, Article
+      cannot :publish_news, Article
+      cannot :publish_and_approve, Article
 
     end
 

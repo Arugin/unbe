@@ -1,10 +1,12 @@
 %ul.nav.nav-tabs.nav-stacked
-  %li
-    =link_to main_app.new_article_path do
-      Написать статью
-  %li
-    =link_to main_app.new_cycle_path do
-      Создать цикл
+  - if can? :create, Article
+    %li
+      =link_to main_app.new_article_path do
+        Написать статью
+  - if can? :create, Cycle
+    %li
+      =link_to main_app.new_cycle_path do
+        Создать цикл
 
 %ul.nav.nav-tabs.nav-stacked
   %li

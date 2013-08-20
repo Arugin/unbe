@@ -1,5 +1,5 @@
-- if current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR
+- if not(current_user.nil?) and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
   %ul.nav.nav-tabs.nav-stacked
     %li
-      =link_to main_app.new_news_article_path do
+      =link_to main_app.new_news_articles_path do
         Опубликовать новость

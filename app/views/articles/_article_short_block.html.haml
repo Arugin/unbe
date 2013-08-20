@@ -7,11 +7,13 @@
       = article.author.name
   .publishDate
     = article.created_at.localtime
+  .clear
   .description
     - unless article.content.nil?
       = article.short_content.html_safe
     - else
       = article.tmpContent.html_safe
+  .clear
   - if article.content.size != article.short_content.size
     .more-info
       = link_to article_path(article) do

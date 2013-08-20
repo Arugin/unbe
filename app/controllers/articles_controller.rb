@@ -22,6 +22,9 @@ class ArticlesController < ApplicationController
     @article.author = current_user
 
     if @article.save
+      if can? :publish_and_approve, Article
+        publish_and_approve @article
+      end
       redirect_to office_articles_path, notice: t(:ARTICLE_CREATE_SUCCESS)
     else
       render action: "new"
@@ -76,6 +79,17 @@ class ArticlesController < ApplicationController
     @article_area =  ArticleArea.find(params[:article_area])
     @articles = Article.where(article_area: @article_area).order_by([:created_at, :desc]).and({:isApproved => true})
     render :index
+  end
+
+  def new_news
+    @article = Article.new
+  end
+
+  protected
+
+  def publish_and_approve(article)
+    article.publish
+    article.approve
   end
 
 end

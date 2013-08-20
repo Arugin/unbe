@@ -26,12 +26,12 @@ Unbe::Application.routes.draw do
     collection do
       get 'news'
       get 'by_area'
+      get 'new_news'
     end
     member do
       get 'publish'
       get 'approve'
     end
-    get 'new_news'
   end
 
   resources :projects
