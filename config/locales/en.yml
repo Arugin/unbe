@@ -8,3 +8,4 @@ en:
   # devise layouts
   DEVICE_LEAVE_BLANK_PASSWORD: leave it blank if you don't want to change it
   DEVICE_CONFIRM_PASSWORD: we need your current password to confirm your changes
+  CAPTCHA_ERROR: There was an error with the recaptcha code below. Please re-enter the code.

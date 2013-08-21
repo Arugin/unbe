@@ -4,10 +4,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, :required => true, :autofocus => true, :label => "Имя" %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :password, :required => true, :label => "Пароль" %>
-    <%= f.input :password_confirmation, :required => true, :label => "Подтверждение пароля" %>
+    <%= f.input :name, :required => true, :autofocus => true, :label => "Имя", input_html: { class: "span6" } %>
+    <%= f.input :email, :required => true, input_html: { class: "span6" } %>
+    <%= f.input :password, :required => true, :label => "Пароль", input_html: { class: "span6" } %>
+    <%= f.input :password_confirmation, :required => true, :label => "Подтверждение пароля", input_html: { class: "span6" }%>
+    <div class="description">
+      Нам необходимо подтверждение того, что вы не бот.
+    </div>
     <%= recaptcha_tags %>
   </div>
 
