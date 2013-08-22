@@ -1,6 +1,7 @@
 @import "bootstrap";
 
-$author-font: 12px Tahoma;
+$author-font: 13px Tahoma;
+$info-font: 11px Tahoma;
 $font: Verdana, sans-serif;
 $light-date-color: #ababab;
 $link-color: #666666;
@@ -32,6 +33,27 @@ body{
     a{
       color: $light-date-color;
     }
+  }
+
+  .info{
+    height: 50px;
+    float: left;
+  }
+
+  .credentials{
+    @extend .left;
+  }
+
+  .technical-info{
+    @extend .left;
+  }
+
+  span.hint{
+    @extend .small-notice;
+  }
+  .small-notice{
+    font: $author-font;
+    color: $light-date-color;
   }
 
   .more-info{
@@ -226,6 +248,30 @@ body{
 
   .error{
     color: red;
+  }
+
+  .left{
+    float: left;
+  }
+
+  .avatar{
+    margin: 5px;
+  }
+
+  .avatar_inputs{
+    margin-top: 20px;
+  }
+
+  .news-user-avatar{
+    @extend .author;
+    margin-right: 5px;
+  }
+
+  .views{
+    color: $link-color;
+    font: $info-font;
+    margin-left: 15px;
+    margin-right: 20px;
   }
 
 }

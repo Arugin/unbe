@@ -42,6 +42,7 @@ class User
   field :statusPoints, type: Integer
   field :about, type: String
 
+  embeds_one :avatar, as: :imageable, class_name: 'Picture', :cascade_callbacks => true
   belongs_to :gender
   has_many :cycles, inverse_of: :author
   has_many :articles, inverse_of: :author
@@ -50,7 +51,9 @@ class User
   validates_presence_of :email
   validates_presence_of :encrypted_password
 
-  attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about
+  accepts_nested_attributes_for :avatar, class_name: 'Picture', :allow_destroy => true, :reject_if => lambda { |a| a[:file].blank? }
+
+  attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
 
   def highest_role
     curr_role = nil

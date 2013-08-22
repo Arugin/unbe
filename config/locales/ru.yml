@@ -71,6 +71,8 @@ ru:
         password_confirmation: Подтвердите пароль
         password: Пароль
         current_password: Текущий пароль
+      picture:
+        file: Изобркажение
     models:
       article: статью
       cycle: цикл
@@ -130,3 +132,34 @@ ru:
   time:
     formats:
       short: "%Y.%m.%d в %k:%M:%S"
+
+  ONLY_IMAGES_CAN_BE_UPLOADED: Файлы следующих форматов разрешено загружать (jpeg/png)
+  FILE_SIZE_IS_LIMITED: Размер файла не должен превышать 200кб
+  FILE_VALIDATIONS: Убедитесь, что ваш аватар размером не более 200кб и формата jpg или png
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    # Used in number_to_human_size() and number_to_human()
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+       # Used in number_to_human_size()
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
