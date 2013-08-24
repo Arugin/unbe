@@ -1,12 +1,31 @@
 .row-fluid
   %h4
+    = link_to user_articles_path(article.cycle) do
+      = article.cycle.correct_title
+    %span.divider /
     = link_to article_path(article) do
       %span= article.title
-  .author
-    = link_to user_profile_path(article.author) do
-      = article.author.name
-  .publishDate
-    = l article.created_at.in_time_zone, format: :short
+  .news-user-avatar
+    - if article.author.avatar.nil?
+      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
+    - else
+      = image_tag(article.author.avatar.file.url(:mini))
+  .info
+    .credentials
+      .author
+        = link_to user_profile_path(article.author) do
+          = article.author.name
+      .publishDate
+        = l article.created_at.in_time_zone, format: :short
+    .clear
+    .views
+      создано
+      = link_to user_cycles_path(article.author) do
+        = article.author.cycles.all.size - 2
+      циклов
+    .clear
+    .views
+      = "написано #{article.author.articles.size} статей"
   .clear
   .description
     - unless article.content.nil?

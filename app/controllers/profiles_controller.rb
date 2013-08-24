@@ -23,6 +23,9 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = current_user
+    if @user.avatar.nil?
+      @user.avatar = Picture.new
+    end
   end
 
 end
