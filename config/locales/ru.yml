@@ -135,7 +135,7 @@ ru:
 
   ONLY_IMAGES_CAN_BE_UPLOADED: Файлы следующих форматов разрешено загружать (jpeg/png)
   FILE_SIZE_IS_LIMITED: Размер файла не должен превышать 200кб
-  FILE_VALIDATIONS: Убедитесь, что ваш аватар размером не более 200кб и формата jpg или png
+  FILE_VALIDATIONS: Размером вашего аватара не более 200кб и формат jpg или png
 
   number:
     format:

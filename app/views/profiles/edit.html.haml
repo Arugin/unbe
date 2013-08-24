@@ -18,7 +18,7 @@
               = image_tag(@user.avatar.file.url(:small))
           .left.avatar_inputs
             = f.simple_fields_for :avatar do |a|
-              = a.input :file, as: :file, label: 'Аватар', hint: t(:FILE_VALIDATIONS)
+              = a.input :file, as: :file, label: 'Аватар', hint: t(:FILE_VALIDATIONS),  input_html: { class: "span4" }
           .clear
           = f.association :gender, collection: Gender.all.order_by([:name, :desc]), input_html: { class: "span8" }, selected: @user.gender._id, label_method: lambda { |gender| "#{t(gender.name)}" }
           = f.input :from, input_html: { class: "span8" }
