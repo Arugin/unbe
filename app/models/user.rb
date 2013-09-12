@@ -3,8 +3,6 @@ class User
   rolify
   include Mongoid::Timestamps
 
-
-
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -47,7 +45,12 @@ class User
   has_many :cycles, inverse_of: :author
   has_many :articles, inverse_of: :author
 
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true,  length: {minimum: 3, maximum: 20}
+  validates :second_name, length: {maximum: 20}
+  validates :first_name, length: {maximum: 20}
+  validates :from, length: {maximum: 30}
+  validates :about, length: {maximum: 1000}
+
   validates_presence_of :email
   validates_presence_of :encrypted_password
 

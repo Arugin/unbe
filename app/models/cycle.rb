@@ -10,6 +10,9 @@ class Cycle
 
   has_many :articles
 
+  validates :title, presence: true, length: {minimum: 4, maximum: 70}
+  validates :description, length: {maximum: 1000}
+
   search_in :title
 
   def ordered_articles
