@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require jquery.address
+//= require jquery.json.js
+//= require unbe
 //= require bootstrap
 //= require bootstrap-transition
 //= require bootstrap-alert

@@ -4,9 +4,12 @@ class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:news,:index, :show]
   load_and_authorize_resource :except => [:news, :index, :show, :by_area]
 
+  respond_to :html, :js
+
   def index
-    @articles = Article.search_for(current_user, params)
+    @articles = Article.search_for(current_user, params).page(params[:page])
     @article_areas = ArticleArea.without_news
+    respond_with @articles
   end
 
   def show
@@ -51,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.last_news
+    @articles = Article.last_news.page params[:page]
   end
 
   def edit

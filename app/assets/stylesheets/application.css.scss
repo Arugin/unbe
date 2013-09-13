@@ -11,3 +11,26 @@
  *= require_self
  *= require_tree .
  */
+
+.input-search, .dataTables_wrapper {
+  &.right {
+    text-align: right;
+  }
+  .input-prepend {
+    .add-on {
+      border-radius: 15px 0 0 15px;
+      padding-left: 8px;
+      float: left;
+      .icon-search {
+        color: #444;
+      }
+    }
+    input {
+      border-radius: 0 15px 15px 0;
+      &.search-query {
+        width: 164px;
+        padding-left: 8px;
+      }
+    }
+  }
+}
