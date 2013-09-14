@@ -9,6 +9,7 @@ class Cycle
   field :system, type: Boolean, default: false
 
   has_many :articles
+  has_many :comments, as: :commentable, class_name: 'Comment'
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :description, length: {maximum: 1000}

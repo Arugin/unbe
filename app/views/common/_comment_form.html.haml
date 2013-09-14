@@ -1,0 +1,12 @@
+%hr
+%h4 Комментировать
+= simple_form_for([commentable, commentable.comments.new], :validate => true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :content, as: :text, input_html: { class: "span12", id: 'tmpContent' }
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"
+
+= render :partial => 'common/text_editor'

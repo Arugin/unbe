@@ -5,6 +5,7 @@ en:
   hello: "Hello world"
   NO_CYCLE: "Without cycle"
   SEARCH: Search...
+  NO_COMMENTS_HERE: No comments here
 
   # devise layouts
   DEVICE_LEAVE_BLANK_PASSWORD: leave it blank if you don't want to change it

@@ -1,0 +1,8 @@
+.title= "комментарии (#{@comments.size})"
+- if @comments.blank?
+  %p= t("NO_COMMENTS_HERE")
+- else
+  - @comments.each do |comment|
+    = render :partial => 'common/comment_block', :locals => { :comment => comment }
+
+= paginate @comments, :remote => true

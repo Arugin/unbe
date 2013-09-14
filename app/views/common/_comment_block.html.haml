@@ -1,0 +1,19 @@
+.comment
+  %table
+    %tr
+      %td.avatar
+        - if comment.user.avatar.nil?
+          = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar", :size => "25x25")
+        - else
+          = image_tag(comment.user.avatar.file.url(:mini), :size => "25x25")
+      %td.author
+        = link_to user_profile_path(comment.user) do
+          = comment.user.name
+        .publishDate
+        = l comment.created_at.in_time_zone, format: :short
+    %tr
+      %td.votecell
+        .vote
+          0
+      %td.contentcell
+        = comment.content.html_safe
