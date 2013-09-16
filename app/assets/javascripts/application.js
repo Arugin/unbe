@@ -16,6 +16,7 @@
 //= require jquery.address
 //= require jquery.json.js
 //= require unbe
+//= require deep_linking
 //= require bootstrap
 //= require bootstrap-transition
 //= require bootstrap-alert
@@ -25,3 +26,8 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .
+
+$(document).ready(function () {
+    var init = new Unbe.Init();
+    init.initHome();
+});
