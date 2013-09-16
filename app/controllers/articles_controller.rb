@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.last_news.page params[:page]
+    @articles = Article.last_news(current_user, params).page params[:page]
     respond_with @articles
   end
 
@@ -84,7 +84,11 @@ class ArticlesController < ApplicationController
   def by_area
     @article_areas = ArticleArea.without_news
     @article_area =  ArticleArea.find(params[:article_area])
-    @articles = Article.where(article_area: @article_area).order_by([:created_at, :desc]).and({:isApproved => true}).page(params[:page])
+    @articles = Article.by_area(current_user, params, @article_area).page params[:page]
+    @address_additor = ''
+    unless @article_area.nil?
+      @address_additor = "?article_area=#{@article_area.id}"
+    end
     render :index
   end
 

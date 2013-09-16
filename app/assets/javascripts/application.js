@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.address
+//= require jquery.cookie.js
 //= require jquery.json.js
 //= require unbe
 //= require deep_linking

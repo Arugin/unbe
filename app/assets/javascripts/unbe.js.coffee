@@ -2,11 +2,32 @@ class @Unbe
   Init: class Init
     initHome: ()->
       jQuery.ajaxSetup({ cache: true });
+
   Search: class Search
+
+    queryParams: ['article_area']
+
     bindSearch: (projectFormElem) ->
+      self = this
       $("##{projectFormElem} input").keyup (e) ->
         request = "search=" + $(@).val()
-        $.address.value "#{location.pathname}?#{request}"
+        $.address.value self.makeUrl(request)
+
+    urlParam:(name)->
+      results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(location.href)
+      if results?
+        results[1] || 0
+      else
+        null
+
+    makeUrl: (request)->
+      address = "#{location.pathname}?#{request}"
+      for param in @queryParams
+        if @urlParam(param)?
+          address = "#{address}&#{param}=#{@urlParam(param)}"
+      address
+
+
 
 unless @.unbe?
   @.unbe = new Unbe()

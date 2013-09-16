@@ -25,7 +25,12 @@ class Article
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :tmpContent, length: {maximum: 20000}
 
-  scope :last_news, where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc]).and({:isApproved => true})
+  scope :last_news, lambda { |user, params = {}|
+    search_for(user,params).where(:article_type => ArticleType.where({:title => "NEWS"}).first).order_by([:created_at, :desc]).and({:isApproved => true})
+  }
+  scope :by_area, lambda { |user, params = {}, area|
+    search_for(user,params).where(article_area: area).order_by([:created_at, :desc]).and({:isApproved => true})
+  }
   scope :non_approved, any_of({:isApproved => false},{:isUpdated => true}).and({:isPublished => true})
 
   attr_protected :to_news, :baseRating, :isApproved, :rating
