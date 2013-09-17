@@ -4,4 +4,4 @@
   - @articles.each do |article|
     = render :partial => 'article_short_block', :locals => { :article => article }
 
-= paginate @articles, :param_name => param_name, :remote => true
+= paginate @articles, :remote => true
