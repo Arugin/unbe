@@ -1,7 +1,8 @@
 class @Unbe
   Init: class Init
-    initHome: ()->
+    initHome: (spinner)->
       jQuery.ajaxSetup({ cache: true });
+      spinner.hide();
 
   Search: class Search
 
@@ -27,7 +28,6 @@ class @Unbe
           address = "#{address}&#{param}=#{@urlParam(param)}"
       address
 
+unless @unbe?
+  @unbe = new Unbe()
 
-
-unless @.unbe?
-  @.unbe = new Unbe()

@@ -14,10 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.address
-//= require jquery.cookie.js
 //= require jquery.json.js
 //= require unbe
-//= require deep_linking
 //= require bootstrap
 //= require bootstrap-transition
 //= require bootstrap-alert
@@ -26,9 +24,7 @@
 //= require bootstrap-collapse
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
+//= require deep_linking
+//= require views/common/search
 //= require_tree .
-
-$(document).ready(function () {
-    var init = new Unbe.Init();
-    init.initHome();
-});
+//= require home

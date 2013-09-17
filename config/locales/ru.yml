@@ -10,6 +10,7 @@ ru:
   NO_NEWS: Нет новостей
   NO_OFFICE_ARTICLES: Не написано ещё ни одной статьи
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
+  SEARCH: Поиск...
 
   # cycles
   CYCLE_CREATE_SUCCESS: Цикл статей успешно создан
