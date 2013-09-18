@@ -16,10 +16,10 @@
       =link_to main_app.office_path do
         Личный кабинет
     %li
-      =link_to main_app.office_articles_path do
+      =link_to main_app.office_articles_path(scope: 'current_user') do
         Мои статьи
     %li
-      =link_to main_app.office_cycles_path do
+      =link_to main_app.office_cycles_path(scope: 'current_user') do
         Мои циклы
     %li
       %a{:href=>"#"}
@@ -32,7 +32,7 @@
         Профиль
     %li
       = link_to edit_profile_path do
-        Настроить профиля
+        Настроить профиль
     %li
       = link_to edit_user_registration_path do
         Настройки аккаунта

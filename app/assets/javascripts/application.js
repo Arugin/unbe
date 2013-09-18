@@ -15,7 +15,6 @@
 //= require jquery.ui.all
 //= require jquery.address
 //= require jquery.json.js
-//= require unbe
 //= require bootstrap
 //= require bootstrap-transition
 //= require bootstrap-alert
@@ -24,4 +23,8 @@
 //= require bootstrap-collapse
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
+//= require unbe
+//= require deep_linking
+//= require views/common/search
 //= require_tree .
+//= require home

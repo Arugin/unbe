@@ -1,8 +1,9 @@
-- if @articles.blank?
-  %p= t("NO_NEWS")
-- else
-  -@articles.each do |news|
-    = render :partial => 'article_short_block',:locals => { :article => news }
+.row
+  .span12
+    .pull-right
+      = render :partial => "common/search_control", :locals => { :current_action_path => news_articles_path }
+
+#news.ujs-pagination
 
 - content_for(:right_bar) do
   = render :partial => 'index_bar'

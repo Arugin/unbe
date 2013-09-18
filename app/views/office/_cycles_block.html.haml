@@ -1,0 +1,27 @@
+%table.table.table-striped
+    - if @cycles.blank?
+        %p= t("NO_OFFICE_CYCLES")
+    - else
+        - @cycles.each do |cycle|
+            %tr
+                %td
+                    .header
+                        = link_to cycle_path(cycle) do
+                            =cycle.correct_title
+                    .publishDate
+                        = l cycle.created_at.in_time_zone, format: :short
+                %td
+                    - unless cycle.system?
+                        .options
+                            .btn-group
+                                %button.btn
+                                    = link_to edit_cycle_path cycle do
+                                        Изменить
+                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                                    %span.caret
+                                %ul.dropdown-menu
+                                    %li
+                                        = link_to edit_cycle_path(cycle) do
+                                            Изменить
+
+= paginate @cycles, :remote => true

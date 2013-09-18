@@ -1,30 +1,11 @@
-%h4 Неподтвержденные статьи
-.articles
-    %table.table.table-striped
-        - if @articles.blank?
-            %p= t("NO_NON_APPROVEd_ARTICLES")
-        - else
-            - @articles.each do |article|
-                %tr
-                    %td
-                        .header
-                            = link_to article_path(article) do
-                                %span= article.title
-                        .publishDate
-                            = article.updated_at.localtime
-                    %td
-                        - if article.isUpdated
-                            %p.small-description= t 'ARTICLE_CHANGED'
-                    %td
-                        - if article.isUpdated && article.isPublished
-                            .thumb
-                                = link_to approve_article_path(article) do
-                                    =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
-                        - else
-                            = link_to approve_article_path(article) do
-                                = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
+.row-fluid
+  .span5
+    %h4 Неподтвержденные статьи
+  .span7.middle
+    .pull-right
+      = render :partial => "common/search_control", :locals => { :current_action_path => non_approved_articles_path }
 
-
+#articles.articles.ujs-pagination
 
 - content_for(:right_bar) do
-    = render :partial => 'right_bar'
+  = render :partial => 'right_bar'
