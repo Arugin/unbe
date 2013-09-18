@@ -1,62 +1,14 @@
 %h4 Мои статьи
 .row
-    .span12
-        .pull-right
-            = link_to new_article_path, :class=>'btn btn-primary' do
-                %i.icon-file-new
-                =t(:NEW_ARTICLE)
-.articles
-    %table.table.table-striped
-        %thead
-            %th
-                %span
-                    %input{type: 'checkbox'}
-            %th{:width => "800px"}= t(:TITLE)
-            %th{:width => "100px"}
-            %th{:width => "30px"}
-            %th{:width => "30px"}
-            %th
-        - if @articles.blank?
-            %p= t("NO_OFFICE_ARTICLES")
-        - else
-            - @articles.each do |article|
-                %tr
-                    %td
-                        %span
-                            %input{type: 'checkbox', class: 'group-checker'}
-                    %td
-                        .header
-                            = link_to article_path(article) do
-                                %span= article.title
-                        .publishDate
-                            = l article.created_at.in_time_zone, format: :short
-                        .options
-                            .btn-group
-                                %button.btn
-                                    = link_to edit_article_path article do
-                                        Изменить
-                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                                    %span.caret
-                                %ul.dropdown-menu
-                                    %li
-                                        = link_to edit_article_path(article) do
-                                            Изменить
-                    %td
-                        - if article.isUpdated
-                            %p.small-description= t 'ARTICLE_CHANGED'
-                    %td
-                        - unless article.isPublished
-                            = link_to publish_article_path(article) do
-                                = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
-                        - else
-                            = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
+  .span8
+    .pull-right
+      = link_to new_article_path, :class=>'btn btn-primary' do
+        %i
+        =t(:NEW_ARTICLE)
+  .span3
+    = render :partial => "common/search_control", :locals => { :current_action_path => office_articles_path(scope:'current_user') }
 
-                    %td
-                        - if article.isUpdated && article.isPublished
-                            .thumb
-                                =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
-                        - else
-                            = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
+#articles.articles.ujs-pagination
 
 - content_for(:right_bar) do
-    = render :partial => 'right_bar'
+  = render :partial => 'right_bar'

@@ -3,16 +3,8 @@
   .content-left
     = render :partial => 'menu',:locals => { :user => @user }
     .user-profile
-      .cycle-list
-        - if @user.cycles.blank?
-          %p= t("NO_OFFICE_CYCLES")
-        - else
-          - @user.cycles.each do |cycle|
-            .row-fluid
-              %h4
-                = link_to user_articles_path(cycle) do
-                  %span= cycle.correct_title
-              .description= cycle.correct_description
+      #cycle-list.cycle-list.ujs-pagination
+
 
 - content_for(:right_bar) do
   = render :partial => 'office/right_bar'
