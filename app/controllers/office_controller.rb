@@ -8,7 +8,7 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page])
+    @articles = Article.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(7)
     respond_with @articles
   end
 

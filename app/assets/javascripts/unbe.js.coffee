@@ -6,7 +6,7 @@ class @Unbe
 
   Search: class Search
 
-    queryParams: ['article_area']
+    queryParams: ['article_area','scope']
 
     bindSearch: (projectFormElem) ->
       self = this

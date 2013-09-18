@@ -180,3 +180,11 @@ ru:
               blank: У статьи должен быть заголовок
               too_short: Длина заголовка должна быть больше 4 символов
               too_long: Длина заголовка должна быть меньше 70 символов
+
+  views:
+   pagination:
+     first: "&laquo; Начало"
+     last: "Конец &raquo;"
+     previous: "&lsaquo; Пред."
+     next: "След. &rsaquo;"
+     truncate: "..."

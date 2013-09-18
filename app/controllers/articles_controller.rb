@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @articles = Article.search_for(current_user, params).page(params[:page])
+    @articles = Article.approved(current_user, params).page(params[:page])
     @article_areas = ArticleArea.without_news
     respond_with @articles
   end
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
       if can? :publish_and_approve, Article
         publish_and_approve @article
       end
-      redirect_to office_articles_path, notice: t(:ARTICLE_CREATE_SUCCESS)
+      redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
     else
       render action: "new"
     end
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
       unless @old_article == @article
         @article.un_publish
       end
-      redirect_to office_articles_path, notice: t(:ARTICLE_UPDATE_SUCCESS)
+      redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
       render action: "edit"
     end
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.last_news(current_user, params).page params[:page]
+    @articles = Article.last_news(current_user, params).page(params[:page]).per(7)
     respond_with @articles
   end
 
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
     if can? :automatic_approve, Article
       @article.approve
     end
-    redirect_to office_articles_path, notice: t(:ARTICLE_PUBLISH_SUCCESS)
+    redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
   end
 
   def approve
@@ -84,7 +84,7 @@ class ArticlesController < ApplicationController
   def by_area
     @article_areas = ArticleArea.without_news
     @article_area =  ArticleArea.find(params[:article_area])
-    @articles = Article.by_area(current_user, params, @article_area).page params[:page]
+    @articles = Article.by_area(current_user, params, @article_area).page(params[:page])
     @address_additor = ''
     unless @article_area.nil?
       @address_additor = "?article_area=#{@article_area.id}"

@@ -1,0 +1,15 @@
+= render :partial => 'cycle_breadcrumbs',:locals => { :cycle => @cycle, :user => @user, :article => nil }
+- if @articles.blank?
+  %p= t("NO_CYCLE_ARTICLES")
+- else
+  - @articles.each do |article|
+    .row-fluid
+      %h4
+        = link_to user_article_path(article) do
+          %span= article.title
+
+      .publishDate= article.created_at.localtime
+
+      .description= article.short_content.html_safe
+
+= paginate @articles, :remote => true
