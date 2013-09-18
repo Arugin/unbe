@@ -32,8 +32,7 @@
 
         $.each(this, function () {
             $(this).html(el);
-            $(this).find('nav.pagination a[data-remote][href!="' + disabledLink + '"],' +
-                    '.dashboard-sidebar a[data-remote][href!="' + disabledLink + '"]')
+            $(this).find('nav.pagination a[data-remote][href!="' + disabledLink + '"],')
                 .attr('href', function (i, o) { return "#" + o; })
                 .address(function () {
                     return $(this).attr('href').replace(/^#/, '');
@@ -45,7 +44,7 @@
 $(function () {
 
     // Event listener for remote links
-    $(document).on('ajax:beforeSend', 'nav.pagination a[data-remote], .dashboard-sidebar a[data-remote]', function(e, xhr, settings) {
+    $(document).on('ajax:beforeSend', 'nav.pagination a[data-remote]', function(e, xhr, settings) {
         // Block default UJS ajax requests
         return false;
     });
@@ -68,7 +67,7 @@ $(function () {
 
     // Add address events to remote links on page load
     $.address.init(function () {
-        $('nav.pagination a[data-remote], .dashboard-sidebar a[data-remote]').attr('href', function (i, o) { return "#" + o; })
+        $('nav.pagination a[data-remote]').attr('href', function (i, o) { return "#" + o; })
             .address(function () {
                 return $(this).attr('href').replace(/^#/, '');
             });

@@ -1,14 +1,15 @@
-- unless @article_area.nil?
-  %h4= t @article_area.title
-- else
-  %h4 Статьи
-
-.row
-  .span12
+.row-fluid
+  .span4
+    - unless @article_area.nil?
+      %h4= t @article_area.title
+    - else
+      %h4 Статьи
+  .span8.middle
     .pull-right
       = render :partial => "common/search_control", :locals => { :current_action_path => articles_path }
 
 #articles.ujs-pagination
+  = render :partial => 'articles_short_block'
 
 - content_for(:right_bar) do
   = render :partial => 'right_bar', locals: { :article_areas => @article_areas }

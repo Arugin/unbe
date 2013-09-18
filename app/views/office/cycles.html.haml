@@ -1,30 +1,14 @@
 %h4 Мои циклы
-.cycles
-    %table.table.table-striped
-        - if @cycles.blank?
-            %p= t("NO_OFFICE_CYCLES")
-        - else
-            - @cycles.each do |cycle|
-                %tr
-                    %td
-                        .header
-                            = link_to cycle_path(cycle) do
-                                =cycle.correct_title
-                        .publishDate
-                            = l cycle.created_at.in_time_zone, format: :short
-                    %td
-                        - unless cycle.system?
-                            .options
-                                .btn-group
-                                    %button.btn
-                                        = link_to edit_cycle_path cycle do
-                                            Изменить
-                                    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                                        %span.caret
-                                    %ul.dropdown-menu
-                                        %li
-                                            = link_to edit_cycle_path(cycle) do
-                                                Изменить
+.row
+  .span8
+    .pull-right
+      = link_to new_cycle_path, :class=>'btn btn-primary' do
+        %i
+        =t(:NEW_CYCLE)
+  .span3
+    = render :partial => "common/search_control", :locals => { :current_action_path => office_cycles_path }
+
+#cycles.cycles.ujs-pagination
 
 - content_for(:right_bar) do
-    = render :partial => 'right_bar'
+  = render :partial => 'right_bar'

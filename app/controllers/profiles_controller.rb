@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+
+  respond_to :html, :js
+
   def user_cycles
     @user = User.find(params[:id])
   end

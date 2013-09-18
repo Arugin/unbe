@@ -2,8 +2,11 @@ class UsersController < ApplicationController
 
   before_filter :authenticate_user!
 
+  respond_to :html, :js
+
   def index
-    @users = User.all.asc(:username)
+    @users = User.search_for(current_user, params).asc(:username).page(params[:page])
+    respond_with @users
   end
 
   def show
