@@ -46,6 +46,8 @@ class User
   has_many :cycles, inverse_of: :author
   has_many :articles, inverse_of: :author
 
+  search_in :name, :email
+
   validates :name, presence: true, uniqueness: true,  length: {minimum: 3, maximum: 20}
   validates :second_name, length: {maximum: 20}
   validates :first_name, length: {maximum: 20}
