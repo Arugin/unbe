@@ -23,6 +23,7 @@ Unbe::Application.routes.draw do
   resources :cycles
 
   resources :articles do
+    resources :comments
     collection do
       get 'news'
       get 'by_area'

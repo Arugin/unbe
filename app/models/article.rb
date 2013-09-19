@@ -19,6 +19,7 @@ class Article
   belongs_to :article_area
   belongs_to :article_type
   belongs_to :cycle
+  has_many :comments, as: :commentable, class_name: 'Comment'
 
   search_in :title
 

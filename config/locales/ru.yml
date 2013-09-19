@@ -10,7 +10,11 @@ ru:
   NO_NEWS: Нет новостей
   NO_OFFICE_ARTICLES: Не написано ещё ни одной статьи
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
+  NO_COMMENTS_HERE: Нет ни одного комментария
   SEARCH: Поиск...
+
+  # comments
+  COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
 
   # cycles
   CYCLE_CREATE_SUCCESS: Цикл статей успешно создан
@@ -70,6 +74,8 @@ ru:
         update: "Сохранить изменения"
       user:
         update: "Сохранить изменения"
+      comment:
+        create: "Комментировать"
 
   unauthorized:
     manage:

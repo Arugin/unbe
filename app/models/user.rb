@@ -45,6 +45,7 @@ class User
   belongs_to :gender
   has_many :cycles, inverse_of: :author
   has_many :articles, inverse_of: :author
+  has_many :comments
 
   search_in :name, :email
 

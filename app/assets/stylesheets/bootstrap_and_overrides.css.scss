@@ -144,6 +144,7 @@ body{
       float: left;
       margin-right: 11px;
       position: relative;
+      text-align: center;
     }
 
     .username{
@@ -273,6 +274,40 @@ body{
     font: $info-font;
     margin-left: 15px;
     margin-right: 20px;
+  }
+
+  #comments{
+    .title{
+      color: #AFA56A;
+      margin-bottom: 20px;
+      background: url(/images/comments.gif) no-repeat left 65%;
+      padding-left: 23px;
+      font-size: 20px;
+      font-family: Verdana, sans-serif;
+      letter-spacing: -1px;
+    }
+    .comment{
+      width: 728px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      .avatar{
+        text-align: center;
+        vertical-align: middle;
+      }
+      .contentcell{
+        @extend .description;
+        width: 660px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+      }
+      .votecell{
+        width: 60px;
+        vertical-align: top;
+        .vote{
+          text-align: center;
+        }
+      }
+    }
   }
 
 }
