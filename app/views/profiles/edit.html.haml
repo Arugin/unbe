@@ -22,12 +22,12 @@
           .clear
           = f.association :gender, collection: Gender.all.order_by([:name, :desc]), input_html: { class: "span8" }, selected: @user.gender._id, label_method: lambda { |gender| "#{t(gender.name)}" }
           = f.input :from, input_html: { class: "span8" }
-          = f.input :about, as: :text, input_html: { class: "span10", id: 'tmpContent'}
+          = f.input :about, as: :text, input_html: { class: "span10", id: 'smallContent'}
 
         .form-actions
           = f.button :submit, :class => "btn-primary"
 
-= render :partial => 'common/text_editor'
+= render :partial => 'common/small_text_editor'
 
 - content_for(:right_bar) do
   = render :partial => 'office/right_bar'

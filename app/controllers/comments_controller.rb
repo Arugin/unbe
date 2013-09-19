@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
 
+  before_filter :authenticate_user!, :except => [:index]
+  load_and_authorize_resource :except => [:index ]
+
   def index
     @commentable = find_commentable
     @comments = @commentable.comments

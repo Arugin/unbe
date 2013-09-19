@@ -18,7 +18,7 @@ xinha_init = xinha_init ? xinha_init : function()
 
   xinha_editors = xinha_editors ? xinha_editors :
   [
-    'tmpContent'
+    'smallContent'
   ];
   
   /** STEP 2 ***************************************************************
@@ -36,11 +36,7 @@ xinha_init = xinha_init ? xinha_init : function()
 
   xinha_plugins = xinha_plugins ? xinha_plugins :
   [
-   'CharacterMap',
-   'ContextMenu',
-   'ExtendedFileManager',
-   'SuperClean',
-   'TableOperations'
+
   ];
   
          // THIS BIT OF JAVASCRIPT LOADS THE PLUGINS, NO TOUCHING  :)
@@ -65,20 +61,17 @@ xinha_init = xinha_init ? xinha_init : function()
    *************************************************************************/
 
    xinha_config = xinha_config ? xinha_config() : new Xinha.Config();
-   xinha_config.height = '550px';
+
+    xinha_config.width  = '650px';
+    xinha_config.height = '300px';
+        
   //this is the standard toolbar, feel free to remove buttons as you like
   xinha_config.toolbar =
   [
-    ["popupeditor"],
-    ["separator","formatblock","fontname","fontsize","bold","italic","underline","strikethrough"],
+    ["popupeditor","separator","formatblock","fontname","fontsize","bold","italic","underline","strikethrough"],
     ["separator","forecolor","hilitecolor","textindicator"],
     ["separator","subscript","superscript"],
-    ["linebreak","separator","justifyleft","justifycenter","justifyright","justifyfull"],
-    ["separator","insertorderedlist","insertunorderedlist","outdent","indent"],
-    ["separator","inserthorizontalrule","createlink","insertimage","inserttable"],
-    ["linebreak","separator","undo","redo","selectall","print"], (Xinha.is_gecko ? [] : ["cut","copy","paste","overwrite","saveas"]),
-    ["separator","killword","clearfonts","removeformat","toggleborders","splitblock","lefttoright", "righttoleft"],
-    ["separator","htmlmode","showhelp","about"]
+    ["linebreak","separator","justifyleft","justifycenter","justifyright","justifyfull"]
   ];
 
    // To adjust the styling inside the editor, we can load an external stylesheet like this
