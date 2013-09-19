@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ArticlesController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:news,:index, :show]
+  before_filter :authenticate_user!, :except => [:news,:index, :show, :by_area]
   load_and_authorize_resource :except => [:news, :index, :show, :by_area]
 
   respond_to :html, :js
@@ -14,6 +14,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comments = @article.comments.page(params[:page]).per(15)
+    session[:commentable] ||= request.referer
+    respond_with @comments
   end
 
   def new

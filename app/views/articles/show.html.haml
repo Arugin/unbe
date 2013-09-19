@@ -1,1 +1,5 @@
-= render :partial => 'article_block',:locals => { :article => @article }
+= render :partial => 'article_block', :locals => { :article => @article }
+
+#comments.ujs-pagination
+
+= render :partial => 'common/comment_form', :locals => { :commentable => @article }

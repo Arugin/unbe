@@ -39,6 +39,7 @@ class Ability
 
       can :manage, Article, :author => user
       can :manage, Cycle, :author => user
+      can :create, Comment
 
       cannot :approve, Article
       cannot :publish_news, Article

@@ -20,4 +20,4 @@
         =t 'READ_MORE'
   .more-info
     = link_to article_path(article) do
-      =t 'COMMENTS', count:0
+      =t 'COMMENTS', count: article.comments.size
