@@ -1,11 +1,37 @@
-%footer.footer
-  %p (c) All rights reserved. unbe is the free creative association, 2013
-  .row
-    .span2 Follow unbe on:
-    .span1
-      = link_to "YouTube", "http://www.youtube.com/user/unbecinema"
-    .span1
-      = link_to "Twitter", "http://twitter.com/unbe_"
-    .span1
-      = link_to "vk.com"," http://vk.com/unbecinema"
-    .span6
+%dl
+  %dt Ресурсы
+  %dd= link_to "YouTube", "http://www.youtube.com/user/unbecinema"
+  %dd= link_to "Twitter", "http://twitter.com/unbe_"
+  %dd= link_to "vk.com"," http://vk.com/unbecinema"
+%dl
+  %dt Разделы
+  %dd
+    = link_to main_app.news_articles_path do
+      %span Новости
+  %dd
+    = link_to main_app.articles_path do
+      %span Статьи
+  %dd
+    = link_to main_app.projects_path do
+      %span Проекты
+  %dd
+    = link_to main_app.stats_community_path do
+      %span Сообщество
+
+%dl
+  %dt Email:
+  %dd unbecinema@gmail.com
+
+%dl
+  %dt Инфо
+  %dd= link_to "Если нашли ошибку", "http://unbe.ru/articles/523b712863f84c834e000005"
+
+%dl
+
+%dl
+  %dd unbe © 2006–2013
+  %dd= MySite::Application.version
+
+
+
+

@@ -87,12 +87,33 @@ body{
   }
 
   #footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    height:60px;
+    font-size: 11px;
+    font-family: Tahoma, Arial;
+    color: #949494;
+    overflow: hidden;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 1px solid #CCCCCC;
+    margin: 15px auto 0;
+    text-align: left;
+    width: 1130px;
+    dl{
+      display: block;
+      float: left;
+      width: 15%;
+      margin: 0;
+      dt{
+        margin-bottom: 5px;
+        font-size: 13px;
+        margin: 0;
+        text-align: left;
+      }
+      dd{
+        margin-bottom: 5px;
+        line-height: 150%;
+        margin: 0;
+      }
+    }
   }
 
   #main-menu {
@@ -276,6 +297,12 @@ body{
     margin-right: 20px;
   }
 
+  #recuptcha{
+    margin-left: 150px;
+    margin-top: -20px;
+    margin-buttom: -20px;
+  }
+
   #comments{
     .title{
       color: #AFA56A;
@@ -310,4 +337,13 @@ body{
     }
   }
 
+}
+
+.checkbox {
+  min-height: 0;
+}
+
+.form-actions{
+  background-color: white;
+  border-top: none;
 }
