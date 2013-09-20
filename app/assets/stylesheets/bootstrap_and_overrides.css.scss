@@ -84,6 +84,7 @@ body{
 
   #container{
     padding-bottom: 60px;
+    min-height: 400px;
   }
 
   #footer{
@@ -96,7 +97,7 @@ body{
     border-top: 1px solid #CCCCCC;
     margin: 15px auto 0;
     text-align: left;
-    width: 1130px;
+    width: 1050px;
     dl{
       display: block;
       float: left;
@@ -333,6 +334,16 @@ body{
         .vote{
           text-align: center;
         }
+      }
+    }
+  }
+
+  .projects{
+    dl{
+      margin: 0px;
+      dt{
+        width: 160px;
+        margin-right: 10px;
       }
     }
   }
