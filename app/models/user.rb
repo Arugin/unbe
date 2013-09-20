@@ -7,8 +7,8 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :token_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   after_create :default_cycles
   after_create :default_role
@@ -34,6 +34,10 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip, :type => String
 
+  # Confirmable
+  field :confirmation_token, :type => String
+  field :confirmed_at, :type => Time
+  field :confirmation_sent_at, :type => Time
 
   field :from, type: String
   field :is_active, type: Boolean
@@ -94,7 +98,7 @@ class User
   end
 
   def default_role
-    self.add_role :READER
+    self.add_role :USER
   end
 
   def default_cycles

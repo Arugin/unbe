@@ -26,6 +26,7 @@ gem "heroku"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor'
+gem 'mongoid_rails_migrations', '>= 1.0.0'
 
 
 # Gems used only for assets and not required
@@ -53,7 +54,6 @@ gem 'client_side_validations-simple_form'
 gem 'jquery-datatables-rails'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
-
-
 ### development and test
 gem "haml-rails", ">= 0.3.5", :group => :development
+gem 'mailcatcher', :group => :development

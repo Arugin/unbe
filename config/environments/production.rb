@@ -51,6 +51,15 @@ Unbe::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  ActionMailer::Base.smtp_settings = {
+      :port =>           '587',
+      :address =>        'smtp.mandrillapp.com',
+      :user_name =>      ENV['MANDRILL_USERNAME'],
+      :password =>       ENV['MANDRILL_APIKEY'],
+      :domain =>         'heroku.com',
+      :authentication => :plain
+  }
+  ActionMailer::Base.delivery_method = :smtp
 
   # Enable threaded mode
   # config.threadsafe!
@@ -66,5 +75,6 @@ Unbe::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.server_static_assets = true
+  config.action_mailer.default_url_options = { :host => 'unbe.ru' }
 
 end
