@@ -15,4 +15,12 @@ class CommunityController < ApplicationController
   def achievement
 
   end
+
+  def help
+
+  end
+
+  def info
+    @article = Article.where(system_tag: params[:system_tag]).first
+  end
 end

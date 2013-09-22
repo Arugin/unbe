@@ -39,7 +39,7 @@ class Article
     search_for(user,params).where({isApproved: true}).order_by([:created_at, :desc])
   }
 
-  attr_protected :to_news, :baseRating, :isApproved, :rating
+  attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag
 
   def un_publish
     self.isPublished = false

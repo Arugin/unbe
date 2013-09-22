@@ -55,7 +55,8 @@ Unbe::Application.routes.draw do
   get '/community/achievement', to: 'community#achievement',as: 'achieving_community'
   get '/community/stats', to: 'community#stats',as: 'stats_community'
   get '/community/about', to: 'community#about',as: 'about_community'
-  get '/community/rules', to: 'community#achievement',as: 'rules_community'
+  get '/community/rules', to: 'community#rules',as: 'rules_community'
+  get '/community/info', to: 'community#info',as: 'info_community'
 
   # Sample resource route with options:
   #   resources :products do

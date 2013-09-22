@@ -28,9 +28,8 @@ class ArticlesController < ApplicationController
     @article.author = current_user
 
     if @article.save
-      if can? :publish_and_approve, Article
-        publish_and_approve @article
-      end
+      publish_and_approve @article
+      change_system_tag
       redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
     else
       render action: "new"
@@ -43,10 +42,11 @@ class ArticlesController < ApplicationController
     @old_article = @article.dup
 
     if @article.update_attributes(params[:article])
-
       unless @old_article == @article
         @article.un_publish
       end
+      change_system_tag
+
       redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
       render action: "edit"
@@ -102,8 +102,17 @@ class ArticlesController < ApplicationController
   protected
 
   def publish_and_approve(article)
-    article.publish
-    article.approve
+    if can? :publish_and_approve, Article
+      article.publish
+      article.approve
+    end
+  end
+
+  def change_system_tag
+    if can? :system_tag, Article
+      @article.system_tag = params[:article][:system_tag]
+      @article.save
+    end
   end
 
 end

@@ -45,6 +45,7 @@ class Ability
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
       cannot :automatic_approve, Article
+      cannot :system_tag, Article
 
     end
 

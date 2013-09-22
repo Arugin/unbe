@@ -6,8 +6,12 @@
     =link_to main_app.stats_community_path do
       Статистика
   %li
-    =link_to main_app.about_community_path do
+    =link_to main_app.info_community_path(system_tag: :about) do
       О сообществе
   %li
-    =link_to main_app.rules_community_path do
+    =link_to main_app.info_community_path(system_tag: :rules) do
+      Правила
+
+  %li
+    =link_to main_app.info_community_path(system_tag: :help_us) do
       Правила
