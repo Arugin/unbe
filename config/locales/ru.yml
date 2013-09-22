@@ -15,6 +15,8 @@ ru:
   BLOCK: Блокировать
   NO_THIS_ARTICLE: Эта статья ещё не написана
   USER_ACCESS_CHANGED: Право доступа пользователя к сайту изменено
+  UNABLE_TO_DELETE_ARTICLE: "Невозможно удалить статью: "
+  SURE: Вы уверены?
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
@@ -24,6 +26,8 @@ ru:
   CYCLE_UPDATE_SUCCESS: Информация о цикле обновлена
   NO_CYCLE_ARTICLES: В данном цикле ещё нет ни одной статьи
   CAN_NOT_EDIT_SYSTEM_CYCLE: Невозможно отредактировать этот цикл
+  UNABLE_TO_DELETE_CYCLE: Невозможно удалить цикл
+  CYCLE_REMOVE_SUCCESS: Цикл успешно удален
 
   #articles
   ARTICLE_PUBLISH_SUCCESS: Статья успешно опубликована. В ближайшее время она будет рассмотрена и подтверждена модератором
@@ -33,6 +37,7 @@ ru:
   ARTICLE_CHANGED: Статья отредактирована
   NO_NON_APPROVEd_ARTICLES: Нет неподтвержденных статей
   NO_ARTICLES_FOUND: Ни одной статьи не найдено
+  ARTICLE_REMOVE_SUCCESS: Статья успешно удалена
 
   # articles types
   NEWS: Новости

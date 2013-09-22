@@ -54,6 +54,19 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
+
+    message = t :UNABLE_TO_DELETE_ARTICLE
+    begin
+      if @article.destroy == false
+        redirect_to @article, alert: message + @article.errors.full_messages.join(', ')
+        return
+      end
+    rescue Exception => e
+      redirect_to @article, alert: message + e.message
+      return
+    end
+    redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_REMOVE_SUCCESS)
   end
 
   def news

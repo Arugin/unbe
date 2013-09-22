@@ -4,9 +4,9 @@
 
   .form-inputs
     = f.input :title, input_html: { class: "span8" }
-    = f.input :description, as: :text, input_html: { class: "span12", id: 'tmpContent' }
+    = f.input :description, as: :text, input_html: { class: "span12", id: 'smallContent' }
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
 
-= render :partial => 'common/text_editor'
+= render :partial => 'common/small_text_editor'

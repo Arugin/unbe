@@ -42,6 +42,19 @@ class CyclesController < ApplicationController
   end
 
   def destroy
+    @cycle = Cycle.find(params[:id])
+
+    message = t :UNABLE_TO_DELETE_CYCLE
+    begin
+      if @cycle.destroy == false
+        redirect_to @cycle, alert: message + @cycle.errors.full_messages.join(', ')
+        return
+      end
+    rescue Exception => e
+      redirect_to @cycle, alert: message + e.message
+      return
+    end
+    redirect_to office_cycles_path(scope:'current_user'), notice: t(:CYCLE_REMOVE_SUCCESS)
   end
 
   def edit

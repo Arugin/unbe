@@ -12,3 +12,5 @@ en:
   DEVICE_CONFIRM_PASSWORD: we need your current password to confirm your changes
   CAPTCHA_ERROR: There was an error with the recaptcha code below. Please re-enter the code.
   ONLY_IMAGES_CAN_BE_UPLOADED: file type is not allowed (only jpeg/png images)
+  UNABLE_TO_DELETE_ARTICLE: "Unable to delete article:"
+

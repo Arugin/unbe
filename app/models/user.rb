@@ -48,7 +48,7 @@ class User
   embeds_one :avatar, as: :imageable, class_name: 'Picture', :cascade_callbacks => true
   belongs_to :gender
   has_many :cycles, inverse_of: :author
-  has_many :articles, inverse_of: :author
+  has_many :articles, dependent: :restrict, inverse_of: :author
   has_many :comments
 
   search_in :name, :email

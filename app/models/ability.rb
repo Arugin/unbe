@@ -39,7 +39,15 @@ class Ability
     if user.has_role? :USER or user.has_role? :MODERATOR
 
       can :manage, Article, :author => user
+      cannot :destroy, Article
+      can :destroy, Article, :author => user, :isApproved => false, :isUpdated => false
+
       can :manage, Cycle, :author => user
+      cannot :destroy, Cycle
+      can :destroy, Cycle do |cycle|
+        (cycle.author == user)&&(cycle.articles.empty?)&&(cycle.system == false)
+      end
+
       can :update, User, :_id => user._id
       can :create, Comment
 
@@ -54,12 +62,21 @@ class Ability
     if user.has_role? :MODERATOR
 
       can :approve, Article
+      can :automatic_approve, Article
 
     end
 
     if user.has_role? :ADMIN
 
       can :manage, :all
+
+      cannot :destroy, Article
+      can :destroy, Article, :isApproved => false, :isUpdated => false
+
+      cannot :destroy, Cycle
+      can :destroy, Cycle do |cycle|
+        (cycle.articles.empty?)&&(cycle.system == false)
+      end
 
     end
   end
