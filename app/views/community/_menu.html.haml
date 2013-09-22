@@ -1,0 +1,25 @@
+.row-fluid
+  .span8
+    .tabbable
+      %ul.nav.nav-tabs
+        %li
+          = link_to achieving_community_path(type: :articles) do
+            %span Статьи
+
+        %li
+          = link_to achieving_community_path(type: :projects) do
+            %span Проекты
+
+        %li
+          = link_to achieving_community_path(type: :projects) do
+            %span Пользователи
+
+        %li
+          = link_to achieving_community_path(type: :activity) do
+            %span Активность
+
+        %li
+          = link_to achieving_community_path(type: :activity) do
+            %span Великие
+
+.clear

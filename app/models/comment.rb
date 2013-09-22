@@ -8,4 +8,12 @@ class Comment
 
   belongs_to :commentable, polymorphic: true
   belongs_to :user
+
+  def short_content
+    if self.content.size > 40
+      "#{self.content[0..40]}..."
+    else
+      self.content
+    end
+  end
 end

@@ -1,0 +1,8 @@
+%table.articles-short
+  - comments.each do |comment|
+    %tr
+      %td
+        = link_to article_path(comment.commentable) do
+          %span= comment.commentable.short_title
+      %td
+        = comment.short_content

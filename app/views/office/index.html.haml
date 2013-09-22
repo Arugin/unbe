@@ -1,4 +1,34 @@
-%h3 В процессе разработки
+%h4 Личный кабинет
+.office
+  %dl
+    %dt Текущий статус
+    %dd= t current_user.highest_role
+  %dl
+    %dt
+      Неопублкиованные статьи
+    %dd
+      - if current_user.unpublished_articles.empty?
+        Нет неопубликованных статьей
+      - else
+        = render :partial => 'articles_short_table', :locals => { :articles => current_user.unpublished_articles, :buttons => false }
+  %dl
+    %dt
+      Неподтвержденные статьи
+    %dd
+      - if current_user.unapproved_articles.empty?
+        Нет неподтвержденных статьей
+      - else
+        = render :partial => 'articles_short_table', :locals => { :articles => current_user.unapproved_articles, :buttons => false }
+
+  %dl
+    %dt
+      Последние комментарии
+    %dd
+      - if current_user.last_comments.empty?
+        Комментариев оставлено не было
+      - else
+        = render :partial => 'comments_short_table', :locals => { :comments => current_user.last_comments }
+
 
 - content_for(:right_bar) do
-   = render :partial => 'right_bar'
+  = render :partial => 'right_bar'

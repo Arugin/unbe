@@ -86,6 +86,18 @@ class User
     end
   end
 
+  def unpublished_articles
+    self.articles.where isPublished: false
+  end
+
+  def unapproved_articles
+    self.articles.any_of({isApproved: false},{isUpdated: true}).and({isPublished: true})
+  end
+
+  def last_comments
+    self.comments.limit(10).desc(:created_at)
+  end
+
   protected
 
   def remove_all_roles

@@ -1,0 +1,12 @@
+%table.articles-short
+  - articles.each do |article|
+    %tr
+      %td
+        = link_to article_path(article) do
+          %span= article.title
+      -if buttons
+        %td
+          = link_to edit_article_path article do
+            Изменить
+        %td
+          = link_to 'Опубликовать', publish_article_path(article)

@@ -81,4 +81,12 @@ class Article
     return content[beginIndex, endIndex]
   end
 
+  def short_title
+    if self.title.size > 30
+      "#{self.title[0..30]}..."
+    else
+      self.title
+    end
+  end
+
 end
