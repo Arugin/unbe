@@ -82,8 +82,8 @@ class Article
   end
 
   def short_title
-    if self.title.size > 30
-      "#{self.title[0..30]}..."
+    if self.title.size > 20
+      "#{self.title[0..20]}..."
     else
       self.title
     end

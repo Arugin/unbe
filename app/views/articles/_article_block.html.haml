@@ -26,6 +26,9 @@
     .clear
     .views
       = "написано #{article.author.articles.size} статей"
+    .clear
+    .views
+      = "оставлено #{article.author.comments.size} комментариев"
   .clear
   .description
     - unless article.content.nil?

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   respond_to :html, :js
 
@@ -54,6 +55,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.change_role(params[:role])
     redirect_to users_path, :notice => t(:USER_ROLE_CHANGED)
+  end
+
+  def block
+    @user = User.find(params[:id])
+    @user.access
+    redirect_to users_path, :notice => t(:USER_ACCESS_CHANGED)
   end
 
 end

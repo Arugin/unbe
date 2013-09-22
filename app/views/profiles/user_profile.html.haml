@@ -9,7 +9,7 @@
         %dd= l @user.created_at.in_time_zone, format: :short
         %dt Откуда:
         %dd
-          - unless @user.from.nil?
+          - unless @user.from.empty?
             = @user.from
           - else
             = t(:NO_INFO)

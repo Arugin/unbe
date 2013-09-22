@@ -40,7 +40,7 @@ class User
   field :confirmation_sent_at, :type => Time
 
   field :from, type: String
-  field :is_active, type: Boolean
+  field :is_active, type: Boolean, :default => true
   field :userAvatar, type: String
   field :statusPoints, type: Integer
   field :about, type: String
@@ -96,6 +96,27 @@ class User
 
   def last_comments
     self.comments.limit(10).desc(:created_at)
+  end
+
+  def active_for_authentication?
+    super && is_active?
+  end
+
+  def inactive_message
+    if !is_active?
+      :blocked
+    else
+      super # Use whatever other message
+    end
+  end
+
+  def is_active?
+    self.is_active
+  end
+
+  def access
+    self.is_active = !self.is_active
+    self.save
   end
 
   protected

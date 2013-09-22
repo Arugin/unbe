@@ -33,12 +33,14 @@ class Ability
     can :read, Article
     can :read, Cycle
     can :read, User
+    cannot :index, User
 
 
     if user.has_role? :USER or user.has_role? :MODERATOR
 
       can :manage, Article, :author => user
       can :manage, Cycle, :author => user
+      can :update, User, :_id => user._id
       can :create, Comment
 
       cannot :approve, Article

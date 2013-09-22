@@ -12,7 +12,9 @@ ru:
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
   NO_COMMENTS_HERE: Нет ни одного комментария
   SEARCH: Поиск...
+  BLOCK: Блокировать
   NO_THIS_ARTICLE: Эта статья ещё не написана
+  USER_ACCESS_CHANGED: Право доступа пользователя к сайту изменено
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен

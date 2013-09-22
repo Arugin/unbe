@@ -17,6 +17,7 @@ Unbe::Application.routes.draw do
   resources :users do
     member do
       get 'change_role'
+      get 'block'
     end
   end
 
