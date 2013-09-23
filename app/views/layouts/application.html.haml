@@ -11,7 +11,7 @@
           = javascript_include_tag "/assets/application", :media => "all"
         - else
           = stylesheet_link_tag "application", :media => "all"
-          = javascript_include_tag "application"
+          = javascript_include_tag "application", :media => "all"
 
   %body{:class => "#{controller_name} #{action_name}"}
     #main.row-fluid
