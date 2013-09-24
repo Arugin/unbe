@@ -15,15 +15,12 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.address
-//= require jquery.json.js
 //= require bootstrap
 //= require bootstrap-transition
 //= require bootstrap-alert
 //= require bootstrap-modal
 //= require bootstrap-button
 //= require bootstrap-collapse
-//= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
 //= require unbe
 //= require deep_linking
 //= require views/common/search

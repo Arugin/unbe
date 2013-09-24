@@ -34,17 +34,13 @@ gem 'mongoid_rails_migrations', '>= 1.0.0'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass', '>= 2.0'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
 # UI gems
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'bootstrap-sass', '>= 2.3'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'simple_form'
