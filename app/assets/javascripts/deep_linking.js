@@ -32,7 +32,7 @@
 
         $.each(this, function () {
             $(this).html(el);
-            $(this).find('nav.pagination a[data-remote][href!="' + disabledLink + '"],')
+            $(this).find('nav.pagination a[data-remote][href!="' + disabledLink + '"]')
                 .attr('href', function (i, o) { return "#" + o; })
                 .address(function () {
                     return $(this).attr('href').replace(/^#/, '');
