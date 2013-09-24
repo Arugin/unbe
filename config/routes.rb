@@ -21,7 +21,7 @@ Unbe::Application.routes.draw do
     end
   end
 
-  resources :cycles
+  resources :cycles, :galleries
 
   resources :articles do
     resources :comments

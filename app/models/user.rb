@@ -49,7 +49,8 @@ class User
   belongs_to :gender
   has_many :cycles, inverse_of: :author
   has_many :articles, dependent: :restrict, inverse_of: :author
-  has_many :comments
+  has_many :comments, dependent: :restrict
+  has_many :galleries, dependent: :restrict, inverse_of: :author
 
   search_in :name, :email
 
