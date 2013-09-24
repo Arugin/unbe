@@ -47,9 +47,7 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-mongoid'
 gem 'client_side_validations-simple_form'
-gem 'jquery-datatables-rails'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 ### development and test
 gem "haml-rails", ">= 0.3.5", :group => :development
-gem 'mailcatcher', :group => :development
