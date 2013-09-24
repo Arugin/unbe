@@ -19,12 +19,15 @@
       %span Сообщество
 
 %dl
-  %dt Email:
-  %dd unbecinema@gmail.com
+  %dt Инфо
+  .clear
+  %dd= link_to 'О сообществе', main_app.info_community_path(system_tag: :about)
+  %dd= link_to 'Правила', main_app.info_community_path(system_tag: :rules)
+  %dd= link_to "Если нашли ошибку", "http://unbe.ru/articles/523b712863f84c834e000005"
 
 %dl
-  %dt Инфо
-  %dd= link_to "Если нашли ошибку", "http://unbe.ru/articles/523b712863f84c834e000005"
+  %dt Email:
+  %dd unbecinema@gmail.com
 
 %dl
 

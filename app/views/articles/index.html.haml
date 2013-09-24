@@ -1,10 +1,10 @@
 .row-fluid
-  .span2
+  .span4
     - unless @article_area.nil?
       %h4.section= t @article_area.title
     - else
       %h4.section Статьи
-  .span6
+  .span4
     .pull-right
       - if can? :create, Article
         = link_to new_article_path, :class=>'btn btn-primary' do
