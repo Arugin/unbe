@@ -1,16 +1,19 @@
-%ul.nav.nav-tabs.nav-stacked
-  %li
-    =link_to main_app.achieving_community_path do
-      Достижения сообщества
+.sidebar
+  %h3.right-bar
+    Информация
+  %ul.navigation
+    %li
+      =link_to main_app.achieving_community_path do
+        Достижения сообщества
 
-  %li
-    =link_to main_app.info_community_path(system_tag: :about) do
-      О сообществе
+    %li
+      =link_to main_app.info_community_path(system_tag: :about) do
+        О сообществе
 
-  %li
-    =link_to main_app.info_community_path(system_tag: :rules) do
-      Правила
+    %li
+      =link_to main_app.info_community_path(system_tag: :rules) do
+        Правила
 
-  %li
-    =link_to main_app.info_community_path(system_tag: :help_us) do
-      Поддержать
+    %li
+      =link_to main_app.info_community_path(system_tag: :help_us) do
+        Поддержать

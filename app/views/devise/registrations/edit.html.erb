@@ -1,6 +1,6 @@
 <h3>Настройка аккаунта</h3>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= horizontal_simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Сохранить изменения" %>
+    <%= f.button :submit, "Сохранить изменения", :class => "btn-primary" %>
   </div>
 <% end %>
 
