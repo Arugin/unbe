@@ -1,7 +1,7 @@
 class @Unbe
   Init: class Init
     initHome: (spinner)->
-      jQuery.ajaxSetup({ cache: true });
+      jQuery.ajaxSetup({ cache: false });
       spinner.hide();
 
   Search: class Search
