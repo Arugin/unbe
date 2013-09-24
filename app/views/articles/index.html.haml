@@ -6,12 +6,14 @@
       %h4.section Статьи
   .span6
     .pull-right
-      = link_to new_article_path, :class=>'btn btn-primary' do
-        %i
-        =t(:NEW_ARTICLE)
-      = link_to new_cycle_path, :class=>'btn btn-primary' do
-        %i
-        =t(:NEW_CYCLE)
+      - if can? :create, Article
+        = link_to new_article_path, :class=>'btn btn-primary' do
+          %i
+          =t(:NEW_ARTICLE)
+      - if can? :create, Cycle
+        = link_to new_cycle_path, :class=>'btn btn-primary' do
+          %i
+          =t(:NEW_CYCLE)
   .span3.middle
     = render :partial => "common/search_control", :locals => { :current_action_path => articles_path }
 
