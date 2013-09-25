@@ -48,6 +48,7 @@ gem 'client_side_validations'
 gem 'client_side_validations-mongoid'
 gem 'client_side_validations-simple_form'
 gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'fotoramajs'
 
 ### development and test
 gem "haml-rails", ">= 0.3.5", :group => :development

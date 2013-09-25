@@ -43,6 +43,7 @@ Unbe::Application.routes.draw do
   get '/office/articles', to: 'office#articles',as: 'office_articles'
   get '/office/cycles', to: 'office#cycles',as: 'office_cycles'
   get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
+  get '/office/galleries', to: 'office#galleries',as: 'office_galleries'
 
   # Profile routes
   get '/profile/edit', to: 'profiles#edit',as: 'edit_profile'

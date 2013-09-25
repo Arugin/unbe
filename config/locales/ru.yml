@@ -10,6 +10,7 @@ ru:
   NO_NEWS: Нет новостей
   NO_OFFICE_ARTICLES: Не написано ещё ни одной статьи
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
+  NO_OFFICE_GALLERIES: Не создано ещё ни одной галлереи
   NO_COMMENTS_HERE: Нет ни одного комментария
   SEARCH: Поиск...
   BLOCK: Блокировать
@@ -39,6 +40,14 @@ ru:
   NO_NON_APPROVEd_ARTICLES: Нет неподтвержденных статей
   NO_ARTICLES_FOUND: Ни одной статьи не найдено
   ARTICLE_REMOVE_SUCCESS: Статья успешно удалена
+
+  # galleries
+  GALLERY_CREATE_SUCCESS: Галлерея успешно создана
+  GALLERY_UPDATE_SUCCESS: Галлерея успешно обновлена
+  UNABLE_TO_DELETE_GALLERY: Невозможно удалить галлеррею
+  GALLERY_REMOVE_SUCCESS: Галерея успешно удалена
+  NEW_GALLERY: Новая галлерея
+  NO_GALLERY_CONTENT: В галлерее ещё нет работ
 
   # articles types
   NEWS: Новости
@@ -85,6 +94,9 @@ ru:
         update: "Сохранить изменения"
       comment:
         create: "Комментировать"
+      gallery:
+        create: "Создать %{model}"
+        update: "Сохранить изменения"
 
   unauthorized:
     manage:
@@ -173,10 +185,14 @@ ru:
         current_password: Текущий пароль
       picture:
         file: Изобркажение
+      gallery:
+        name: Название
+        description: Описание
     models:
       article: статью
       cycle: цикл
       user: профиль
+      gallery: галлерею
     errors:
       models:
         user:
@@ -195,6 +211,7 @@ ru:
               blank: У статьи должен быть заголовок
               too_short: Длина заголовка должна быть больше 4 символов
               too_long: Длина заголовка должна быть меньше 70 символов
+
 
   views:
    pagination:

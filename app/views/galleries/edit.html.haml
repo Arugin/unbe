@@ -1,5 +1,5 @@
 %h3 Создание цикла статей
-= horizontal_simple_form_for(@cycle, :validate => true) do |f|
+= simple_form_for(@cycle, :validate => true) do |f|
   = f.error_notification
 
   .form-inputs
@@ -10,6 +10,3 @@
     = f.button :submit, :class => "btn-primary"
 
 = render :partial => 'common/small_text_editor'
-
-- content_for(:right_bar) do
-  = render :partial => 'office/right_bar'

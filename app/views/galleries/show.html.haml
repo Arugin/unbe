@@ -1,0 +1,14 @@
+= render :partial => 'gallery_block',:locals => { :gallery => @gallery }
+
+.shifted
+  - if @gallery.contents.blank?
+    .description
+      %p= t("NO_GALLERY_CONTENT")
+  - else
+    .fotorama
+      - @gallery.contents.each do |content|
+        %a{href: content.src}
+
+
+- content_for(:right_bar) do
+  = render :partial => 'office/right_bar'

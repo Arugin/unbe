@@ -20,6 +20,7 @@
 //= require bootstrap-modal
 //= require bootstrap-button
 //= require bootstrap-collapse
+//= require fotorama
 //= require unbe
 //= require deep_linking
 //= require views/common/search
