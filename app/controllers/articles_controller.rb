@@ -15,7 +15,6 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comments = @article.comments.page(params[:page]).per(15)
-    session[:commentable] ||= request.referer
     respond_with @comments
   end
 

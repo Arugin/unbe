@@ -20,6 +20,7 @@ ru:
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
+  COMMENT_SO_BIG: При добавлении комментария возникли проблемы.
 
   # cycles
   CYCLE_CREATE_SUCCESS: Цикл статей успешно создан
@@ -45,7 +46,7 @@ ru:
   SHOOTING: Съемка
   SOUND: Звук
   ACTING: Актерская игра
-  SCREENWRITING: Сценарное мастерство
+  SCREENWRITING: Сценарии
   PROPS: Бутафория
   POSTPRODUCTION: Постпродакшен
   MANAGEMENT: Управление

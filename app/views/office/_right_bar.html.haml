@@ -1,38 +1,44 @@
-- if can? :approve, Article
-  %ul.nav.nav-tabs.nav-stacked
-    %li
-      =link_to main_app.non_approved_articles_path do
-        Подтвердить статьи
+.sidebar
+  %h3.right-bar
+    Модерирование
+  - if can? :approve, Article
+    %ul.navigation
+      %li
+        =link_to main_app.non_approved_articles_path do
+          Подтвердить статьи
 
-- if user_signed_in? and current_user.has_role? :ADMIN
-  %ul.nav.nav-tabs.nav-stacked
-    %li
-      =link_to main_app.users_path do
-        Пользователи
-
--if user_signed_in?
-  %ul.nav.nav-tabs.nav-stacked
-    %li
-      =link_to main_app.office_path do
-        Личный кабинет
-    %li
-      =link_to main_app.office_articles_path(scope: 'current_user') do
-        Мои статьи
-    %li
-      =link_to main_app.office_cycles_path(scope: 'current_user') do
-        Мои циклы
-    %li
-      =link_to main_app.projects_path(scope: 'current_user') do
-        Мои проекты
-    %li
-      %a{:href=>"#"}
-        Избранное
-    %li
-      = link_to user_profile_path(current_user) do
-        Профиль
-    %li
-      = link_to edit_profile_path do
-        Настроить профиль
-    %li
-      = link_to edit_user_registration_path do
-        Настройки аккаунта
+  %h3.right-bar
+    Администрирование
+  - if user_signed_in? and current_user.has_role? :ADMIN
+    %ul.navigation
+      %li
+        =link_to main_app.users_path do
+          Пользователи
+  %h3.right-bar
+    Личный кабинет
+  -if user_signed_in?
+    %ul.navigation
+      %li
+        =link_to main_app.office_path do
+          Статус
+      %li
+        =link_to main_app.office_articles_path(scope: 'current_user') do
+          Мои статьи
+      %li
+        =link_to main_app.office_cycles_path(scope: 'current_user') do
+          Мои циклы
+      %li
+        =link_to main_app.projects_path(scope: 'current_user') do
+          Мои проекты
+      %li
+        %a{:href=>"#"}
+          Избранное
+      %li
+        = link_to user_profile_path(current_user) do
+          Профиль
+      %li
+        = link_to edit_profile_path do
+          Настроить профиль
+      %li
+        = link_to edit_user_registration_path do
+          Настройки аккаунта

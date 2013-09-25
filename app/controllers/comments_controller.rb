@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    session[:commentable] ||= request.referer
     @commentable = find_commentable
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
@@ -16,7 +17,7 @@ class CommentsController < ApplicationController
       flash[:notice] = t :COMMENT_ADD_SUCCESSFULLY
       redirect_to session.delete(:commentable)
     else
-      render :action => 'new'
+      render 'new'
     end
 
 

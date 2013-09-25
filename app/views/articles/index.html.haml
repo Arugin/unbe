@@ -1,12 +1,21 @@
 .row-fluid
   .span4
     - unless @article_area.nil?
-      %h4= t @article_area.title
+      %h4.section= t @article_area.title
     - else
-      %h4 Статьи
-  .span8.middle
+      %h4.section Статьи
+  .span4
     .pull-right
-      = render :partial => "common/search_control", :locals => { :current_action_path => articles_path }
+      - if can? :create, Article
+        = link_to new_article_path, :class=>'btn btn-primary' do
+          %i
+          =t(:NEW_ARTICLE)
+      - if can? :create, Cycle
+        = link_to new_cycle_path, :class=>'btn btn-primary' do
+          %i
+          =t(:NEW_CYCLE)
+  .span3.middle
+    = render :partial => "common/search_control", :locals => { :current_action_path => articles_path }
 
 #articles.ujs-pagination
 
