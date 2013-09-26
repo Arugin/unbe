@@ -1,13 +1,18 @@
 %h3 Создание цикла статей
-= horizontal_simple_form_for(@cycle, :validate => true) do |f|
+= horizontal_simple_form_for(@gallery, :validate => true) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :title, input_html: { class: "span8" }
+    = f.input :name, input_html: { class: "span8" }
     = f.input :description, as: :text, input_html: { class: "span12", id: 'smallContent' }
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
+
+#contents.ujs-pagination
+
+.clear
+= render :partial =>  'new_content', :locals => { :gallery => @gallery }
 
 = render :partial => 'common/small_text_editor'
 

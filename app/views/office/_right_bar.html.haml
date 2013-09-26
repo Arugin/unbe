@@ -1,22 +1,22 @@
 .sidebar
-  %h3.right-bar
-    Модерирование
   - if can? :approve, Article
+    %h3.right-bar
+      Модерирование
     %ul.navigation
       %li
         =link_to main_app.non_approved_articles_path do
           Подтвердить статьи
 
-  %h3.right-bar
-    Администрирование
   - if user_signed_in? and current_user.has_role? :ADMIN
+    %h3.right-bar
+      Администрирование
     %ul.navigation
       %li
         =link_to main_app.users_path do
           Пользователи
-  %h3.right-bar
-    Личный кабинет
   -if user_signed_in?
+    %h3.right-bar
+      Личный кабинет
     %ul.navigation
       %li
         =link_to main_app.office_path do
@@ -27,6 +27,9 @@
       %li
         =link_to main_app.office_cycles_path(scope: 'current_user') do
           Мои циклы
+      %li
+        =link_to main_app.office_galleries_path(scope: 'current_user') do
+          Мои работы
       %li
         =link_to main_app.projects_path(scope: 'current_user') do
           Мои проекты

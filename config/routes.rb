@@ -22,6 +22,9 @@ Unbe::Application.routes.draw do
   end
 
   resources :cycles
+  resources :galleries do
+    resources :contents, as: :content_base_contents, controller: :contents, shallow: true
+  end
 
   resources :articles do
     resources :comments
@@ -43,6 +46,7 @@ Unbe::Application.routes.draw do
   get '/office/articles', to: 'office#articles',as: 'office_articles'
   get '/office/cycles', to: 'office#cycles',as: 'office_cycles'
   get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
+  get '/office/galleries', to: 'office#galleries',as: 'office_galleries'
 
   # Profile routes
   get '/profile/edit', to: 'profiles#edit',as: 'edit_profile'
@@ -51,6 +55,7 @@ Unbe::Application.routes.draw do
   get '/profile/articles/:id', to: 'profiles#user_articles',as: 'user_articles'
   get '/profile/projects/:id', to: 'profiles#user_projects',as: 'user_projects'
   get '/profile/article/:id', to: 'profiles#user_article',as: 'user_article'
+  get '/profile/galleries/:id', to: 'profiles#user_galleries',as: 'user_galleries'
 
   # Community routes
   get '/community/achievement', to: 'community#achievement',as: 'achieving_community'
