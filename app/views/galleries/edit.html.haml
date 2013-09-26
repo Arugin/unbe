@@ -4,7 +4,7 @@
 
   .form-inputs
     = f.input :name, input_html: { class: "span8" }
-    = f.input :description, as: :text, input_html: { class: "span12", id: 'smallContent' }
+    = f.input :description, as: :text, input_html: { class: "span12", id: 'small2Content' }
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
@@ -12,7 +12,7 @@
 #contents.ujs-pagination
 
 .clear
-= render :partial =>  'new_content', :locals => { :gallery => @gallery }
+= render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => true }
 
 = render :partial => 'common/small_text_editor'
 

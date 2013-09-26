@@ -16,8 +16,8 @@
 
     %h3.right-bar
       Случайные пользователи
-      %ul.navigation
-        - User.random_entries(3).each do |user|
-          %li
-            =link_to main_app.user_profile_path(user) do
-              = user.name
+    %ul.navigation
+      - User.random_entries(3).each do |user|
+        %li
+          =link_to main_app.user_profile_path(user) do
+            = user.name
