@@ -1,0 +1,38 @@
+- if @galleries.blank?
+    %p= t("NO_OFFICE_GALLERIES")
+- else
+    %table.table.table-striped
+        %thead
+            %th
+            %th
+            %th
+            %th{:width => "80px"}
+        %tbody
+            - @galleries.each do |gallery|
+                %tr
+                    %td
+                        .header
+                            = link_to gallery_path(gallery) do
+                                =gallery.name
+                        .publishDate
+                            = l gallery.created_at.in_time_zone, format: :short
+                    %td
+                        .info
+                            = "#{gallery.contents.size} работ"
+                    %td
+                        .options
+                            .btn-group
+                                %button.btn
+                                    = link_to edit_gallery_path gallery do
+                                        Изменить
+                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                                    %span.caret
+                                %ul.dropdown-menu
+                                    %li
+                                        = link_to edit_gallery_path(gallery) do
+                                            Изменить
+                    %td
+                        - if can? :destroy, gallery
+                            = button_to "Удалить", gallery, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+
+= paginate @galleries, :remote => true

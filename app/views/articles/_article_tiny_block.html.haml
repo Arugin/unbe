@@ -1,0 +1,21 @@
+.row-fluid
+  %h4.random-news
+    = link_to article_path(article) do
+      %span= article.title
+  .author
+    = link_to user_profile_path(article.author) do
+      = article.author.name
+  .publishDate
+    = l article.created_at.in_time_zone, format: :short
+  .clear
+  .description
+    - unless article.content.nil?
+      = article.short_content.html_safe
+  .clear
+  - if article.content.size != article.short_content.size
+    .more-info
+      = link_to article_path(article) do
+        =t 'READ_MORE'
+  .more-info
+    = link_to article_path(article) do
+      =t 'COMMENTS', count: article.comments.size

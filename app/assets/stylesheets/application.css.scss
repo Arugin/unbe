@@ -8,8 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *
+ *= require fotorama_and_overrides
+ *= require bootstrap_and_overrides
+ *= require editor_fixes
  *= require_self
- *= require_tree .
  */
 
 .input-search, .dataTables_wrapper {
@@ -97,8 +100,65 @@ h4.section-small{
   margin-top: 7px;
 }
 
+h4.random-news{
+  margin-top: 0px;
+}
+
 .sidebar{
   border-left: 1px solid #e6e6e6;
   padding: 0 20px 50px;
   width: 179px;
+}
+
+.sidebar-news{
+  @extend .sidebar;
+  width: 270px;
+}
+
+#galleries{
+  .info {
+    width: auto;
+    height: auto;
+    font-family: Oxygen,sans-serif;
+  }
+  td {
+    vertical-align: middle;
+  }
+  form {
+    margin-bottom: 0;
+  }
+}
+
+#contents{
+  width: 100%;
+  height:auto;
+  padding-left: 50px;
+  .video{
+    float:left;
+    width: auto;
+    text-align: center;
+
+    .fotorama-box{
+      width: 250px;
+      height:auto;
+    }
+
+    .controls{
+      float: left;
+      margin-top: 5px;
+    }
+  }
+}
+
+.center-box{
+  width: 100%;
+  text-align: center;
+  height: auto;
+  margin: 0 auto;
+  .fotorama-profile{
+    width: 610px;
+    height: auto;
+    margin-left: 75px;
+
+  }
 }

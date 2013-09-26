@@ -7,6 +7,7 @@
                 %span
                     %input{type: 'checkbox'}
             %th{:width => "800px"}= t(:TITLE)
+            %th
             %th{:width => "100px"}
             %th{:width => "30px"}
             %th{:width => "30px"}
@@ -23,6 +24,7 @@
                                 %span= article.title
                         .publishDate
                             = l article.created_at.in_time_zone, format: :short
+                    %td
                         .options
                             .btn-group
                                 %button.btn

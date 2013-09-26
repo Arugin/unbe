@@ -73,6 +73,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fast-stemmer (1.0.2)
+    fotoramajs (4.4.3)
+      jquery-rails (>= 2.1.0)
+      sprockets (>= 2)
     haml (3.1.8)
     haml-rails (0.4)
       actionpack (>= 3.1, < 4.1)
@@ -221,6 +224,7 @@ DEPENDENCIES
   client_side_validations-simple_form
   coffee-rails (~> 3.2.1)
   devise (>= 2.1.2)
+  fotoramajs
   haml (<= 3.9.9)
   haml-rails (>= 0.3.5)
   heroku

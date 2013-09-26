@@ -35,4 +35,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def user_galleries
+    @user = User.find(params[:id])
+    @galleries = @user.galleries.order_by([:created_at, :desc]).page(params[:page]).per(1)
+    respond_with @galleries
+  end
+
 end

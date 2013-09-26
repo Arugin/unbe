@@ -3,3 +3,6 @@
 #comments.ujs-pagination
 
 = render :partial => 'common/comment_form', :locals => { :commentable => @article }
+
+- content_for(:right_bar) do
+  = render :partial => 'index_bar'

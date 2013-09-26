@@ -4,6 +4,7 @@ class Article
   include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::Ownerable
+  include Concerns::Randomizable
 
   field :title, type: String
   field :content, type: String
@@ -37,6 +38,10 @@ class Article
   }
   scope :approved, lambda { |user, params = {}|
     search_for(user,params).where({isApproved: true}).order_by([:created_at, :desc])
+  }
+
+  scope :without_news,lambda {
+    all.not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
   }
 
   attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag

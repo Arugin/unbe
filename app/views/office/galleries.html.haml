@@ -1,0 +1,13 @@
+.row
+  .span3
+    %h4.section-small Мои галлереи
+  .span5
+    .pull-right
+      = link_to new_gallery_path, :class=>'btn btn-primary' do
+        %i
+        =t(:NEW_GALLERY)
+
+#galleries.galleries.ujs-pagination
+
+- content_for(:right_bar) do
+  = render :partial => 'right_bar'

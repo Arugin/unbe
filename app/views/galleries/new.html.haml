@@ -1,9 +1,9 @@
-%h3 Создание цикла статей
-= horizontal_simple_form_for(@cycle, :validate => true) do |f|
+%h3 Создание галлереи работ
+= horizontal_simple_form_for(@gallery, :validate => true) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :title, input_html: { class: "span8" }
+    = f.input :name, input_html: { class: "span8" }
     = f.input :description, as: :text, input_html: { class: "span12", id: 'smallContent' }
 
   .form-actions

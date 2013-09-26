@@ -62,7 +62,7 @@ xinha_init = xinha_init ? xinha_init : function()
 
    xinha_config = xinha_config ? xinha_config() : new Xinha.Config();
 
-    xinha_config.width  = '650px';
+    xinha_config.width  = '550px';
     xinha_config.height = '300px';
         
   //this is the standard toolbar, feel free to remove buttons as you like

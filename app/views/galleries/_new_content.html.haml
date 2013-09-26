@@ -1,0 +1,18 @@
+%h4 Добавить видео
+= horizontal_simple_form_for [gallery, gallery.contents.new], :validate => true do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, input_html: { class: "span8" }, label: 'Название'
+    = f.input :src, input_html: { class: "span8" }, label: 'Ссылка на видео'
+    .control-group
+      .controls
+        %span.help-inline
+          %span.label.label-info Note
+          Ссылки должны быть на youtube или vimeo
+    = f.input :description, as: :text, label: 'Описание', input_html: { class: "span12", id: 'smallContent' }
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"
+
+= render :partial => 'common/small_text_editor'
