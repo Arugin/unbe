@@ -4,20 +4,20 @@
       %li
         =link_to main_app.new_news_articles_path do
           Опубликовать новость
-    %h3.right-bar
-      Случайная работа
-    .fotorama{data:{width:'250px',ratio:"800/600"}}
-      %a{href: Content::BaseContent.random_entry.src}
-    %br
-    %h3.right-bar
-      Случайная cтатья
-    -random_article = Article.random_entry
-    =render :partial => 'article_tiny_block', locals: { :article => random_article }
+  %h3.right-bar
+    Случайная работа
+  .fotorama{data:{width:'250px',ratio:"800/600"}}
+    %a{href: Content::BaseContent.random_entry.src}
+  %br
+  %h3.right-bar
+    Случайная cтатья
+  -random_article = Article.random_entry
+  =render :partial => 'article_tiny_block', locals: { :article => random_article }
 
-    %h3.right-bar
-      Случайные пользователи
-    %ul.navigation
-      - User.random_entries(3).each do |user|
-        %li
-          =link_to main_app.user_profile_path(user) do
-            = user.name
+  %h3.right-bar
+    Случайные пользователи
+  %ul.navigation
+    - User.random_entries(3).each do |user|
+      %li
+        =link_to main_app.user_profile_path(user) do
+          = user.name
