@@ -5,9 +5,12 @@
     .description
       %p= t("NO_GALLERY_CONTENT")
   - else
-    .fotorama
+    .fotorama{data:{width:'90%',ratio:"800/600", keyboard: 'true'}}
       - @gallery.contents.each do |content|
-        %a{href: content.src}
+        %a{href: content.src, data:{caption:content.title}}
+
+.clear
+= render :partial =>  'new_content', :locals => { :gallery => @gallery }
 
 
 - content_for(:right_bar) do

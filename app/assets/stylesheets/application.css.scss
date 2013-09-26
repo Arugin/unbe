@@ -8,8 +8,11 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *
+ *= require fotorama_and_overrides
+ *= require bootstrap_and_overrides
+ *= require editor_fixes
  *= require_self
- *= require_tree .
  */
 
 .input-search, .dataTables_wrapper {
@@ -101,4 +104,18 @@ h4.section-small{
   border-left: 1px solid #e6e6e6;
   padding: 0 20px 50px;
   width: 179px;
+}
+
+#galleries{
+  .info {
+    width: auto;
+    height: auto;
+    font-family: Oxygen,sans-serif;
+  }
+  td {
+    vertical-align: middle;
+  }
+  form {
+    margin-bottom: 0;
+  }
 }

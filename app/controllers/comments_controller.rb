@@ -19,12 +19,9 @@ class CommentsController < ApplicationController
     else
       render 'new'
     end
-
-
   end
 
   def find_commentable
-    puts params
     params.each do |name, value|
       if name =~ /(.+)_id$/
         return $1.classify.constantize.find(value)

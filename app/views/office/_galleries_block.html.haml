@@ -5,6 +5,7 @@
         %thead
             %th
             %th
+            %th
             %th{:width => "80px"}
         %tbody
             - @galleries.each do |gallery|
@@ -15,6 +16,9 @@
                                 =gallery.name
                         .publishDate
                             = l gallery.created_at.in_time_zone, format: :short
+                    %td
+                        .info
+                            = "#{gallery.contents.size} работ"
                     %td
                         .options
                             .btn-group

@@ -1,0 +1,18 @@
+- if @contents.blank?
+  .description
+    %p= t("NO_GALLERY_CONTENT")
+- else
+  - @contents.each do |content|
+    .video
+      .fotorama{data:{width:'20%',ratio:"800/600", keyboard: 'true'}}
+        %a{href: content.src, data:{caption:content.title}}
+      .controls
+        - if can? :destroy, content
+          = button_to "Удалить", content, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+
+= paginate @contents, :remote => true
+
+:javascript
+  $(function () {
+    $('.fotorama').fotorama();
+  });

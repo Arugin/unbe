@@ -34,6 +34,8 @@ class GalleriesController < ApplicationController
 
   def edit
     @gallery = Gallery.find(params[:id])
+    @contents = @gallery.contents.page(params[:page]).per(5)
+    respond_with @contents
   end
 
   def update
