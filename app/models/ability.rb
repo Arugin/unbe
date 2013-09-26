@@ -49,6 +49,7 @@ class Ability
       end
 
       can :manage, Gallery, :author => user
+      can :manage, Content::BaseContent, :author => user
 
       can :update, User, :_id => user._id
       can :create, Comment

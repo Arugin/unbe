@@ -1,6 +1,7 @@
 module Content
   class BaseContent
     include Mongoid::Document
+    include Concerns::Randomizable
 
     field :title, type: String
     field :src, type: String
@@ -11,7 +12,7 @@ module Content
     #validates_format_of :src, with: /(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?(\w{10,})|/
     validate :youtube_or_vimeo_url
 
-    embedded_in :contentable, polymorphic: true
+    belongs_to :contentable, polymorphic: true
 
     has_many :comments, dependent: :restrict, as: :commentable, class_name: 'Comment'
 
@@ -20,5 +21,7 @@ module Content
       return if(self.src =~ %r{\Ahttp://(www.)?vimeo\.com/([A-Za-z0-9._%-]*)((\?|#)\S+)?})
       errors.add(:src, :invalid)
     end
+
+
   end
 end

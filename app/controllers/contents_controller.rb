@@ -1,5 +1,8 @@
 class ContentsController < ApplicationController
 
+  before_filter :authenticate_user!
+  load_and_authorize_resource class: 'Content::BaseContent'
+
   def index
     @commentable = Gallery.find params[:gallery_id]
   end
