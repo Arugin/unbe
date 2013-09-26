@@ -1,0 +1,21 @@
+- if @galleries.blank?
+  %p= t("NO_OFFICE_GALLERIES")
+- else
+  - @galleries.each do |gallery|
+    .row-fluid
+      %h4
+        %span= gallery.name
+      .description= gallery.description.html_safe
+      .clear
+      .center-box
+        .fotorama-profile
+          .fotorama{data:{width:'610px',ratio:"800/600"}}
+            - gallery.contents.each do |content|
+              %a{href: content.src}
+
+= paginate @galleries, :remote => true
+
+:javascript
+  $(function () {
+    $('.fotorama').fotorama();
+  });

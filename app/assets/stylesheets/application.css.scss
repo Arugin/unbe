@@ -149,3 +149,16 @@ h4.random-news{
     }
   }
 }
+
+.center-box{
+  width: 100%;
+  text-align: center;
+  height: auto;
+  margin: 0 auto;
+  .fotorama-profile{
+    width: 610px;
+    height: auto;
+    margin-left: 75px;
+
+  }
+}

@@ -55,6 +55,7 @@ Unbe::Application.routes.draw do
   get '/profile/articles/:id', to: 'profiles#user_articles',as: 'user_articles'
   get '/profile/projects/:id', to: 'profiles#user_projects',as: 'user_projects'
   get '/profile/article/:id', to: 'profiles#user_article',as: 'user_article'
+  get '/profile/galleries/:id', to: 'profiles#user_galleries',as: 'user_galleries'
 
   # Community routes
   get '/community/achievement', to: 'community#achievement',as: 'achieving_community'
