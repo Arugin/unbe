@@ -2,7 +2,7 @@
   %h4
     %span= article.title
   .publishDate
-    = article.created_at.localtime
+    = l article.created_at.in_time_zone, format: :short
   %br
   .description
     - unless article.content.nil?

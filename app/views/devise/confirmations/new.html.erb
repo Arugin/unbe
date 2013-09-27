@@ -1,6 +1,6 @@
-<h2>Отправить повторно письмо с подтверждением</h2>
+<h3>Отправить повторно письмо с подтверждением</h3>
 
-<%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+<%= horizontal_simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :confirmation_token %>
 
@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Отправить повторно письмо с подтверждением" %>
+    <%= f.button :submit, "Отправить повторно письмо с подтверждением", :class => "btn-primary" %>
   </div>
 <% end %>
 

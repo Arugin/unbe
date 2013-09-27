@@ -28,11 +28,11 @@ ru:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      no_token: "Вы не можете получить доступ к этой странице, не переходя по ссылке, содержащейся в письме со сбросом пароля. Если вы перешли на эту странице из пришедшего письма, пожалуйста, убедитесь, что вы использовали именно ту ссылку."
+      send_instructions: "В течение нескольких минут на указанную почту придет письмо с инструкциями по восстановлению пароля"
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      updated: "Ваш пароль изменен успешно"
+      updated_not_active: "Ваш пароль изменен успешно."
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Регистрация выполнена успешно"
