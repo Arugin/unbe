@@ -1,0 +1,4 @@
+= render :partial => 'content_block', locals: { :content => @content }
+
+- content_for(:right_bar) do
+  = render :partial => 'articles/index_bar'

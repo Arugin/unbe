@@ -1,0 +1,19 @@
+.row-fluid
+  %h4
+    = link_to content_path(content) do
+      %span= content.title
+  .author
+    = link_to user_profile_path(content.contentable.author) do
+      = content.contentable.author.name
+  .publishDate
+    - unless content.created_at.nil?
+      = l content.created_at.in_time_zone, format: :short
+  .clear
+  %br
+  .description
+    - unless content.description.nil?
+      = content.description.html_safe
+  %br
+
+  .fotorama{data:{width:'90%',ratio:"800/600", keyboard: 'true'}}
+    %a{href: @content.src, data:{caption: @content.title}}

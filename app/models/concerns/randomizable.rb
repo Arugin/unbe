@@ -1,17 +1,13 @@
+# You must implement random scope in your model before
+# using this concern
 module Concerns
   module Randomizable
     def self.included(base)
       base.class_eval do |klass|
 
         define_singleton_method :random_entries, lambda { |count|
-          if klass.name == 'Article'
-            (0..klass.without_news.count-1).sort_by{rand}.slice(0, count).collect! do |i|
-              klass.without_news.skip(i).first
-            end
-          else
-            (0..klass.count-1).sort_by{rand}.slice(0, count).collect! do |i|
-              klass.skip(i).first
-            end
+          (0..klass.random.count-1).sort_by{rand}.slice(0, count).collect! do |i|
+            klass.random.skip(i).first
           end
         }
 

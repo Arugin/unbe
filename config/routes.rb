@@ -25,6 +25,7 @@ Unbe::Application.routes.draw do
   resources :galleries do
     resources :contents, as: :content_base_contents, controller: :contents, shallow: true
   end
+  resources :contents
 
   resources :articles do
     resources :comments

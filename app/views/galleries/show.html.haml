@@ -10,7 +10,8 @@
         %a{href: content.src, data:{caption:content.title}}
 
 .clear
-= render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => false }
+- if can? :update, Gallery
+  = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => false }
 
 
 - content_for(:right_bar) do

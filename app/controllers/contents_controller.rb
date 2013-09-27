@@ -1,7 +1,11 @@
 class ContentsController < ApplicationController
 
-  before_filter :authenticate_user!
-  load_and_authorize_resource class: 'Content::BaseContent'
+  before_filter :authenticate_user!, :except => [:show]
+  load_and_authorize_resource class: 'Content::BaseContent', :except => [:show]
+
+  def show
+    @content = Content::BaseContent.find(params[:id])
+  end
 
   def index
     @commentable = Gallery.find params[:gallery_id]

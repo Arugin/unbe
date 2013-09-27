@@ -6,13 +6,11 @@
           Опубликовать новость
   %h3.right-bar
     Случайная работа
-  .fotorama{data:{width:'250px',ratio:"800/600"}}
-    %a{href: Content::BaseContent.random_entry.src}
-  %br
+  = render :partial => 'contents/tiny_block', locals: { :content => Content::BaseContent.random_entry }
+  .clear
   %h3.right-bar
     Случайная cтатья
-  -random_article = Article.random_entry
-  =render :partial => 'article_tiny_block', locals: { :article => random_article }
+  =render :partial => 'articles/article_tiny_block', locals: { :article => Article.random_entry }
 
   %h3.right-bar
     Случайные пользователи

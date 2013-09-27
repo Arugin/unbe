@@ -68,6 +68,10 @@ class User
 
   attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
 
+  scope :random,lambda {
+    all.not_in(is_active: false)
+  }
+
   def highest_role
     curr_role = nil
     roles.each do |role|

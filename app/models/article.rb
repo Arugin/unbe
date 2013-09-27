@@ -40,7 +40,7 @@ class Article
     search_for(user,params).where({isApproved: true}).order_by([:created_at, :desc])
   }
 
-  scope :without_news,lambda {
+  scope :random,lambda {
     all.not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
   }
 
