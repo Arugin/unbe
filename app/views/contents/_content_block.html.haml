@@ -1,5 +1,8 @@
 .row-fluid
   %h4
+    = link_to gallery_path(content.contentable) do
+      = content.contentable.title
+    %span.divider /
     = link_to content_base_content_path(content) do
       %span= content.title
   .author

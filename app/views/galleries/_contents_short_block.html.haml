@@ -3,6 +3,9 @@
     %p= t("NO_GALLERY_CONTENT")
 - else
   - @contents.each do |content|
+    .description
+      = content.short_title
+    .clear
     .video
       .fotorama-box
         .fotorama{data:{width:'200px',ratio:"800/600", keyboard: 'true'}}
@@ -14,8 +17,6 @@
           .pull-right
             = link_to edit_content_base_content_path(content), :class=>'btn btn-primary' do
               Изменить
-      = debug content.reviewed
-      = debug content.approved_to_news
 
 = paginate @contents, :remote => true
 
