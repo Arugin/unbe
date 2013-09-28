@@ -55,6 +55,7 @@ class Ability
       can :create, Comment
 
       cannot :approve, Article
+      cannot :approve, Content::BaseContent
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
       cannot :automatic_approve, Article
@@ -65,6 +66,7 @@ class Ability
     if user.has_role? :MODERATOR
 
       can :approve, Article
+      can :approve, Content::BaseContent
       can :automatic_approve, Article
 
     end

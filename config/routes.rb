@@ -31,6 +31,9 @@ Unbe::Application.routes.draw do
   end
   resources :contents, as: :content_base_contents do
     resources :comments
+    member do
+      get 'approve'
+    end
   end
 
 
@@ -55,6 +58,7 @@ Unbe::Application.routes.draw do
   get '/office/cycles', to: 'office#cycles',as: 'office_cycles'
   get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
   get '/office/galleries', to: 'office#galleries',as: 'office_galleries'
+  get '/office/content/non_approved', to: 'office#non_approved_content',as: 'non_approved_contents'
 
   # Profile routes
   get '/profile/edit', to: 'profiles#edit',as: 'edit_profile'

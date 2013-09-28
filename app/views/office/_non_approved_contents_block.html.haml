@@ -1,0 +1,35 @@
+%table.table.table-striped
+  - if @contents.blank?
+    %p= t("NO_NON_APPROVED_CONTENTS")
+  - else
+    - @contents.each do |content|
+      %tr
+        %td
+          .header
+            = link_to content_base_content_path(content) do
+              %span= content.title
+          .publishDate
+            - unless content.updated_at.nil?
+              = content.updated_at.localtime
+        %td
+          = render :partial => 'yes_no',:locals => { :is_true => content.approved_to_news, :title=>"подтвержден"}
+        %td
+          .options
+            .btn-group
+              %button.btn
+                = link_to approve_content_base_content_path(content, approved: true) do
+                  = t :APPROVE
+              %button.btn.dropdown-toggle{data:{toggle:"dropdown"}}
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to approve_content_base_content_path(content,  approved: true) do
+                    = t :APPROVE
+                %li
+                  = link_to approve_content_base_content_path(content,  approved: false) do
+                    = t :NO_APPROVE
+        %td
+          = button_to "Удалить", [content], :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+
+
+= paginate @contents, :remote => true

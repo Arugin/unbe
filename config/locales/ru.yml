@@ -11,6 +11,8 @@ ru:
   NO_OFFICE_ARTICLES: Не написано ещё ни одной статьи
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
   NO_OFFICE_GALLERIES: Не создано ещё ни одной галлереи
+  NO_NON_APPROVED_CONTENTS: Нет неподтвержденных работ
+  CONTENT_APPROVE_SUCCESS: Работа подтверждена
   NO_COMMENTS_HERE: Нет ни одного комментария
   SEARCH: Поиск...
   BLOCK: Блокировать
@@ -18,6 +20,8 @@ ru:
   USER_ACCESS_CHANGED: Право доступа пользователя к сайту изменено
   UNABLE_TO_DELETE_ARTICLE: "Невозможно удалить статью: "
   SURE: Вы уверены?
+  NO_APPROVE: Нет подтверждать
+  APPROVE: Подтвердить
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
@@ -116,7 +120,6 @@ ru:
   CREATED_AT: Создан
   TITLE: Заголовок
   PUBLISH: Опуб.
-  APPROVE: Подтв.
   NEW_ARTICLE: Новая статья
   NEW_CYCLE: Новый цикл
 

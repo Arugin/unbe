@@ -11,6 +11,14 @@ class ContentsController < ApplicationController
     respond_with @comments
   end
 
+  def approve
+    @content = Content::BaseContent.find(params[:id])
+    @content.approved_to_news = params[:approved]
+    @content.reviewed = true
+    @content.save
+    redirect_to non_approved_contents_path, notice: t(:CONTENT_APPROVE_SUCCESS)
+  end
+
   def index
     @commentable = Gallery.find params[:gallery_id]
   end
@@ -19,6 +27,7 @@ class ContentsController < ApplicationController
     session[:gallery] ||= request.referer
     @gallery = Gallery.find params[:gallery_id]
     @content = @gallery.contents.build(params[:content_base_content])
+    @content.author = current_user
     if @content.save
       flash[:notice] = t :CONTENT_ADD_SUCCESSFULLY
       redirect_to session.delete(:gallery)
@@ -34,7 +43,13 @@ class ContentsController < ApplicationController
   def update
     @content = Content::BaseContent.find(params[:id])
 
+    if @content.author.nil?
+      @content.author = current_user
+      @content.save
+    end
     if @content.update_attributes(params[:content_base_content])
+      @content.reviewed = false
+      @content.save
       redirect_to edit_gallery_path(@content.contentable), notice: t(:CONTENT_UPDATE_SUCCESS)
     else
       render action: "edit"

@@ -1,7 +1,7 @@
 = render :partial => 'gallery_block',:locals => { :gallery => @gallery }
 
 - if can? :update, Gallery
-  = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => false }
+  = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => true }
 
 #comments.ujs-pagination
 

@@ -1,11 +1,14 @@
 .sidebar
-  - if can? :approve, Article
+  - if can? :approve, [Article,Content::BaseContent]
     %h3.right-bar
       Модерирование
     %ul.navigation
       %li
         =link_to main_app.non_approved_articles_path do
           Подтвердить статьи
+      %li
+        =link_to main_app.non_approved_contents_path do
+          Подтвердить работы
 
   - if user_signed_in? and current_user.has_role? :ADMIN
     %h3.right-bar
