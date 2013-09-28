@@ -3,10 +3,11 @@
     %p= t("NO_GALLERY_CONTENT")
 - else
   - @contents.each do |content|
-    .description
-      = content.short_title
-    .clear
     .video
+      .description
+        = link_to content_base_content_path(content) do
+          = content.title
+      .clear
       .fotorama-box
         .fotorama{data:{width:'200px',ratio:"800/600", keyboard: 'true'}}
           %a{href: content.src}
