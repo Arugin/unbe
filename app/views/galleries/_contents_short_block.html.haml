@@ -10,6 +10,10 @@
       .controls
         - if can? :destroy, content
           = button_to "Удалить", [content], :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+        - if can? :edit, content
+          .pull-right
+            = link_to edit_content_path(content), :class=>'btn btn-primary' do
+              Изменить
 
 = paginate @contents, :remote => true
 

@@ -53,6 +53,7 @@ ru:
   CONTENT_ADD_SUCCESSFULLY: Работа добавлена успешно
   CONTENT_REMOVE_SUCCESS: Работа удалена успешно
   UNABLE_TO_DELETE_CONTENT: Невозможно удалить работу
+  CONTENT_UPDATE_SUCCESS: Работа обновлена
 
   # articles types
   NEWS: Новости
@@ -104,6 +105,7 @@ ru:
         update: "Сохранить изменения"
       content_base_content:
         create: "Добавить работу"
+        update: "Сохранить изменения"
 
   unauthorized:
     manage:
@@ -222,6 +224,17 @@ ru:
           attributes:
             src:
               invalid: Ссылка должна вести на youtube или vimeo
+        comment:
+          attributes:
+            content:
+              blank: Комментарий не может быть пустым
+              too_short: Слишком короткий комментарий
+              too_long: Слишком большой комментарий.
+        gallery:
+          attributes:
+            name:
+              blank: Название не может быть пустым
+
 
 
   views:

@@ -10,6 +10,7 @@ module Content
 
     validates :title, length: {maximum: 70}, allow_blank: true
     validates :description, length: {maximum: 1000}
+    validates :src, presence: true
     #validates_format_of :src, with: /(?:https?:\/\/)?(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=)?(\w{10,})|/
     validate :youtube_or_vimeo_url
 

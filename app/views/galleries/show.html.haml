@@ -1,15 +1,5 @@
 = render :partial => 'gallery_block',:locals => { :gallery => @gallery }
 
-.shifted
-  - if @gallery.contents.blank?
-    .description
-      %p= t("NO_GALLERY_CONTENT")
-  - else
-    .fotorama{data:{width:'90%',ratio:"800/600", keyboard: 'true'}}
-      - @gallery.contents.each do |content|
-        %a{href: content.src, data:{caption:content.title}}
-
-.clear
 - if can? :update, Gallery
   = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => false }
 

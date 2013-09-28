@@ -4,6 +4,7 @@
     = render :partial => 'menu',:locals => { :user => @user }
     .user-profile
       .fullname= "#{@user.first_name} #{@user.second_name}"
+      .clear
       %dl
         %dt Дата регистрации:
         %dd= l @user.created_at.in_time_zone, format: :short

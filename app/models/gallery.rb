@@ -7,7 +7,7 @@ class Gallery
   field :name, type: String
   field :description, type: String
 
-  validates :name, presence: true, length: {maximum: 70}
+  validates :name, presence: true, length: {minimum:3,maximum: 70}
   validates :description, length: {maximum: 1000}
 
   has_many :contents, as: :contentable, class_name: 'Content::BaseContent'

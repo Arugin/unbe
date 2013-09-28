@@ -23,6 +23,20 @@ class ContentsController < ApplicationController
     end
   end
 
+  def edit
+    @content = Content::BaseContent.find(params[:id])
+  end
+
+  def update
+    @content = Content::BaseContent.find(params[:id])
+
+    if @content.update_attributes(params[:content_base_content])
+      redirect_to edit_gallery_path(@content.contentable), notice: t(:CONTENT_UPDATE_SUCCESS)
+    else
+      render action: "edit"
+    end
+  end
+
   def destroy
     session[:destroy_gallery] ||= request.referer
     @content = Content::BaseContent.find(params[:id])
