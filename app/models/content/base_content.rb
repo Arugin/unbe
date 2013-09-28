@@ -3,6 +3,7 @@ module Content
     include Mongoid::Document
     include Concerns::Randomizable
     include Mongoid::Timestamps
+    include Concerns::Shortable
 
     field :title, type: String
     field :src, type: String

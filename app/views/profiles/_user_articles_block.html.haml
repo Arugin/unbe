@@ -9,7 +9,7 @@
           %span= article.title
 
       .publishDate= article.created_at.localtime
-
+      .clear
       .description= article.short_content.html_safe
 
 = paginate @articles, :remote => true

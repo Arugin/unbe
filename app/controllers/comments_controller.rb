@@ -21,12 +21,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  private
+
   def find_commentable
     params.each do |name, value|
       if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
+        return specific_name($1).constantize.find(value)
       end
     end
     nil
+  end
+
+  def specific_name(name)
+    puts 'iiiiiiiiiiiiiiiiiiiii',name
+    if name == 'content_base_content'
+      'Content::BaseContent'
+    else
+      name.classify
+    end
   end
 end

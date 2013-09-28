@@ -3,8 +3,12 @@ class ContentsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   load_and_authorize_resource class: 'Content::BaseContent', :except => [:show]
 
+  respond_to :html, :js
+
   def show
     @content = Content::BaseContent.find(params[:id])
+    @comments = @content.comments.page(params[:page]).per(15)
+    respond_with @comments
   end
 
   def index

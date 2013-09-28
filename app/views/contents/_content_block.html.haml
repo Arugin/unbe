@@ -1,6 +1,6 @@
 .row-fluid
   %h4
-    = link_to content_path(content) do
+    = link_to content_base_content_path(content) do
       %span= content.title
   .author
     = link_to user_profile_path(content.contentable.author) do
@@ -20,3 +20,6 @@
 
   .fotorama{data:{width:'90%',ratio:"800/600", keyboard: 'true'}}
     %a{href: @content.src, data:{caption: @content.title}}
+
+  .clear
+  %br

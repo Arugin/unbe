@@ -3,6 +3,7 @@ class Cycle
   include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::Ownerable
+  include Concerns::Shortable
 
   field :title, type: String
   field :description, type: String

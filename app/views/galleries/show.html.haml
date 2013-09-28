@@ -3,6 +3,10 @@
 - if can? :update, Gallery
   = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => false }
 
+#comments.ujs-pagination
+
+= render :partial => 'common/comment_form', :locals => { :commentable => @gallery }
+
 
 - content_for(:right_bar) do
   = render :partial => 'office/right_bar'

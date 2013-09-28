@@ -1,4 +1,8 @@
 = render :partial => 'content_block', locals: { :content => @content }
 
+#comments.ujs-pagination
+
+= render :partial => 'common/comment_form', :locals => { :commentable => @content }
+
 - content_for(:right_bar) do
   = render :partial => 'articles/index_bar'

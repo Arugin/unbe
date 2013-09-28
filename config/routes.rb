@@ -21,11 +21,18 @@ Unbe::Application.routes.draw do
     end
   end
 
-  resources :cycles
+  resources :cycles do
+    resources :comments
+  end
+
   resources :galleries do
     resources :contents, as: :content_base_contents, controller: :contents, shallow: true
+    resources :comments
   end
-  resources :contents
+  resources :contents, as: :content_base_contents do
+    resources :comments
+  end
+
 
   resources :articles do
     resources :comments

@@ -3,7 +3,7 @@
         - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
             %span= t cycle.title
         - else
-            %span= cycle.title
+            %span= "Цикл '#{cycle.title}'"
     .description
         - if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? cycle.description
             %span= t cycle.description.html_safe

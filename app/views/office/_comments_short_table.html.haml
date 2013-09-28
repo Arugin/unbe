@@ -2,7 +2,7 @@
   - comments.each do |comment|
     %tr
       %td
-        = link_to article_path(comment.commentable) do
+        = link_to polymorphic_path(comment.commentable) do
           %span= comment.commentable.short_title
       %td
         = comment.short_content.html_safe

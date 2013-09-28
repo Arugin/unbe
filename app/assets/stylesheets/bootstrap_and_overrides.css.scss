@@ -24,6 +24,9 @@ body{
         color:white;
       }
     }
+    #override-link-color{
+      color: $link-color;
+    }
   }
 
   .author{
@@ -140,6 +143,7 @@ body{
 
   .user-profile{
     float:left;
+    width: 100%;
     .fullname{
       margin-left: 157px;
       color: #777;

@@ -5,6 +5,7 @@ class Article
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Randomizable
+  include Concerns::Shortable
 
   field :title, type: String
   field :content, type: String
@@ -84,14 +85,6 @@ class Article
     end
 
     return content[beginIndex, endIndex]
-  end
-
-  def short_title
-    if self.title.size > 20
-      "#{self.title[0..20]}..."
-    else
-      self.title
-    end
   end
 
 end
