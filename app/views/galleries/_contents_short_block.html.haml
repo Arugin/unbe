@@ -4,10 +4,9 @@
 - else
   - @contents.each do |content|
     .video
-      .description
+      .title
         = link_to content_base_content_path(content) do
           = content.title
-      .clear
       .fotorama-box
         .fotorama{data:{width:'200px',ratio:"800/600", keyboard: 'true'}}
           %a{href: content.src}

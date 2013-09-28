@@ -136,8 +136,14 @@ h4.random-news{
   padding-left: 50px;
   .video{
     float:left;
-    width: auto;
+    width: 370px;
     text-align: center;
+
+    .title{
+      text-align: left;
+      padding-right: 5px;
+      min-height: 40px;
+    }
 
     .fotorama-box{
       width: 250px;

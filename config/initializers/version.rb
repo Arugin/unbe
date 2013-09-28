@@ -1,6 +1,6 @@
 module MySite
   class Application
-    VERSION = "0.7.2"
+    VERSION = "0.9.2"
 
     def self.version
       "v. #{VERSION}"
