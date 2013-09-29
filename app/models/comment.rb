@@ -1,6 +1,7 @@
 class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongo::Voteable
 
   field :content, type: String
 
@@ -8,6 +9,8 @@ class Comment
 
   belongs_to :commentable, polymorphic: true
   belongs_to :user
+
+  voteable self, :up => +1, :down => -1
 
   def short_content
     if self.content.size > 40
