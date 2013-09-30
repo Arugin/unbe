@@ -21,6 +21,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def vote_up
+    session[:comment_votable] ||= request.referer
+    @comment = Comment.find(params[:id])
+    current_user.vote(@comment, :up)
+    redirect_to session.delete(:comment_votable)
+  end
+
+  def vote_down
+    session[:comment_votable] ||= request.referer
+    @comment =  Comment.find(params[:id])
+    current_user.vote(@comment, :down)
+    redirect_to session.delete(:comment_votable)
+  end
+
   private
 
   def find_commentable
@@ -33,11 +47,11 @@ class CommentsController < ApplicationController
   end
 
   def specific_name(name)
-    puts 'iiiiiiiiiiiiiiiiiiiii',name
     if name == 'content_base_content'
       'Content::BaseContent'
     else
       name.classify
     end
   end
+
 end

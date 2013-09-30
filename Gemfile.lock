@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/dementrock/voteable_mongo.git
+  revision: 538e86856daa1c180ba80b7c6f2805e531ba420c
+  specs:
+    voteable_mongo (0.9.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -207,7 +213,6 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     uuidtools (2.1.4)
-    voteable_mongo (0.9.3)
     warden (1.2.1)
       rack (>= 1.0)
 
@@ -246,4 +251,4 @@ DEPENDENCIES
   simple_form
   thin (>= 1.5.0)
   uglifier (>= 1.0.3)
-  voteable_mongo
+  voteable_mongo!

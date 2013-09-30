@@ -27,7 +27,7 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor'
 gem 'mongoid_rails_migrations', '>= 1.0.0'
-gem 'voteable_mongo'
+gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
 
 
 # Gems used only for assets and not required
