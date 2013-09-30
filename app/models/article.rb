@@ -49,6 +49,7 @@ class Article
   attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag
 
   voteable self, :up => +1, :down => -1
+  voteable Cycle, :up => +1, :down => -1
 
   def un_publish
     self.isPublished = false

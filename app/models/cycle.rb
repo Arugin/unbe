@@ -4,6 +4,7 @@ class Cycle
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Shortable
+  include Mongo::Voteable
 
   field :title, type: String
   field :description, type: String

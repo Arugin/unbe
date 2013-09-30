@@ -4,6 +4,7 @@ class Gallery
   include Concerns::Ownerable
   include Concerns::Searchable
   include Concerns::Shortable
+  include Mongo::Voteable
 
   field :name, type: String
   field :description, type: String

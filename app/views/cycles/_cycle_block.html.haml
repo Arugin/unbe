@@ -1,11 +1,23 @@
 .row-fluid
-    %h4
-        - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
-            %span= t cycle.title
-        - else
-            %span= "Цикл '#{cycle.title}'"
-    .description
-        - if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? cycle.description
-            %span= t cycle.description.html_safe
-        - else
-            %span=cycle.description.html_safe
+  %h4
+    - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
+      %span= t cycle.title
+    - else
+      %span= "Цикл '#{cycle.title}'"
+  .author
+    = link_to user_profile_path(cycle.author) do
+      = cycle.author.name
+  .publishDate
+    = l cycle.created_at.in_time_zone, format: :short
+  .clear
+  .pull-right
+    .vote
+      .count{:class => ((cycle.votes_point > 0 ? 'positive' : 'negative') unless cycle.votes_point ==0 )}
+        = cycle.votes_point
+  .clear
+  .description
+    - if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? cycle.description
+      %span= t cycle.description.html_safe
+    - else
+      %span=cycle.description.html_safe
+  .clear
