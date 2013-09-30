@@ -67,7 +67,7 @@ class ContentsController < ApplicationController
         return
       end
     rescue Exception => e
-      redirect_to ession.delete(:destroy_gallery), alert: message + e.message
+      redirect_to session.delete(:destroy_gallery), alert: message + e.message
       return
     end
     redirect_to session[:destroy_gallery], notice: t(:CONTENT_REMOVE_SUCCESS)

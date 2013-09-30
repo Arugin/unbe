@@ -22,7 +22,7 @@ module Content
 
     belongs_to :contentable, polymorphic: true
 
-    has_many :comments, dependent: :restrict, as: :commentable, class_name: 'Comment'
+    has_many :comments, dependent: :destroy, as: :commentable, class_name: 'Comment'
 
     scope :random, all.where(approved_to_news: true, reviewed: true)
     scope :non_approved, lambda { |user, params = {}|

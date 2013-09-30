@@ -10,7 +10,7 @@ ru:
   NO_NEWS: Нет новостей
   NO_OFFICE_ARTICLES: Не написано ещё ни одной статьи
   NO_OFFICE_CYCLES: Не создано ещё ни одного цикла
-  NO_OFFICE_GALLERIES: Не создано ещё ни одной галлереи
+  NO_OFFICE_GALLERIES: Не создано ещё ни одной галереи
   NO_NON_APPROVED_CONTENTS: Нет неподтвержденных работ
   CONTENT_APPROVE_SUCCESS: Работа подтверждена
   NO_COMMENTS_HERE: Нет ни одного комментария
@@ -46,12 +46,12 @@ ru:
   ARTICLE_REMOVE_SUCCESS: Статья успешно удалена
 
   # galleries
-  GALLERY_CREATE_SUCCESS: Галлерея успешно создана
-  GALLERY_UPDATE_SUCCESS: Галлерея успешно обновлена
-  UNABLE_TO_DELETE_GALLERY: Невозможно удалить галлеррею
+  GALLERY_CREATE_SUCCESS: Галерея успешно создана
+  GALLERY_UPDATE_SUCCESS: Галерея успешно обновлена
+  UNABLE_TO_DELETE_GALLERY: Невозможно удалить галеррею
   GALLERY_REMOVE_SUCCESS: Галерея успешно удалена
-  NEW_GALLERY: Новая галлерея
-  NO_GALLERY_CONTENT: В галлерее ещё нет работ
+  NEW_GALLERY: Новая галерея
+  NO_GALLERY_CONTENT: В галерее ещё нет работ
 
   # content
   CONTENT_ADD_SUCCESSFULLY: Работа добавлена успешно
@@ -204,7 +204,7 @@ ru:
       article: статью
       cycle: цикл
       user: профиль
-      gallery: галлерею
+      gallery: галерею
     errors:
       models:
         user:
