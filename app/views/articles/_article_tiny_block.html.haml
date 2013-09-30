@@ -18,4 +18,4 @@
         =t 'READ_MORE'
   .more-info
     = link_to article_path(article) do
-      =t 'COMMENTS', count: article.comments.size
+      =t 'COMMENTS', count: article.comments.size, comment: Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')

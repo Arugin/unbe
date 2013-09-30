@@ -125,7 +125,7 @@ ru:
 
   # MAIN
   READ_MORE: Подробнее
-  COMMENTS: "%{count} комментариев"
+  COMMENTS: "%{count} %{comment}"
   NO_INFO: не указано
   NO_ABOUT: ещё ничего нет
 
