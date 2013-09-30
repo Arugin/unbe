@@ -19,4 +19,5 @@ class Comment
       self.content
     end
   end
+
 end

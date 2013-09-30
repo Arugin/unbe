@@ -1,7 +1,7 @@
 .vote
-  = link_to polymorphic_path([:vote_up,votable]), remote: true do
-    = image_tag( '/images/votes/plus.png', :width => '15px', :title => "Понравилось")
-  .count{:class => ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
-    = votable.votes_point
   = link_to polymorphic_path([:vote_down,votable]), remote: true do
     = image_tag( '/images/votes/minus.png', :width => '15px', :title => "Не понравилось")
+  .count{:class => ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
+    = votable.votes_point
+  = link_to polymorphic_path([:vote_up,votable]), remote: true do
+    = image_tag( '/images/votes/plus.png', :width => '15px', :title => "Понравилось")
