@@ -1,7 +1,7 @@
 .row-fluid
   %h4
     %span= article.title
-  %br
+  .clear
   .description
     - unless article.content.nil?
       = article.content.html_safe

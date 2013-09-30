@@ -1,4 +1,4 @@
-.comment
+.comment{class: "comment-#{comment._id}"}
   %table
     %tr
       %td.avatar
@@ -14,6 +14,11 @@
     %tr
       %td.votecell
         .vote
-          0
+          = link_to vote_up_comment_path(comment), remote: true do
+            = image_tag( '/images/votes/plus.png', :width => '15px', :alt => "Комментарий по сути")
+          .count{:class => ((comment.votes_point > 0 ? 'positive' : 'negative') unless comment.votes_point ==0 )}
+            =comment.votes_point
+          = link_to vote_down_comment_path(comment), remote: true do
+            = image_tag( '/images/votes/minus.png', :width => '15px', :alt => "Комментарий на отвлеченную тему")
       %td.contentcell
         = comment.content.html_safe
