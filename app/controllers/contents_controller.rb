@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content::BaseContent.find(params[:id])
-    @comments = @content.comments.page(params[:page]).per(15)
+    @comments = @content.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
     respond_with @comments
   end
 
@@ -71,6 +71,20 @@ class ContentsController < ApplicationController
       return
     end
     redirect_to session[:destroy_gallery], notice: t(:CONTENT_REMOVE_SUCCESS)
+  end
+
+  def vote_up
+    session[:content_votable] ||= request.referer
+    @content = Content::BaseContent.find(params[:id])
+    current_user.vote(@content, :up)
+    redirect_to session.delete(:content_votable)
+  end
+
+  def vote_down
+    session[:content_votable] ||= request.referer
+    @content =  Content::BaseContent.find(params[:id])
+    current_user.vote(@content, :down)
+    redirect_to session.delete(:content_votable)
   end
 
 end

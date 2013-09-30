@@ -53,8 +53,8 @@ class Ability
 
       can :update, User, :_id => user._id
       can :create, Comment
-      can :vote_up, Comment
-      can :vote_down, Comment
+      can :vote_up, [Comment,Article, Content::BaseContent]
+      can :vote_down,[Comment,Article, Content::BaseContent]
 
       cannot :approve, Article
       cannot :approve, Content::BaseContent

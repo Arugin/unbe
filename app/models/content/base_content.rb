@@ -6,6 +6,7 @@ module Content
     include Concerns::Shortable
     include Concerns::Searchable
     include Concerns::Ownerable
+    include Mongo::Voteable
 
     field :title, type: String
     field :src, type: String
@@ -27,6 +28,8 @@ module Content
     scope :non_approved, lambda { |user, params = {}|
       search_for(user,params).where(reviewed: false)
     }
+
+    voteable self, :up => +1, :down => -1
 
     def youtube_or_vimeo_url
       return if(self.src =~ %r{\A(https?)://(www.)?(youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]*)(\&\S+)?.*})

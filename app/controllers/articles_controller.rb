@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments.page(params[:page]).per(15)
+    @comments = @article.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
     respond_with @comments
   end
 
@@ -109,6 +109,20 @@ class ArticlesController < ApplicationController
 
   def new_news
     @article = Article.new
+  end
+
+  def vote_up
+    session[:article_votable] ||= request.referer
+    @article = Article.find(params[:id])
+    current_user.vote(@article, :up)
+    redirect_to session.delete(:article_votable)
+  end
+
+  def vote_down
+    session[:article_votable] ||= request.referer
+    @article =  Article.find(params[:id])
+    current_user.vote(@article, :down)
+    redirect_to session.delete(:article_votable)
   end
 
   protected

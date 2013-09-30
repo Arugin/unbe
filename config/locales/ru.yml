@@ -210,7 +210,15 @@ ru:
         user:
           attributes:
             email:
-              taken: Данный email-адрес уже кем-то используется
+              taken: Данный email уже кем-то используется
+              blank: Укажите электронную почту
+              invalid: Укажите email корректного формата
+            password:
+              confirmation: Пароль и подтверждение должны совпадать
+              blank: Пароль не может быть пустым
+            name:
+              blank: Имя не может быть пустым
+              taken: Данный логин уже кем-то используется
         cycle:
           attributes:
             title:

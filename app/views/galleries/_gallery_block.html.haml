@@ -20,6 +20,6 @@
         %p= t("NO_GALLERY_CONTENT")
     - else
       .fotorama{data:{width:'90%',ratio:"800/600", keyboard: 'true'}}
-        - @gallery.contents.each do |content|
+        - @gallery.contents.order_by([:created_at, :asc]).each do |content|
           %a{href: content.src, data:{caption:content.title}}
   .clear

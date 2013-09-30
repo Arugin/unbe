@@ -344,7 +344,7 @@ body{
       .votecell{
         width: 60px;
         vertical-align: top;
-        .vote{
+        .vote-comment{
           text-align: center;
           .count{
             clear: both;
@@ -417,4 +417,25 @@ body{
 
 .pull-right a.btn-primary {
   margin-left: 5px;
+}
+
+.vote{
+  text-align: center;
+  min-width: 50px;
+  vertical-align: middle;
+  a{
+    float: left;
+  }
+  .count{
+    float: left;
+    margin: 2px 5px 0px 5px;
+  }
+  .positive{
+    color: #339900;
+    font-weight: bold;
+  }
+  .negative{
+    color: #CC0000;
+    font-weight: bold;
+  }
 }

@@ -29,6 +29,8 @@
     .clear
     .views
       = "оставлено #{article.author.comments.size} комментариев"
+  .pull-right{class:"vote-#{article._id}"}
+    = render :partial => 'common/vote_block', :locals => { :votable => article }
   .clear
   .description
     - unless article.content.nil?

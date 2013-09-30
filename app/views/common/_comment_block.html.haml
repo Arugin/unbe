@@ -13,7 +13,7 @@
         = l comment.created_at.in_time_zone, format: :short
     %tr
       %td.votecell
-        .vote
+        .vote-comment
           = link_to vote_up_comment_path(comment), remote: true do
             = image_tag( '/images/votes/plus.png', :width => '15px', :alt => "Комментарий по сути")
           .count{:class => ((comment.votes_point > 0 ? 'positive' : 'negative') unless comment.votes_point ==0 )}

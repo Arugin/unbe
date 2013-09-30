@@ -13,6 +13,8 @@
       = l content.contentable.created_at.in_time_zone, format: :short
     - else
       = l content.created_at.in_time_zone, format: :short
+  .pull-right{class:"vote-#{content._id}"}
+    = render :partial => 'common/vote_block', :locals => { :votable => content }
   .clear
   %br
   .description

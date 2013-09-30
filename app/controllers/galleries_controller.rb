@@ -12,8 +12,7 @@ class GalleriesController < ApplicationController
 
   def show
     @gallery = Gallery.find(params[:id])
-    @comments = @gallery.comments.page(params[:page]).per(15)
-    @contents = @gallery.contents.page(params[:page]).per(5)
+    @comments = @gallery.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
     respond_with @comments
   end
 
@@ -34,7 +33,7 @@ class GalleriesController < ApplicationController
 
   def edit
     @gallery = Gallery.find(params[:id])
-    @contents = @gallery.contents.page(params[:page]).per(5)
+    @contents = @gallery.contents.order_by([:created_at, :asc]).page(params[:page]).per(5)
     respond_with @contents
   end
 

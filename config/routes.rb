@@ -33,6 +33,8 @@ Unbe::Application.routes.draw do
     resources :comments
     member do
       get 'approve'
+      get 'vote_up'
+      get 'vote_down'
     end
   end
 
@@ -47,6 +49,8 @@ Unbe::Application.routes.draw do
     member do
       get 'publish'
       get 'approve'
+      get 'vote_up'
+      get 'vote_down'
     end
   end
 
