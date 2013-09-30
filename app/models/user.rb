@@ -4,6 +4,7 @@ class User
   include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::Randomizable
+  include Mongo::Voter
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

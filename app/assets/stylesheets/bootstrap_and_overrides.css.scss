@@ -346,6 +346,17 @@ body{
         vertical-align: top;
         .vote{
           text-align: center;
+          .count{
+            clear: both;
+          }
+          .positive{
+            color: #339900;
+            font-weight: bold;
+          }
+          .negative{
+            color: #CC0000;
+            font-weight: bold;
+          }
         }
       }
     }

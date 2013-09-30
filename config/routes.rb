@@ -50,6 +50,14 @@ Unbe::Application.routes.draw do
     end
   end
 
+  resources :comments do
+    member do
+      get 'vote_up'
+      get 'vote_down'
+    end
+  end
+
+
   resources :projects
 
   # Office routes
