@@ -28,7 +28,7 @@
       = "написано #{article.author.articles.size} #{Russian::pluralize(article.author.articles.size, 'статья','статьи', 'статей')}"
     .clear
     .views
-      = "оставлено #{article.author.comments.size} #{Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')}"
+      = "оставлено #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
   .pull-right{class:"vote-#{article._id}"}
     = render :partial => 'common/vote_block', :locals => { :votable => article }
   .clear
