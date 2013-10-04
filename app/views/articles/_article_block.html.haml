@@ -29,8 +29,15 @@
     .clear
     .views
       = "оставлено #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
-  .pull-right{class:"vote-#{article._id}"}
-    = render :partial => 'common/vote_block', :locals => { :votable => article }
+  .pull-right
+    .control-panel
+      .edit
+        - if can? :update, article
+          = link_to edit_article_path(article) do
+            %i.icon-pencil{title: t(:EDIT_ARTICLE)}
+      = render :partial => 'common/views_count', locals: { subject: article }
+      %div{class:"vote-#{article._id}"}
+        = render :partial => 'common/vote_block', :locals => { :votable => article }
   .clear
   .description
     - unless article.content.nil?
@@ -39,3 +46,5 @@
       = article.tmpContent.html_safe
 
   .clear
+  .pull-right
+    .share42init{data:{url:article_url(article),title: article.title,description:article.short_content}}

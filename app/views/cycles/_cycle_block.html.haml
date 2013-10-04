@@ -11,9 +11,15 @@
     = l cycle.created_at.in_time_zone, format: :short
   .clear
   .pull-right
-    .vote
-      .count{:class => ((cycle.votes_point > 0 ? 'positive' : 'negative') unless cycle.votes_point ==0 )}
-        = cycle.votes_point
+    .control-panel
+      .edit
+        - if can? :update, cycle
+          = link_to edit_cycle_path(cycle) do
+            %i.icon-pencil{title: t(:EDIT_CYCLE)}
+      %div{class:"vote-#{cycle._id}"}
+        .mini-vote{title: t(:RATING)}
+          .count{:class => ((cycle.votes_point > 0 ? 'positive' : 'negative') unless cycle.votes_point ==0 )}
+            = cycle.votes_point
   .clear
   .description
     - if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? cycle.description

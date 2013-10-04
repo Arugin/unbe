@@ -24,4 +24,5 @@
 //= require unbe
 //= require deep_linking
 //= require views/common/search
+//= require share42/share42
 //= require home

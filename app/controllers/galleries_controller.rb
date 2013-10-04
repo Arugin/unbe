@@ -1,6 +1,6 @@
 class GalleriesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,:except => [:index, :show]
   load_and_authorize_resource :except => [:index, :show]
 
   respond_to :html, :js
@@ -13,6 +13,7 @@ class GalleriesController < ApplicationController
   def show
     @gallery = Gallery.find(params[:id])
     @comments = @gallery.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
+    impressionist(@gallery, unique: [:session_hash])
     respond_with @comments
   end
 

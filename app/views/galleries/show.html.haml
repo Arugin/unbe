@@ -2,7 +2,7 @@
 
 - if can? :update, Gallery
   = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => true }
-
+%br
 #comments.ujs-pagination
 
 = render :partial => 'common/comment_form', :locals => { :commentable => @gallery }

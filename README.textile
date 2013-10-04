@@ -22,6 +22,11 @@ h2. Development
 * Form Builder: SimpleForm
 * Authentication: Devise
 * Authorization: CanCan
+* Views count: Impressionist
+* Votes: voteable_mongo
+* Pluralization: russian
+* Upload images: mongoid-paperclip
+* Captcha: recaptcha
 
 h2. Getting Started
 
@@ -30,3 +35,4 @@ Run 'bundle install'.
 Install MongoDB.
 Run 'rake db:setup'.
 Now you should be able to start rails server.
+Project requires setting some env variables. For example, uploading images, registration (recaptcha) will not work without them

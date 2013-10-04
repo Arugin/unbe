@@ -9,12 +9,12 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(7)
+    @articles = Article.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(15)
     respond_with @articles
   end
 
   def cycles
-    @cycles = Cycle.search_for(current_user, params).page(params[:page])
+    @cycles = Cycle.search_for(current_user, params).page(params[:page]).per(15)
     respond_with @cycles
   end
 
@@ -25,7 +25,7 @@ class OfficeController < ApplicationController
   end
 
   def galleries
-    @galleries = Gallery.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(7)
+    @galleries = Gallery.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(10)
     respond_with @galleries
   end
 

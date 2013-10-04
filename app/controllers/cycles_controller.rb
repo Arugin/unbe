@@ -1,7 +1,7 @@
 #encoding: utf-8
 class CyclesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
   load_and_authorize_resource :except => [:index, :show]
 
   respond_to :html, :js

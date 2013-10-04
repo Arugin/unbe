@@ -22,6 +22,8 @@ ru:
   SURE: Вы уверены?
   NO_APPROVE: Нет подтверждать
   APPROVE: Подтвердить
+  COUNT_VIEWS: Количество уникальных просмотров
+  RATING: Рейтинг
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
@@ -34,6 +36,7 @@ ru:
   CAN_NOT_EDIT_SYSTEM_CYCLE: Невозможно отредактировать этот цикл
   UNABLE_TO_DELETE_CYCLE: Невозможно удалить цикл
   CYCLE_REMOVE_SUCCESS: Цикл успешно удален
+  EDIT_CYCLE: Редактировать цикл
 
   #articles
   ARTICLE_PUBLISH_SUCCESS: Статья успешно опубликована. В ближайшее время она будет рассмотрена и подтверждена модератором
@@ -44,6 +47,7 @@ ru:
   NO_NON_APPROVEd_ARTICLES: Нет неподтвержденных статей
   NO_ARTICLES_FOUND: Ни одной статьи не найдено
   ARTICLE_REMOVE_SUCCESS: Статья успешно удалена
+  EDIT_ARTICLE: Редактировать статью
 
   # galleries
   GALLERY_CREATE_SUCCESS: Галерея успешно создана
@@ -52,12 +56,14 @@ ru:
   GALLERY_REMOVE_SUCCESS: Галерея успешно удалена
   NEW_GALLERY: Новая галерея
   NO_GALLERY_CONTENT: В галерее ещё нет работ
+  EDIT_GALLERY: Редактировать галлерею
 
   # content
   CONTENT_ADD_SUCCESSFULLY: Работа добавлена успешно
   CONTENT_REMOVE_SUCCESS: Работа удалена успешно
   UNABLE_TO_DELETE_CONTENT: Невозможно удалить работу
   CONTENT_UPDATE_SUCCESS: Работа обновлена
+  EDIT_CONTENT: Редактировать работу
 
   # articles types
   NEWS: Новости
@@ -70,6 +76,7 @@ ru:
   POSTPRODUCTION: Постпродакшен
   MANAGEMENT: Управление
   NO_AREA: Вне сфер
+  INDUSTRY: Индустрия
 
   #types
   ARTICLE: Статья
@@ -78,6 +85,8 @@ ru:
   NEWS: Новость
   TRANSLATE: Перевод
   NOTE: Заметка
+  STORY: Рассказ
+  REVIEW: Отзыв
 
   # profile
   USER_INFO_UPDATE_SUCCESS: Профиль успешно обновлен

@@ -8,6 +8,8 @@ module Content
     include Concerns::Ownerable
     include Mongo::Voteable
 
+    is_impressionable
+
     field :title, type: String
     field :src, type: String
     field :description, type: String

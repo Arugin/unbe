@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    impressionist(@article, unique: [:session_hash])
     @comments = @article.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
     respond_with @comments
   end
@@ -29,6 +30,8 @@ class ArticlesController < ApplicationController
     if @article.save
       publish_and_approve @article
       change_system_tag
+      push_to_news
+      @article.save
       redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
     else
       render action: "new"
@@ -45,7 +48,8 @@ class ArticlesController < ApplicationController
         @article.un_publish
       end
       change_system_tag
-
+      push_to_news
+      @article.save
       redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
       render action: "edit"
@@ -137,7 +141,12 @@ class ArticlesController < ApplicationController
   def change_system_tag
     if can? :system_tag, Article
       @article.system_tag = params[:article][:system_tag]
-      @article.save
+    end
+  end
+
+  def push_to_news
+    if can? :to_news, Article
+      @article.to_news = params[:article][:to_news]
     end
   end
 

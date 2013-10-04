@@ -8,6 +8,7 @@ class ContentsController < ApplicationController
   def show
     @content = Content::BaseContent.find(params[:id])
     @comments = @content.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
+    impressionist(@content, unique: [:session_hash])
     respond_with @comments
   end
 

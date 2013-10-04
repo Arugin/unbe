@@ -57,6 +57,7 @@ class Ability
       can :vote_down,[Comment,Article, Content::BaseContent]
 
       cannot :approve, Article
+      cannot :to_news, Article
       cannot :approve, Content::BaseContent
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
@@ -68,6 +69,7 @@ class Ability
     if user.has_role? :MODERATOR
 
       can :approve, Article
+      can :to_news, Article
       can :approve, Content::BaseContent
       can :automatic_approve, Article
 

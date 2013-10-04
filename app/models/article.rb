@@ -8,6 +8,8 @@ class Article
   include Concerns::Shortable
   include Mongo::Voteable
 
+  is_impressionable
+
   field :title, type: String
   field :content, type: String
   field :tmpContent, type: String
@@ -30,7 +32,7 @@ class Article
   validates :tmpContent, length: {maximum: 20000}
 
   scope :last_news, lambda { |user, params = {}|
-    search_for(user,params).where(article_type: ArticleType.where({title: "NEWS"}).first).order_by([:created_at, :desc]).and({isApproved: true})
+    search_for(user,params).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
   }
   scope :by_area, lambda { |user, params = {}, area|
     search_for(user,params).where(article_area: area).order_by([:created_at, :desc]).and({isApproved: true})

@@ -6,6 +6,8 @@ class Gallery
   include Concerns::Shortable
   include Mongo::Voteable
 
+  is_impressionable
+
   field :name, type: String
   field :description, type: String
 

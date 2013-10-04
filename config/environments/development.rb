@@ -36,6 +36,6 @@ Unbe::Application.configure do
   config.assets.compress = false
   config.assets.compile = true
   # Expands the lines which load the assets
-  config.assets.debug = false
+  config.assets.debug = true
   config.assets.initialize_on_precompile = false
 end

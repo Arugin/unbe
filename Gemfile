@@ -29,6 +29,7 @@ gem 'rails_12factor'
 gem 'mongoid_rails_migrations', '>= 1.0.0'
 gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
 gem 'russian', '~> 0.6.0'
+gem 'impressionist'
 
 
 # Gems used only for assets and not required

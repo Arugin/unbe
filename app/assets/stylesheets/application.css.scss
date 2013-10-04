@@ -15,6 +15,8 @@
  *= require_self
  */
 
+$link-color: #666666;
+
 .input-search, .dataTables_wrapper {
   &.right {
     text-align: right;
@@ -171,5 +173,51 @@ h4.random-news{
     height: auto;
     margin-left: 75px;
 
+  }
+}
+
+.pull-right{
+  .control-panel{
+    min-width: 50%;
+    height: auto;
+    .views-count{
+      float: left;
+      vertical-align: middle;
+      margin: 2px 8px 0px 5px;
+      color: $link-color;
+      width: auto;
+    }
+    .edit{
+      float:left;
+      margin: 2px 5px 0px 5px;
+    }
+    div{
+      float: left;
+    }
+    .vote{
+      float: left;
+      text-align: center;
+      vertical-align: middle;
+      min-width: 50px;
+      a{
+        float: left;
+      }
+      .count{
+        float: left;
+        margin: 2px 5px 0px 5px;
+      }
+      .positive{
+        color: #339900;
+        font-weight: bold;
+      }
+      .negative{
+        color: #CC0000;
+        font-weight: bold;
+      }
+    }
+    .mini-vote{
+      @extend .vote;
+      min-width: 20px;
+    }
   }
 }
