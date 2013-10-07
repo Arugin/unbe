@@ -176,16 +176,20 @@ h4.random-news{
   }
 }
 
+.views-count{
+  float: left;
+  vertical-align: middle;
+  margin: 2px 8px 0px 5px;
+  color: $link-color;
+  width: auto;
+}
+
 .pull-right{
   .control-panel{
     min-width: 50%;
     height: auto;
     .views-count{
-      float: left;
-      vertical-align: middle;
-      margin: 2px 8px 0px 5px;
-      color: $link-color;
-      width: auto;
+      @extend .views-count;
     }
     .edit{
       float:left;
@@ -195,25 +199,7 @@ h4.random-news{
       float: left;
     }
     .vote{
-      float: left;
-      text-align: center;
-      vertical-align: middle;
-      min-width: 50px;
-      a{
-        float: left;
-      }
-      .count{
-        float: left;
-        margin: 2px 5px 0px 5px;
-      }
-      .positive{
-        color: #339900;
-        font-weight: bold;
-      }
-      .negative{
-        color: #CC0000;
-        font-weight: bold;
-      }
+      @extend .vote;
     }
     .mini-vote{
       @extend .vote;
@@ -221,3 +207,57 @@ h4.random-news{
     }
   }
 }
+.vote{
+  float: left;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 50px;
+  a{
+    float: left;
+  }
+  .count{
+    float: left;
+    margin: 2px 5px 0px 5px;
+  }
+  .positive{
+    color: #339900;
+    font-weight: bold;
+  }
+  .negative{
+    color: #CC0000;
+    font-weight: bold;
+  }
+}
+
+.articles{
+  .views-wrapper{
+    vertical-align: middle;
+    padding-top: 10px;
+  }
+  .mini-vote{
+    @extend .vote;
+    .icon-thumbs-up{
+      float: left;
+      margin-top: 5px;
+    }
+    min-width: 50px;
+    margin: 0;
+    float: none;
+    vertical-align: middle;
+    margin: 0 auto;
+  }
+  .views-count{
+    @extend .views-count;
+    float: none;
+    margin: 0 auto;
+  }
+}
+
+.cycles{
+  @extend .articles;
+}
+
+.galleries{
+  @extend .articles;
+}
+

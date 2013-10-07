@@ -10,6 +10,8 @@
             %th
             %th{:width => "100px"}
             %th{:width => "30px"}
+            %th{:width => "50px"}
+            %th{:width => "30px"}
             %th{:width => "30px"}
             %th{:width => "30px"}
         %tbody
@@ -36,6 +38,10 @@
                                     %li
                                         = link_to edit_article_path(article) do
                                             Изменить
+                    %td.views-wrapper
+                        = render :partial => "common/views_count", locals: { subject: article }
+                    %td.mini-vote
+                        = render :partial => "common/rate_count", locals: { subject: article }
                     %td
                         - if article.isUpdated
                             %p.small-description= t 'ARTICLE_CHANGED'

@@ -5,6 +5,7 @@
         %thead
             %th
             %th
+            %th{:width => "30px"}
             %th{:width => "80px"}
         %tbody
             - @cycles.each do |cycle|
@@ -28,6 +29,8 @@
                                         %li
                                             = link_to edit_cycle_path(cycle) do
                                                 Изменить
+                    %td.mini-vote
+                        = render :partial => "common/rate_count", locals: { subject: cycle }
                     %td
                         - if can? :destroy, cycle
                             = button_to "Удалить", cycle, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"

@@ -6,6 +6,8 @@
             %th
             %th
             %th
+            %th{:width => "30px"}
+            %th{:width => "30px"}
             %th{:width => "80px"}
         %tbody
             - @galleries.each do |gallery|
@@ -31,6 +33,10 @@
                                     %li
                                         = link_to edit_gallery_path(gallery) do
                                             Изменить
+                    %td.views-wrapper
+                        = render :partial => "common/views_count", locals: { subject: gallery }
+                    %td.mini-vote
+                        = render :partial => "common/rate_count", locals: { subject: gallery }
                     %td
                         - if can? :destroy, gallery
                             = button_to "Удалить", gallery, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
