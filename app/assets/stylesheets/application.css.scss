@@ -229,7 +229,7 @@ h4.random-news{
   }
 }
 
-.articles{
+#articles{
   .views-wrapper{
     vertical-align: middle;
     padding-top: 10px;
@@ -253,11 +253,11 @@ h4.random-news{
   }
 }
 
-.cycles{
-  @extend .articles;
+#cycles{
+  @extend #articles;
 }
 
-.galleries{
-  @extend .articles;
+#galleries{
+  @extend #articles;
 }
 
