@@ -1,8 +1,13 @@
+= javascript_include_tag '/tinymce/tinymce.min.js', :media => "all"
 :javascript
-    _editor_url = "/xinha/"
-    _editor_lang = "ru";
-    _editor_skin = "silva";
-    _editor_icons = "Classic";
-
-= javascript_include_tag '/xinha/XinhaCore', :media => "all"
-= javascript_include_tag '/xinha/XinhaConfig', :media => "all"
+  tinymce.init({
+      selector: "textarea#tmpContent",
+      language : 'ru',
+      width: 750,
+      height: 550,
+      plugins: [
+               "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+               "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+               "save table contextmenu directionality emoticons template paste textcolor"
+      ]
+   });
