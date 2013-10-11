@@ -65,5 +65,7 @@ module Unbe
 
     # devise settings
     config.assets.initialize_on_precompile = false
+
+    config.threadsafe!
   end
 end
