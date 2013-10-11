@@ -6,5 +6,5 @@
       = image_tag(user.avatar.file.url(:mini))
   %h2.username
     = link_to user_profile_path(user) do
-      = user.name
+      = title user.name
   .clear

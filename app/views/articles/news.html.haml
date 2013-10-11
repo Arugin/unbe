@@ -1,5 +1,7 @@
-.row
-  .span12
+.row-fluid
+  .span4
+    %h4.section=title 'Новости'
+  .span8
     .pull-right
       = render :partial => "common/search_control", :locals => { :current_action_path => news_articles_path }
 
@@ -7,3 +9,6 @@
 
 - content_for(:right_bar) do
   = render :partial => 'index_bar'
+
+- content_for(:head) do
+  %meta{name:"fragment",content:"!"}

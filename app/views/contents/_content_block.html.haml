@@ -4,7 +4,7 @@
       = content.contentable.title
     %span.divider /
     = link_to content_base_content_path(content) do
-      %span= content.title
+      %span= title content.title
   .author
     = link_to user_profile_path(content.contentable.author) do
       = content.contentable.author.name

@@ -1,9 +1,9 @@
 .row-fluid
   .span4
     - unless @article_area.nil?
-      %h4.section= t @article_area.title
+      %h4.section=title t(@article_area.title)
     - else
-      %h4.section Статьи
+      %h4.section=title 'Статьи'
   .span4
     .pull-right
       - if can? :create, Article
@@ -21,3 +21,6 @@
 
 - content_for(:right_bar) do
   = render :partial => 'right_bar', locals: { :article_areas => @article_areas }
+
+- content_for(:head) do
+  %meta{name:"fragment",content:"!"}

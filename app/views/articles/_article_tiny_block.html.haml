@@ -1,14 +1,17 @@
-.row-fluid
+.row-fluid{itemscope:true, itemtype:'http://schema.org/Article'}
   %h4.random-news
     = link_to article_path(article) do
       %span= article.title
   .author
     = link_to user_profile_path(article.author) do
-      = article.author.name
+      %span{itemprop:'author', itemscope:true, itemtype:'http://schema.org/Person'}
+        %span{itemprop:'name'}
+          = article.author.name
   .publishDate
-    = l article.created_at.in_time_zone, format: :short
+    %span{itemprop:'datePublished',content:article.created_at}
+      = l article.created_at.in_time_zone, format: :short
   .clear
-  .description
+  .description{itemprop:'articleBody'}
     - unless article.content.nil?
       = article.short_content.html_safe
   .clear
@@ -17,5 +20,5 @@
       = link_to article_path(article) do
         =t 'READ_MORE'
   .more-info
-    = link_to article_path(article) do
+    = link_to article_path(article), itemprop:"url" do
       =t 'COMMENTS', count: article.comments.size, comment: Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')

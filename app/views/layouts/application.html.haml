@@ -1,15 +1,13 @@
 !!!
 %html
   %head
+    = display_meta_tags site: 'unbe'
+    = yield(:head)
     %meta
-      %title
-        Unbe
-        = yield :title
-      %meta
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        %link{rel:'shortcut icon',href:'/images/favicon.ico'}
-        = csrf_meta_tags
+      = stylesheet_link_tag "application", :media => "all"
+      = javascript_include_tag "application"
+      %link{rel:'shortcut icon',href:'/images/favicon.ico'}
+      = csrf_meta_tags
 
   %body{:class => "#{controller_name} #{action_name}"}
     #main.row-fluid

@@ -1,9 +1,9 @@
 .row-fluid
   %h4
     - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
-      %span= t cycle.title
+      %span=title t(cycle.title)
     - else
-      %span= "Цикл '#{cycle.title}'"
+      %span=title "Цикл '#{cycle.title}'"
   .author
     = link_to user_profile_path(cycle.author) do
       = cycle.author.name

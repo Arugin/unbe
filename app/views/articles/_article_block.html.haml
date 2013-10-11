@@ -1,10 +1,10 @@
-.row-fluid
+.row-fluid{itemscope:true, itemtype:'http://schema.org/Article'}
   %h4
     = link_to cycle_path(article.cycle) do
       = article.cycle.correct_title
     %span.divider /
-    = link_to article_path(article) do
-      %span= article.title
+    = link_to article_path(article), itemprop:"url" do
+      %span= title article.title
   .news-user-avatar
     - if article.author.avatar.nil?
       = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
@@ -14,9 +14,12 @@
     .credentials
       .author
         = link_to user_profile_path(article.author) do
-          = article.author.name
+          %span{itemprop:'author', itemscope:true, itemtype:'http://schema.org/Person'}
+            %span{itemprop:'name'}
+              = article.author.name
       .publishDate
-        = l article.created_at.in_time_zone, format: :short
+        %span{itemprop:'datePublished',content:article.created_at}
+          = l article.created_at.in_time_zone, format: :short
     .clear
     .views
       создано
@@ -39,7 +42,7 @@
       %div{class:"vote-#{article._id}"}
         = render :partial => 'common/vote_block', :locals => { :votable => article }
   .clear
-  .description
+  .description{itemprop:'articleBody'}
     - unless article.content.nil?
       = article.content.html_safe
     - else
