@@ -4,7 +4,8 @@
   - @galleries.each do |gallery|
     .row-fluid
       %h4
-        %span= gallery.name
+        =link_to gallery_path(gallery) do
+          %span= gallery.name
       .description= gallery.description.html_safe
       .clear
       .center-box
