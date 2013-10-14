@@ -4,6 +4,7 @@
   = render :partial =>  'new_content', :locals => { :gallery => @gallery, :included => true }
 %br
 #comments.ujs-pagination
+  = render :partial => 'common/comments_block', :locals => { :commentable => @gallery }
 
 = render :partial => 'common/comment_form', :locals => { :commentable => @gallery }
 

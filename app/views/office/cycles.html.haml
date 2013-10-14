@@ -10,6 +10,7 @@
     = render :partial => "common/search_control", :locals => { :current_action_path => office_cycles_path(scope:'current_user') }
 
 #cycles.cycles.ujs-pagination
+  = render :partial => 'cycles_block'
 
 - content_for(:right_bar) do
   = render :partial => 'right_bar'

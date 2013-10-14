@@ -3,6 +3,7 @@
 #cycle_articles.ujs-pagination
 .clear
 #comments.ujs-pagination
+  = render :partial => 'common/comments_block', :locals => { :commentable => @cycle }
 
 = render :partial => 'common/comment_form', :locals => { :commentable => @cycle }
 
