@@ -5,3 +5,8 @@
     = render :partial => 'article_short_block', :locals => { :article => article }
 
 = paginate @articles, :remote => true
+
+:javascript
+  $(function () {
+    $('.fotorama').fotorama();
+  });
