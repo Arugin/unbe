@@ -10,6 +10,10 @@ class Comment
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
+  scope :unowned, lambda { |user|
+    not_in(:author => user.id)
+  }
+
   voteable self, :up => +1, :down => -1
 
   def short_content

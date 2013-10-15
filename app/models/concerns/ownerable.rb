@@ -11,6 +11,11 @@ module Concerns
           where(:author => user.id)
         }
 
+        #gives all objects that not belong to the user
+        klass.scope :unowned, lambda { |user|
+          not_in(:author => user.id)
+        }
+
       end
     end
 
