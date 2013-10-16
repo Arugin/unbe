@@ -13,7 +13,8 @@
   .clear
   .description{itemprop:'articleBody'}
     - unless article.content.nil?
-      = article.short_content.html_safe
+      %p
+        = strip_tags(article.short_content)
   .clear
   - if article.content.size != article.short_content.size
     .more-info
