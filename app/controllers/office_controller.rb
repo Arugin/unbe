@@ -5,7 +5,18 @@ class OfficeController < ApplicationController
 
   respond_to :html, :js
 
+  # TODO: Move it to model
   def index
+    @last_pages = []
+
+    elements = Impression.where(user_id: current_user._id).order_by([:created_at, :desc])
+    elements.each do |element|
+      break if @last_pages.size >= 10
+      checking = element.impressionable_type.constantize.find(element.impressionable_id)
+      unless checking == @last_pages.last
+        @last_pages << checking
+      end
+    end
   end
 
   def articles

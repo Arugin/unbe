@@ -17,8 +17,8 @@ class Comment
   voteable self, :up => +1, :down => -1
 
   def short_content
-    if self.content.size > 40
-      "#{self.content[0..40]}..."
+    if self.content.size > 50
+      "#{self.content[0..50]}..."
     else
       self.content
     end

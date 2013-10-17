@@ -4,8 +4,8 @@ module Concerns
       base.class_eval do |klass|
 
         define_method :short_title, lambda {
-          if title.size > 20
-            "#{title[0..20]}..."
+          if title.size > 25
+            "#{title[0..25]}..."
           else
             title
           end

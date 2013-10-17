@@ -5,4 +5,4 @@
         = link_to polymorphic_path(comment.commentable) do
           %span= comment.commentable.short_title
       %td
-        = comment.short_content.html_safe
+        = strip_tags(comment.short_content)

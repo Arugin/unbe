@@ -22,6 +22,15 @@
 
   %dl
     %dt
+      Последние посещенные страницы
+    %dd
+      - if @last_pages.empty?
+        Ничего не посещалось
+      - else
+        = render :partial => 'pages_short_table', :locals => { :elements => @last_pages }
+
+  %dl
+    %dt
       Последние комментарии
     %dd
       - if current_user.last_comments.empty?
