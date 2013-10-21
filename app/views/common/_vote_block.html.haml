@@ -1,11 +1,11 @@
 .vote{title: t(:RATING)}
   - if can? :vote_up, votable
     = link_to polymorphic_path([:vote_down,votable]), remote: true do
-      = image_tag( '/images/votes/minus.png', :width => '15px', :title => "Не понравилось")
+      = image_tag( '/images/votes/minus.png', :title => "Не понравилось")
   - if (cannot? :vote_up, votable) && (cannot? :vote_down, votable)
     %i.icon-thumbs-up
   .count{class: ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
     = votable.votes_point
   - if can? :vote_down, votable
     = link_to polymorphic_path([:vote_up,votable]), remote: true do
-      = image_tag( '/images/votes/plus.png', :width => '15px', :title => "Понравилось")
+      = image_tag( '/images/votes/plus.png', :title => "Понравилось")
