@@ -24,6 +24,7 @@ ru:
   APPROVE: Подтвердить
   COUNT_VIEWS: Количество уникальных просмотров
   RATING: Рейтинг
+  NO_CONTENTS_FOUND: Нет ни одной работы
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен

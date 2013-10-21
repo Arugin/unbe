@@ -10,10 +10,10 @@
                             %span= article.title
                     .publishDate
                         = article.updated_at.localtime
-                %td
+                %td.thumb-wrapper
                     - if article.isUpdated
                         %p.small-description= t 'ARTICLE_CHANGED'
-                %td
+                %td.thumb-wrapper
                     - if article.isUpdated && article.isPublished
                         .thumb
                             = link_to approve_article_path(article) do

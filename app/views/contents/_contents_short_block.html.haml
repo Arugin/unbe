@@ -1,0 +1,12 @@
+- if @contents.blank?
+  %p= t("NO_CONTENTS_FOUND")
+- else
+  - @contents.each do |content|
+    = render :partial => 'content_short_block', :locals => { :content => content }
+
+= paginate @contents, :remote => true
+
+:javascript
+  $(function () {
+    $('.fotorama').fotorama();
+  });

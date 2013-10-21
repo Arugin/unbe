@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show]
-  load_and_authorize_resource class: 'Content::BaseContent', :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :index]
+  load_and_authorize_resource class: 'Content::BaseContent', :except => [:show, :index]
 
   respond_to :html, :js
 
@@ -19,9 +19,9 @@ class ContentsController < ApplicationController
     @content.save
     redirect_to non_approved_contents_path, notice: t(:CONTENT_APPROVE_SUCCESS)
   end
-
+  #TODO: move to model
   def index
-    @commentable = Gallery.find params[:gallery_id]
+    @contents = Content::BaseContent.search_for(current_user,params).where(approved_to_news: true, reviewed: true).order_by([:created_at, :desc]).page(params[:page]).per(10)
   end
 
   def create

@@ -1,0 +1,21 @@
+.row-fluid.video
+  %h4
+    = link_to content_base_content_path(content) do
+      %span= content.title
+  .author
+    = link_to user_profile_path(content.author) do
+      %span{itemprop:'author', itemscope:true, itemtype:'http://schema.org/Person'}
+        %span{itemprop:'name'}
+          = content.author.name
+  .publishDate
+    %span{itemprop:'datePublished',content:content.created_at}
+      - if content.created_at.nil?
+        = l content.contentable.created_at.in_time_zone, format: :short
+      - else
+        = l content.created_at.in_time_zone, format: :short
+  .clear
+  .container
+    .fotorama{data:{width:'300px',ratio:"800/600", keyboard: 'true'}}
+      %a{href: content.src}
+  .description
+    = content.description.html_safe

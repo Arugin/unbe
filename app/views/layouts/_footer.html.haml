@@ -12,6 +12,9 @@
     = link_to main_app.articles_path do
       %span Статьи
   %dd
+    = link_to main_app.content_base_contents_path do
+      %span Работы
+  %dd
     = link_to main_app.projects_path do
       %span Проекты
   %dd
@@ -34,7 +37,7 @@
 %dl
 
 %dl
-  %dd unbe © 2006–2013
+  %dd unbe © 2011–2013
   %dd= MySite::Application.version
 
 

@@ -7,6 +7,7 @@ $light-date-color: #ababab;
 $link-color: #666666;
 
 body{
+  -webkit-backface-visibility: visible;
   .row-fluid{
     -webkit-backface-visibility: visible;
   }
@@ -131,8 +132,8 @@ body{
   #main-menu {
     font-size: 24px;
     a{
-      padding-right: 25px;
-      padding-left: 25px;
+      padding-right: 20px;
+      padding-left: 20px;
       margin-right: 6px;
       padding-top: 16px;
       padding-bottom: 16px;
@@ -421,4 +422,6 @@ body{
 .pull-right a.btn-primary {
   margin-left: 5px;
 }
+
+
 

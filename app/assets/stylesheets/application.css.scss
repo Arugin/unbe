@@ -237,13 +237,18 @@ h4.random-news{
   }
 }
 
+.thumb-wrapper{
+  vertical-align: middle;
+}
+
 #articles{
   .views-wrapper{
     vertical-align: middle;
     padding-top: 10px;
+    min-width: 50px;
   }
   .thumb-wrapper{
-    vertical-align: middle;
+    @extend .thumb-wrapper;
   }
   .mini-vote{
     @extend .vote;
@@ -270,6 +275,11 @@ h4.random-news{
   }
 }
 
+.thumb{
+  width: 15px;
+  height: 15px;
+}
+
 #cycles{
   @extend #articles;
 }
@@ -278,3 +288,35 @@ h4.random-news{
   @extend #articles;
 }
 
+#index-contents{
+  .video{
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 20px;
+    .container{
+      width: 300px;
+      height: auto;
+      float: left;
+    }
+    .description{
+      float: left;
+      margin-left: 20px;
+      margin-top: 0px;
+      width: 400px;
+    }
+    .clear{
+      @extend .clear;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+.ujs-pagination{
+  -webkit-backface-visibility: visible;
+}
+
+.pagination{
+  -webkit-backface-visibility: visible;
+}

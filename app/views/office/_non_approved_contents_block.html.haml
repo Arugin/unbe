@@ -11,7 +11,7 @@
           .publishDate
             - unless content.updated_at.nil?
               = content.updated_at.localtime
-        %td
+        %td.thumb-wrapper
           = render :partial => 'yes_no',:locals => { :is_true => content.approved_to_news, :title=>"подтвержден"}
         %td
           .options
