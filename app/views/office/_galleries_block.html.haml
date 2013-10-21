@@ -8,6 +8,7 @@
             %th
             %th{:width => "30px"}
             %th{:width => "30px"}
+            %th{:width => "30px"}
             %th{:width => "80px"}
         %tbody
             - @galleries.each do |gallery|
@@ -20,7 +21,7 @@
                             = l gallery.created_at.in_time_zone, format: :short
                     %td
                         .info
-                            = "#{gallery.contents.size} работ"
+                            = "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"
                     %td
                         .options
                             .btn-group
@@ -35,6 +36,8 @@
                                             Изменить
                     %td.views-wrapper
                         = render :partial => "common/views_count", locals: { subject: gallery }
+                    %td.views-wrapper
+                        = render :partial => "common/comments_count", locals: { subject: gallery }
                     %td.mini-vote
                         = render :partial => "common/rate_count", locals: { subject: gallery }
                     %td

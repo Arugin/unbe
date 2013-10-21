@@ -6,6 +6,7 @@
             %th
             %th
             %th{:width => "30px"}
+            %th{:width => '30px'}
             %th{:width => "80px"}
         %tbody
             - @cycles.each do |cycle|
@@ -29,6 +30,8 @@
                                         %li
                                             = link_to edit_cycle_path(cycle) do
                                                 Изменить
+                    %td.views-wrapper
+                        = render :partial => "common/comments_count", locals: { subject: cycle }
                     %td.mini-vote
                         = render :partial => "common/rate_count", locals: { subject: cycle }
                     %td

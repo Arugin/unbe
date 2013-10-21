@@ -242,6 +242,9 @@ h4.random-news{
     vertical-align: middle;
     padding-top: 10px;
   }
+  .thumb-wrapper{
+    vertical-align: middle;
+  }
   .mini-vote{
     @extend .vote;
     min-width: 50px;
@@ -254,6 +257,16 @@ h4.random-news{
     @extend .views-count;
     float: none;
     margin: 0 auto;
+  }
+
+  .s-thumb{
+    width: 25px;
+    height: 25px;
+  }
+
+  .thumb{
+    width: 15px;
+    height: 15px;
   }
 }
 

@@ -6,11 +6,12 @@
             %th
                 %span
                     %input{type: 'checkbox'}
-            %th{:width => "800px"}= t(:TITLE)
-            %th
+            %th{:width => "700px"}= t(:TITLE)
             %th{:width => "100px"}
-            %th{:width => "30px"}
             %th{:width => "50px"}
+            %th{:width => "50px"}
+            %th{:width => "50px"}
+            %th{:width => "30px"}
             %th{:width => "30px"}
             %th{:width => "30px"}
             %th{:width => "30px"}
@@ -40,22 +41,24 @@
                                             Изменить
                     %td.views-wrapper
                         = render :partial => "common/views_count", locals: { subject: article }
+                    %td.views-wrapper
+                        = render :partial => "common/comments_count", locals: { subject: article }
                     %td.mini-vote
                         = render :partial => "common/rate_count", locals: { subject: article }
-                    %td
+                    %td.thumb-wrapper
                         - if article.isUpdated
-                            %p.small-description= t 'ARTICLE_CHANGED'
-                    %td
+                            %i.icon-pencil{title: t('ARTICLE_CHANGED')}
+                    %td.thumb-wrapper
                         - unless article.isPublished
                             = link_to publish_article_path(article) do
                                 = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
                         - else
                             = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
 
-                    %td
+                    %td.thumb-wrapper
                         - if article.isUpdated && article.isPublished
-                            .thumb
-                                =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
+                            .s-thumb
+                                =image_tag( "/images/article/update.png", :title=>"новая версия статьи находится на модерации")
                         - else
                             = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
                     %td
