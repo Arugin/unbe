@@ -5,6 +5,7 @@
   .form-inputs
     = f.input :name, input_html: { class: "span8" }
     = f.input :description, as: :text, input_html: { class: "span12", id: 'smallContent' }
+    = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Gallery}
 
   .form-actions
     = f.button :submit, :class => "btn-primary"

@@ -12,6 +12,7 @@
  *= require fotorama_and_overrides
  *= require bootstrap_and_overrides
  *= require editor_fixes
+ *= require select2
  *= require_self
  */
 
@@ -319,4 +320,8 @@ h4.random-news{
 
 .pagination{
   -webkit-backface-visibility: visible;
+}
+
+.full-length-tags .select2tags {
+  width: 100% !important;
 }

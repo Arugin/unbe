@@ -4,6 +4,7 @@ class Gallery
   include Concerns::Ownerable
   include Concerns::Searchable
   include Concerns::Shortable
+  include Concerns::Taggable
   include Mongo::Voteable
 
   is_impressionable

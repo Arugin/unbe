@@ -6,6 +6,7 @@ class Article
   include Concerns::Ownerable
   include Concerns::Randomizable
   include Concerns::Shortable
+  include Concerns::Taggable
   include Mongo::Voteable
 
   is_impressionable
@@ -26,7 +27,7 @@ class Article
   belongs_to :cycle
   has_many :comments, dependent: :restrict, as: :commentable, class_name: 'Comment'
 
-  search_in :title
+  search_in :title, :tags
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :tmpContent, length: {maximum: 20000}

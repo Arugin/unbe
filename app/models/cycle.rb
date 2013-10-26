@@ -4,6 +4,7 @@ class Cycle
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Shortable
+  include Concerns::Taggable
   include Mongo::Voteable
 
   field :title, type: String
@@ -16,7 +17,7 @@ class Cycle
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :description, length: {maximum: 1000}
 
-  search_in :title
+  search_in :title, :tags
 
   def ordered_articles
     articles.order_by([:created_at, :desc])

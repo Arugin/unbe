@@ -6,6 +6,7 @@ module Content
     include Concerns::Shortable
     include Concerns::Searchable
     include Concerns::Ownerable
+    include Concerns::Taggable
     include Mongo::Voteable
 
     is_impressionable
@@ -21,7 +22,7 @@ module Content
     validates :src, presence: true
     validate :youtube_or_vimeo_url
 
-    search_in :title
+    search_in :title, :tags
 
     belongs_to :contentable, polymorphic: true
 

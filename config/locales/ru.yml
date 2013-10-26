@@ -192,9 +192,11 @@ ru:
         article_type: Тип статьи
         tmpContent: Содержание
         cycle: Цикл статей
+        tag_list: Ключевые слова
       cycle:
         title: Заголовок
         description: Описание
+        tag_list: Ключевые слова
       user:
         name: Псевдоним
         first_name: Имя
@@ -210,6 +212,9 @@ ru:
       gallery:
         name: Название
         description: Описание
+        tag_list: Ключевые слова
+      content/base_content:
+        tag_list: Ключевые слова
     models:
       article: статью
       cycle: цикл
