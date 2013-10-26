@@ -89,11 +89,6 @@ class Article
 
     delimiters.each do |delimiter|
       endIndex = content.index delimiter
-
-      unless endIndex.nil?
-        endIndex += delimiter.length
-        break
-      end
     end
 
     if endIndex.nil?
