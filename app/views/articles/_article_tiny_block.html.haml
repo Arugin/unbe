@@ -14,12 +14,11 @@
   .description{itemprop:'articleBody'}
     - unless article.content.nil?
       %p
-        = strip_tags(article.short_content)
+        = strip_tags(article.tiny_content)
   .clear
-  - if article.content.size != article.short_content.size
-    .more-info
-      = link_to article_path(article) do
-        =t 'READ_MORE'
+  .more-info
+    = link_to article_path(article) do
+      =t 'READ_MORE'
   .more-info
     = link_to article_path(article), itemprop:"url" do
       =t 'COMMENTS', count: article.comments.size, comment: Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')

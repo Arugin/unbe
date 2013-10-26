@@ -73,8 +73,17 @@ class Article
     self.save
   end
 
+  def tiny_content
+    ending = nil
+    max_size = 200
+    if short_content.size > max_size
+      ending = '...'
+    end
+    "#{short_content[0..max_size]}#{ending}"
+  end
+
   def short_content
-    delimiters = ['</p>', '<br />', '<br/>']
+    delimiters = ['<p><!-- unbebreak --></p>']
     beginIndex = 0
     endIndex = nil
 
