@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.last_news(current_user, params).page(params[:page]).per(7)
+    @articles = Article.last_news(current_user, params).page(params[:page]).per(12)
     respond_with @articles
   end
 
