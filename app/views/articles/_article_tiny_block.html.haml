@@ -14,7 +14,7 @@
   .description{itemprop:'articleBody'}
     - unless article.content.nil?
       %p
-        = strip_tags(article.tiny_content)
+        = article.tiny_content
   .clear
   .more-info
     = link_to article_path(article) do

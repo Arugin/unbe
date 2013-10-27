@@ -7,6 +7,7 @@ class Article
   include Concerns::Randomizable
   include Concerns::Shortable
   include Concerns::Taggable
+  include ActionView::Helpers::TextHelper
   include Mongo::Voteable
 
   is_impressionable
@@ -76,10 +77,11 @@ class Article
   def tiny_content
     ending = nil
     max_size = 200
-    if short_content.size > max_size
+    final_content = strip_tags(short_content)
+    if final_content.size > max_size
       ending = '...'
     end
-    "#{short_content[0..max_size]}#{ending}"
+    "#{final_content[0..max_size]}#{ending}"
   end
 
   def short_content
