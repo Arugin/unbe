@@ -28,6 +28,7 @@ module Content
 
     has_many :comments, dependent: :destroy, as: :commentable, class_name: 'Comment'
 
+    default_scope order_by(:created_at => :desc)
     scope :random, all.where(approved_to_news: true, reviewed: true)
     scope :non_approved, lambda { |user, params = {}|
       search_for(user,params).where(reviewed: false)

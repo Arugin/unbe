@@ -33,6 +33,8 @@ class Article
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :tmpContent, length: {maximum: 20000}
 
+  default_scope order_by(:created_at => :desc)
+
   scope :last_news, lambda { |user, params = {}|
     search_for(user,params).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
   }

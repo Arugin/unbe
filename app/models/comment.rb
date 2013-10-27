@@ -10,6 +10,8 @@ class Comment
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
+  default_scope order_by(:created_at => :asc)
+
   scope :unowned, lambda { |user|
     not_in(:author => user.id)
   }

@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   def user_cycles
     @user = User.find(params[:id])
-    @cycles = @user.cycles.order_by([:created_at, :desc]).page(params[:page]).per(5)
+    @cycles = @user.cycles.page(params[:page]).per(5)
     respond_with @cycles
   end
 
@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
 
   def user_galleries
     @user = User.find(params[:id])
-    @galleries = @user.galleries.order_by([:created_at, :desc]).page(params[:page]).per(1)
+    @galleries = @user.galleries.page(params[:page]).per(1)
     respond_with @galleries
   end
 

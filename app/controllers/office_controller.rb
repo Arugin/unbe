@@ -20,7 +20,7 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(15)
+    @articles = Article.search_for(current_user,params).page(params[:page]).per(15)
     respond_with @articles
   end
 
@@ -36,7 +36,7 @@ class OfficeController < ApplicationController
   end
 
   def galleries
-    @galleries = Gallery.search_for(current_user,params).order_by([:created_at, :desc]).page(params[:page]).per(10)
+    @galleries = Gallery.search_for(current_user,params).page(params[:page]).per(10)
     respond_with @galleries
   end
 

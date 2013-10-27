@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content::BaseContent.find(params[:id])
-    @comments = @content.comments.order_by([:created_at, :asc]).page(params[:page]).per(15)
+    @comments = @content.comments.page(params[:page]).per(15)
     impressionist(@content, unique: [:session_hash])
     respond_with @comments
   end
@@ -21,7 +21,7 @@ class ContentsController < ApplicationController
   end
   #TODO: move to model
   def index
-    @contents = Content::BaseContent.search_for(current_user,params).where(approved_to_news: true, reviewed: true).order_by([:created_at, :desc]).page(params[:page]).per(10)
+    @contents = Content::BaseContent.search_for(current_user,params).where(approved_to_news: true, reviewed: true).page(params[:page]).per(10)
   end
 
   def create

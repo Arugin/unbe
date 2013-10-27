@@ -20,6 +20,8 @@ class Gallery
 
   has_many :comments, dependent: :destroy, as: :commentable, class_name: 'Comment'
 
+  default_scope order_by(:created_at => :desc)
+
   def title
     name
   end
