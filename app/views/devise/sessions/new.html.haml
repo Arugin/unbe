@@ -11,3 +11,6 @@
     = f.button :submit, "Войти", :class => "btn-primary"
 
 = render "devise/shared/links"
+
+- content_for(:right_bar) do
+  = render :partial => 'articles/index_bar'

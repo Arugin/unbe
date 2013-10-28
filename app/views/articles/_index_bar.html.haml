@@ -1,4 +1,6 @@
 .sidebar-news
+  .commercial
+    = render :partial => 'common/commercial_block'
   - if user_signed_in? and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
     %ul.navigation
       %li
