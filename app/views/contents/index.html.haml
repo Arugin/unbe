@@ -1,13 +1,13 @@
 .row-fluid
   .span4
     %h4.section=title 'Работы'
-  .span4
+  .span5
     .pull-right
       - if can? :create, Gallery
         = link_to new_gallery_path, :class=>'btn btn-primary' do
           %i
           =t(:NEW_GALLERY)
-  .span3.middle
+  .span3.middle#article-search
     = render :partial => "common/search_control", :locals => { :current_action_path => content_base_contents_path }
 
 #index-contents.ujs-pagination

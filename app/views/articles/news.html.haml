@@ -2,7 +2,7 @@
   .span4
     %h4.section=title 'Новости'
   .span8
-    .pull-right
+    .pull-right#article-search
       = render :partial => "common/search_control", :locals => { :current_action_path => news_articles_path }
 
 #news.ujs-pagination
