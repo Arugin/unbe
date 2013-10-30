@@ -331,9 +331,26 @@ body{
       width: 728px;
       padding-bottom: 5px;
       padding-top: 5px;
+      .credentials{
+        width: 100%;
+        .pull-right{
+          form{
+            margin-bottom: 0px;
+          }
+        }
+      }
       .avatar{
         text-align: center;
         vertical-align: middle;
+      }
+      .author{
+        @extend .author;
+        a{
+          color: $link-color;
+        }
+      }
+      .publishDate{
+        @extend .publishDate;
       }
       .contentcell{
         @extend .description;

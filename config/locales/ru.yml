@@ -29,6 +29,8 @@ ru:
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
   COMMENT_SO_BIG: При добавлении комментария возникли проблемы.
+  UNABLE_TO_DELETE_COMMENT: Невозможно удалить комментарий
+  COMMENT_REMOVE_SUCCESS: Комментарий успешно удален
 
   # cycles
   CYCLE_CREATE_SUCCESS: Цикл статей успешно создан

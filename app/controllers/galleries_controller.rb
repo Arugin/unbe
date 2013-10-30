@@ -53,7 +53,7 @@ class GalleriesController < ApplicationController
 
     message = t :UNABLE_TO_DELETE_GALLERY
     begin
-      if @gallery.destroy == false
+      unless @gallery.destroy
         redirect_to @gallery, alert: message + @gallery.errors.full_messages.join(', ')
         return
       end

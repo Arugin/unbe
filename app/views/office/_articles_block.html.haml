@@ -63,6 +63,6 @@
                             = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
                     %td
                         - if can? :destroy, article
-                            = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-white icon-remove", :id => 'btn-rm-rf'
+                            = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-remove", :id => 'btn-rm-rf'
 
 = paginate @articles, :remote => true

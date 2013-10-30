@@ -56,7 +56,7 @@ class Ability
       can :vote_up, [Comment,Article, Content::BaseContent]
       can :vote_down, [Comment,Article, Content::BaseContent]
       can :destroy, Comment do |comment|
-        (comment.author == user)&&(comment.votes_point == 0)
+        (comment.user == user)&&(comment.votes_point == 0)
       end
 
       cannot :approve, Article

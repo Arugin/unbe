@@ -63,7 +63,7 @@ class ContentsController < ApplicationController
 
     message = t :UNABLE_TO_DELETE_CONTENT
     begin
-      if @content.destroy == false
+      unless @content.destroy
         redirect_to session.delete(:destroy_gallery), alert: message + @content.errors.full_messages.join(', ')
         return
       end

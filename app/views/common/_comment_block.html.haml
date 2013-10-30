@@ -6,11 +6,16 @@
           = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar", :size => "25x25")
         - else
           = image_tag(comment.user.avatar.file.url(:mini), :size => "25x25")
-      %td.author
-        = link_to user_profile_path(comment.user) do
-          = comment.user.name
+      %td.credentials
+        .author
+          = link_to user_profile_path(comment.user) do
+            %span
+              %span= comment.user.name
         .publishDate
-        = l comment.created_at.in_time_zone, format: :short
+          = l comment.created_at.in_time_zone, format: :short
+        .pull-right
+          - if can? :destroy, comment
+            = button_to "", comment, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
     %tr
       %td.votecell
         .vote-comment

@@ -59,8 +59,14 @@ table.users .thumb {
   margin-top: 5px;
   height: 18px;
   width: 18px;
-  background-color: #A00202;
-  border-bottom-color: #A00202;
+  background-color: white;
+  border-bottom-color: white;
+}
+
+#btn-rm-cm{
+  @extend #btn-rm-rf;
+  margin-top: 0px;
+  border: none;
 }
 
 h3.right-bar{
@@ -332,4 +338,21 @@ h4.random-news{
 .commercial{
   margin-top: -30px;
   margin-bottom: -5px;
+}
+
+.gallery{
+  td{
+    background-color: rgb(239, 239, 239);
+  }
+}
+
+.galleries{
+  table{
+    .center{
+      text-align: center;
+    }
+    .content-header{
+      padding-left: 25px;
+    }
+  }
 }

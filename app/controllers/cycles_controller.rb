@@ -51,7 +51,7 @@ class CyclesController < ApplicationController
 
     message = t :UNABLE_TO_DELETE_CYCLE
     begin
-      if @cycle.destroy == false
+      unless @cycle.destroy
         redirect_to @cycle, alert: message + @cycle.errors.full_messages.join(', ')
         return
       end

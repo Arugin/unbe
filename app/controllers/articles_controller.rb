@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
 
     message = t :UNABLE_TO_DELETE_ARTICLE
     begin
-      if @article.destroy == false
+      unless @article.destroy
         redirect_to @article, alert: message + @article.errors.full_messages.join(', ')
         return
       end

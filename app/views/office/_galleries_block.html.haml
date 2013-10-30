@@ -1,7 +1,7 @@
 - if @galleries.blank?
     %p= t("NO_OFFICE_GALLERIES")
 - else
-    %table.table.table-striped
+    %table.table
         %thead
             %th
             %th
@@ -12,7 +12,7 @@
             %th{:width => "80px"}
         %tbody
             - @galleries.each do |gallery|
-                %tr
+                %tr.gallery
                     %td
                         .header
                             = link_to gallery_path(gallery) do
@@ -22,7 +22,7 @@
                     %td
                         .info
                             = "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"
-                    %td
+                    %td.center
                         .options
                             .btn-group
                                 %button.btn
@@ -40,8 +40,14 @@
                         = render :partial => "common/comments_count", locals: { subject: gallery }
                     %td.mini-vote
                         = render :partial => "common/rate_count", locals: { subject: gallery }
-                    %td
+                    %td.center
                         - if can? :destroy, gallery
                             = button_to "Удалить", gallery, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+                - unless gallery.contents.empty?
+                    = render :partial => 'contents_block', locals: {contents: gallery.contents}
+
+
+
+
 
 = paginate @galleries, :remote => true

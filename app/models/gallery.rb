@@ -22,6 +22,8 @@ class Gallery
 
   default_scope order_by(:created_at => :desc)
 
+  search_in :name, :tags
+
   def title
     name
   end

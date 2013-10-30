@@ -1,0 +1,20 @@
+- contents.each do |content|
+    %tr
+        %td.content-header
+            .header
+                = link_to content_base_content_path(content) do
+                    = content.title
+        %td
+
+        %td.center
+            = link_to edit_content_base_content_path content do
+                %i.icon-pencil{title: t(:EDIT_CONTENT)}
+        %td.views-wrapper
+            = render :partial => "common/views_count", locals: { subject: content }
+        %td.views-wrapper
+            = render :partial => "common/comments_count", locals: { subject: content }
+        %td.mini-vote
+            = render :partial => "common/rate_count", locals: { subject: content }
+        %td.center
+            - if can? :destroy, content
+                = button_to "", content, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
