@@ -252,6 +252,14 @@ h4.random-news{
 }
 
 #articles{
+  table{
+    td{
+      vertical-align: middle;
+    }
+  }
+  form{
+    margin-bottom: 0px;
+  }
   .views-wrapper{
     vertical-align: middle;
     padding-top: 10px;
@@ -281,13 +289,13 @@ h4.random-news{
 
   .thumb{
     width: 15px;
-    height: 15px;
+    height: 20px;
   }
 }
 
 .thumb{
   width: 15px;
-  height: 15px;
+  height: 20px;
 }
 
 #cycles{
@@ -297,6 +305,16 @@ h4.random-news{
 #galleries{
   @extend #articles;
 }
+
+#contents.ujs-pagination{
+  @extend #articles;
+  padding-left: 0px;
+}
+
+#users{
+  @extend #articles;
+}
+
 
 #index-contents{
   .video{
