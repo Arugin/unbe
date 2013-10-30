@@ -7,15 +7,13 @@
         =link_to main_app.new_news_articles_path do
           Опубликовать новость
   %h3.right-bar
-    Случайная работа
   = render :partial => 'contents/tiny_block', locals: { :content => Content::BaseContent.random_entry }
   .clear
   %h3.right-bar
-    Случайная cтатья
   =render :partial => 'articles/article_tiny_block', locals: { :article => Article.random_entry }
 
   %h3.right-bar
-    Случайные пользователи
+    Пользователи
   %ul.navigation
     - User.random_entries(3).each do |user|
       %li

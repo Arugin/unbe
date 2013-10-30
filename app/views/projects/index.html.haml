@@ -24,11 +24,17 @@
       ниже приведены минимальные критерии запуска раздела "Проекты":
   .clear
   %dl
-    - max_articles = 350; max_users = 1001
+    - max_articles = 350; max_users = 1001; max_works = 200
     %dt= "Статей (#{@stats.articles_count}/#{max_articles})"
     %dd
       .progress.progress-success.span10
         .bar{style:"width: #{@stats.percentage(:articles, max_articles)}%"}
+
+  %dl
+    %dt= "Работ (#{@stats.content_count}/#{max_works})"
+    %dd
+      .progress.progress-success.span10
+        .bar{style:"width: #{@stats.percentage(:content, max_works)}%"}
   %dl
     %dt= "Пользователей (#{@stats.users_count}/#{max_users})"
     %dd

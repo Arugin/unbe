@@ -23,16 +23,16 @@
           = l article.created_at.in_time_zone, format: :short
     .clear
     .views
-      создано
+      = article.author.female? ? 'создала' : 'создал'
       = link_to user_cycles_path(article.author) do
         = article.author.cycles.all.size - 2
       = Russian::pluralize(article.author.cycles.all.size - 2, 'цикл','цикла', 'циклов')
     .clear
     .views
-      = "написано #{article.author.articles.size} #{Russian::pluralize(article.author.articles.size, 'статья','статьи', 'статей')}"
+      = "#{article.author.female? ? 'написала' : 'написал'} #{article.author.articles.size} #{Russian::pluralize(article.author.articles.size, 'статья','статьи', 'статей')}"
     .clear
     .views
-      = "оставлено #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
+      = "#{article.author.female? ? 'оставила' : 'оставил'} #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
   .pull-right
     .control-panel
       .edit

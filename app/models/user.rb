@@ -127,6 +127,18 @@ class User
     self.save
   end
 
+  def male?
+    self.gender.male?
+  end
+
+  def female?
+    self.gender.female?
+  end
+
+  def unknown?
+    self.gender.unknown?
+  end
+
   protected
 
   def remove_all_roles

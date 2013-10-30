@@ -45,7 +45,7 @@ class Ability
       can :manage, Cycle, :author => user
       cannot :destroy, Cycle
       can :destroy, Cycle do |cycle|
-        (cycle.author == user)&&(cycle.articles.empty?)&&(cycle.system == false)
+        (cycle.author == user)&&(cycle.articles.empty?)&&(not(cycle.system))
       end
 
       can :manage, Gallery, :author => user
@@ -55,6 +55,9 @@ class Ability
       can :create, Comment
       can :vote_up, [Comment,Article, Content::BaseContent]
       can :vote_down, [Comment,Article, Content::BaseContent]
+      can :destroy, Comment do |comment|
+        (comment.author == user)&&(comment.votes_point == 0)
+      end
 
       cannot :approve, Article
       cannot :to_news, Article

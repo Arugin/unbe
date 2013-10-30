@@ -14,5 +14,9 @@ module Stats
       (self.send("#{value.to_s}_count")/max_value.to_f)*100
     end
 
+    def content_count
+      Content::BaseContent.where(approved_to_news: true).count
+    end
+
   end
 end

@@ -17,6 +17,7 @@
  */
 
 $link-color: #666666;
+$font: Verdana, sans-serif;
 
 .input-search, .dataTables_wrapper {
   &.right {
@@ -67,6 +68,7 @@ h3.right-bar{
   color: #333;
   margin: 0 0 2px;
   text-transform: uppercase;
+  font-family: $font;
 }
 
 ul.navigation{
@@ -92,10 +94,11 @@ ul.navigation{
 }
 
 h4.section{
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 26px;
+  font-weight: normal;
   margin: 0;
-  margin-top: 5px;
+  margin-top: 9px;
+  font-family: $font;
 }
 
 h4.section-small{
