@@ -2,7 +2,7 @@
 class ArticlesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:news,:index, :show, :by_area]
-  load_and_authorize_resource :except => [:news, :index, :show, :by_area]
+  load_and_authorize_resource :except => [:news, :index, :by_area]
 
   respond_to :html, :js
 
@@ -94,7 +94,6 @@ class ArticlesController < ApplicationController
   end
 
   def approve
-    authorize! :approve, Article
     @article = Article.find(params[:id])
     @article.approve
     redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
@@ -127,6 +126,17 @@ class ArticlesController < ApplicationController
     @article =  Article.find(params[:id])
     current_user.vote(@article, :down)
     redirect_to session.delete(:article_votable)
+  end
+
+  def to_garbage
+    @article = Article.find(params[:id])
+    @article.to_garbage
+    redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_TO_GARBAGE)
+  end
+
+  def garbage
+    @articles = Article.where(is_garbage:true).page(params[:page])
+    @article_areas = ArticleArea.without_news
   end
 
   protected

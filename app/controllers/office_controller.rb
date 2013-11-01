@@ -30,7 +30,7 @@ class OfficeController < ApplicationController
   end
 
   def non_approved
-    @articles = Article.non_approved(current_user, params).page(params[:page])
+    @articles = Article.non_approved(current_user, params).page(params[:page]).per(15)
     authorize! :approve, Article
     respond_with @articles
   end

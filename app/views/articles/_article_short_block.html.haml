@@ -1,7 +1,11 @@
 .row-fluid{itemscope:true, itemtype:'http://schema.org/Article'}
   %h4
-    = link_to article_path(article) do
-      %span= article.title
+    - if article.is_garbage
+      = link_to draft_article_path(article) do
+        %span= article.title
+    - else
+      = link_to article_path(article) do
+        %span= article.title
   .author
     = link_to user_profile_path(article.author) do
       %span{itemprop:'author', itemscope:true, itemtype:'http://schema.org/Person'}
@@ -17,10 +21,11 @@
     - else
       = article.tmpContent.html_safe
   .clear
-  - if article.content.size != article.short_content.size
+  - unless article.is_garbage
+    - if article.content.size != article.short_content.size
+      .more-info
+        = link_to article_path(article) do
+          =t 'READ_MORE'
     .more-info
-      = link_to article_path(article) do
-        =t 'READ_MORE'
-  .more-info
-    = link_to article_path(article), itemprop:"url" do
-      =t 'COMMENTS', count: article.comments.size, comment: Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')
+      = link_to article_path(article), itemprop:"url" do
+        =t 'COMMENTS', count: article.comments.size, comment: Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')

@@ -25,6 +25,8 @@ ru:
   COUNT_VIEWS: Количество уникальных просмотров
   RATING: Рейтинг
   NO_CONTENTS_FOUND: Нет ни одной работы
+  TO_GARBAGE: В мусор
+  ARTICLE_TRASH: Ваша статья нарушает правила сообщества, или не соответствует тематике сайта, или требует серьезной доработки, чтобы стать читаемой
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
@@ -51,6 +53,7 @@ ru:
   NO_ARTICLES_FOUND: Ни одной статьи не найдено
   ARTICLE_REMOVE_SUCCESS: Статья успешно удалена
   EDIT_ARTICLE: Редактировать статью
+  ARTICLE_APPROVE_TO_GARBAGE: Статья отправлена в мусор
 
   # galleries
   GALLERY_CREATE_SUCCESS: Галерея успешно создана

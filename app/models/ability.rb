@@ -33,6 +33,9 @@ class Ability
     can :read, Article
     can :read, Cycle
     can :read, User
+    can :draft, Article do |article|
+      article.is_garbage || article.tmpContent.present?
+    end
     cannot :index, User
 
 
@@ -59,8 +62,13 @@ class Ability
         (comment.user == user)&&(comment.votes_point == 0)
       end
 
+      #cannot :read, Article
+      cannot :show, Article do |article|
+         article.is_garbage
+      end
       cannot :approve, Article
       cannot :to_news, Article
+      cannot :to_garbage, Article
       cannot :approve, Content::BaseContent
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
@@ -88,6 +96,7 @@ class Ability
 
       cannot :destroy, Article
       can :destroy, Article, :isApproved => false, :isUpdated => false
+      can :destroy, Article, :is_garbage => true
 
       cannot :destroy, Cycle
       can :destroy, Cycle do |cycle|

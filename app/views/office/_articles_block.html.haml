@@ -23,8 +23,12 @@
                             %input{type: 'checkbox', class: 'group-checker'}
                     %td
                         .header
-                            = link_to article_path(article) do
-                                %span= article.title
+                            - if article.is_changed?
+                                = link_to draft_article_path(article) do
+                                    %span= article.title
+                            - else
+                                = link_to article_path(article) do
+                                    %span= article.title
                         .publishDate
                             = l article.created_at.in_time_zone, format: :short
                     %td
@@ -48,6 +52,8 @@
                     %td.thumb-wrapper
                         - if article.isUpdated
                             %i.icon-pencil{title: t('ARTICLE_CHANGED')}
+                        - if article.is_garbage
+                            %i.icon-trash{title: t('ARTICLE_TRASH')}
                     %td.thumb-wrapper
                         - unless article.isPublished
                             = link_to publish_article_path(article) do

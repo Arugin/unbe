@@ -45,12 +45,15 @@ Unbe::Application.routes.draw do
       get 'news'
       get 'by_area'
       get 'new_news'
+      get 'garbage'
     end
     member do
       get 'publish'
       get 'approve'
       get 'vote_up'
       get 'vote_down'
+      get 'draft'
+      get 'to_garbage'
     end
   end
 

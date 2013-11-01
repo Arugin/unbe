@@ -1,11 +1,9 @@
-- keywords article.tag_list
-- description article.tiny_content
 .row-fluid{itemscope:true, itemtype:'http://schema.org/Article'}
   %h4
     = link_to cycle_path(article.cycle) do
       = article.cycle.correct_title
     %span.divider /
-    = link_to article_path(article), itemprop:"url" do
+    = link_to draft_article_path(article), itemprop:"url" do
       %span= title article.title
   .news-user-avatar
     - if article.author.avatar.nil?
@@ -36,20 +34,21 @@
       = "#{article.author.female? ? 'оставила' : 'оставил'} #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
   .pull-right
     .control-panel
+      - unless article.is_garbage
+        .publishDate
+          = "Тип: #{t article.article_type.title}"
+        .publishDate
+          = "Область: #{t article.article_area.title}"
       .edit
         - if can? :update, article
           = link_to edit_article_path(article) do
             %i.icon-pencil{title: t(:EDIT_ARTICLE)}
-      = render :partial => 'common/views_count', locals: { subject: article }
-      %div{class:"vote-#{article._id}"}
-        = render :partial => 'common/vote_block', :locals => { :votable => article }
+      .edit
+        - if can? :destroy, article
+          = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
   .clear
   .description{itemprop:'articleBody'}
-    - unless article.content.nil?
+    - if article.is_garbage
       = article.content.html_safe
     - else
       = article.tmpContent.html_safe
-
-  .clear
-  .pull-right
-    .share42init{data:{url:article_url(article),title: article.title,description: article.tiny_content, path: "#{ENV["RAILS_RELATIVE_URL_ROOT"]}/assets/share42/", image:"#{ENV["RAILS_RELATIVE_URL_ROOT"]}/images/main/unbe.png"}}

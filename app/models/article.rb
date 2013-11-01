@@ -21,6 +21,7 @@ class Article
   field :baseRating, type: Integer
   field :rating, type: Integer
   field :system_tag, type: Symbol
+  field :is_garbage, type: Boolean, default: false
   field :to_news, type: Boolean, default: false
 
   belongs_to :article_area
@@ -36,20 +37,20 @@ class Article
   default_scope order_by(:created_at => :desc)
 
   scope :last_news, lambda { |user, params = {}|
-    search_for(user,params).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
+    search_for(user,params).not_in(is_garbage: true).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
   }
   scope :by_area, lambda { |user, params = {}, area|
-    search_for(user,params).where(article_area: area).order_by([:created_at, :desc]).and({isApproved: true})
+    search_for(user,params).not_in(is_garbage: true).where(article_area: area).order_by([:created_at, :desc]).and({isApproved: true})
   }
   scope :non_approved, lambda { |user, params = {}|
     search_for(user,params).any_of({isApproved: false},{isUpdated: true}).and({isPublished: true})
   }
   scope :approved, lambda { |user, params = {}|
-    search_for(user,params).where({isApproved: true}).order_by([:created_at, :desc])
+    search_for(user,params).not_in(is_garbage: true).where({isApproved: true}).order_by([:created_at, :desc])
   }
 
   scope :random,lambda {
-    all.not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
+    not_in(is_garbage: true).not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
   }
 
   attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag
@@ -68,11 +69,22 @@ class Article
     self.save
   end
 
-  def approve
+  def approve_prepare
     self.isUpdated = false
     self.isApproved = true
     self.content = self.tmpContent
     self.tmpContent = nil
+  end
+
+  def approve
+    approve_prepare
+    self.is_garbage = false
+    self.save
+  end
+
+  def to_garbage
+    approve_prepare
+    self.is_garbage = true
     self.save
   end
 
@@ -100,6 +112,10 @@ class Article
     end
 
     return content[beginIndex, endIndex]
+  end
+
+  def is_changed?
+    !isPublished || !isApproved || isUpdated
   end
 
 end
