@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    impressionist(@article, unique: [:session_hash])
+    impressionist(@article, '', unique: [:session_hash, :ip_address])
     @comments = @article.comments.page(params[:page]).per(15)
     respond_with @comments
   end

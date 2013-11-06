@@ -9,13 +9,14 @@ module Content
     include Concerns::Taggable
     include Mongo::Voteable
 
-    is_impressionable
+    is_impressionable counter_cache: true, :unique => :ip_address
 
     field :title, type: String
     field :src, type: String
     field :description, type: String
     field :approved_to_news, type: Boolean, default: false
     field :reviewed, type: Boolean, default: false
+    field :impressions_count, type: Integer, default: 0
 
     validates :title, length: {maximum: 70}, allow_blank: true
     validates :description, length: {maximum: 1500}

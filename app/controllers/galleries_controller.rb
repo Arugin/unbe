@@ -13,7 +13,7 @@ class GalleriesController < ApplicationController
   def show
     @gallery = Gallery.find(params[:id])
     @comments = @gallery.comments.page(params[:page]).per(15)
-    impressionist(@gallery, unique: [:session_hash])
+    impressionist(@gallery,'', unique: [:session_hash, :ip_address])
     respond_with @comments
   end
 

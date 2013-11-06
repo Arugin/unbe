@@ -7,10 +7,11 @@ class Gallery
   include Concerns::Taggable
   include Mongo::Voteable
 
-  is_impressionable
+  is_impressionable counter_cache: true, :unique => :ip_address
 
   field :name, type: String
   field :description, type: String
+  field :impressions_count, type: Integer, default: 0
 
   validates :name, presence: true, length: {minimum:3,maximum: 70}
   validates :description, length: {maximum: 1000}

@@ -10,7 +10,7 @@ class Article
   include ActionView::Helpers::TextHelper
   include Mongo::Voteable
 
-  is_impressionable
+  is_impressionable counter_cache: true, :unique => :ip_address
 
   field :title, type: String
   field :content, type: String
@@ -23,6 +23,7 @@ class Article
   field :system_tag, type: Symbol
   field :is_garbage, type: Boolean, default: false
   field :to_news, type: Boolean, default: false
+  field :impressions_count, type: Integer, default: 0
 
   belongs_to :article_area
   belongs_to :article_type
