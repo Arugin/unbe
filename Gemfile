@@ -31,7 +31,6 @@ gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
 gem 'russian', '~> 0.6.0'
 gem 'impressionist'
 gem 'meta-tags', :require => 'meta_tags'
-gem 'google_ajax_crawler', :git => 'https://github.com/ChristopheBelpaire/google-ajax-crawler', :branch =>  'poltergeist_driver'
 
 # Gems used only for assets and not required
 # in production environments by default.
