@@ -27,12 +27,14 @@ ru:
   NO_CONTENTS_FOUND: Нет ни одной работы
   TO_GARBAGE: В мусор
   ARTICLE_TRASH: Ваша статья нарушает правила сообщества, или не соответствует тематике сайта, или требует серьезной доработки, чтобы стать читаемой
+  DAY_COUNT_VIEWS: Количество просмотров за последний день
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
   COMMENT_SO_BIG: При добавлении комментария возникли проблемы.
   UNABLE_TO_DELETE_COMMENT: Невозможно удалить комментарий
   COMMENT_REMOVE_SUCCESS: Комментарий успешно удален
+  COMMENTS_COUNT: Количество комментариев
 
   # cycles
   CYCLE_CREATE_SUCCESS: Цикл статей успешно создан
@@ -155,7 +157,7 @@ ru:
 
   time:
     formats:
-      short: "%Y.%m.%d в %k:%M:%S"
+      short: "%e %B %Y в %k:%M:%S"
 
   ONLY_IMAGES_CAN_BE_UPLOADED: Файлы следующих форматов разрешено загружать (jpeg/png)
   FILE_SIZE_IS_LIMITED: Размер файла не должен превышать 200кб

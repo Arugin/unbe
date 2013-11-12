@@ -19,7 +19,7 @@
                                 =gallery.name
                         .publishDate
                             = l gallery.created_at.in_time_zone, format: :short
-                    %td
+                    %td.views-wrapper
                         .info
                             %i.icon-th-list{title: "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"}
                             = gallery.contents.size
@@ -35,8 +35,8 @@
                                     %li
                                         = link_to edit_gallery_path(gallery) do
                                             Изменить
-                    %td.views-wrapper
-                        = render :partial => "common/views_count", locals: { subject: gallery }
+                    %td.long
+                        = render :partial => "common/views_count", locals: { subject: gallery, growth: true }
                     %td.views-wrapper
                         = render :partial => "common/comments_count", locals: { subject: gallery }
                     %td.mini-vote

@@ -14,7 +14,7 @@
         - if can? :update, gallery
           = link_to edit_gallery_path(gallery) do
             %i.icon-pencil{title: t(:EDIT_GALLERY)}
-      = render :partial => 'common/views_count', locals: { subject: gallery }
+      = render :partial => 'common/views_count', locals: { subject: gallery, growth: false }
   .clear
   .description
     - unless gallery.description.nil?

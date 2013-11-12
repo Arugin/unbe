@@ -43,8 +43,8 @@
                                     %li
                                         = link_to edit_article_path(article) do
                                             Изменить
-                    %td.views-wrapper
-                        = render :partial => "common/views_count", locals: { subject: article }
+                    %td.long
+                        = render :partial => "common/views_count", locals: { subject: article, growth: true }
                     %td.views-wrapper
                         = render :partial => "common/comments_count", locals: { subject: article }
                     %td.mini-vote

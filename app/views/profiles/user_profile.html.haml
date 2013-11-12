@@ -6,8 +6,10 @@
       .fullname= "#{@user.first_name} #{@user.second_name}"
       .clear
       %dl
-        %dt Дата регистрации:
+        %dt Зарегистрирован:
         %dd= l @user.created_at.in_time_zone, format: :short
+        %dt Активность:
+        %dd= "последний раз был на сайте #{l @user.last_sign_in_at.in_time_zone, format: :short}"
         %dt Откуда:
         %dd
           - if not @user.from.nil? and not @user.from.empty?

@@ -265,6 +265,13 @@ h4.random-news{
     padding-top: 10px;
     min-width: 50px;
   }
+  .long{
+    @extend .views-wrapper;
+    min-width: 65px;
+    .grow{
+      color: #49a744;
+    }
+  }
   .thumb-wrapper{
     @extend .thumb-wrapper;
   }
@@ -379,4 +386,9 @@ h4.random-news{
   input{
     width: 134px;
   }
+}
+
+.commercial {
+  margin: 0 auto;
+  margin-bottom: 10px;
 }

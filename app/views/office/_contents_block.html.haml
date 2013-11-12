@@ -9,8 +9,8 @@
         %td.center
             = link_to edit_content_base_content_path content do
                 %i.icon-pencil{title: t(:EDIT_CONTENT)}
-        %td.views-wrapper
-            = render :partial => "common/views_count", locals: { subject: content }
+        %td.long
+            = render :partial => "common/views_count", locals: { subject: content, growth: true }
         %td.views-wrapper
             = render :partial => "common/comments_count", locals: { subject: content }
         %td.mini-vote
