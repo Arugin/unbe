@@ -49,7 +49,10 @@
       = article.content.html_safe
     - else
       = article.tmpContent.html_safe
-
+  .clear
+  .center
+    - unless article.script.nil?
+      = article.script.html_safe
   .clear
   .pull-right
     .share42init{data:{url:article_url(article),title: article.title,description: article.tiny_content, path: "#{ENV["RAILS_RELATIVE_URL_ROOT"]}/assets/share42/", image:"#{ENV["RAILS_RELATIVE_URL_ROOT"]}/images/main/unbe.png"}}

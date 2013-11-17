@@ -15,6 +15,7 @@ class Article
   field :title, type: String
   field :content, type: String
   field :tmpContent, type: String
+  field :script, type: String
   field :isPublished, type: Boolean, default: false
   field :isApproved, type: Boolean, default: false
   field :isUpdated, type: Boolean, default: false
@@ -54,7 +55,7 @@ class Article
     not_in(is_garbage: true).not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
   }
 
-  attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag
+  attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag, :script
 
   voteable self, :up => +1, :down => -1
   voteable Cycle, :up => +1, :down => -1

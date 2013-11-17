@@ -31,6 +31,7 @@ class ArticlesController < ApplicationController
       publish_and_approve @article
       change_system_tag
       push_to_news
+      add_script
       @article.save
       redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
     else
@@ -49,6 +50,7 @@ class ArticlesController < ApplicationController
       end
       change_system_tag
       push_to_news
+      add_script
       @article.save
       redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
@@ -157,6 +159,12 @@ class ArticlesController < ApplicationController
   def push_to_news
     if can? :to_news, Article
       @article.to_news = params[:article][:to_news]
+    end
+  end
+
+  def add_script
+    if can? :script, Article
+      @article.script = params[:article][:script]
     end
   end
 

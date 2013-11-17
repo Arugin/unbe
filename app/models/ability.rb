@@ -67,6 +67,7 @@ class Ability
          article.is_garbage
       end
       cannot :approve, Article
+      cannot :script, Article
       cannot :to_news, Article
       cannot :to_garbage, Article
       cannot :approve, Content::BaseContent
