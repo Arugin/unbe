@@ -1,4 +1,4 @@
-/* share42.com | 09.09.2013 | (c) Dimox */
+/* share42.com | 10.11.2013 | (c) Dimox */
 (function ($) {
     $(function () {
         $('div.share42init').each(function (idx) {
@@ -7,16 +7,17 @@
                 t = el.attr('data-title'),
                 i = el.attr('data-image'),
                 d = el.attr('data-description'),
-                f = el.attr('data-path');
+                f = el.attr('data-path'),
+                z = el.attr("data-zero-counter");
             if (!u) u = location.href;
+            if (!z) z = 0;
 
             function fb_count(url) {
                 var shares;
-                console.log ('http://graph.facebook.com/?callback=?&ids=' + encodeURIComponent(url));
                 $.getJSON('http://graph.facebook.com/?callback=?&ids=' + encodeURIComponent(url), function (data) {
-                    shares = (data[url].shares || 0);
-                    el.find('a[data-count="fb"]').html('<span>' + shares + '</span>');
-                });
+                    shares = data[url].shares || 0;
+                    if (shares > 0 || z == 1) el.find('a[data-count="fb"]').after('<span class="share42-counter">' + shares + '</span>')
+                })
             }
             fb_count(u);
 
@@ -24,8 +25,8 @@
                 var shares;
                 $.getJSON('http://urls.api.twitter.com/1/urls/count.json?callback=?&url=' + url, function (data) {
                     shares = data.count;
-                    el.find('a[data-count="twi"]').html('<span>' + shares + '</span>');
-                });
+                    if (shares > 0 || z == 1) el.find('a[data-count="twi"]').after('<span class="share42-counter">' + shares + '</span>')
+                })
             }
             twi_count(u);
 
@@ -36,9 +37,9 @@
                 window.VK.Share = {
                     count: function (idx, number) {
                         shares = number;
-                        $('div.share42init').eq(idx).find('a[data-count="vk"]').html('<span>' + shares + '</span>');
+                        if (shares > 0 || z == 1) $('div.share42init').eq(idx).find('a[data-count="vk"]').after('<span class="share42-counter">' + shares + '</span>')
                     }
-                };
+                }
             }
             vk_count(u);
             if (!f) {
@@ -77,8 +78,8 @@
             if (i != 'null' && i != '') vkImage = '&image=' + i;
             var s = new Array('"#" data-count="fb" onclick="window.open(\'http://www.facebook.com/sharer.php?' + fbQuery + '\', \'_blank\', \'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0\');return false" title="Поделиться в Facebook"', '"#" onclick="window.open(\'https://plus.google.com/share?url=' + u + '\', \'_blank\', \'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0\');return false" title="Поделиться в Google+"', '"#" data-count="twi" onclick="window.open(\'https://twitter.com/intent/tweet?text=' + t + '&url=' + u + '\', \'_blank\', \'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0\');return false" title="Добавить в Twitter"', '"#" data-count="vk" onclick="window.open(\'http://vk.com/share.php?url=' + u + '&title=' + t + vkImage + '&description=' + d + '\', \'_blank\', \'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0\');return false" title="Поделиться В Контакте"');
             var l = '';
-            for (j = 0; j < s.length; j++) l += '<a rel="nofollow" style="display:inline-block;vertical-align:bottom;width:32px;height:32px;margin:0 6px 6px 0;padding:0;outline:none;background:url(' + f + 'icons.png) -' + 32 * j + 'px 0 no-repeat" href=' + s[j] + ' target="_blank"></a>';
-            el.html('<span id="share42">' + l + '</span>');
+            for (j = 0; j < s.length; j++) l += '<span class="share42-item" style="display:inline-block;margin:0 6px 6px 0;height:32px;"><a rel="nofollow" style="display:inline-block;width:32px;height:32px;margin:0;padding:0;outline:none;background:url(' + f + 'icons.png) -' + 32 * j + 'px 0 no-repeat" href=' + s[j] + ' target="_blank"></a></span>';
+            el.html('<span id="share42">' + l + '</span>' + '<style>.share42-counter{display:inline-block;vertical-align:top;margin-left:9px;position:relative;background:#FFF;color:#666;} .share42-counter:before{content:"";position:absolute;top:0;left:-8px;width:8px;height:100%;} .share42-counter{padding:0 8px 0 4px;font:14px/32px Arial,sans-serif;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAgCAYAAADkK90uAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALVJREFUeNrs200KQiEUQGENnNesfbjA1hAEb1OO3rQ3FfxbgGBkXqI1aHAOXMTp/aaqnXNd0azeY44x25i7tbbrPmIv86q1qhijKqXI9QzIInnvVQjhBsgitdbUvu/hxCrWyBgjxxWQxQIEEAIEEAIEEAIEEAIEEAKEAAGEAAGEAAGEAAGEACFAACFA/jZ5KDeKgCxSSkmOjaekk5PH1jnnH8hF8x1harL7p/p+R3hYa18fAQYA49lEn38pVB4AAAAASUVORK5CYII=) 100% 0;} .share42-counter:before{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAgCAYAAAAv8DnQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALRJREFUeNrck8EJAyEQRZ1gBR4ExXtSVLaAVJQC0s56TgOi4MEKlImzSWDdiEmu+2EQ/U+dcRAQkW1lrT3V4VLjzDvmEQDuxhgmhGAfAO0kU0q5TA4dYKKdb/UAwTkfAo12CNRnRq11S1CzKOZ5Ru89bjU08ZtJ+ilJqCewEEIXALqGTLqGKlBKNcDS19cinYSreVvmuqK/k9wnkHLOQ+CWUhoCV+ccizGyUsqzWYPvPz0EGADHGK9qjbXCqgAAAABJRU5ErkJggg==)}</style>');
         })
     })
 })(jQuery);
