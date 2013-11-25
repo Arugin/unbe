@@ -18,6 +18,7 @@
 
 $link-color: #666666;
 $font: Verdana, sans-serif;
+@import "articles";
 
 .input-search, .dataTables_wrapper {
   &.right {
@@ -282,6 +283,13 @@ h4.random-news{
     float: none;
     vertical-align: middle;
     margin: 0 auto;
+  }
+  .floated-vote{
+    @extend .vote;
+    min-width: 50px;
+    vertical-align: middle;
+    margin: 0 auto;
+    margin-top: 7px;
   }
   .views-count{
     @extend .views-count;

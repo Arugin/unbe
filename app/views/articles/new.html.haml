@@ -4,6 +4,7 @@
 
   .form-inputs
     = f.input :title, input_html: { class: "span8" }
+    = f.input :logo, input_html: { class: "span8" }
     = f.association :article_area, collection: ArticleArea.without_news.order_by([:title, :desc]), input_html: { class: "span8" }, selected: ArticleArea.default_id, label_method: lambda { |area| "#{t(area.title)}" }
     = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: ArticleType.default_id, label_method: lambda { |type| "#{t(type.title)}" }
     = f.association :cycle, collection: Cycle.search_for(current_user,{scope:'current_user'}).order_by([:title, :asc]), input_html: { class: "span8" }, selected: Cycle.search_for(current_user, {scope: 'current_user'}).where(title: :NO_CYCLE).first._id, label_method: lambda { |cycle| cycle.correct_title }

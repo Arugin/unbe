@@ -137,6 +137,7 @@ ru:
   CREATED_AT: Создан
   TITLE: Заголовок
   PUBLISH: Опуб.
+  PUBLISH_FULL: Опубликована
   NEW_ARTICLE: Новая статья
   NEW_CYCLE: Новый цикл
 
@@ -201,6 +202,7 @@ ru:
         cycle: Цикл статей
         tag_list: Ключевые слова
         script: Разного рода скрипты
+        logo: Ссылка на логотип статьи
       cycle:
         title: Заголовок
         description: Описание

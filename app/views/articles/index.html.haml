@@ -18,7 +18,7 @@
     = render :partial => "common/search_control", :locals => { :current_action_path => articles_path }
 
 #articles.ujs-pagination
-  = render :partial => 'articles_short_block'
+  = render :partial => 'index_articles_block'
 
 - content_for(:right_bar) do
   = render :partial => 'right_bar', locals: { :article_areas => @article_areas }

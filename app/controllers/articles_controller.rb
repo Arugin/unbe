@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @articles = Article.approved(current_user, params).page(params[:page])
+    @articles = Article.approved(current_user, params).page(params[:page]).per(9)
     @article_areas = ArticleArea.without_news
     respond_with @articles
   end
@@ -104,7 +104,7 @@ class ArticlesController < ApplicationController
   def by_area
     @article_areas = ArticleArea.without_news
     @article_area =  ArticleArea.find(params[:article_area])
-    @articles = Article.by_area(current_user, params, @article_area).page(params[:page])
+    @articles = Article.by_area(current_user, params, @article_area).page(params[:page]).per(9)
     @address_additor = ''
     unless @article_area.nil?
       @address_additor = "?article_area=#{@article_area.id}"

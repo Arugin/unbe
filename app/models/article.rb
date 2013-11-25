@@ -14,6 +14,7 @@ class Article
   is_impressionable counter_cache: true, :unique => :ip_address
 
   field :title, type: String
+  field :logo, type: String
   field :content, type: String
   field :tmpContent, type: String
   field :script, type: String
