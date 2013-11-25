@@ -1,6 +1,7 @@
 #encoding: utf-8
 class Article
   include Mongoid::Document
+  include Mongoid::Slug
   include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::Ownerable
@@ -25,6 +26,8 @@ class Article
   field :is_garbage, type: Boolean, default: false
   field :to_news, type: Boolean, default: false
   field :impressions_count, type: Integer, default: 0
+
+  slug  :title, :history => true
 
   belongs_to :article_area
   belongs_to :article_type

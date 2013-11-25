@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Slug
   rolify
   include Mongoid::Timestamps
   include Concerns::Searchable
@@ -46,6 +47,8 @@ class User
   field :userAvatar, type: String
   field :statusPoints, type: Integer
   field :about, type: String
+
+  slug  :name, :history => true, reserve: ['admin', 'root']
 
   embeds_one :avatar, as: :imageable, class_name: 'Picture', :cascade_callbacks => true
   belongs_to :gender

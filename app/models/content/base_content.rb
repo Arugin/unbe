@@ -1,8 +1,9 @@
 module Content
   class BaseContent
     include Mongoid::Document
-    include Concerns::Randomizable
     include Mongoid::Timestamps
+    include Mongoid::Slug
+    include Concerns::Randomizable
     include Concerns::Shortable
     include Concerns::Searchable
     include Concerns::Ownerable
@@ -17,6 +18,8 @@ module Content
     field :approved_to_news, type: Boolean, default: false
     field :reviewed, type: Boolean, default: false
     field :impressions_count, type: Integer, default: 0
+
+    slug  :title, :history => true
 
     validates :title, length: {maximum: 70}, allow_blank: true
     validates :description, length: {maximum: 1500}

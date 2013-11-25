@@ -1,6 +1,7 @@
 class Gallery
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   include Concerns::Ownerable
   include Concerns::Searchable
   include Concerns::Shortable
@@ -15,6 +16,8 @@ class Gallery
 
   validates :name, presence: true, length: {minimum:3,maximum: 70}
   validates :description, length: {maximum: 1000}
+
+  slug  :name, :history => true
 
   has_many :contents, dependent: :destroy, as: :contentable, class_name: 'Content::BaseContent'
   accepts_nested_attributes_for :contents, :reject_if => lambda { |b| b[:src].blank? }

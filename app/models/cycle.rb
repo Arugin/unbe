@@ -1,6 +1,7 @@
 class Cycle
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Shortable
@@ -10,6 +11,8 @@ class Cycle
   field :title, type: String
   field :description, type: String
   field :system, type: Boolean, default: false
+
+  slug  :title, :history => true
 
   has_many :articles, dependent: :restrict
   has_many :comments, as: :commentable, class_name: 'Comment'
