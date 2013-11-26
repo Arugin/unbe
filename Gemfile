@@ -62,3 +62,4 @@ gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
 gem "capybara", ">= 1.1.2", :group => :test
 gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
+gem 'coveralls', require: false

@@ -1,4 +1,4 @@
-h1. unbe "!https://travis-ci.org/Arugin/unberails.png!":http://travis-ci.org/Arugin/unberails
+h1. unbe "!https://travis-ci.org/Arugin/unberails.png(Build Status)!":http://travis-ci.org/Arugin/unberails !https://coveralls.io/repos/Arugin/unberails/badge.png(Coverage Status)!:https://coveralls.io/r/Arugin/unberails
 
 unbe - is the creative association of independent filmmaking.
 
