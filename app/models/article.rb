@@ -1,5 +1,7 @@
 #encoding: utf-8
 class Article
+  require 'nokogiri'
+
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
@@ -122,6 +124,23 @@ class Article
 
   def is_changed?
     !isPublished || !isApproved || isUpdated
+  end
+
+  def get_logo_url
+     if logo.present?
+       logo
+     elsif first_image.present? and first_image['src'].index('http://').present?
+       first_image['src']
+     else
+       nil
+     end
+  end
+
+  protected
+
+  def first_image
+    doc = Nokogiri::HTML(self.content)
+    img = doc.xpath('//img').first
   end
 
 end

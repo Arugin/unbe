@@ -2,7 +2,7 @@
   .article-card
     .article-thumb
       = link_to article_path(article) do
-        = image_tag(article.logo.nil? ? '/images/common/filer.png': article.logo, title: article.title)
+        = image_tag(article.get_logo_url.nil? ? '/images/common/filer.png': article.get_logo_url, title: article.title)
     %h4
       - if article.is_garbage
         = link_to draft_article_path(article) do

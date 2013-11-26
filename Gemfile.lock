@@ -259,6 +259,7 @@ DEPENDENCIES
   mongoid_rails_migrations (>= 1.0.0)
   mongoid_search
   mongoid_slug
+  nokogiri
   rails (= 3.2.13)
   rails_12factor
   rake (>= 10.0)
