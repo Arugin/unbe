@@ -58,3 +58,5 @@ gem 'select2-rails'
 
 ### development and test
 gem "haml-rails", ">= 0.3.5", :group => :development
+gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
+gem "capybara", ">= 1.1.2", :group => :test
