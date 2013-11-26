@@ -36,15 +36,13 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
-  config.extend Helpers
-  config.include RequestMacros, :type => :request
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation, {:except => %w[roles]}
   end
   config.before(:each) do
     DatabaseCleaner.start
+    load "#{Rails.root}/db/test_seeds.rb"
   end
   config.after(:each) do
     DatabaseCleaner.clean
