@@ -1,9 +1,9 @@
 - if @articles.blank?
   %p= t("NO_ARTICLES_FOUND")
 - else
-  %ul.articles-card-list
+  %ul.items-card-list
     - @articles.each do |article|
-      %li.article
-        = render :partial => 'article_cool_block', :locals => { :article => article }
+      %li.item
+        = render :partial => 'common/cool_block', locals: { item: article, collection: 'articles' }
 
 = paginate @articles, :remote => true

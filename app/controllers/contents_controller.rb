@@ -21,7 +21,7 @@ class ContentsController < ApplicationController
   end
   #TODO: move to model
   def index
-    @contents = Content::BaseContent.search_for(current_user,params).where(approved_to_news: true, reviewed: true).page(params[:page]).per(10)
+    @contents = Content::BaseContent.search_for(current_user,params).where(approved_to_news: true, reviewed: true).page(params[:page]).per(9)
   end
 
   def create

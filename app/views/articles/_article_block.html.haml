@@ -6,7 +6,7 @@
       = article.cycle.correct_title
     %span.divider /
     = link_to article_path(article), itemprop:"url" do
-      %span= title article.title
+      %span{itemprop:"name"}= title article.title
   .news-user-avatar
     - if article.author.avatar.nil?
       = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
@@ -20,7 +20,7 @@
             %span{itemprop:'name'}
               = article.author.name
       .publishDate
-        %span{itemprop:'datePublished',content:article.created_at}
+        %span{itemprop:'datePublished', content:article.created_at}
           = l article.created_at.in_time_zone, format: :short
     .clear
     .views
