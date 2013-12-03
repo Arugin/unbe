@@ -9,6 +9,7 @@ module Content
     include Concerns::Ownerable
     include Concerns::Taggable
     include Mongo::Voteable
+    include ActionView::Helpers::TextHelper
 
     is_impressionable counter_cache: true, :unique => :ip_address
 
@@ -38,6 +39,8 @@ module Content
       search_for(user,params).where(reviewed: false)
     }
 
+    alias :content :description
+
     voteable self, :up => +1, :down => -1
 
     def youtube_or_vimeo_url
@@ -46,6 +49,9 @@ module Content
       errors.add(:src, :invalid)
     end
 
+    def tiny_content
+      strip_tags self.description
+    end
 
   end
 end

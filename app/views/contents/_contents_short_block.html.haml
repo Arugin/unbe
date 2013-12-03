@@ -1,8 +1,10 @@
 - if @contents.blank?
   %p= t("NO_CONTENTS_FOUND")
 - else
-  - @contents.each do |content|
-    = render :partial => 'content_short_block', :locals => { :content => content }
+  %ul.items-card-list
+    - @contents.each do |content|
+      %li.item
+        = render :partial => 'common/cool_block', locals: { item: content, collection: 'contents' }
 
 = paginate @contents, :remote => true
 

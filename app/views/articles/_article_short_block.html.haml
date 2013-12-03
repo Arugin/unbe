@@ -1,21 +1,15 @@
-.row-fluid{itemscope:true, itemtype:'http://schema.org/Article'}
+.row-fluid
   %h4
-    - if article.is_garbage
-      = link_to draft_article_path(article) do
-        %span= article.title
-    - else
-      = link_to article_path(article) do
-        %span= article.title
+    = render partial: 'title', locals: {item: article}
   .author
     = link_to user_profile_path(article.author) do
-      %span{itemprop:'author', itemscope:true, itemtype:'http://schema.org/Person'}
-        %span{itemprop:'name'}
-          = article.author.name
+      %span
+        = article.author.name
   .publishDate
-    %span{itemprop:'datePublished',content:article.created_at}
+    %span
       = l article.created_at.in_time_zone, format: :short
   .clear
-  .description{itemprop:'articleBody'}
+  .description
     - unless article.content.nil?
       = article.short_content.html_safe
     - else
@@ -27,5 +21,5 @@
         = link_to article_path(article) do
           =t 'READ_MORE'
     .more-info
-      = link_to article_path(article), itemprop:"url" do
+      = link_to article_path(article) do
         =t 'COMMENTS', count: article.comments.size, comment: Russian::pluralize(article.comments.size, 'комментарий','комментария','комментариев')
