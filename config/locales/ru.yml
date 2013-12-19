@@ -18,7 +18,7 @@ ru:
   BLOCK: Блокировать
   NO_THIS_ARTICLE: Эта статья ещё не написана
   USER_ACCESS_CHANGED: Право доступа пользователя к сайту изменено
-  UNABLE_TO_DELETE_ARTICLE: "Невозможно удалить статью: "
+  UNABLE_TO_DELETE_ARTICLE: "Невозможно удалить статью:"
   SURE: Вы уверены?
   NO_APPROVE: Нет подтверждать
   APPROVE: Подтвердить
@@ -28,6 +28,11 @@ ru:
   TO_GARBAGE: В мусор
   ARTICLE_TRASH: Ваша статья нарушает правила сообщества, или не соответствует тематике сайта, или требует серьезной доработки, чтобы стать читаемой
   DAY_COUNT_VIEWS: Количество просмотров за последний день
+
+  # mailer
+  WEEKLY_NEWS: Еженедельные новости unbe
+  MAIL_NEWS_HEADER: "Здравствуйте, %{user}"
+  MAIL_NEWS_DESC: Статьи на unbe за последнюю неделю.
 
   # comments
   COMMENT_ADD_SUCCESSFULLY: Комментарий добавлен
@@ -217,6 +222,7 @@ ru:
         password_confirmation: Подтвердите пароль
         password: Пароль
         current_password: Текущий пароль
+        subscribed: Подписка на новости
       picture:
         file: Изобркажение
       gallery:

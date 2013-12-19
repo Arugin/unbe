@@ -64,6 +64,9 @@ GEM
       simple_form (~> 2.1.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
+    clockwork (0.7.0)
+      activesupport
+      tzinfo (~> 0.3.35)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
@@ -284,6 +287,7 @@ DEPENDENCIES
   client_side_validations
   client_side_validations-mongoid
   client_side_validations-simple_form
+  clockwork
   coffee-rails (~> 3.2.1)
   coveralls
   database_cleaner (>= 0.9.1)
