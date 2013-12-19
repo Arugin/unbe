@@ -33,6 +33,7 @@ gem 'impressionist'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'mongoid_slug'
 gem 'nokogiri'
+gem 'clockwork'
 
 # Gems used only for assets and not required
 # in production environments by default.
