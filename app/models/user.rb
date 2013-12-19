@@ -22,6 +22,7 @@ class User
   field :first_name, type: String
   field :email, type: String
   field :encrypted_password, type: String, default: ""
+  field :subscribed, type: Boolean, default: true
 
   ## Recoverable
   field :reset_password_token, :type => String
@@ -70,7 +71,7 @@ class User
 
   accepts_nested_attributes_for :avatar, class_name: 'Picture', :allow_destroy => true, :reject_if => lambda { |a| a[:file].blank? }
 
-  attr_accessible :gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
+  attr_accessible :subscribed,:gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
 
   default_scope order_by(:created_at => :desc)
   scope :random,lambda {

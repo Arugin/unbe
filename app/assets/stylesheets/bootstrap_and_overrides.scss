@@ -227,6 +227,10 @@ body{
     margin-top: 5px;
   }
 
+  #logo.span3{
+    margin-left: -8px;
+  }
+
   #announcement{
     @extend #logo;
   }
@@ -446,5 +450,10 @@ body{
   font-size: 14px;
 }
 
+#edit_user{
+  label.checkbox{
+    margin-top: 5px;
+  }
+}
 
 
