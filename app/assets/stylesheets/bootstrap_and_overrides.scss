@@ -227,6 +227,10 @@ body{
     margin-top: 5px;
   }
 
+  #logo.span3{
+    margin-left: -8px;
+  }
+
   #announcement{
     @extend #logo;
   }
