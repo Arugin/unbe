@@ -25,6 +25,11 @@
             = @user.about.html_safe
           - else
             = t(:NO_ABOUT)
+        %dt
+        %dd
+          .clear
+            = render partial: 'common/badges', locals: {target: @user}
+
 
 - content_for(:right_bar) do
   = render :partial => 'office/right_bar'

@@ -8,9 +8,13 @@ GIT
   remote: https://github.com/spohlenz/tinymce-rails
   revision: b8f368a7e700cf283d52401495af6ff625a31c1c
   branch: tinymce-4
+  remote: https://github.com/tute/merit
+  revision: 5e4f4322f697b8a10fdc4fd2454e275818e5d3ee
   specs:
     tinymce-rails (4.0.16)
       railties (>= 3.1.1)
+    merit (1.7.1)
+      ambry (~> 0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -45,6 +49,7 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.4)
+    ambry (0.3.1)
     arel (3.0.2)
     aws-sdk (1.3.9)
       httparty (~> 0.7)
@@ -320,6 +325,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   kaminari-bootstrap
+  merit!
   meta-tags
   mongoid
   mongoid-paperclip
