@@ -16,12 +16,12 @@
           = truncate(user.name, :length => 30, :omission => '...')
       %td= truncate(user.email, :length => 30, :omission => '...')
       %td= t(user.highest_role)
-      %td= l user.created_at.in_time_zone, format: :short
+      %td= l user.created_at.in_time_zone, format: :mini
       %td
         - if user.subscribed
           %i.icon-envelope{title: t(:SUBSCRIBED)}
       %td
-        = render :partial => "office/yes_no", :locals => { :is_true => user.is_active?, :title => 'активнен' }
+        = render partial: "office/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
         .options
           .btn-group

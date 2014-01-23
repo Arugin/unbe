@@ -166,6 +166,7 @@ ru:
   time:
     formats:
       short: "%e %B %Y в %k:%M:%S"
+      mini: "%e.%m.%y %k:%M"
 
   ONLY_IMAGES_CAN_BE_UPLOADED: Файлы следующих форматов разрешено загружать (jpeg/png)
   FILE_SIZE_IS_LIMITED: Размер файла не должен превышать 200кб
