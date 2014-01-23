@@ -103,7 +103,7 @@ class ArticlesController < ApplicationController
 
   def by_area
     @article_areas = ArticleArea.without_news
-    @article_area =  ArticleArea.find(params[:article_area])
+    @article_area =  ArticleArea.where(title: params[:article_area]).first
     @articles = Article.by_area(current_user, params, @article_area).page(params[:page]).per(9)
     @address_additor = ''
     unless @article_area.nil?

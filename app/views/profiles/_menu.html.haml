@@ -1,15 +1,15 @@
 .tabbable
   %ul.nav.nav-tabs
     %li
-      = link_to user_profile_path(user) do
+      = active_link_to user_profile_path(user) do
         %span Информация
     %li
-      = link_to user_cycles_path(user) do
+      = active_link_to user_cycles_path(user) do
         %span Созданные циклы
     %li
-      = link_to user_galleries_path(user) do
+      = active_link_to user_galleries_path(user) do
         %span Работы
     %li
-      = link_to user_projects_path(user) do
+      = active_link_to user_projects_path(user) do
         %span Участие в проектах
 .clear

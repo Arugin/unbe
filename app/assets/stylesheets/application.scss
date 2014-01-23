@@ -17,8 +17,13 @@
  */
 
 $link-color: #666666;
+$dark-link-color:#e6e6e6;
 $font: Verdana, sans-serif;
 @import "articles";
+
+.active{
+  background-color: $dark-link-color;
+}
 
 .input-search, .dataTables_wrapper {
   &.right {
@@ -95,7 +100,7 @@ ul.navigation{
       padding: 0 10px;
     }
     a:hover{
-      background:#e6e6e6;
+      background: $dark-link-color;
     }
   }
 }
