@@ -6,9 +6,12 @@
       %li
         = active_link_to main_app.non_approved_articles_path, active: :exclusive do
           Подтвердить статьи
+          %b= "(#{Article.non_approved(current_user).count})" if Article.non_approved(current_user).count > 0
       %li
         = active_link_to main_app.non_approved_contents_path, active: :exclusive do
           Подтвердить работы
+          %b= "(#{Content::BaseContent.non_approved(current_user).count})" if Content::BaseContent.non_approved(current_user).count > 0
+
 
   - if user_signed_in? and current_user.has_role? :ADMIN
     %h3.right-bar
@@ -16,7 +19,8 @@
     %ul.navigation
       %li
         = active_link_to main_app.users_path do
-          Пользователи
+          = "Пользователи (#{User.all.count})"
+
   -if user_signed_in?
     %h3.right-bar
       Личный кабинет

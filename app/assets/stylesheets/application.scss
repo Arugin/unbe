@@ -19,6 +19,7 @@
 $link-color: #666666;
 $dark-link-color:#e6e6e6;
 $font: Verdana, sans-serif;
+$disabled-color: #979797;
 @import "articles";
 
 .active{
@@ -412,4 +413,14 @@ h4.random-news{
 
 .control-group.article_logo{
   margin-bottom: 0px;
+}
+
+a.disabled, a[disabled] {
+  cursor: default !important;
+  pointer-events: none;
+  color: $disabled-color;
+}
+
+.span3.right_content{
+  margin-left: 1%;
 }

@@ -41,8 +41,7 @@
                                     %span.caret
                                 %ul.dropdown-menu
                                     %li
-                                        = link_to edit_article_path(article) do
-                                            Изменить
+                                        = link_to 'Опубликовать', publish_article_path(article)
                     %td.long
                         = render :partial => "common/views_count", locals: { subject: article, growth: true }
                     %td.views-wrapper

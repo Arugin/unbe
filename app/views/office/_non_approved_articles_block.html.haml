@@ -30,12 +30,9 @@
               %button.btn.dropdown-toggle{data:{toggle:"dropdown"}}
                 %span.caret
               %ul.dropdown-menu
-                %li
-                  = link_to approve_article_path(article) do
-                    = t :APPROVE
-                %li
-                  = link_to to_garbage_article_path(article) do
-                    = t :TO_GARBAGE
+                %li= link_to t(:APPROVE), approve_article_path(article)
+                %li= link_to t(:APPROVE_AND_TO_NEWS),approve_article_path(article, additional: 'to_news'), disabled: (cannot? :to_news, article)
+                %li= link_to t(:TO_GARBAGE), to_garbage_article_path(article)
         %td
           - if can? :destroy, article
             = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'

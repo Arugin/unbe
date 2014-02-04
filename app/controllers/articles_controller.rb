@@ -89,7 +89,7 @@ class ArticlesController < ApplicationController
   def publish
     @article = Article.find(params[:id])
     @article.publish
-    if can? :automatic_approve, Article
+    if can? :automatic_approve, @article
       @article.approve
     end
     redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
@@ -97,6 +97,10 @@ class ArticlesController < ApplicationController
 
   def approve
     @article = Article.find(params[:id])
+    if params['additional'] == 'to_news' && can?(:to_news, @article)
+      # TODO: move to model
+      @article.to_news = true
+    end
     @article.approve
     redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
   end
@@ -144,26 +148,26 @@ class ArticlesController < ApplicationController
   protected
 
   def publish_and_approve(article)
-    if can? :publish_and_approve, Article
+    if can? :publish_and_approve, article
       article.publish
       article.approve
     end
   end
 
   def change_system_tag
-    if can? :system_tag, Article
+    if can? :system_tag, @article
       @article.system_tag = params[:article][:system_tag]
     end
   end
 
   def push_to_news
-    if can? :to_news, Article
+    if can? :to_news, @article
       @article.to_news = params[:article][:to_news]
     end
   end
 
   def add_script
-    if can? :script, Article
+    if can? :script, @article
       @article.script = params[:article][:script]
     end
   end
