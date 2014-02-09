@@ -28,3 +28,5 @@
 #= require share42/share42
 #= require home
 #= require links
+#= require tinymce
+#= require tinymce/plugins/pagebreak/plugin.min

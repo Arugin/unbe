@@ -6,10 +6,8 @@
     = f.input :title, input_html: { class: "span8" }, label: 'Название'
     = f.input :src, input_html: { class: "span8" }, label: 'Ссылка на видео'
     = render partial: 'common/form_note', locals: {text: 'Ссылки должны быть на youtube или vimeo'}
-    = f.input :description, as: :text, label: 'Описание', input_html: { class: "span12", id: 'small2Content' }
+    = render partial: 'common/text_editor', locals: {f: f, field: :description, type: :small, id: 'smallContent', html_class: 'smallContent span12', label: 'Описание'}
     = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Content::BaseContent}
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
--unless included
-  = render :partial => 'common/small_text_editor'

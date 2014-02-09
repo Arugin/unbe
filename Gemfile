@@ -11,7 +11,6 @@ gem 'rails', '3.2.13'
 
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'bson_ext'
 gem 'mongoid'
 gem 'mongoid_search'
@@ -23,14 +22,14 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'
 gem "heroku"
-gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "mongoid-paperclip", require: "mongoid_paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor'
 gem 'mongoid_rails_migrations', '>= 1.0.0'
-gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
+gem 'voteable_mongo', git: 'https://github.com/dementrock/voteable_mongo.git'
 gem 'russian', '~> 0.6.0'
 gem 'impressionist'
-gem 'meta-tags', :require => 'meta_tags'
+gem 'meta-tags', require: 'meta_tags'
 gem 'mongoid_slug'
 gem 'nokogiri'
 gem 'clockwork'
@@ -54,14 +53,16 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-mongoid'
 gem 'client_side_validations-simple_form'
-gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'recaptcha', require: 'recaptcha/rails'
 gem 'fotoramajs'
 gem 'select2-rails'
+gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails', branch: 'tinymce-4'
+gem 'tinymce-rails-langs'
 
 ### development and test
-gem "haml-rails", ">= 0.3.5", :group => :development
-gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
-gem "capybara", ">= 1.1.2", :group => :test
-gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
-gem "database_cleaner", ">= 0.9.1", :group => :test
+gem "haml-rails", ">= 0.3.5", group: :development
+gem "rspec-rails", ">= 2.11.4", group: [:development, :test]
+gem "capybara", ">= 1.1.2", group: :test
+gem "factory_girl_rails", ">= 4.1.0", group: [:development, :test]
+gem "database_cleaner", ">= 0.9.1", group: :test
 gem 'coveralls', require: false

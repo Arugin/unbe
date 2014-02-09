@@ -4,13 +4,11 @@
 
   .form-inputs
     = f.input :name, input_html: { class: "span8" }
-    = f.input :description, as: :text, input_html: { class: "span12", id: 'smallContent' }
+    = render partial: 'common/text_editor', locals: {f: f, field: :description, type: :small, id: 'smallContent', html_class: 'span12', label: nil}
     = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Gallery}
 
   .form-actions
     = f.button :submit, :class => "btn-primary"
-
-= render :partial => 'common/small_text_editor'
 
 - content_for(:right_bar) do
   = render :partial => 'office/right_bar'

@@ -5,11 +5,10 @@
     = f.error_notification
 
     .form-inputs
-      = f.input :content, as: :text, label: false, input_html: { class: "span12", id: 'smallContent' }
+      = render partial: 'common/text_editor', locals: {f: f, field: :content, type: :small, id: 'smallContent', html_class: 'span12', label: false}
 
     .form-actions
       = f.button :submit, :class => "btn-primary"
 
-  = render :partial => 'common/small_text_editor'
 - else
   .description Чтобы оставлять комментарии, необходимо зарегистрироваться

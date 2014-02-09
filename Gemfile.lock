@@ -4,6 +4,14 @@ GIT
   specs:
     voteable_mongo (0.9.3)
 
+GIT
+  remote: https://github.com/spohlenz/tinymce-rails
+  revision: b8f368a7e700cf283d52401495af6ff625a31c1c
+  branch: tinymce-4
+  specs:
+    tinymce-rails (4.0.16)
+      railties (>= 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -263,6 +271,8 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     tins (0.13.1)
+    tinymce-rails-langs (4.20140129)
+      tinymce-rails (~> 4.0)
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
@@ -323,5 +333,7 @@ DEPENDENCIES
   select2-rails
   simple_form
   thin (>= 1.5.0)
+  tinymce-rails!
+  tinymce-rails-langs
   uglifier (>= 1.0.3)
   voteable_mongo!
