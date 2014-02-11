@@ -76,4 +76,8 @@ Unbe::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.action_mailer.default_url_options = { host: 'unbe.ru' }
 
+  config.action_controller.asset_host = Proc.new do |source|
+    "//unbe-cdn#{Digest::MD5.hexdigest(source).to_i(16) % 2}.herokuapp.com"
+  end
+
 end
