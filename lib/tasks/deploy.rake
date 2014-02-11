@@ -18,6 +18,11 @@ namespace :deploy do
         puts `git push #{app[:remote]} master`
       end
 
+      task :force_push do
+        puts "Pushing to #{app[:remote]}"
+        puts `git push -f #{app[:remote]} master`
+      end
+
       task :migrate do
         puts "Migrating #{app[:name]}"
         puts `heroku run rake db:migrate --app #{app[:name]}`
