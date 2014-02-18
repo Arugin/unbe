@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/Arugin/merit
+  revision: 6789e0487a05e37fa4b6fb77349fa500d45e304f
+  specs:
+    merit (1.9.0)
+      ambry (~> 0.3.0)
+
+GIT
   remote: https://github.com/Arugin/mongoid-paperclip
   revision: 8abbab9085d36ba024aecb509f0f30b31a1282be
   ref: 8abbab9085
@@ -19,13 +26,6 @@ GIT
   specs:
     tinymce-rails (4.0.16)
       railties (>= 3.1.1)
-
-GIT
-  remote: https://github.com/tute/merit
-  revision: 9533068b9d263265d8154b627bf1187b45f499e0
-  specs:
-    merit (1.9.0)
-      ambry (~> 0.3.0)
 
 GEM
   remote: https://rubygems.org/

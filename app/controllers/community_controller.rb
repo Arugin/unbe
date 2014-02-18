@@ -6,7 +6,7 @@ class CommunityController < ApplicationController
   end
 
   def achievement
-
+    @badges = Merit::Badge.find {|b| b.custom_fields[:category] == params[:type] }
   end
 
   def help
