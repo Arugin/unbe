@@ -1,0 +1,31 @@
+.badge{
+  padding: 5px;
+  padding-top: 7px;
+  padding-right: 7px;
+  max-width: 175px;
+  i {
+    font-size: 16px;
+    margin-left: 3px;
+  }
+  .name{
+    font-size: 16px;
+    margin-left: 3px;
+    display: inline-block;
+  }
+}
+
+.copper {
+  color: #C87533;
+}
+.bronze {
+  color: #8C7853;
+}
+.silver{
+  color: #E6E8FA;
+}
+.gold{
+  color: #D9D919;
+}
+.platinum{
+  color: #E5E4E2;
+}

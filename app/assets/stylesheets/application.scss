@@ -21,6 +21,11 @@ $dark-link-color:#e6e6e6;
 $font: Verdana, sans-serif;
 $disabled-color: #979797;
 @import "articles";
+@import "badges";
+
+.inline-block{
+  display: inline-block;
+}
 
 .active{
   background-color: $dark-link-color;

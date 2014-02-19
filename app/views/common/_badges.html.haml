@@ -1,4 +1,5 @@
 .badges
   - target.badges.each do |badge|
-    .badge.inline-block
-      .name{title: t(badge.description)}= t(badge.name)
+    .badge.badge-inverse.inline-block
+      %i{class: "#{badge.custom_fields[:difficulty]} #{badge.custom_fields[:icon]}"}
+      .name.inline-block{title: t(badge.description)}= t(badge.name)

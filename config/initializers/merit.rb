@@ -29,7 +29,7 @@ end
     id: (badge_id = badge_id+1),
     name: 'RAFFLE_PARTICIPANT',
     description: 'RAFFLE_PARTICIPANT_DESC',
-    custom_fields: { category: :activity, difficulty: :iron }
+    custom_fields: { category: :activity, difficulty: :copper }
  }, {
     id: (badge_id = badge_id+1),
     name: 'RAFFLE_WINNER',
@@ -40,7 +40,7 @@ end
     name: 'COMMUNICABLE',
     description: 'COMMUNICABLE_DESC',
     level: 1,
-    custom_fields: { category: :users, difficulty: :iron }
+    custom_fields: { category: :users, difficulty: :copper, icon: 'icon-address-book' }
   }].each do |attrs|
    Merit::Badge.create! attrs
 end
