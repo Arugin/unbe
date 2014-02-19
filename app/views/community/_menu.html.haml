@@ -1,7 +1,11 @@
 .row-fluid
-  .span8
+  .span12
     .tabbable
       %ul.nav.nav-tabs
+        %li
+          = active_link_to achieving_community_path(type: :common), active: /common/  do
+            %span Общие
+
         %li
           = active_link_to achieving_community_path(type: :articles), active: /articles/  do
             %span Статьи
@@ -11,8 +15,8 @@
             %span Проекты
 
         %li
-          = active_link_to achieving_community_path(type: :users), active: /users/ do
-            %span Пользователи
+          = active_link_to achieving_community_path(type: :comments), active: /comments/ do
+            %span Комментарии
 
         %li
           = active_link_to achieving_community_path(type: :activity), active: /activity/ do

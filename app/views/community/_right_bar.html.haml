@@ -2,51 +2,20 @@
   %h3.right-bar
     Информация
   %ul.navigation
-    %li
-      =link_to main_app.achieving_community_path do
-        Достижения сообщества
-
-    %li
-      =link_to main_app.info_community_path(system_tag: :about) do
-        О сообществе
-
-    %li
-      =link_to main_app.info_community_path(system_tag: :rules) do
-        Правила
-
-    %li
-      =link_to main_app.info_community_path(system_tag: :help_us) do
-        Поддержать
-
-    %li
-      = link_to main_app.info_community_path(system_tag: :errors) do
-        Если нашли ошибку
-
-    %li
-      = link_to main_app.info_community_path(system_tag: :ideas) do
-        Идеи и предложения
+    %li= link_to 'Достижения сообщества', achieving_community_path(type: :common)
+    %li= link_to 'О сообществе', info_community_path(system_tag: :about)
+    %li= link_to 'Правила', info_community_path(system_tag: :rules)
+    %li= link_to 'Поддержать', info_community_path(system_tag: :help_us)
+    %li= link_to 'Если нашли ошибку', info_community_path(system_tag: :errors)
+    %li= link_to 'Идеи и предложения', info_community_path(system_tag: :ideas)
 
   %h3.right-bar
     Помощь
   %ul.navigation
-    %li
-      =link_to main_app.info_community_path(system_tag: :faq) do
-        Вопросы
-    %li
-      =link_to main_app.info_community_path(system_tag: :articles) do
-        Статьи
-    %li
-      =link_to main_app.info_community_path(system_tag: :cycles) do
-        Циклы
-    %li
-      =link_to main_app.info_community_path(system_tag: :galleries) do
-        Работы
-    %li
-      =link_to main_app.info_community_path(system_tag: :comments) do
-        Комментарии
-    %li
-      =link_to main_app.info_community_path(system_tag: :projects) do
-        Проекты
-    %li
-      =link_to main_app.info_community_path(system_tag: :achiev) do
-        Достижения
+    %li= link_to 'Вопросы', info_community_path(system_tag: :faq)
+    %li= link_to 'Статьи',info_community_path(system_tag: :articles)
+    %li= link_to 'Циклы',info_community_path(system_tag: :cycles)
+    %li= link_to 'Работы',info_community_path(system_tag: :galleries)
+    %li= link_to 'Комментарии',info_community_path(system_tag: :comments)
+    %li= link_to 'Проекты',info_community_path(system_tag: :projects)
+    %li= link_to 'Достижения',info_community_path(system_tag: :achiev)

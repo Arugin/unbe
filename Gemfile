@@ -61,6 +61,7 @@ gem 'fotoramajs'
 gem 'select2-rails'
 gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails', branch: 'tinymce-4'
 gem 'tinymce-rails-langs'
+gem "font-awesome-rails"
 
 ### development and test
 gem "haml-rails", ">= 0.3.5", group: :development

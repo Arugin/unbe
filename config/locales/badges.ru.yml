@@ -5,3 +5,23 @@ ru:
   RAFFLE_WINNER_DESC: Победите в любом розыгрыше
   COMMUNICABLE: Общительный
   COMMUNICABLE_DESC: Полностью заполните свой профиль на сайте
+  COMMENTATOR_1: Сказавший слово
+  COMMENTATOR_1_DESC: Оставьте 25 комментариев с рейтингом 1 или выше
+  COMMENTATOR_2: Говорун
+  COMMENTATOR_2_DESC: Оставьте 100 комментариев с рейтингом 1 или выше
+  COMMENTATOR_3: Краснослов
+  COMMENTATOR_3_DESC: Оставьте 400 комментариев с рейтингом 1 или выше
+  COMMENTATOR_4: Златоуст
+  COMMENTATOR_4_DESC: Оставьте 2000 комментариев с рейтингом 1 или выше
+  COMMENTATOR_5: Оратор
+  COMMENTATOR_5_DESC: Оставьте 10000 комментариев с рейтингом 1 или выше
+  RATED_COMMENT_1: Заметное изъяснение
+  RATED_COMMENT_1_DESC: Оставьте комментарий с рейтингом 25 или выше
+  RATED_COMMENT_2: Знаковое изъяснение
+  RATED_COMMENT_2_DESC: Оставьте комментарий с рейтингом 50 или выше
+  RATED_COMMENT_3: Отличное изъяснение
+  RATED_COMMENT_3_DESC: Оставьте комментарий с рейтингом 75 или выше
+  RATED_COMMENT_4: Золотой комментарий
+  RATED_COMMENT_4_DESC: Оставьте комментарий с рейтингом 100 или выше
+  RATED_COMMENT_5: Бриллиантовое слово
+  RATED_COMMENT_5_DESC: Оставьте комментарий с рейтингом 200 или выше

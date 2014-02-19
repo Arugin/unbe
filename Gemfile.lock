@@ -133,6 +133,8 @@ GEM
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     fast-stemmer (1.0.2)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     fotoramajs (4.4.9)
       sprockets (>= 2)
     haml (3.1.8)
@@ -332,6 +334,7 @@ DEPENDENCIES
   devise (>= 2.1.2)
   elusive-icons-sass-rails
   factory_girl_rails (>= 4.1.0)
+  font-awesome-rails
   fotoramajs
   haml (<= 3.9.9)
   haml-rails (>= 0.3.5)

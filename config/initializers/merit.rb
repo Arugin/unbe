@@ -19,28 +19,90 @@ end
 
 # Create application badges (uses https://github.com/norman/ambry)
 # difficulty:
-#   iron
 #   bronze
+#   copper
 #   silver
 #   gold
 #   platinum
  badge_id = 0
- [{
-    id: (badge_id = badge_id+1),
+ [
+ {
+    id: (badge_id = badge_id + 1),
     name: 'RAFFLE_PARTICIPANT',
     description: 'RAFFLE_PARTICIPANT_DESC',
-    custom_fields: { category: :activity, difficulty: :copper }
+    custom_fields: { category: :activity, difficulty: :bronze, icon: 'icon-star-alt' }
  }, {
-    id: (badge_id = badge_id+1),
+    id: (badge_id = badge_id + 1),
     name: 'RAFFLE_WINNER',
     description: 'RAFFLE_WINNER_DESC',
-    custom_fields: { category: :activity, difficulty: :gold }
+    custom_fields: { category: :activity, difficulty: :gold, icon: 'icon-star-empty' }
  }, {
-    id: (badge_id = badge_id+1),
+    id: (badge_id = badge_id + 1),
     name: 'COMMUNICABLE',
     description: 'COMMUNICABLE_DESC',
     level: 1,
-    custom_fields: { category: :users, difficulty: :copper, icon: 'icon-address-book' }
-  }].each do |attrs|
+    custom_fields: { category: :activity, difficulty: :bronze, icon: 'icon-address-book' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'COMMENTATOR_1',
+     description: 'COMMENTATOR_1_DESC',
+     level: 1,
+     custom_fields: { category: :comments, difficulty: :bronze, icon: 'icon-comment' }
+ } , {
+     id: (badge_id = badge_id + 1),
+     name: 'COMMENTATOR_2',
+     description: 'COMMENTATOR_2_DESC',
+     level: 2,
+     custom_fields: { category: :comments, difficulty: :copper, icon: 'icon-comment' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'COMMENTATOR_3',
+     description: 'COMMENTATOR_3_DESC',
+     level: 3,
+     custom_fields: { category: :comments, difficulty: :silver, icon: 'icon-comment' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'COMMENTATOR_4',
+     description: 'COMMENTATOR_4_DESC',
+     level: 4,
+     custom_fields: { category: :comments, difficulty: :gold, icon: 'icon-comment' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'COMMENTATOR_5',
+     description: 'COMMENTATOR_5_DESC',
+     level: 5,
+     custom_fields: { category: :comments, difficulty: :platinum, icon: 'icon-comment' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'RATED_COMMENT_1',
+     description: 'RATED_COMMENT_1_DESC',
+     level: 1,
+     custom_fields: { category: :comments, difficulty: :bronze, icon: 'fa fa-comments-o' }
+ } , {
+     id: (badge_id = badge_id + 1),
+     name: 'RATED_COMMENT_2',
+     description: 'RATED_COMMENT_2_DESC',
+     level: 2,
+     custom_fields: { category: :comments, difficulty: :copper, icon: 'fa fa-comments-o' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'RATED_COMMENT_3',
+     description: 'RATED_COMMENT_3_DESC',
+     level: 3,
+     custom_fields: { category: :comments, difficulty: :silver, icon: 'fa fa-comments-o' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'RATED_COMMENT_4',
+     description: 'RATED_COMMENT_4_DESC',
+     level: 4,
+     custom_fields: { category: :comments, difficulty: :gold, icon: 'fa fa-comments-o' }
+ }, {
+     id: (badge_id = badge_id + 1),
+     name: 'RATED_COMMENT_5',
+     description: 'RATED_COMMENT_5_DESC',
+     level: 5,
+     custom_fields: { category: :comments, difficulty: :platinum, icon: 'fa fa-comments-o' }
+ }
+ ].each do |attrs|
    Merit::Badge.create! attrs
 end
