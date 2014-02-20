@@ -15,7 +15,8 @@
           = l comment.created_at.in_time_zone, format: :short
         .pull-right
           - if can? :destroy, comment
-            = button_to "", comment, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+            = link_to comment, method: :delete, confirm: "#{t(:SURE)}" do
+              %i.icon-trash
     %tr
       %td.votecell
         .vote-comment

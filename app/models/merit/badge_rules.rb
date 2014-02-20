@@ -34,11 +34,31 @@ module Merit
       # grant_on 'comments#vote', :badge => 'relevant-commenter', :to => :user do |comment|
       #   comment.votes.count == 5
       # end
-
-      # Changes his name by one wider than 4 chars (arbitrary ruby code case)
+=begin
       grant_on 'users#update', badge: 'COMMUNICABLE', temporary: true do |user|
         user.full_profile?
       end
+
+      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_1', level: 1, to: :user do |comment|
+        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 25
+      end
+
+      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_2', level: 2, to: :user do |comment|
+        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 100
+      end
+
+      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_3', level: 3, to: :user do |comment|
+        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 400
+      end
+
+      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_4', level: 4, to: :user do |comment|
+        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 2000
+      end
+
+      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_5', level: 5, to: :user do |comment|
+        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 10000
+      end
+=end
     end
   end
 end
