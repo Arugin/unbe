@@ -1,0 +1,12 @@
+.list-header{
+  position: relative;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 10px 10px 10px 15px;
+}
+
+.rate-count{
+  @extend .views-count;
+  .count{
+    display: inline;
+  }
+}

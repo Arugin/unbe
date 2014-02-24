@@ -24,6 +24,7 @@ $disabled-color: #979797;
 @import "articles";
 @import "badges";
 @import "office";
+@import "common";
 
 
 .inline-block{
@@ -250,6 +251,7 @@ h4.random-news{
   }
   .count{
     float: left;
+    display: inline-block;
     margin: 2px 5px 0px 5px;
   }
   .positive{
@@ -264,6 +266,10 @@ h4.random-news{
 
 .thumb-wrapper{
   vertical-align: middle;
+}
+
+.grow{
+  color: #49a744;
 }
 
 #articles{
@@ -283,9 +289,6 @@ h4.random-news{
   .long{
     @extend .views-wrapper;
     min-width: 65px;
-    .grow{
-      color: #49a744;
-    }
   }
   .thumb-wrapper{
     @extend .thumb-wrapper;
