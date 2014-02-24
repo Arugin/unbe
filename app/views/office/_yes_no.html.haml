@@ -1,6 +1,6 @@
-- if is_true
-  .thumb
-    =image_tag( "/images/article/yes.png", :title=>"#{title}")
-- else
-  .thumb
-    =image_tag( "/images/article/no.png", :title=>"не #{title}")
+.check-status
+  - if is_true
+    %i.fa.fa-check{title: title}
+  - else
+    %i.fa.fa-warning{title: "не #{title}"}
+

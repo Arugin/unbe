@@ -1,8 +1,9 @@
 .o-item-list{
   list-style: none;
-  margin: 0;
+  margin: 5px 0;
   padding: 0;
   float: left;
+  width: 100%;
   .o-item{
     clear: both;
     background: #fff;
@@ -11,7 +12,7 @@
       position: relative;
       .o-item-content-secondary{
         float: right;
-        width: 240px;
+        width: 165px;
         .o-metrics{
           position: absolute;
           top: 0;
@@ -29,6 +30,20 @@
             -o-text-overflow: ellipsis;
             text-overflow: ellipsis;
             font-size: 12px;
+          }
+        }
+        .o-indicators{
+          position: relative;
+          float: left;
+          width: 86px;
+          height: 20px;
+          line-height: 88px;
+          display: inline-block;
+          span{
+            display: inline-block;
+            width: 24px;
+            height: 20px;
+            text-align: center;
           }
         }
       }
@@ -53,6 +68,7 @@
           text-align: left;
         }
         .o-info-container{
+          max-width: 430px;
           float: left;
           .o-title{
             width: 100%;
@@ -66,14 +82,14 @@
               text-overflow: ellipsis;
             }
           }
-          .o-video-info{
-            margin-top: 4px;
+          .o-info{
+            margin-top: 8px;
             display: block;
             white-space: nowrap;
             word-wrap: normal;
             -o-text-overflow: ellipsis;
             text-overflow: ellipsis;
-
+            float: left;
           }
         }
       }

@@ -22,7 +22,7 @@
               .publishDate
                 = l article.created_at.in_time_zone, format: :short
               .clear
-              .o-video-info
+              .o-info
                 .options
                   .btn-group
                     %button.btn
@@ -38,5 +38,22 @@
               %span.metric= render partial: "common/views_count", locals: { subject: article, growth: true }
               %span.metric= render partial: "common/comments_count", locals: { subject: article }
               %span.metric= render :partial => "common/rate_count", locals: { subject: article }
+            .o-indicators
+              %span
+                - if article.isUpdated
+                  %i.fa.fa-pencil{title: t('ARTICLE_CHANGED')}
+                - if article.is_garbage
+                  %i.fa.fa-trash-o{title: t('ARTICLE_TRASH')}
+              %span
+                - unless article.isPublished
+                  = link_to publish_article_path(article) do
+                    = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
+                - else
+                  = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
+              %span
+                - if article.isUpdated && article.isPublished
+                  %i.fa.fa-refresh
+                - else
+                  = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
 
 = paginate @articles, :remote => true

@@ -10,3 +10,18 @@
     display: inline;
   }
 }
+
+nav.pagination{
+  float: left;
+}
+
+.check-status{
+  margin: 0px 5px;
+  font-size: 14px;
+  .fa-check{
+    color: darkgreen;
+  }
+  .fa-warning{
+    color: darkred;
+  }
+}
