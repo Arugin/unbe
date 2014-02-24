@@ -23,7 +23,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'
 gem "heroku"
-gem "mongoid-paperclip", require: "mongoid_paperclip"
+gem "mongoid-paperclip", require: "mongoid_paperclip", git: 'https://github.com/Arugin/mongoid-paperclip', ref: '8abbab9085'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor'
 gem 'mongoid_rails_migrations', '>= 1.0.0'
@@ -35,6 +35,7 @@ gem 'mongoid_slug'
 gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
+gem 'merit'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,12 +43,13 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'elusive-icons-sass-rails'
 end
 
 # UI gems
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass', '>= 2.3'
+gem 'bootstrap-sass', '~> 2.3'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'simple_form'
@@ -59,6 +61,7 @@ gem 'fotoramajs'
 gem 'select2-rails'
 gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails', branch: 'tinymce-4'
 gem 'tinymce-rails-langs'
+gem "font-awesome-rails"
 
 ### development and test
 gem "haml-rails", ">= 0.3.5", group: :development

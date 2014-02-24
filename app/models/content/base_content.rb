@@ -41,7 +41,10 @@ module Content
 
     alias :content :description
 
-    voteable self, :up => +1, :down => -1
+    voteable self, up: +1, down: -1
+
+    attr_protected :reviewed, :approved_to_news
+    attr_accessible :title, :src, :description, :contentable_id
 
     def youtube_or_vimeo_url
       return if(self.src =~ %r{\A(https?)://(www.)?(youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]*)(\&\S+)?.*})

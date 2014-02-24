@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import 'elusive-webfont';
 
 $author-font: 13px Tahoma;
 $info-font: 11px Tahoma;
@@ -24,7 +25,7 @@ body{
       font-family: $font;
     }
     .pull-right{
-      a{
+      a.btn{
         color:white;
       }
     }

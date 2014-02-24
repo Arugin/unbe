@@ -4,7 +4,11 @@
 .clear
 = render :partial => 'menu'
 .content-left
-  В данном разделе достижения ещё не составлены
+  - if @badges.empty?
+    В данном разделе достижения ещё не составлены
+  - else
+    - @badges.each do |badge|
+      = render partial: 'badge_block', locals: {badge: badge}
 
 
 - content_for(:right_bar) do

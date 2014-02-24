@@ -1,25 +1,29 @@
 .row-fluid
-  .span8
+  .span12
     .tabbable
       %ul.nav.nav-tabs
         %li
-          = link_to achieving_community_path(type: :articles) do
+          = active_link_to achieving_community_path(type: :common), active: /common/  do
+            %span Общие
+
+        %li
+          = active_link_to achieving_community_path(type: :articles), active: /articles/  do
             %span Статьи
 
         %li
-          = link_to achieving_community_path(type: :projects) do
+          = active_link_to achieving_community_path(type: :projects), active: /projects/ do
             %span Проекты
 
         %li
-          = link_to achieving_community_path(type: :users) do
-            %span Пользователи
+          = active_link_to achieving_community_path(type: :comments), active: /comments/ do
+            %span Комментарии
 
         %li
-          = link_to achieving_community_path(type: :activity) do
+          = active_link_to achieving_community_path(type: :activity), active: /activity/ do
             %span Активность
 
         %li
-          = link_to achieving_community_path(type: :great) do
+          = active_link_to achieving_community_path(type: :great), active: /great/ do
             %span Великие
 
 .clear

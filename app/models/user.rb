@@ -6,11 +6,12 @@ class User
   include Concerns::Searchable
   include Concerns::Randomizable
   include Mongo::Voter
+  has_merit
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :token_authenticatable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   after_create :default_cycles
@@ -141,6 +142,10 @@ class User
 
   def unknown?
     self.gender.unknown?
+  end
+
+  def full_profile?
+    self.first_name.present? && self.second_name.present? && self.avatar.present? && self.from.present? && !unknown?
   end
 
   protected
