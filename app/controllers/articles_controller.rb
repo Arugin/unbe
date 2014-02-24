@@ -88,6 +88,7 @@ class ArticlesController < ApplicationController
 
   def publish
     @article = Article.find(params[:id])
+    redirect_to office_articles_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_NIL) if @article.tmpContent.nil?
     @article.publish
     if can? :automatic_approve, @article
       @article.approve

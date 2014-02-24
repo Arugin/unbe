@@ -73,11 +73,13 @@ class Article
   end
 
   def publish
+    return if tmpContent.nil?
     self.isPublished = true
     self.save
   end
 
   def approve_prepare
+    return if tmpContent.nil?
     self.isUpdated = false
     self.isApproved = true
     self.content = self.tmpContent

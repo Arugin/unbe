@@ -1,73 +1,39 @@
 - if @articles.blank?
-    %p= t("NO_OFFICE_ARTICLES")
+  %p= t("NO_OFFICE_ARTICLES")
 - else
-    %table.table.table-striped
-        %thead
-            %th
-                %span
-                    %input{type: 'checkbox'}
-            %th{:width => "700px"}= t(:TITLE)
-            %th{:width => "100px"}
-            %th{:width => "50px"}
-            %th{:width => "50px"}
-            %th{:width => "50px"}
-            %th{:width => "30px"}
-            %th{:width => "30px"}
-            %th{:width => "30px"}
-            %th{:width => "30px"}
-        %tbody
-            - @articles.each do |article|
-                %tr
-                    %td
-                        %span
-                            %input{type: 'checkbox', class: 'group-checker'}
-                    %td
-                        .header
-                            - if article.is_changed?
-                                = link_to draft_article_path(article) do
-                                    %span= article.title
-                            - else
-                                = link_to article_path(article) do
-                                    %span= article.title
-                        .publishDate
-                            = l article.created_at.in_time_zone, format: :short
-                    %td
-                        .options
-                            .btn-group
-                                %button.btn
-                                    = link_to edit_article_path article do
-                                        Изменить
-                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                                    %span.caret
-                                %ul.dropdown-menu
-                                    %li
-                                        = link_to 'Опубликовать', publish_article_path(article)
-                    %td.long
-                        = render :partial => "common/views_count", locals: { subject: article, growth: true }
-                    %td.views-wrapper
-                        = render :partial => "common/comments_count", locals: { subject: article }
-                    %td.mini-vote
-                        = render :partial => "common/rate_count", locals: { subject: article }
-                    %td.thumb-wrapper
-                        - if article.isUpdated
-                            %i.icon-pencil{title: t('ARTICLE_CHANGED')}
-                        - if article.is_garbage
-                            %i.icon-trash{title: t('ARTICLE_TRASH')}
-                    %td.thumb-wrapper
-                        - unless article.isPublished
-                            = link_to publish_article_path(article) do
-                                = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
-                        - else
-                            = render :partial => 'yes_no',:locals => { :is_true => article.isPublished, :title=>"опубликована"}
+  %ul.o-item-list
+    - @articles.each do |article|
+      %li.o-item
+        .o-item-content
+          .o-item-content-primary
+            %span.o-item-checkbox
+              %input{type: 'checkbox'}
+            .o-thumb
+              /= render partial: "#{collection}/thumb", locals: {item: item}
+              = render partial: "articles/thumb", locals: {item: article}
+            .o-info-container
+              .o-title
+                .o-title-container
+                  - if article.is_changed?
+                    = link_to article.title, draft_article_path(article)
+                  - else
+                    = link_to article.title, article_path(article)
+              .publishDate
+                = l article.created_at.in_time_zone, format: :short
+              .clear
+              .o-video-info
+                .options
+                  .btn-group
+                    %button.btn
+                      = link_to edit_article_path article do
+                        Изменить
+                    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                      %span.caret
+                    %ul.dropdown-menu
+                      %li
+                        = link_to 'Опубликовать', publish_article_path(article)
 
-                    %td.thumb-wrapper
-                        - if article.isUpdated && article.isPublished
-                            .s-thumb
-                                =image_tag( "/images/article/update.png", :title=>"новая версия статьи находится на модерации")
-                        - else
-                            = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
-                    %td
-                        - if can? :destroy, article
-                            = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+          .o-item-content-secondary
+
 
 = paginate @articles, :remote => true
