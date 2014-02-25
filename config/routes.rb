@@ -46,6 +46,8 @@ Unbe::Application.routes.draw do
       get 'by_area'
       get 'new_news'
       get 'garbage'
+      delete 'bulk_delete'
+      put 'bulk_tag'
     end
     member do
       get 'publish'

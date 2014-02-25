@@ -1,0 +1,13 @@
+.scope-switch {
+  .btn-group {
+    margin-left: 5px;
+    a {
+      text-decoration: none;
+    }
+    a.on{
+      cursor: default;
+      background: lightgrey;
+      color: white;
+    }
+  }
+}

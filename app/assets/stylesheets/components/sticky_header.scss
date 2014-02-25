@@ -1,0 +1,27 @@
+.sticky-header {
+  position: relative;
+}
+
+.down {
+  .sticky-header {
+    padding-top: 20px;
+    top:70px;
+    left:0;
+    right:0;
+    z-index:999;
+    border:none;
+    box-shadow: 0 0 0 10px #FFFFFF, 0 12px 8px rgba(0, 0, 0, 0.7);
+    position:fixed;
+    margin-left: auto;
+    margin-right: auto;
+    height:41px;
+  }
+
+  .header-dummy {
+    display: block;
+  }
+}
+
+.header-dummy {
+  display: none;
+}

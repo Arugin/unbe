@@ -1,0 +1,7 @@
+.tag-input
+  = text_field_tag :tag_list, nil, class: "select2tags",
+    placeholder: 'Type in tags delimited by commas', :data => { tags: Article.tag_list.to_json }
+.actions
+  .btn.btn-small.apply Apply
+  or
+  .btn.btn-small.btn-link.cancel Cancel

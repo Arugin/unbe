@@ -2,6 +2,9 @@ class OfficeController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :scope, except: [:non_approved,:non_approved_content]
+  include Concerns::BulkOperationable
+
+  bulk_actions :delete, :tag
 
   respond_to :html, :js
 
@@ -20,7 +23,11 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user,params).page(params[:page]).per(15)
+    params[:sort_by] ||= 'created_at'
+    params[:direction] ||= 'desc'
+    @articles = Article.unscoped.
+      search_for(current_user, params).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(5)
+
     respond_with @articles
   end
 

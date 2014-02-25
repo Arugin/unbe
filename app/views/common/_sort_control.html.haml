@@ -1,15 +1,15 @@
 .sort-control
   - sort_methods =  (model and model.respond_to? :can_be_sorted_by) ? model.can_be_sorted_by : []
   - unless sort_methods.empty?
-    %span Sort by:
+    %span Сортировать:
     .dropdown
       %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
         %span.text
-          = params[:sort_by] ? params[:sort_by].titleize : 'Select'
+          = params[:sort_by] ? t(params[:sort_by].upcase) : 'Выбрать'
       %ul.dropdown-menu{role: "menu"}
         - sort_methods.each do |s|
           %li
-            =link_to " #{s[:title] || s[:sort_by]}", current_action.call(sort_by: s[:sort_by]), 'data-sort-by' => s[:sort_by]
+            =link_to " #{t(s[:title]) || s[:sort_by]}", current_action.call(sort_by: s[:sort_by]), 'data-sort-by' => s[:sort_by]
 
     = link_to current_action.call( direction: (params[:direction] == 'asc' ? :desc : :asc) ),
       :class => "btn btn-mini btn-narrow sort-order" do

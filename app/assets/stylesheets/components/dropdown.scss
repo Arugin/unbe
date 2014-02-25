@@ -1,0 +1,51 @@
+.dropdown {
+  a.dropdown-toggle {
+    cursor: pointer;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+    span.text {
+      border-bottom: 1px dotted $link-color;
+      font-weight: bold;
+    }
+  }
+  li {
+    cursor: pointer;
+    a.dropdown-active:before {
+      margin-left: -14px;
+      font-family: 'Elusive-Icons';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      font-size: 10px;
+      line-height: 14px;
+      -webkit-font-smoothing: antialiased;
+      content: "\e070";
+    }
+  }
+}
+
+/* Simple form inputs css */
+input.dropdown, select.dropdown {
+  display: none;
+}
+
+.control-group.dropdown {
+
+  display: inline-block;
+
+  .wrapper {
+    margin: 0 5px;
+
+    &.block {
+      margin: 0;
+    }
+
+  }
+}
+
+.control-group.ui_dropdown {
+  @extend .control-group.dropdown;
+}

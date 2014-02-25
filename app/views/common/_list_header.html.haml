@@ -1,22 +1,24 @@
 .list-header
-  .row
+  .row-fluid
     .span12.list-header.sticky-header
       .row-fluid
+        .span1
+          .select-switch.dropdown.select-control
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              = check_box_tag 'select'
+              %b.caret
+            %ul.dropdown-menu{role: "menu"}
+              %li.select-all
+                %a Выбрать все
+              %li.select-none
+                %a Выбрать ничего
 
-        .span3
 
-        .span6.center-group
+        .span7.center-group
           .pull-left.scope-switch-container
             = render :partial => "common/scope_switch", :locals => { current_action: current_action, subject: list_title }
           .pull-left
             = render :partial => "common/sort_control", :locals => { current_action: current_action, model: model }
-          .pull-left.btn-group.expand-switch
-            = link_to '', :class=>"btn btn-mini collapse-all", rel: :tooltip,
-              title: "Collapse all", 'data-container' => 'body' do
-              %i.icon-list
-            = link_to '', :class=>"btn btn-mini expand-all", rel: :tooltip,
-              title: "Expand all", 'data-container' => 'body' do
-              %i.icon-th-list
 
         .span2.buttons-container
           - if @_controller.respond_to? :bulk_delete
@@ -33,14 +35,3 @@
             = link_to [:bulk_export, model],:class=>"btn btn-mini archive-selected",
              :rel => :tooltip, :title => "Export selected", 'data-container' => 'body' do
               %i.icon-download-alt
-
-        .span1
-          .select-switch.dropdown.select-control
-            %a.dropdown-toggle.btn.btn-mini{"data-toggle" => "dropdown", href: "#"}
-              = check_box_tag 'select'
-              %b.caret
-            %ul.dropdown-menu{role: "menu"}
-              %li.select-all
-                %a Select all
-              %li.select-none
-                %a Select none

@@ -29,4 +29,5 @@
 #= require home
 #= require links
 #= require tinymce
+#= require_tree ./components
 #= require tinymce/plugins/pagebreak/plugin.min

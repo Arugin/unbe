@@ -28,7 +28,7 @@ module Concerns
 
       def add_tags(tags)
         if (tags)
-          self.tags += string2tags(tags)
+          self.tags |= string2tags(tags)
         end
       end
 

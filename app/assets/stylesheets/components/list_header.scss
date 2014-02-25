@@ -1,0 +1,27 @@
+.list-header {
+  border-bottom: 1px solid $link-color;
+  background: white;
+
+  .btn {
+    color: $link-color;
+    &:not(.dropdown-toggle) {
+      padding: 0 10px;
+    }
+  }
+  .center-group {
+    & > div {
+      border-right: 1px solid #a6a6a6;
+      padding: 0 15px;
+    }
+    & > div:last-child {
+      border-right: none;
+    }
+
+  }
+  .buttons-container {
+    text-align: right;
+  }
+  .select-switch {
+    padding-left: 13px;
+  }
+}
