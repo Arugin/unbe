@@ -20,7 +20,7 @@ class OfficeController < ApplicationController
   end
 
   def articles
-    @articles = Article.search_for(current_user,params).page(params[:page]).per(5)
+    @articles = Article.search_for(current_user,params).page(params[:page]).per(15)
     respond_with @articles
   end
 

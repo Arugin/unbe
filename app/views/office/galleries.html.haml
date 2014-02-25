@@ -1,7 +1,9 @@
 .row-fluid
-  .span3
-    %h4.section-small=title 'Мои галереи'
-  .span5
+  .span4
+    %h4.section-small
+      = title 'Мои галереи'
+      %span.o-count= @galleries.size
+  .span4
     .pull-right
       = link_to new_gallery_path, :class=>'btn btn-primary' do
         %i
