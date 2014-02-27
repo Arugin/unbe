@@ -1,37 +1,36 @@
-.list-header
-  .row-fluid
-    .span12.list-header.sticky-header
-      .row-fluid
-        .span1
-          .select-switch.dropdown.select-control
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              = check_box_tag 'select'
-              %b.caret
-            %ul.dropdown-menu{role: "menu"}
-              %li.select-all
-                %a Выбрать все
-              %li.select-none
-                %a Выбрать ничего
+.row-fluid
+  .span12.list-header.sticky-header
+    .row-fluid
+      .span1
+        .select-switch.dropdown.select-control
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = check_box_tag 'select'
+            %b.caret
+          %ul.dropdown-menu{role: "menu"}
+            %li.select-all
+              %a Выбрать все
+            %li.select-none
+              %a Выбрать ничего
 
 
-        .span7.center-group
-          .pull-left.scope-switch-container
-            = render :partial => "common/scope_switch", :locals => { current_action: current_action, subject: list_title }
-          .pull-left
-            = render :partial => "common/sort_control", :locals => { current_action: current_action, model: model }
+      .span8.center-group
+        .pull-left.scope-switch-container
+          = render :partial => "common/scope_switch", :locals => { current_action: current_action, subject: list_title }
+        .pull-left
+          = render :partial => "common/sort_control", :locals => { current_action: current_action, model: model }
 
-        .span2.buttons-container
-          - if @_controller.respond_to? :bulk_delete
-            = link_to [:bulk_delete, model],class: "btn btn-mini delete-selected",
-             rel: :tooltip, title: "Delete selected", 'data-container' => 'body' do
-              %i.icon-remove
+      .span2.buttons-container
+        - if @_controller.respond_to? :bulk_delete
+          = link_to [:bulk_delete, model],class: "btn btn-mini delete-selected",
+           rel: :tooltip, title: "Delete selected", 'data-container' => 'body' do
+            %i.icon-remove
 
-          - if @_controller.respond_to? :bulk_tag
-            = link_to [:bulk_tag, model], :class=>"btn btn-mini tag-selected",
-             :rel => :tooltip, :title => "Tag selected", 'data-container' => 'body' do
-              %i.icon-tags
+        - if @_controller.respond_to? :bulk_tag
+          = link_to [:bulk_tag, model], :class=>"btn btn-mini tag-selected",
+           :rel => :tooltip, :title => "Tag selected", 'data-container' => 'body' do
+            %i.icon-tags
 
-          - if @_controller.respond_to? :bulk_export
-            = link_to [:bulk_export, model],:class=>"btn btn-mini archive-selected",
-             :rel => :tooltip, :title => "Export selected", 'data-container' => 'body' do
-              %i.icon-download-alt
+        - if @_controller.respond_to? :bulk_export
+          = link_to [:bulk_export, model],:class=>"btn btn-mini archive-selected",
+           :rel => :tooltip, :title => "Export selected", 'data-container' => 'body' do
+            %i.icon-download-alt

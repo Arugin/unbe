@@ -2,19 +2,22 @@
   position: relative;
 }
 
+.span12 .sticky-header{
+  margin: 0;
+}
+
 .down {
   .sticky-header {
     padding-top: 20px;
-    top:70px;
-    left:0;
-    right:0;
+    top: 0;
+    left: 8.51064%;
     z-index:999;
     border:none;
     box-shadow: 0 0 0 10px #FFFFFF, 0 12px 8px rgba(0, 0, 0, 0.7);
     position:fixed;
-    margin-left: auto;
-    margin-right: auto;
     height:41px;
+    width: 60.34%;
+    margin: 0;
   }
 
   .header-dummy {
