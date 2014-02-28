@@ -25,8 +25,12 @@ class OfficeController < ApplicationController
   def articles
     params[:sort_by] ||= 'created_at'
     params[:direction] ||= 'desc'
-    @articles = Article.unscoped.
-      search_for(current_user, params).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+    if params[:unprocessed]
+      scope = Article.unprocessed
+    else
+      scope = Article.unscoped
+    end
+    @articles = scope.search_for(current_user, params).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
 
     respond_with @articles
   end

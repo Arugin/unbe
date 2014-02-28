@@ -1,10 +1,10 @@
 .scope-switch
   %span Показать:
   %span.btn-group
-    = link_to 'Все', current_action.call,
-     class: "btn btn-mini scope-all #{'on' unless params[:scope] == 'current_user'}",
-     rel: :tooltip, title: "All #{subject}", 'data-container' => 'body'
-    = link_to current_action.call(scope: 'current_user'),
-     class: "btn btn-mini scope-my #{'on' if params[:scope] == 'current_user'}",
-     rel: :tooltip, title: "My #{subject}", 'data-container' => 'body' do
-      %i.icon-user
+    = link_to 'Все', current_action.call(scope: 'current_user'),
+     class: "btn btn-mini scope-all #{'on' unless params[:unprocessed]}",
+     rel: :tooltip, title: "Все #{subject}", 'data-container' => 'body'
+    = link_to current_action.call(unprocessed: true),
+     class: "btn btn-mini scope-my #{'on' if params[:unprocessed]}",
+     rel: :tooltip, title: "Неопубликованные/неподтвержденные", 'data-container' => 'body' do
+      %i.fa.fa-warning

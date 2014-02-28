@@ -1,4 +1,3 @@
-= render partial: 'common/list_header', locals: { current_action: lambda { |*args| office_articles_path(*args) }, model: Article, list_title:'Статьи' }
 - if @articles.blank?
   %p= t("NO_OFFICE_ARTICLES")
 - else
