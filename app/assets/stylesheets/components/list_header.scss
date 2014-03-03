@@ -1,6 +1,7 @@
 .list-header {
   border-bottom: 1px solid $link-color;
   background: white;
+  padding-bottom: 10px;
 
   .btn {
     color: $link-color;
@@ -11,7 +12,7 @@
   .center-group {
     & > div {
       border-right: 1px solid #a6a6a6;
-      padding: 0 15px;
+      padding: 0 10px;
     }
     & > div:last-child {
       border-right: none;

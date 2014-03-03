@@ -458,4 +458,9 @@ body{
   }
 }
 
+.span1-5{
+  @extend .span1;
+  width: 10% !important;
+}
+
 

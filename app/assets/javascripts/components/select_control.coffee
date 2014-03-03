@@ -28,7 +28,7 @@
 
     main_checkbox = opts.mainCheckBox || main_checkbox
     list_check_box_selector = opts.listCheckBoxSelector || '.item-select input[type="checkbox"]'
-    parent_selector = opts.parentSelector || '.block'
+    parent_selector = opts.parentSelector || '.o-item'
 
     get_selected_ids = () ->
       ids = []

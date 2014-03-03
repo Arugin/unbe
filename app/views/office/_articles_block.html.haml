@@ -6,8 +6,8 @@
       %li.o-item
         .o-item-content
           .o-item-content-primary
-            %span.o-item-checkbox
-              %input{type: 'checkbox'}
+            %span.o-item-checkbox.item-select
+              = check_box_tag 'select_article[]', article.id
             .o-thumb
               /= render partial: "#{collection}/thumb", locals: {item: item}
               = render partial: "articles/thumb", locals: {item: article}

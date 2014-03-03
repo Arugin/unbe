@@ -8,8 +8,6 @@
       = link_to new_article_path, :class=>'btn btn-primary' do
         %i
         =t(:NEW_ARTICLE)
-  .span3
-    = render :partial => "common/search_control", :locals => { :current_action_path => office_articles_path(scope:'current_user') }
 
 = render partial: 'common/list_header', locals: { current_action: lambda { |*args| office_articles_path(*args) }, model: Article, list_title:'Статьи' }
 

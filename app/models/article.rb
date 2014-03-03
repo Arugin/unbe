@@ -60,7 +60,7 @@ class Article
   scope :random,lambda {
     not_in(is_garbage: true).not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
   }
-  scope :unprocessed, any_of({isApproved: false}, {:isPublished => false})
+  scope :unprocessed, unscoped.any_of({isApproved: false}, {:isPublished => false})
 
   attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag, :script
 

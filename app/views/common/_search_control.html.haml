@@ -1,8 +1,11 @@
-= form_tag current_action_path, :method => 'get', :id => 'models_search', :class => "form-search" do
+= form_tag current_action_path, method: 'get', id: 'models_search', class: "form-search" do
   - if params[:scope].present?
     = hidden_field_tag :scope, params[:scope]
   .input-search
     .input-prepend
       .add-on
-        %span.icon-search
-      = text_field_tag :search, params[:search], :class => "input-medium search-query", :placeholder => "#{t :SEARCH}"
+        %span.icon-filter
+      = text_field_tag :search, params[:search], class: "input-medium search-query", placeholder: "#{t :SEARCH}"
+    .input-append#clear-search
+      .clear-search
+        %i.icon-remove

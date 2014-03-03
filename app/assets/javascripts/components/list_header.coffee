@@ -16,8 +16,8 @@
       $target = $(e.currentTarget)
       $target.addClass('on')
 
-      scope = if $target.hasClass('scope-my') then 'current_user' else ''
-      $.address.parameter( 'scope', scope )
+      scope = if $target.hasClass('scope-my') then 'true' else ''
+      $.address.parameter( 'unprocessed', scope )
 
     # Sort direction
     $('.sort-order').click (e) ->

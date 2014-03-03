@@ -42,29 +42,6 @@ $disabled-color: #979797;
   background-color: $dark-link-color;
 }
 
-.input-search, .dataTables_wrapper {
-  &.right {
-    text-align: right;
-  }
-  .input-prepend {
-    .add-on {
-      border-radius: 15px 0 0 15px;
-      padding-left: 8px;
-      float: left;
-      .icon-search {
-        color: #444;
-      }
-    }
-    input {
-      border-radius: 0 15px 15px 0;
-      &.search-query {
-        width: 164px;
-        padding-left: 8px;
-      }
-    }
-  }
-}
-
 table.articles-short{
   width: 100%;
   td {
@@ -447,4 +424,58 @@ a.disabled, a[disabled] {
 
 .span3.right_content{
   margin-left: 1%;
+}
+
+.form-search .input-search {
+  .search-query {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+    font-size: 15px;
+    padding: 4px;
+  }
+  .input-prepend .add-on {
+    border-radius: 4px 0 0 4px;
+    background: none;
+    color: $link-color;
+    * {
+      vertical-align: middle;
+    }
+  }
+  .input-append {
+    margin-left: -30px;
+    z-index: 3;
+    position: absolute;
+    display: none;
+    bottom: 10px;
+    right: 10px;
+    color: $link-color;
+    i {
+      font-size: 12px;
+    }
+  }
+  input:-ms-input-placeholder {
+    color: $link-color;
+  }
+}
+
+#models_search{
+  margin: 0;
+}
+
+
+// These offsets can be used in lists with the new UI
+.offset-left {
+  padding-left: 40px;
+}
+
+.offset-top {
+  padding-top: 7px;
+}
+
+.offset-icon {
+  margin-left: 10px;
+}
+
+#search::-ms-clear {
+  display:none;
 }

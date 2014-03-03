@@ -9,27 +9,41 @@ class @Unbe
 
   Search: class Search
 
-    queryParams: ['article_area','scope']
-
     bindSearch: (projectFormElem) ->
-      self = this
-      $("##{projectFormElem} input").keyup (e) ->
-        request = "search=" + $(@).val()
-        $.address.value self.makeUrl(request)
 
-    urlParam:(name)->
-      results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(location.href)
-      if results?
-        results[1] || 0
-      else
-        null
+      search_input = $("##{projectFormElem} input")
+      search_clear =
+        formElem: projectFormElem
+        element: ->
+          $("##{@formElem} #clear-search")
 
-    makeUrl: (request)->
-      address = "#{location.pathname}?#{request}"
-      for param in @queryParams
-        if @urlParam(param)?
-          address = "#{address}&#{param}=#{@urlParam(param)}"
-      address
+        show: ->
+          @element().css "display", "inline-block"
+
+        hide: ->
+          @element().css "display", "none"
+
+      check_search_content = (content) ->
+        if content is ""
+          search_clear.hide()
+        else
+          search_clear.show()
+
+      search_input.keyup (e) ->
+        self = this
+        setTimeout (->
+          request = "search=#{$(self).val()}"
+          $.address.value "#{location.pathname}?#{request}"
+          check_search_content $(self).val()
+        ), 100
+
+        console.log 'd', search_clear.element()
+
+      (search_clear.element()).click (e) ->
+        $.address.value location.pathname
+        search_input.val ''
+        search_clear.hide()
+        return
 
 unless @unbe?
   @unbe = new Unbe()
