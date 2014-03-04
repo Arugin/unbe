@@ -1,0 +1,100 @@
+.popover.custom-popover {
+  max-width: 700px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+
+  table {
+    tbody tr {
+      border-bottom: 1px dotted $link-color;
+    }
+    td, th {
+      vertical-align: middle;
+      font-weight: normal;
+      padding-left: 5px !important;
+      padding-right: 5px !important;
+      &:nth-child(1) {
+        width: 130px;
+      }
+      &:nth-child(2) {
+        width: 80px;
+      }
+      &:nth-child(3) {
+        width: 220px;
+      }
+    }
+    td {
+      font-size: 13px;
+      padding: 5px !important;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    background-color: pitchBlack;
+    height: 30px;
+
+    .popover-title {
+      background-color: transparent;
+      border: none;
+      border-radius: none;
+      margin: 0;
+      padding: 0;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: none;
+      display: block;
+      float: left;
+      line-height: 30px;
+    }
+
+    [class^="icon-"] {
+      display: block;
+      float: right;
+      width: 15px;
+      height: 15px;
+      margin-top: 8px;
+      margin-right: 8px;
+      font-size: 16px;
+      color: $link-color;
+      cursor: pointer;
+      &:hover {
+        color: mediumBlue;
+      }
+    }
+
+  }
+  .arrow {
+    border-bottom-color: pitchBlack;
+    border-top-color: pitchBlack;
+  }
+  .popover-content {
+    height: 200px;
+    overflow-y: auto;
+    padding: 0;
+    border-bottom: 5px solid pitchBlack;
+    td a {
+      padding-right: 10px;
+    }
+  }
+
+  &.tags-popover {
+    z-index: 999;
+    .popover-title {
+      padding-left: 10px;
+    }
+    .popover-content {
+      height: auto;
+      padding: 10px;
+      .actions {
+        margin-top: 10px;
+        .btn:first-child {
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@
         - if user.subscribed
           %i.icon-envelope{title: t(:SUBSCRIBED)}
       %td
-        = render partial: "office/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
+        = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
         .options
           .btn-group

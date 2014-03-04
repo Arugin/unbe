@@ -463,4 +463,9 @@ body{
   width: 10% !important;
 }
 
+.span6-5{
+  @extend .span6;
+  width: 53% !important;
+}
+
 

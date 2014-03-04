@@ -9,7 +9,7 @@
         %i
         =t(:NEW_CYCLE)
   .span3
-    = render :partial => "common/search_control", :locals => { :current_action_path => office_cycles_path(scope:'current_user') }
+    = render :partial => "common/search_control", :locals => { :current_action_path => cycles_office_path(scope:'current_user') }
 
 #cycles.cycles.ujs-pagination
   = render :partial => 'cycles_block'

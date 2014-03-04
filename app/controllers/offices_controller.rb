@@ -1,4 +1,4 @@
-class OfficeController < ApplicationController
+class OfficesController < ApplicationController
 
   before_filter :authenticate_user!
   before_filter :scope, except: [:non_approved,:non_approved_content]
@@ -9,7 +9,7 @@ class OfficeController < ApplicationController
   respond_to :html, :js
 
   # TODO: Move it to model
-  def index
+  def show
     @last_pages = []
 
     elements = Impression.where(user_id: current_user._id).order_by([:created_at, :desc])

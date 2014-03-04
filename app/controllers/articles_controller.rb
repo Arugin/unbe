@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
       push_to_news
       add_script
       @article.save
-      redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
+      redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
     else
       render action: "new"
     end
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
       push_to_news
       add_script
       @article.save
-      redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
+      redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
       render action: "edit"
     end
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
       redirect_to @article, alert: message + e.message
       return
     end
-    redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_REMOVE_SUCCESS)
+    redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_REMOVE_SUCCESS)
   end
 
   def news
@@ -88,12 +88,12 @@ class ArticlesController < ApplicationController
 
   def publish
     @article = Article.find(params[:id])
-    redirect_to office_articles_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_NIL) if @article.tmpContent.nil?
+    redirect_to articles_office_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_NIL) if @article.tmpContent.nil?
     @article.publish
     if can? :automatic_approve, @article
       @article.approve
     end
-    redirect_to office_articles_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
+    redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
   end
 
   def approve

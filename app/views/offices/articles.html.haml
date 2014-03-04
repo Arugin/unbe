@@ -3,13 +3,13 @@
     %h4.section-small
       = title 'Мои статьи'
       %span.o-count= @articles.size
-  .span4
+  .span8
     .pull-right
       = link_to new_article_path, :class=>'btn btn-primary' do
         %i
         =t(:NEW_ARTICLE)
 
-= render partial: 'common/list_header', locals: { current_action: lambda { |*args| office_articles_path(*args) }, model: Article, list_title:'Статьи' }
+= render partial: 'common/list_header', locals: { current_action: lambda { |*args| articles_office_path(*args) }, model: Article, list_title:'Статьи' }
 
 #articles.articles.ujs-pagination
   = render :partial => 'articles_block'

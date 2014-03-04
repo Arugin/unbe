@@ -25,7 +25,7 @@ class CyclesController < ApplicationController
     @cycle.author = current_user
 
     if @cycle.save
-      redirect_to office_cycles_path(scope:'current_user'), notice: t(:CYCLE_CREATE_SUCCESS)
+      redirect_to cycles_office_path(scope:'current_user'), notice: t(:CYCLE_CREATE_SUCCESS)
     else
       render action: "new"
     end
@@ -35,12 +35,12 @@ class CyclesController < ApplicationController
     @cycle = Cycle.find(params[:id])
 
     if @cycle.system?
-      redirect_to office_cycles_path(scope:'current_user'), alert: t('CAN_NOT_EDIT_SYSTEM_CYCLE')
+      redirect_to cycles_office_path(scope:'current_user'), alert: t('CAN_NOT_EDIT_SYSTEM_CYCLE')
       return
     end
 
     if @cycle.update_attributes(params[:cycle])
-      redirect_to office_cycles_path(scope:'current_user'), notice: t(:CYCLE_UPDATE_SUCCESS)
+      redirect_to cycles_office_path(scope:'current_user'), notice: t(:CYCLE_UPDATE_SUCCESS)
     else
       render action: "edit"
     end
@@ -59,13 +59,13 @@ class CyclesController < ApplicationController
       redirect_to @cycle, alert: message + e.message
       return
     end
-    redirect_to office_cycles_path(scope:'current_user'), notice: t(:CYCLE_REMOVE_SUCCESS)
+    redirect_to cycles_office_path(scope:'current_user'), notice: t(:CYCLE_REMOVE_SUCCESS)
   end
 
   def edit
     @cycle = Cycle.find(params[:id])
     if @cycle.system?
-      redirect_to office_cycles_path(scope:'current_user'), alert: t('CAN_NOT_EDIT_SYSTEM_CYCLE')
+      redirect_to cycles_office_path(scope:'current_user'), alert: t('CAN_NOT_EDIT_SYSTEM_CYCLE')
       return
     end
   end

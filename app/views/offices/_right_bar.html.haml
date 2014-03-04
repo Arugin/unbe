@@ -26,19 +26,19 @@
       Личный кабинет
     %ul.navigation
       %li
-        = active_link_to main_app.office_path, active: :exclusive do
+        = active_link_to office_path, active: :exclusive do
           Статус
       %li
-        = active_link_to main_app.office_articles_path(scope: 'current_user'), active: :exclusive do
+        = active_link_to articles_office_path(scope: 'current_user'), active: :exclusive do
           Мои статьи
       %li
-        = active_link_to main_app.office_cycles_path(scope: 'current_user') do
+        = active_link_to cycles_office_path(scope: 'current_user') do
           Мои циклы
       %li
-        = active_link_to main_app.office_galleries_path(scope: 'current_user') do
+        = active_link_to galleries_office_path(scope: 'current_user') do
           Мои работы
       %li
-        = active_link_to main_app.projects_path(scope: 'current_user') do
+        = active_link_to projects_path(scope: 'current_user') do
           Мои проекты
       %li
         %a{:href=>"#"}

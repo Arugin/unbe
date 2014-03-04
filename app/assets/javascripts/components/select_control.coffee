@@ -80,7 +80,7 @@
         check_main_checkox false
         check_list_checkboxes false
 
-      $('.content').on 'click', list_check_box_selector, () ->
+      $('#container').on 'click', list_check_box_selector, () ->
         $(this).closest(parent_selector).toggleClass('selected', $(this).is(':checked'))
         trigger_changed_event()
 

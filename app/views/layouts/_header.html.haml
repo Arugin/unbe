@@ -67,11 +67,11 @@
         %div
           %ul.nav.nav-pills
             %li
-              = link_to main_app.office_path do
+              = link_to office_path do
                 %span
                   = current_user.name
             %li
-              = link_to main_app.destroy_user_session_path, :method=>'delete' do
+              = link_to destroy_user_session_path, :method=>'delete' do
                 %span Выйти
 
 

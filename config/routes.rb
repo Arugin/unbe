@@ -40,7 +40,6 @@ Unbe::Application.routes.draw do
 
 
   resources :articles do
-    resources :comments
     collection do
       get 'news'
       get 'by_area'
@@ -57,6 +56,7 @@ Unbe::Application.routes.draw do
       get 'draft'
       get 'to_garbage'
     end
+    resources :comments
   end
 
   resources :comments do
@@ -69,12 +69,20 @@ Unbe::Application.routes.draw do
 
   resources :projects
 
+  resource :office do
+    collection do
+      delete 'bulk_delete'
+      put 'bulk_tag'
+    end
+    member do
+      get 'articles'
+      get 'cycles'
+      get 'galleries'
+    end
+  end
+
   # Office routes
-  get '/office', to: 'office#index', as: 'office'
-  get '/office/articles', to: 'office#articles',as: 'office_articles'
-  get '/office/cycles', to: 'office#cycles',as: 'office_cycles'
   get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
-  get '/office/galleries', to: 'office#galleries',as: 'office_galleries'
   get '/office/content/non_approved', to: 'office#non_approved_content',as: 'non_approved_contents'
 
   # Profile routes

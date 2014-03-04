@@ -3,7 +3,6 @@
     color: darkred;
   }
   .btn-group {
-    margin-left: 5px;
     a {
       text-decoration: none;
     }
@@ -13,4 +12,9 @@
       color: white;
     }
   }
+}
+
+.list-header .center-group .scope-switch-container{
+  padding-left: 0;
+  margin-left: -5px;
 }
