@@ -27,7 +27,7 @@ gem "mongoid-paperclip", require: "mongoid_paperclip", git: 'https://github.com/
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor'
 gem 'mongoid_rails_migrations', '>= 1.0.0'
-gem 'voteable_mongo', git: 'https://github.com/dementrock/voteable_mongo.git'
+gem 'voteable_mongo', git: 'https://github.com/Arugin/voteable_mongo'
 gem 'russian', '~> 0.6.0'
 gem 'impressionist'
 gem 'meta-tags', require: 'meta_tags'
@@ -35,7 +35,7 @@ gem 'mongoid_slug'
 gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
-gem 'merit'
+gem 'merit', git: 'https://github.com/Arugin/merit'
 
 # Gems used only for assets and not required
 # in production environments by default.

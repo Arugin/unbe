@@ -26,7 +26,7 @@ class GalleriesController < ApplicationController
     @gallery.author = current_user
 
     if @gallery.save
-      redirect_to office_galleries_path(scope:'current_user'), notice: t(:GALLERY_CREATE_SUCCESS)
+      redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_CREATE_SUCCESS)
     else
       render action: "new"
     end
@@ -42,7 +42,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.find(params[:id])
 
     if @gallery.update_attributes(params[:gallery])
-      redirect_to office_galleries_path(scope:'current_user'), notice: t(:GALLERY_UPDATE_SUCCESS)
+      redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_UPDATE_SUCCESS)
     else
       render action: "edit"
     end
@@ -61,6 +61,6 @@ class GalleriesController < ApplicationController
       redirect_to @gallery, alert: message + e.message
       return
     end
-    redirect_to office_galleries_path(scope:'current_user'), notice: t(:GALLERY_REMOVE_SUCCESS)
+    redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_REMOVE_SUCCESS)
   end
 end

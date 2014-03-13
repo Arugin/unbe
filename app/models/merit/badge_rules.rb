@@ -34,31 +34,59 @@ module Merit
       # grant_on 'comments#vote', :badge => 'relevant-commenter', :to => :user do |comment|
       #   comment.votes.count == 5
       # end
-=begin
+
       grant_on 'users#update', badge: 'COMMUNICABLE', temporary: true do |user|
         user.full_profile?
       end
 
-      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_1', level: 1, to: :user do |comment|
+      grant_on ['articles#approve','contents#approve'], badge: 'PART_OF_WHOLE', to: :author do |subject|
+        subject.author.full_actions?
+      end
+
+      grant_on 'comments#create', badge: 'PART_OF_WHOLE', to: :user do |comment|
+        comment.user.full_actions?
+      end
+
+      grant_on ['comments#vote_up'], badge: 'COMMENTATOR_1', level: 1, to: :user do |comment|
         comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 25
       end
 
-      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_2', level: 2, to: :user do |comment|
+      grant_on ['comments#vote_up'], badge: 'COMMENTATOR_2', level: 2, to: :user do |comment|
         comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 100
       end
 
-      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_3', level: 3, to: :user do |comment|
+      grant_on ['comments#vote_up'], badge: 'COMMENTATOR_3', level: 3, to: :user do |comment|
         comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 400
       end
 
-      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_4', level: 4, to: :user do |comment|
+      grant_on ['comments#vote_up'], badge: 'COMMENTATOR_4', level: 4, to: :user do |comment|
         comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 2000
       end
 
-      grant_on ['comments#vote_up'], :badge => 'COMMENTATOR_5', level: 5, to: :user do |comment|
+      grant_on ['comments#vote_up'], badge: 'COMMENTATOR_5', level: 5, to: :user do |comment|
         comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 10000
       end
-=end
+
+      grant_on ['comments#vote_up'], badge: 'RATED_COMMENT_1', level: 1, to: :user do |comment|
+        comment.votes_point >= 25
+      end
+
+      grant_on ['comments#vote_up'], badge: 'RATED_COMMENT_2', level: 2, to: :user do |comment|
+        comment.votes_point >= 50
+      end
+
+      grant_on ['comments#vote_up'], badge: 'RATED_COMMENT_3', level: 3, to: :user do |comment|
+        comment.votes_point >= 75
+      end
+
+      grant_on ['comments#vote_up'], badge: 'RATED_COMMENT_4', level: 4, to: :user do |comment|
+        comment.votes_point >= 100
+      end
+
+      grant_on ['comments#vote_up'], badge: 'RATED_COMMENT_5', level: 5, to: :user do |comment|
+        comment.votes_point >= 200
+      end
+
     end
   end
 end

@@ -82,8 +82,8 @@ Unbe::Application.routes.draw do
   end
 
   # Office routes
-  get '/office/articles/non_approved', to: 'office#non_approved',as: 'non_approved_articles'
-  get '/office/content/non_approved', to: 'office#non_approved_content',as: 'non_approved_contents'
+  get '/office/articles/non_approved', to: 'offices#non_approved',as: 'non_approved_articles'
+  get '/office/content/non_approved', to: 'offices#non_approved_content',as: 'non_approved_contents'
 
   # Profile routes
   get '/profile/edit', to: 'profiles#edit',as: 'edit_profile'

@@ -58,6 +58,7 @@ class User
   has_many :articles, dependent: :restrict, inverse_of: :author
   has_many :comments, dependent: :restrict
   has_many :galleries, dependent: :restrict, inverse_of: :author
+  has_many :contents, dependent: :restrict, inverse_of: :author, class_name: 'Content::BaseContent'
 
   search_in :name, :email
 
@@ -145,7 +146,11 @@ class User
   end
 
   def full_profile?
-    self.first_name.present? && self.second_name.present? && self.avatar.present? && self.from.present? && !unknown?
+    self.first_name.present? && self.second_name.present? && self.about.present? && self.from.present? && !unknown?
+  end
+
+  def full_actions?
+    articles.present? && contents.present? && comments.present?
   end
 
   protected
