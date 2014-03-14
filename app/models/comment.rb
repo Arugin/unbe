@@ -26,4 +26,8 @@ class Comment
     end
   end
 
+  def commentable_author
+    commentable.author
+  end
+
 end

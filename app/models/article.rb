@@ -10,6 +10,7 @@ class Article
   include Concerns::Randomizable
   include Concerns::Shortable
   include Concerns::Taggable
+  include Concerns::Commentable
   include ActionView::Helpers::TextHelper
   include Mongo::Voteable
 
@@ -35,7 +36,6 @@ class Article
   belongs_to :article_area
   belongs_to :article_type
   belongs_to :cycle
-  has_many :comments, dependent: :restrict, as: :commentable, class_name: 'Comment'
 
   search_in :title, :tags
 
@@ -144,6 +144,10 @@ class Article
       { title: :CREATED_AT, sort_by: :created_at},
       { title: :TITLE, sort_by: :title}
     ]
+  end
+
+  def article?
+    true
   end
 
   protected

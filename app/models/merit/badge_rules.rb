@@ -39,7 +39,7 @@ module Merit
         user.full_profile?
       end
 
-      grant_on ['articles#approve','contents#approve'], badge: 'PART_OF_WHOLE', to: :author do |subject|
+      grant_on ['articles#create','contents#create'], badge: 'PART_OF_WHOLE', to: :author do |subject|
         subject.author.full_actions?
       end
 
@@ -85,6 +85,58 @@ module Merit
 
       grant_on ['comments#vote_up'], badge: 'RATED_COMMENT_5', level: 5, to: :user do |comment|
         comment.votes_point >= 200
+      end
+
+      grant_on ['articles#vote_up'], badge: 'WRITER_1', level: 1, to: :author do |article|
+        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 5
+      end
+
+      grant_on ['articles#vote_up'], badge: 'WRITER_2', level: 2, to: :author do |article|
+        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 25
+      end
+
+      grant_on ['articles#vote_up'], badge: 'WRITER_3', level: 3, to: :author do |article|
+        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 75
+      end
+
+      grant_on ['articles#vote_up'], badge: 'WRITER_4', level: 4, to: :author do |article|
+        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 150
+      end
+
+      grant_on ['articles#vote_up'], badge: 'WRITER_5', level: 5, to: :author do |article|
+        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 250
+      end
+
+      grant_on ['articles#vote_up'], badge: 'RATED_ARTICLE_1', level: 1, to: :author do |article|
+        article.votes_point >= 25
+      end
+
+      grant_on ['articles#vote_up'], badge: 'RATED_ARTICLE_2', level: 2, to: :author do |article|
+        article.votes_point >= 75
+      end
+
+      grant_on ['articles#vote_up'], badge: 'RATED_ARTICLE_3', level: 3, to: :author do |article|
+        article.votes_point >= 150
+      end
+
+      grant_on ['articles#vote_up'], badge: 'RATED_ARTICLE_4', level: 4, to: :author do |article|
+        article.votes_point >= 300
+      end
+
+      grant_on ['articles#vote_up'], badge: 'RATED_ARTICLE_5', level: 5, to: :author do |article|
+        article.votes_point >= 500
+      end
+
+      grant_on ['comments#create'], badge: 'HOLIVAR_1', level: 1, to: :commentable_author do |comment|
+        comment.commentable.article? && comment.commentable.comments.count >= 25
+      end
+
+      grant_on ['comments#create'], badge: 'HOLIVAR_2', level: 2, to: :commentable_author do |comment|
+        comment.commentable.article? && comment.commentable.comments.count >= 100
+      end
+
+      grant_on ['comments#create'], badge: 'HOLIVAR_3', level: 3, to: :commentable_author do |comment|
+        comment.commentable.article? && comment.commentable.comments.count >= 500
       end
 
     end

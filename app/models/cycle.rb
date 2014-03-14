@@ -6,6 +6,7 @@ class Cycle
   include Concerns::Ownerable
   include Concerns::Shortable
   include Concerns::Taggable
+  include Concerns::Commentable
   include Mongo::Voteable
 
   field :title, type: String
@@ -15,7 +16,6 @@ class Cycle
   slug  :title, :history => true
 
   has_many :articles, dependent: :restrict
-  has_many :comments, as: :commentable, class_name: 'Comment'
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :description, length: {maximum: 1000}
@@ -51,6 +51,10 @@ class Cycle
 
   def system?
     system
+  end
+
+  def cycle?
+    true
   end
 
 end

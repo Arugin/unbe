@@ -6,6 +6,7 @@ class Gallery
   include Concerns::Searchable
   include Concerns::Shortable
   include Concerns::Taggable
+  include Concerns::Commentable
   include Mongo::Voteable
 
   is_impressionable counter_cache: true, :unique => :ip_address
@@ -22,8 +23,6 @@ class Gallery
   has_many :contents, dependent: :destroy, as: :contentable, class_name: 'Content::BaseContent'
   accepts_nested_attributes_for :contents, :reject_if => lambda { |b| b[:src].blank? }
 
-  has_many :comments, dependent: :destroy, as: :commentable, class_name: 'Comment'
-
   default_scope order_by(:created_at => :desc)
 
   search_in :name, :tags
@@ -31,4 +30,9 @@ class Gallery
   def title
     name
   end
+
+  def gallery?
+    true
+  end
+
 end

@@ -8,6 +8,7 @@ module Content
     include Concerns::Searchable
     include Concerns::Ownerable
     include Concerns::Taggable
+    include Concerns::Commentable
     include Mongo::Voteable
     include ActionView::Helpers::TextHelper
 
@@ -31,8 +32,6 @@ module Content
 
     belongs_to :contentable, polymorphic: true
 
-    has_many :comments, dependent: :destroy, as: :commentable, class_name: 'Comment'
-
     default_scope order_by(:created_at => :desc)
     scope :random, all.where(approved_to_news: true, reviewed: true)
     scope :non_approved, lambda { |user, params = {}|
@@ -54,6 +53,10 @@ module Content
 
     def tiny_content
       strip_tags self.description
+    end
+
+    def content?
+      true
     end
 
   end

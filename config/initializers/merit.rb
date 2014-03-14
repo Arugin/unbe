@@ -123,7 +123,7 @@ end
    }, {
        id: (badge_id = badge_id + 1),
        name: 'WRITER_4',
-       description: 'WRITER_1_DESC',
+       description: 'WRITER_4_DESC',
        level: 4,
        custom_fields: { category: :articles, difficulty: :gold, icon: 'fa fa-pencil-square-o' }
    }, {
