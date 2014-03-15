@@ -18,8 +18,11 @@
       Администрирование
     %ul.navigation
       %li
-        = active_link_to main_app.users_path do
+        = active_link_to users_path do
           = "Пользователи (#{User.all.count})"
+      %li
+        = active_link_to users_path do
+          = "Назначить достижения"
 
   -if user_signed_in?
     %h3.right-bar

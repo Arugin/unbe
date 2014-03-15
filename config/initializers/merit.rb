@@ -185,6 +185,24 @@ end
       name: 'PART_OF_WHOLE',
       description: 'PART_OF_WHOLE_DESC',
       custom_fields: { category: :common, difficulty: :bronze, icon: 'fa fa-apple' }
+   }, {
+       id: (badge_id = badge_id + 1),
+       name: 'ARTICLE_VIEWS_1',
+       description: 'ARTICLE_VIEWS_1_DESC',
+       level: 1,
+       custom_fields: { category: :articles, difficulty: :bronze, icon: 'fa fa-eye' }
+   }, {
+       id: (badge_id = badge_id + 1),
+       name: 'ARTICLE_VIEWS_2',
+       description: 'ARTICLE_VIEWS_2_DESC',
+       level: 2,
+       custom_fields: { category: :articles, difficulty: :copper, icon: 'fa fa-eye' }
+   }, {
+       id: (badge_id = badge_id + 1),
+       name: 'ARTICLE_VIEWS_3',
+       description: 'ARTICLE_VIEWS_3_DESC',
+       level: 3,
+       custom_fields: { category: :articles, difficulty: :silver, icon: 'fa fa-eye' }
    }
  ].each do |attrs|
    Merit::Badge.create! attrs
