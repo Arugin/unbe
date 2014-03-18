@@ -1,15 +1,15 @@
 .row-fluid
   .span5
-    %h4=title 'Неподтвержденные статьи'
+    %h4=title 'Назначить достижения'
 
 .row-fluid
   = simple_form_for :user, url: assign_badges_office_path do |f|
     .form-inputs
-      = f.input :users, collection: @users, input_html: { class: 'select2' }
-      = f.input :badges, collection: @badges, label_method: lambda { |badge| t(badge.name) }, input_html: { class: 'select2' }
+      = f.input :id, collection: @users, input_html: { class: 'select2' }, label: 'Пользователь'
+      = f.input :badge_id, collection: @badges, label_method: lambda { |badge| t(badge.name) }, input_html: { class: 'select2' }, label: 'Бадж'
 
     .form-actions
-      = f.button :submit, class: "btn-primary"
+      = f.button :submit, 'Назначить', class: "btn-primary"
 
 - content_for(:right_bar) do
   = render :partial => 'right_bar'

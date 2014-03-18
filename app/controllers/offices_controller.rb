@@ -58,13 +58,16 @@ class OfficesController < ApplicationController
   end
 
   def assign_badges_show
+    authorize! :assign_badges, User
     @users = User.random
     @badges = Merit::Badge.all
-    puts @users.blank?, @badges.blank?
   end
 
   def assign_badges_update
-
+    authorize! :assign_badges, User
+    @user = User.find params[:user][:id]
+    @user.add_badge params[:user][:badge_id]
+    redirect_to assign_badges_office_path, notice: t(:BADGE_ADDED, badge: params[:user][:badge_id], user: @user.name)
   end
 
   private

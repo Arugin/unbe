@@ -62,7 +62,7 @@ class Ability
         (comment.user == user)&&(comment.votes_point == 0)
       end
 
-      #cannot :read, Article
+
       cannot :show, Article do |article|
          article.is_garbage
       end
