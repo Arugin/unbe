@@ -150,6 +150,18 @@ class Article
     true
   end
 
+  def article_area_id
+    article_area.nil? ? ArticleArea.default_id : article_area._id
+  end
+
+  def article_type_id
+    article_type.nil? ? ArticleType.default_id : article_type._id
+  end
+
+  def cycle_id
+    cycle.nil? ? author.cycles.where(title: :NO_CYCLE).first._id : cycle._id
+  end
+
   protected
 
   def first_image

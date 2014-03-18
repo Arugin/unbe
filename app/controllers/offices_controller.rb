@@ -57,6 +57,16 @@ class OfficesController < ApplicationController
     respond_with @contents
   end
 
+  def assign_badges_show
+    @users = User.random
+    @badges = Merit::Badge.all
+    puts @users.blank?, @badges.blank?
+  end
+
+  def assign_badges_update
+
+  end
+
   private
 
   def scope

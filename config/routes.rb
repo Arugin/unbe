@@ -24,8 +24,8 @@ Unbe::Application.routes.draw do
   resources :cycles do
     resources :comments
     collection do
-      delete 'bulk_delete'
-      put 'bulk_tag'
+      get 'bulk_delete'
+      get 'bulk_tag'
     end
   end
 
@@ -74,6 +74,10 @@ Unbe::Application.routes.draw do
   resources :projects
 
   resource :office do
+    collection do
+      get 'assign_badges', action: :assign_badges_show
+      post 'assign_badges', action: :assign_badges_update
+    end
     member do
       get 'articles'
       get 'cycles'

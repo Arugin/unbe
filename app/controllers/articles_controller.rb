@@ -25,6 +25,8 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @article.author = current_user
+    @article
   end
 
   def create
