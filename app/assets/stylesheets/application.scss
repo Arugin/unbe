@@ -483,3 +483,7 @@ a.disabled, a[disabled] {
 #search::-ms-clear {
   display:none;
 }
+
+.no-bottom-margin{
+  margin-bottom: 0 !important;
+}

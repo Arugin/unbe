@@ -13,6 +13,6 @@
 
     = link_to current_action.call( direction: (params[:direction] == 'asc' ? :desc : :asc) ),
       :class => "btn btn-mini btn-narrow sort-order" do
-      %i{class: (params[:direction] == 'asc' ? 'icon-arrow-up' : 'icon-arrow-down')}
+      %i.fa{class: (params[:direction] == 'asc' ? 'fa-arrow-up' : 'fa-arrow-down')}
   - else
     %span Не сортируемо

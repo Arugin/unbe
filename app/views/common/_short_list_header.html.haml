@@ -1,8 +1,8 @@
 .row-fluid
-  .span12.list-header.sticky-header
+  .span12.list-header.sticky-header.short-list-header
     .row-fluid
       .span5
-        = "Всего 12 статей"
+        %h4.section-small.no-bottom-margin= title list_title
       .span4.center-group
 
         = render partial: "common/sort_control", locals: { current_action: current_action, model: model }

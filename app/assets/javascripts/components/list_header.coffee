@@ -25,9 +25,9 @@
       initPath()
       $arrow = $('.sort-order i')
 
-      direction = if $arrow.hasClass('icon-arrow-down') then 'asc' else 'desc'
+      direction = if $arrow.hasClass('fa-arrow-down') then 'asc' else 'desc'
       $.address.parameter( 'direction', direction )
-      $arrow.toggleClass("icon-arrow-up icon-arrow-down");
+      $arrow.toggleClass("fa-arrow-up fa-arrow-down");
 
     # Sort by
     $('.sort-control .dropdown-menu a').click (e) ->
