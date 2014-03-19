@@ -46,7 +46,6 @@ Unbe::Application.routes.draw do
   resources :articles do
     collection do
       get 'news'
-      get 'by_area'
       get 'new_news'
       get 'garbage'
       get 'bulk_delete'

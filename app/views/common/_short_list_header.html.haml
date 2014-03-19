@@ -1,0 +1,12 @@
+.row-fluid
+  .span12.list-header.sticky-header
+    .row-fluid
+      .span5
+        = "Всего 12 статей"
+      .span4.center-group
+
+        = render partial: "common/sort_control", locals: { current_action: current_action, model: model }
+
+      .pull-right
+        .span3
+          = render :partial => "common/search_control", :locals => { :current_action_path => articles_office_path(scope:'current_user') }

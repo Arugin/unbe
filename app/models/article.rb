@@ -48,7 +48,12 @@ class Article
     search_for(user,params).not_in(is_garbage: true).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
   }
   scope :by_area, lambda { |user, params = {}, area|
-    search_for(user,params).not_in(is_garbage: true).where(article_area: area).order_by([:created_at, :desc]).and({isApproved: true})
+    scope = search_for(user,params).not_in(is_garbage: true).and({isApproved: true})
+    if area.present?
+      scope.where(article_area: area)
+    else
+      scope
+    end
   }
   scope :non_approved, lambda { |user, params = {}|
     search_for(user,params).any_of({isApproved: false},{isUpdated: true}).and({isPublished: true})
@@ -142,7 +147,8 @@ class Article
   def self.can_be_sorted_by
     [
       { title: :CREATED_AT, sort_by: :created_at},
-      { title: :TITLE, sort_by: :title}
+      { title: :TITLE, sort_by: :title},
+      { title: :VIEWS, sort_by: :impressions_count}
     ]
   end
 

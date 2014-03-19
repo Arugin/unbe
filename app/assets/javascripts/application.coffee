@@ -24,7 +24,7 @@
 #= require fotorama
 #= require unbe
 #= require deep_linking
-#= require views/common/search
+#= require_tree ./views
 #= require share42/share42
 #= require home
 #= require links

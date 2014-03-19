@@ -24,6 +24,7 @@ ru:
   APPROVE: Подтвердить
   APPROVE_AND_TO_NEWS: Подтвердить и отправить на главную
   COUNT_VIEWS: Количество уникальных просмотров
+  COUNT_INCLUDED_VIEWS: Количество просмотров содержащихся элементов
   RATING: Рейтинг
   NO_CONTENTS_FOUND: Нет ни одной работы
   TO_GARBAGE: В мусор
@@ -32,6 +33,7 @@ ru:
   SUBSCRIBED: Подписан на рассылку
   NO_USERS_FOUND: Не зарегистрировано ни одного пользователя
   BADGE_ADDED: "Достижение %{badge} успешно добавлено пользователю %{user}"
+  CONTAINS_ARTICLES: "Содержит %{count} %{items}"
 
   # mailer
   WEEKLY_NEWS: Еженедельные новости unbe
@@ -107,6 +109,7 @@ ru:
   STORY: Рассказ
   REVIEW: Отзыв
 
+
   # profile
   USER_INFO_UPDATE_SUCCESS: Профиль успешно обновлен
   USER_INFO_CAN_NOT_BE_UPDATED: Профиль обновить не удалось
@@ -151,6 +154,7 @@ ru:
   PUBLISH_FULL: Опубликована
   NEW_ARTICLE: Новая статья
   NEW_CYCLE: Новый цикл
+  VIEWS: Просмотры
 
   # MAIN
   READ_MORE: Подробнее

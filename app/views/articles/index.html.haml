@@ -6,7 +6,7 @@
       %h4.section=title t(@article_area.title)
     - else
       %h4.section=title 'Статьи'
-  .span5
+  .span8
     .pull-right
       - if can? :create, Article
         = link_to new_article_path, :class=>'btn btn-primary' do
@@ -16,8 +16,8 @@
         = link_to new_cycle_path, :class=>'btn btn-primary' do
           %i
           =t(:NEW_CYCLE)
-  .span3.middle#article-search
-    = render :partial => "common/search_control", :locals => { :current_action_path => articles_path }
+
+= render partial: 'common/short_list_header', locals: { current_action: lambda { |*args| articles_path(*args) }, model: Article, list_title:'Статьи' }
 
 #articles.ujs-pagination
   = render :partial => 'index_articles_block'

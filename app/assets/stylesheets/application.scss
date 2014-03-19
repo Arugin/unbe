@@ -104,8 +104,7 @@ ul.navigation{
 h4.section{
   font-size: 26px;
   font-weight: normal;
-  margin: 0;
-  margin-top: 9px;
+  margin: 9px 0;
   font-family: $font;
 }
 
@@ -288,7 +287,6 @@ h4.random-news{
   .mini-vote{
     @extend .vote;
     min-width: 50px;
-    margin: 0;
     float: none;
     vertical-align: middle;
     margin: 0 auto;
@@ -298,7 +296,7 @@ h4.random-news{
     min-width: 50px;
     vertical-align: middle;
     margin: 0 auto;
-    margin-top: 7px;
+    margin-top: 8px;
   }
   .views-count{
     @extend .views-count;

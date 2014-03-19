@@ -11,8 +11,19 @@ class ArticlesController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @articles = Article.approved(current_user, params).page(params[:page]).per(9)
+    params[:sort_by] ||= 'created_at'
+    params[:direction] ||= 'desc'
+
+    @article_area =  ArticleArea.where(title: params[:article_area]).first
+    @address_additor = ''
+    unless @article_area.nil?
+      @address_additor = "?article_area=#{@article_area.id}"
+    end
+
+    @articles = Article.unscoped.by_area(current_user, params, @article_area).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(9)
+
     @article_areas = ArticleArea.without_news
+
     respond_with @articles
   end
 
@@ -110,17 +121,6 @@ class ArticlesController < ApplicationController
     end
     @article.approve
     redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
-  end
-
-  def by_area
-    @article_areas = ArticleArea.without_news
-    @article_area =  ArticleArea.where(title: params[:article_area]).first
-    @articles = Article.by_area(current_user, params, @article_area).page(params[:page]).per(9)
-    @address_additor = ''
-    unless @article_area.nil?
-      @address_additor = "?article_area=#{@article_area.id}"
-    end
-    render :index
   end
 
   def new_news
