@@ -1,41 +1,9 @@
 - if @cycles.blank?
-    %p= t("NO_OFFICE_CYCLES")
+  %p= t("NO_OFFICE_CYCLES")
 - else
-    %table.table.table-striped
-        %thead
-            %th
-            %th
-            %th{:width => "30px"}
-            %th{:width => '30px'}
-            %th{:width => "80px"}
-        %tbody
-            - @cycles.each do |cycle|
-                %tr
-                    %td
-                        .header
-                            = link_to cycle_path(cycle) do
-                                =cycle.correct_title
-                        .publishDate
-                            = l cycle.created_at.in_time_zone, format: :short
-                    %td
-                        - unless cycle.system?
-                            .options
-                                .btn-group
-                                    %button.btn
-                                        = link_to edit_cycle_path cycle do
-                                            Изменить
-                                    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                                        %span.caret
-                                    %ul.dropdown-menu
-                                        %li
-                                            = link_to edit_cycle_path(cycle) do
-                                                Изменить
-                    %td.views-wrapper
-                        = render :partial => "common/comments_count", locals: { subject: cycle }
-                    %td.mini-vote
-                        = render :partial => "common/rate_count", locals: { subject: cycle }
-                    %td
-                        - if can? :destroy, cycle
-                            = button_to "Удалить", cycle, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+  %ul.o-item-list
+    - @cycles.each do |cycle|
+      = render partial: 'item_block', locals: {item: cycle, collection: 'cycles'}
+
 
 = paginate @cycles, :remote => true

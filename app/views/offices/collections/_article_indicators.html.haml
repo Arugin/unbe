@@ -1,0 +1,16 @@
+%span
+  - if item.isUpdated
+    %i.fa.fa-pencil{title: t('ARTICLE_CHANGED')}
+  - if item.is_garbage
+    %i.fa.fa-trash-o{title: t('ARTICLE_TRASH')}
+%span
+  - unless item.isPublished
+    = link_to publish_article_path(item) do
+      = render :partial => 'yes_no',:locals => { :is_true => item.isPublished, :title=>"опубликована"}
+  - else
+    = render :partial => 'yes_no',:locals => { :is_true => item.isPublished, :title=>"опубликована"}
+%span
+  - if item.isUpdated && item.isPublished
+    %i.fa.fa-refresh
+  - else
+    = render :partial => 'yes_no',:locals => { :is_true => item.isApproved, :title=>"подтверждена"}

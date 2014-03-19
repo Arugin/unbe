@@ -1,4 +1,4 @@
 $("#articles").updateHtml("#{escape_javascript(render partial: 'articles_block')}");
 $(".list-header").listHeader();
 $(".sticky-header").stickyHeader();
-$(".tag-selected").tagsPopover({ tags_input: "#{escape_javascript(render partial: "common/tags_popover_content")}" })
+$(".tag-selected").tagsPopover({ tags_input: "#{escape_javascript(render partial: "common/tags_popover_content", locals:{model: Article})}" })

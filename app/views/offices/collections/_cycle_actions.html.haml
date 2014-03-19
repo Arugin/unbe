@@ -1,0 +1,10 @@
+- unless item.system?
+  .options
+    .btn-group
+      %button.btn
+        = link_to edit_cycle_path item do
+          Изменить
+      %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+        %span.caret
+      %ul.dropdown-menu
+        %li

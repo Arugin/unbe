@@ -219,6 +219,7 @@ ru:
         title: Заголовок
         description: Описание
         tag_list: Ключевые слова
+        logo: Ссылка на логотип цикла
       user:
         name: Псевдоним
         first_name: Имя

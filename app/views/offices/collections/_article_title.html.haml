@@ -1,0 +1,5 @@
+.o-title-container
+  - if item.is_changed?
+    = link_to item.title, draft_article_path(item)
+  - else
+    = link_to item.title, article_path(item)

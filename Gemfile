@@ -57,7 +57,7 @@ gem 'client_side_validations-simple_form'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'fotoramajs'
 gem 'select2-rails'
-gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails', branch: 'tinymce-4'
+gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails', branch: 'tinymce-4', ref: 'da19989c52b2368d76abdfab42012b509ea175e2'
 gem 'tinymce-rails-langs'
 gem "font-awesome-rails"
 

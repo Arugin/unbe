@@ -1,7 +1,7 @@
 .tag-input
   = text_field_tag :tag_list, nil, class: "select2tags",
-    placeholder: 'Type in tags delimited by commas', :data => { tags: Article.tag_list.to_json }
+    placeholder: 'Введите теги, разделяя их запятыми', data: { tags: model.tag_list.to_json }
 .actions
-  .btn.btn-small.apply Apply
+  .btn.btn-small.apply Применить
   or
-  .btn.btn-small.btn-link.cancel Cancel
+  .btn.btn-small.btn-link.cancel Отмена

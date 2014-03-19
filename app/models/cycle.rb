@@ -12,6 +12,7 @@ class Cycle
   field :title, type: String
   field :description, type: String
   field :system, type: Boolean, default: false
+  field :logo, type: String
 
   slug  :title, :history => true
 
@@ -62,6 +63,10 @@ class Cycle
         { title: :CREATED_AT, sort_by: :created_at},
         { title: :TITLE, sort_by: :title}
     ]
+  end
+
+  def get_logo_url
+    logo
   end
 
 end

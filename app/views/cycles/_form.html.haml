@@ -1,0 +1,11 @@
+= horizontal_simple_form_for(@cycle, :validate => true) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, input_html: { class: "span8" }
+    = f.input :logo, input_html: { class: "span8" }
+    = render partial: 'common/text_editor', locals: {f: f, field: :description, type: :small, id: 'smallContent', html_class: 'span12', label: nil}
+    = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Cycle}
+
+  .form-actions
+    = f.button :submit, :class => "btn-primary"

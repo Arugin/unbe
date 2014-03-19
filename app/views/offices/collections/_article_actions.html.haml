@@ -1,0 +1,10 @@
+.options
+  .btn-group
+    %button.btn
+      = link_to edit_article_path item do
+        Изменить
+    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+      %span.caret
+    %ul.dropdown-menu
+      %li
+        = link_to 'Опубликовать', publish_article_path(item)

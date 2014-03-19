@@ -1,7 +1,8 @@
-.views-count
-  %i.icon-eye-open{title: t(:COUNT_VIEWS)}
-  = subject.impressionist_count(filter: :ip_address)
-  - count = subject.impressionist_count(start_date: DateTime.now.beginning_of_day)
-  - if growth && (count > 0)
-    %span.grow{title: t(:DAY_COUNT_VIEWS)}
-      = "+#{count}"
+- if subject.respond_to? :impressions
+  .views-count
+    %i.icon-eye-open{title: t(:COUNT_VIEWS)}
+    = subject.impressionist_count(filter: :ip_address)
+    - count = subject.impressionist_count(start_date: DateTime.now.beginning_of_day)
+    - if growth && (count > 0)
+      %span.grow{title: t(:DAY_COUNT_VIEWS)}
+        = "+#{count}"
