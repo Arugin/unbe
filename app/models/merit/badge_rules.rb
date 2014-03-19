@@ -140,7 +140,7 @@ module Merit
       end
 
       grant_on 'articles#show', badge: 'ARTICLE_VIEWS_1', level: 1, to: :author do |article|
-        article.impressions_count >= 1
+        article.impressions_count >= 100
       end
 
       grant_on 'articles#show', badge: 'ARTICLE_VIEWS_2', level: 2, to: :author do |article|
