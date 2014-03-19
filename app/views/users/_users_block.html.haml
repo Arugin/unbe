@@ -1,7 +1,7 @@
 %table.table.table-striped.users
   %thead
     %th Имя
-    %th Email
+    %th.span3 Email
     %th Роль
     %th Дата регистрации
     %th
@@ -12,10 +12,10 @@
   %tbody
   - @users.each do |user|
     %tr
-      %td
+      %td{title: user.name}
         = link_to user_profile_path(user) do
-          = truncate(user.name, :length => 30, :omission => '...')
-      %td= truncate(user.email, :length => 30, :omission => '...')
+          = truncate(user.name, length: 10, :omission => '...')
+      %td{title: user.email}= truncate(user.email, length: 20, :omission => '...')
       %td= t(user.highest_role)
       %td= l user.created_at.in_time_zone, format: :mini
       %td

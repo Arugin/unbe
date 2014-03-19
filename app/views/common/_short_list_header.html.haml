@@ -1,10 +1,9 @@
 .row-fluid
   .span12.list-header.sticky-header.short-list-header
     .row-fluid
-      .span5
+      .span4
         %h4.section-small.no-bottom-margin= title list_title
-      .span4.center-group
-
+      .span5.center-group
         = render partial: "common/sort_control", locals: { current_action: current_action, model: model }
 
       .pull-right
