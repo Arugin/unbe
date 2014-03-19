@@ -38,6 +38,10 @@ module Content
       search_for(user,params).where(reviewed: false)
     }
 
+    scope :approved, lambda { |user, params = {}|
+      unscoped.search_for(user,params).where(approved_to_news: true, reviewed: true).order_by(params[:sort_by].to_sym => params[:direction].to_sym)
+    }
+
     alias :content :description
 
     voteable self, up: +1, down: -1
@@ -57,6 +61,14 @@ module Content
 
     def content?
       true
+    end
+
+    def self.can_be_sorted_by
+      [
+          { title: :CREATED_AT, sort_by: :created_at},
+          { title: :TITLE, sort_by: :title},
+          { title: :VIEWS, sort_by: :impressions_count}
+      ]
     end
 
   end

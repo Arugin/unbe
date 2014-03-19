@@ -34,6 +34,9 @@ ru:
   NO_USERS_FOUND: Не зарегистрировано ни одного пользователя
   BADGE_ADDED: "Достижение %{badge} успешно добавлено пользователю %{user}"
   CONTAINS_ARTICLES: "Содержит %{count} %{items}"
+  UNABLE_TO_DELETE_USER: Невозможно удалить пользователя
+  USER_REMOVE_SUCCESS: Пользователь успешно удален
+
 
   # mailer
   WEEKLY_NEWS: Еженедельные новости unbe

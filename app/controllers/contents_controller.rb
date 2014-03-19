@@ -19,9 +19,14 @@ class ContentsController < ApplicationController
     @content.save
     redirect_to non_approved_contents_path, notice: t(:CONTENT_APPROVE_SUCCESS)
   end
-  #TODO: move to model
+
   def index
-    @contents = Content::BaseContent.search_for(current_user,params).where(approved_to_news: true, reviewed: true).page(params[:page]).per(9)
+    params[:sort_by] ||= 'created_at'
+    params[:direction] ||= 'desc'
+
+    @contents = Content::BaseContent.approved(current_user, params).page(params[:page]).per(9)
+
+    respond_with @contents
   end
 
   def create

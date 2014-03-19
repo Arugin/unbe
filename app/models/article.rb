@@ -42,8 +42,6 @@ class Article
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :tmpContent, length: {maximum: 20000}
 
-  default_scope order_by(:created_at => :desc)
-
   scope :last_news, lambda { |user, params = {}|
     search_for(user,params).not_in(is_garbage: true).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
   }
@@ -62,10 +60,14 @@ class Article
     search_for(user,params).not_in(is_garbage: true).where({isApproved: true}).order_by([:created_at, :desc])
   }
 
-  scope :random,lambda {
+  scope :random, lambda {
     not_in(is_garbage: true).not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
   }
-  scope :unprocessed, unscoped.any_of({isApproved: false}, {:isPublished => false})
+
+  scope :unprocessed, lambda { |user, params = {}|
+    unscoped.search_for(user, params).any_of({isApproved: false}, {:isPublished => false})
+  }
+
 
   attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag, :script
 

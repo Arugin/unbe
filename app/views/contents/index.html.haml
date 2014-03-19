@@ -1,16 +1,15 @@
 - keywords "опубликовать ролик, опубликовать видеоролик, раскрутить видео, поделиться своей работой, обсудить свою работу"
 - description "На unbe вы можете поделиться своими видео работами и роликами, получить конструктивную критику и помощь в выполнении своих работ"
-.row-fluid
-  .span4
-    %h4.section=title 'Работы'
-  .span5
-    .pull-right
-      - if can? :create, Gallery
+
+- if can? :create, Gallery
+  .row-fluid
+    .span12
+      .pull-right
         = link_to new_gallery_path, :class=>'btn btn-primary' do
           %i
           =t(:NEW_GALLERY)
-  .span3.middle#article-search
-    = render :partial => "common/search_control", :locals => { :current_action_path => content_base_contents_path }
+
+= render partial: 'common/short_list_header', locals: { current_action: lambda { |*args| articles_path(*args) }, model: Content::BaseContent, list_title:'Работы' }
 
 #index-contents.ujs-pagination
   = render :partial => 'contents_short_block'

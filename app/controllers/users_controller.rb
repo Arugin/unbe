@@ -44,6 +44,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+
+    message = t :UNABLE_TO_DELETE_USER
+    begin
+      unless @user.destroy
+        redirect_to users_path, alert: message + @user.errors.full_messages.join(', ')
+        return
+      end
+    rescue => e
+      redirect_to users_path, alert: message + e.message
+      return
+    end
+    redirect_to users_path, notice: t(:USER_REMOVE_SUCCESS)
   end
 
   def edit
