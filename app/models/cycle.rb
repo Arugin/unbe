@@ -69,4 +69,8 @@ class Cycle
     logo
   end
 
+  def included_impressions
+    self.articles.inject(0){|sum, article| sum += article.impressionist_count}
+  end
+
 end

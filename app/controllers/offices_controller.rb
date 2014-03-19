@@ -36,7 +36,11 @@ class OfficesController < ApplicationController
   end
 
   def cycles
-    @cycles = Cycle.search_for(current_user, params).page(params[:page]).per(15)
+    params[:sort_by] ||= 'created_at'
+    params[:direction] ||= 'desc'
+
+    @cycles = Cycle.unscoped.search_for(current_user, params).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+
     respond_with @cycles
   end
 

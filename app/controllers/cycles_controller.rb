@@ -4,6 +4,10 @@ class CyclesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   load_and_authorize_resource :except => [:index, :show]
 
+  include Concerns::BulkOperationable
+
+  bulk_actions :delete, :tag
+
   respond_to :html, :js
 
   def index
