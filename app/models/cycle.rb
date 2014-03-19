@@ -57,4 +57,11 @@ class Cycle
     true
   end
 
+  def self.can_be_sorted_by
+    [
+        { title: :CREATED_AT, sort_by: :created_at},
+        { title: :TITLE, sort_by: :title}
+    ]
+  end
+
 end

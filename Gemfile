@@ -7,8 +7,7 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
 end
 
 ruby '1.9.3'
-gem 'rails', '3.2.13'
-
+gem 'rails', '3.2.17'
 
 # Bundle edge Rails instead:
 gem 'bson_ext'

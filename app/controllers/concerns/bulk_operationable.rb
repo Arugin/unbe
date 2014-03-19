@@ -25,7 +25,7 @@ module Concerns
       end
 
       def index_path
-        Rails.application.routes.url_helpers.send("#{model_name.downcase.pluralize}_path")
+        Rails.application.routes.url_helpers.send("#{model_name.downcase.pluralize}_office_path")
       end
 
       def self.bulk_actions(*actions)
@@ -37,24 +37,22 @@ module Concerns
 
     def handle_authorize(action, object)
       if cannot? action, object
-        "You are not allowed to #{action.to_s} #{model_name.downcase} '#{object.name}' because it does not belong to you"
+        "You are not allowed to #{action.to_s} #{model_name.downcase} '#{object.title}' because it does not belong to you"
       else
         false
       end
     end
 
     def handle_object_delete(object)
-      message = "Unable to delete #{model_name.downcase} '#{object.name}': "
+      message = "Unable to delete #{model_name.downcase} '#{object.title}': "
       begin
         unless object.destroy
           message += object.errors.full_messages.join(', ')
-          object.log(status: Model::Log::ERROR, message: message)
           return message
         end
 
       rescue Exception => e
         message += e.message
-        object.log(status: Model::Log::ERROR, message: message + e.message)
         return message
 
       end
@@ -150,7 +148,7 @@ module Concerns
         end
       end
 
-      redirect_to index_path, notice: notice_helper(success_count, 'tagged'), alert: errors
+      redirect_to index_path,notice: notice_helper(success_count, 'tagged'), alert: errors
     end
   end
 end

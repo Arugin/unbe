@@ -23,6 +23,10 @@ Unbe::Application.routes.draw do
 
   resources :cycles do
     resources :comments
+    collection do
+      delete 'bulk_delete'
+      put 'bulk_tag'
+    end
   end
 
   resources :galleries do
@@ -45,8 +49,8 @@ Unbe::Application.routes.draw do
       get 'by_area'
       get 'new_news'
       get 'garbage'
-      delete 'bulk_delete'
-      put 'bulk_tag'
+      get 'bulk_delete'
+      get 'bulk_tag'
     end
     member do
       get 'publish'
@@ -70,10 +74,6 @@ Unbe::Application.routes.draw do
   resources :projects
 
   resource :office do
-    collection do
-      delete 'bulk_delete'
-      put 'bulk_tag'
-    end
     member do
       get 'articles'
       get 'cycles'

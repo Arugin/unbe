@@ -14,7 +14,7 @@
 
       .span1-5.buttons-container
         - if @_controller.respond_to? :bulk_delete
-          = link_to [:bulk_delete, model],class: "btn btn-mini delete-selected",
+          = link_to [:bulk_delete, model], class: "btn btn-mini delete-selected",
            rel: :tooltip, title: "Delete selected", 'data-container' => 'body' do
             %i.icon-remove
 

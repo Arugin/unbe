@@ -68,5 +68,7 @@ module Unbe
 
     config.threadsafe!
     config.dependency_loading = true if $rails_rake_task
+
+    config.i18n.enforce_available_locales = true
   end
 end

@@ -31,13 +31,13 @@
         return if selected.length == 0 or tags.length == 0
 
         action_path = $el.attr('href')
-        $.ajax(
+        request = $.ajax(
           url: action_path
           data: { ids: selected, tags: tags }
           dataType: 'json'
-          type: 'PUT'
+          type: 'GET'
         ).done () ->
-          location.reload();
+         location.reload()
 
       # Close popover on off-click. Special conditions for IE
       $("body").on "click", (e) ->

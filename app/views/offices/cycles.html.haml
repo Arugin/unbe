@@ -3,13 +3,13 @@
     %h4.section-small
       =title 'Мои циклы'
       %span.o-count= @cycles.size
-  .span4
+  .span7
     .pull-right
       = link_to new_cycle_path, :class=>'btn btn-primary' do
         %i
         =t(:NEW_CYCLE)
-  .span3
-    = render :partial => "common/search_control", :locals => { :current_action_path => cycles_office_path(scope:'current_user') }
+
+= render partial: 'common/list_header', locals: { current_action: lambda { |*args| cycles_office_path(*args) }, model: Cycle, list_title:'Цикл' }
 
 #cycles.cycles.ujs-pagination
   = render :partial => 'cycles_block'

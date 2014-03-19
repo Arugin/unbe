@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   before_filter :authenticate_user!, :except => [:news,:index, :show, :by_area]
   load_and_authorize_resource :except => [:news, :index, :by_area]
 
-  respond_to :html, :js
+  include Concerns::BulkOperationable
+
+  bulk_actions :delete, :tag
+
+  respond_to :html, :js, :json
 
   def index
     @articles = Article.approved(current_user, params).page(params[:page]).per(9)

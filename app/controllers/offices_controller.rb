@@ -6,7 +6,7 @@ class OfficesController < ApplicationController
 
   bulk_actions :delete, :tag
 
-  respond_to :html, :js
+  respond_to :html, :js, :json
 
   # TODO: Move it to model
   def show

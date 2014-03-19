@@ -12,7 +12,7 @@ $ ->
         url: action_path
         data: { ids: selected }
         dataType: 'json'
-        type: 'DELETE'
+        type: 'GET'
       ).done () ->
         location.reload();
     else
