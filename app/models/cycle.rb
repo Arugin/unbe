@@ -66,7 +66,12 @@ class Cycle
   end
 
   def get_logo_url
-    logo
+    if logo.blank?
+      nil
+    else
+      logo
+    end
+
   end
 
   def included_impressions
