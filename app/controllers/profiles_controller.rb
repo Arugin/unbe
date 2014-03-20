@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
 
   def comments
     @user = User.find(params[:id])
-    @comments = @user.comments.page(params[:page]).per(20)
+    @comments = @user.comments.order_by([:created_at, :desc]).page(params[:page]).per(20)
     respond_with @comments
   end
 
