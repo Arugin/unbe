@@ -1,0 +1,10 @@
+#profile
+  = render :partial => 'header',locals: { user: @user }
+  .content-left
+    = render :partial => 'menu',locals: { user: @user }
+    .user-profile
+      #comments.comments.ujs-pagination
+
+
+- content_for(:right_bar) do
+  = render partial: 'offices/right_bar'

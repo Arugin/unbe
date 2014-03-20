@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   def user_cycles
     @user = User.find(params[:id])
-    @cycles = @user.cycles.page(params[:page]).per(5)
+    @cycles = @user.cycles.page(params[:page])
     respond_with @cycles
   end
 
@@ -39,6 +39,12 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     @galleries = @user.galleries.page(params[:page]).per(1)
     respond_with @galleries
+  end
+
+  def comments
+    @user = User.find(params[:id])
+    @comments = @user.comments.page(params[:page]).per(20)
+    respond_with @comments
   end
 
 end
