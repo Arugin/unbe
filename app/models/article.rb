@@ -14,7 +14,7 @@ class Article
   include ActionView::Helpers::TextHelper
   include Mongo::Voteable
 
-  is_impressionable counter_cache: true, :unique => :ip_address
+  is_impressionable counter_cache: true, unique: :ip_address
 
   field :title, type: String
   field :logo, type: String
@@ -31,7 +31,7 @@ class Article
   field :to_news, type: Boolean, default: false
   field :impressions_count, type: Integer, default: 0
 
-  slug  :title, :history => true
+  slug  :title, history: true
 
   belongs_to :article_area
   belongs_to :article_type
@@ -43,25 +43,28 @@ class Article
   validates :tmpContent, length: {maximum: 20000}
 
   scope :last_news, lambda { |user, params = {}|
-    search_for(user,params).not_in(is_garbage: true).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and({isApproved: true})
+    search_for(user,params).not_in(is_garbage: true).any_of({article_type: ArticleType.where({title: "NEWS"}).first},{to_news: true}).order_by([:created_at, :desc]).and(isApproved: true)
   }
+
   scope :by_area, lambda { |user, params = {}, area|
-    scope = search_for(user,params).not_in(is_garbage: true).and({isApproved: true})
+    scope = search_for(user,params).not_in(is_garbage: true).and(isApproved: true)
     if area.present?
       scope.where(article_area: area)
     else
       scope
     end
   }
+
   scope :non_approved, lambda { |user, params = {}|
-    search_for(user,params).any_of({isApproved: false},{isUpdated: true}).and({isPublished: true})
+    search_for(user,params).any_of({isApproved: false},{isUpdated: true}).and(isPublished: true)
   }
+
   scope :approved, lambda { |user, params = {}|
-    search_for(user,params).not_in(is_garbage: true).where({isApproved: true}).order_by([:created_at, :desc])
+    search_for(user,params).not_in(is_garbage: true).where(isApproved: true).order_by([:created_at, :desc])
   }
 
   scope :random, lambda {
-    not_in(is_garbage: true).not_in(article_type: ArticleType.where({title: "NEWS"}).first).and({isApproved: true})
+    not_in(is_garbage: true).not_in(article_type: ArticleType.where(title: "NEWS").first).and(isApproved: true)
   }
 
   scope :unprocessed, lambda { |user, params = {}|
@@ -71,8 +74,8 @@ class Article
 
   attr_protected :to_news, :baseRating, :isApproved, :rating, :system_tag, :script
 
-  voteable self, :up => +1, :down => -1
-  voteable Cycle, :up => +1, :down => -1
+  voteable self, up: +1, down: -1
+  voteable Cycle, up: +1, down: -1
 
   def un_publish
     self.isPublished = false
@@ -107,29 +110,14 @@ class Article
   end
 
   def tiny_content
-    ending = nil
-    max_size = 200
-    final_content = strip_tags(short_content)
-    if final_content.size > max_size
-      ending = '...'
-    end
-    "#{final_content[0..max_size]}#{ending}"
+    truncate(strip_tags(short_content), length: 200, omission: '...')
   end
 
   def short_content
-    delimiters = ['<p><!-- unbebreak --></p>']
-    beginIndex = 0
-    endIndex = nil
-
-    delimiters.each do |delimiter|
-      endIndex = content.index delimiter
-    end
-
-    if endIndex.nil?
-        return content
-    end
-
-    return content[beginIndex, endIndex]
+    doc = Nokogiri::HTML(content)
+    break_line = doc.xpath("//p[comment()=' unbebreak ']").first
+    end_index = break_line.present? ? content.index(break_line.to_s) : content.length
+    truncate(content, length: end_index, omission: '')
   end
 
   def is_changed?
@@ -173,8 +161,8 @@ class Article
   protected
 
   def first_image
-    doc = Nokogiri::HTML(self.content)
-    img = doc.xpath('//img').first
+    doc = Nokogiri::HTML(content)
+    doc.xpath('//img').first
   end
 
 end

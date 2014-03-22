@@ -2,6 +2,7 @@ class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongo::Voteable
+  include ActionView::Helpers::TextHelper
 
   field :content, type: String
 
@@ -10,20 +11,16 @@ class Comment
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
-  default_scope order_by(:created_at => :asc)
+  default_scope order_by(created_at: :asc)
 
   scope :unowned, lambda { |user|
-    not_in(:author => user.id)
+    not_in(author: user.id)
   }
 
-  voteable self, :up => +1, :down => -1
+  voteable self, up: +1, down: -1
 
   def short_content
-    if self.content.size > 50
-      "#{self.content[0..50]}..."
-    else
-      self.content
-    end
+    truncate(content, length: 50, omission: '...')
   end
 
   def commentable_author

@@ -5,6 +5,6 @@ class ArticleType
   has_many :articles, dependent: :restrict
 
   def self.default_id
-    where(:title => :ARTICLE).first._id
+    where(title: :ARTICLE).first.id
   end
 end

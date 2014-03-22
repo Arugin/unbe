@@ -24,7 +24,7 @@ gem 'rolify', '>= 3.2.0'
 gem "heroku"
 gem "mongoid-paperclip", require: "mongoid_paperclip", git: 'https://github.com/Arugin/mongoid-paperclip', ref: '8abbab9085'
 gem 'aws-sdk', '~> 1.3.4'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'mongoid_rails_migrations', '>= 1.0.0'
 gem 'voteable_mongo', git: 'https://github.com/Arugin/voteable_mongo'
 gem 'russian', '~> 0.6.0'

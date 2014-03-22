@@ -14,19 +14,19 @@ class Cycle
   field :system, type: Boolean, default: false
   field :logo, type: String
 
-  slug  :title, :history => true
+  slug  :title, history: true
 
   has_many :articles, dependent: :restrict
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :description, length: {maximum: 1000}
 
-  default_scope order_by(:created_at => :desc)
+  default_scope order_by(created_at: :desc)
 
   search_in :title, :tags
 
   def ordered_articles
-    articles.order_by([:created_at, :desc])
+    articles.order_by(created_at: :desc)
   end
 
   def correct_title
@@ -46,8 +46,8 @@ class Cycle
   end
 
   def self.create_default_cycles(user)
-    create ({:title => 'NO_CYCLE', :description =>"NO_CYCLE_DESC",:author => user, :system => true})
-    create ({:title => 'ARCHIVE_CYCLE', :description =>"ARCHIVE_CYCLE_DESC",:author => user, :system => true})
+    create title: 'NO_CYCLE', description:"NO_CYCLE_DESC", author: user, system: true
+    create title: 'ARCHIVE_CYCLE', description: "ARCHIVE_CYCLE_DESC", author: user, system: true
   end
 
   def system?
@@ -71,7 +71,6 @@ class Cycle
     else
       logo
     end
-
   end
 
   def included_impressions

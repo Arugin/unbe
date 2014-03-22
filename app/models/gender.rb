@@ -5,14 +5,14 @@ class Gender
   field :name, type: String
 
   def male?
-    self.name == 'MALE'
+    name == 'MALE'
   end
 
   def female?
-    self.name == 'FEMALE'
+    name == 'FEMALE'
   end
 
   def unknown?
-    self.name == 'UNKNOWN'
+    name == 'UNKNOWN'
   end
 end

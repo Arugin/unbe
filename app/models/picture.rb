@@ -22,7 +22,7 @@ class Picture
                             },
                             :convert_options => { :all => '-background white -flatten +matte' }
   attr_accessible :file
-  validates_attachment_size :file, :less_than => 200.kilobytes, :message => I18n.t(:FILE_SIZE_IS_LIMITED)
-  validates_attachment_content_type :file, :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png)$/, :message => I18n.t(:ONLY_IMAGES_CAN_BE_UPLOADED)
+  validates_attachment_size :file, less_than: 200.kilobytes, message: I18n.t(:FILE_SIZE_IS_LIMITED)
+  validates_attachment_content_type :file, content_type: /^image\/(jpg|jpeg|pjpeg|png|x-png)$/, message: I18n.t(:ONLY_IMAGES_CAN_BE_UPLOADED)
 
 end
