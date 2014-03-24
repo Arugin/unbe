@@ -1,17 +1,9 @@
 module Concerns
   module Shortable
-    def self.included(base)
-      base.class_eval do |klass|
+    extend ActiveSupport::Concern
 
-        define_method :short_title, lambda {
-          if title.size > 25
-            "#{title[0..25]}..."
-          else
-            title
-          end
-        }
-
-      end
+    def short_title
+      truncate(title, length: 25, omission: '...')
     end
 
   end

@@ -2,43 +2,36 @@
 #using unscoped.map_reduce to solve problem with default_scope order_by
 module Concerns
   module Taggable
-    def self.included(base)
-      base.class_eval do |klass|
-        klass.field :tags, :type => Array, :default => []
-        klass.index({ tags: 1 }, { background: true })
+    extend ActiveSupport::Concern
 
-        include InstanceMethods
-        extend ClassMethods
+    included do
+      field :tags, type: Array, default: []
+      index({ tags: 1 }, { background: true })
+    end
 
+    def tag_list=(tags)
+      self.tags = string2tags(tags)
+    end
+
+    def tag_list
+      self.tags.join(", ") if tags
+    end
+
+    def tags
+      super || []
+    end
+
+    def add_tags(tags)
+      if (tags)
+        self.tags |= string2tags(tags)
       end
     end
 
-    module InstanceMethods
-      def tag_list=(tags)
-        self.tags = string2tags(tags)
-      end
+    private
 
-      def tag_list
-        self.tags.join(", ") if tags
-      end
-
-      def tags
-        super || []
-      end
-
-      def add_tags(tags)
-        if (tags)
-          self.tags |= string2tags(tags)
-        end
-      end
-
-      private
-
-      def string2tags(tags)
-        tags.split(",").collect{ |t| t.strip }.delete_if{ |t| t.blank? }
-      end
+    def string2tags(tags)
+      tags.split(",").collect{ |t| t.strip }.delete_if{ |t| t.blank? }
     end
-
 
     module ClassMethods
 

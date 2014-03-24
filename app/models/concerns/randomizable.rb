@@ -2,20 +2,20 @@
 # using this concern
 module Concerns
   module Randomizable
-    def self.included(base)
-      base.class_eval do |klass|
+    extend ActiveSupport::Concern
 
-        define_singleton_method :random_entries, lambda { |count|
-          (0..klass.random.count-1).sort_by{rand}.slice(0, count).collect! do |i|
-            klass.random.skip(i).first
-          end
-        }
+    module ClassMethods
 
-        define_singleton_method :random_entry, lambda {
-          random_entries(1).first
-        }
-
+      def random_entries(count)
+        (0..name.constantize.random.count-1).sort_by{rand}.slice(0, count).collect! do |i|
+          name.constantize.random.skip(i).first
+        end
       end
+
+      def random_entry
+          random_entries(1).first
+      end
+
     end
 
   end
