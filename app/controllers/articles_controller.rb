@@ -1,10 +1,11 @@
 #encoding: utf-8
 class ArticlesController < ApplicationController
 
+  include Concerns::BulkOperationable
+  include Concerns::Votable
+
   before_filter :authenticate_user!, except: [:news,:index, :show]
   load_and_authorize_resource except: [:news, :index]
-
-  include Concerns::BulkOperationable
 
   bulk_actions :delete, :tag
 
@@ -127,19 +128,6 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def vote_up
-    session[:article_votable] ||= request.referer
-    @article = Article.find(params[:id])
-    current_user.vote(@article, :up)
-    redirect_to session.delete(:article_votable)
-  end
-
-  def vote_down
-    session[:article_votable] ||= request.referer
-    @article =  Article.find(params[:id])
-    current_user.vote(@article, :down)
-    redirect_to session.delete(:article_votable)
-  end
 
   def to_garbage
     @article = Article.find(params[:id])

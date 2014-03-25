@@ -158,6 +158,10 @@ class User
     articles.present? && contents.present? && comments.present?
   end
 
+  def full_name
+    [ first_name, last_name ].filter(&:presence).compact.map(&:strip) * ' '
+  end
+
   protected
 
   def remove_all_roles

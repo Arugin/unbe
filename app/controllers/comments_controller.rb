@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  include Concerns::Votable
+
   before_filter :authenticate_user!, :except => [:index]
   load_and_authorize_resource :except => [:index ]
 
@@ -19,20 +21,6 @@ class CommentsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def vote_up
-    session[:comment_votable] ||= request.referer
-    @comment = Comment.find(params[:id])
-    current_user.vote(@comment, :up)
-    redirect_to session.delete(:comment_votable)
-  end
-
-  def vote_down
-    session[:comment_votable] ||= request.referer
-    @comment =  Comment.find(params[:id])
-    current_user.vote(@comment, :down)
-    redirect_to session.delete(:comment_votable)
   end
 
   def destroy

@@ -1,9 +1,13 @@
 class ContentsController < ApplicationController
 
+  include Concerns::Votable
+
   before_filter :authenticate_user!, :except => [:show, :index]
   load_and_authorize_resource class: 'Content::BaseContent', :except => [:show, :index]
 
+
   respond_to :html, :js
+  resource_name Content::BaseContent
 
   def show
     @content = Content::BaseContent.find(params[:id])
@@ -77,20 +81,6 @@ class ContentsController < ApplicationController
       return
     end
     redirect_to session[:destroy_gallery], notice: t(:CONTENT_REMOVE_SUCCESS)
-  end
-
-  def vote_up
-    session[:content_votable] ||= request.referer
-    @content = Content::BaseContent.find(params[:id])
-    current_user.vote(@content, :up)
-    redirect_to session.delete(:content_votable)
-  end
-
-  def vote_down
-    session[:content_votable] ||= request.referer
-    @content =  Content::BaseContent.find(params[:id])
-    current_user.vote(@content, :down)
-    redirect_to session.delete(:content_votable)
   end
 
 end
