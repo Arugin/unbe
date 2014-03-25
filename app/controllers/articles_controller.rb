@@ -121,7 +121,7 @@ class ArticlesController < ApplicationController
       @article.to_news = true
     end
     @article.approve
-    redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
+    redirect_to non_approved_articles_office_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
   end
 
   def new_news
@@ -132,7 +132,7 @@ class ArticlesController < ApplicationController
   def to_garbage
     @article = Article.find(params[:id])
     @article.to_garbage
-    redirect_to non_approved_articles_path, notice: t(:ARTICLE_APPROVE_TO_GARBAGE)
+    redirect_to non_approved_articles_office_path, notice: t(:ARTICLE_APPROVE_TO_GARBAGE)
   end
 
   def garbage

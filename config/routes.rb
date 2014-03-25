@@ -81,12 +81,10 @@ Unbe::Application.routes.draw do
       get 'articles'
       get 'cycles'
       get 'galleries'
+      get 'non_approved_articles'
+      get 'non_approved_contents'
     end
   end
-
-  # Office routes
-  get '/office/articles/non_approved', to: 'offices#non_approved',as: 'non_approved_articles'
-  get '/office/content/non_approved', to: 'offices#non_approved_content',as: 'non_approved_contents'
 
   resources :profiles do
     member do
@@ -109,11 +107,6 @@ Unbe::Application.routes.draw do
     end
   end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
@@ -130,10 +123,7 @@ Unbe::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-  root :to => "articles#news"
+  root to: "articles#news"
 
   # See how all your routes lay out with "rake routes"
 
@@ -141,6 +131,6 @@ Unbe::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   devise_scope :user do
-    root :to => 'devise/sessions#new'
+    root to: 'devise/sessions#new'
   end
 end

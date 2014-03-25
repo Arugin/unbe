@@ -1,7 +1,7 @@
 class OfficesController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :scope, except: [:non_approved,:non_approved_content]
+  before_filter :scope, except: [:non_approved_articles,:non_approved_contents]
   include Concerns::BulkOperationable
 
   bulk_actions :delete, :tag
@@ -44,7 +44,7 @@ class OfficesController < ApplicationController
     respond_with @cycles
   end
 
-  def non_approved
+  def non_approved_articles
     @articles = Article.non_approved(current_user, params).page(params[:page]).per(15)
     authorize! :approve, Article
     respond_with @articles
@@ -55,7 +55,7 @@ class OfficesController < ApplicationController
     respond_with @galleries
   end
 
-  def non_approved_content
+  def non_approved_contents
     @contents = Content::BaseContent.non_approved(current_user, params).page(params[:page])
     authorize! :approve, Content::BaseContent
     respond_with @contents

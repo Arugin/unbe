@@ -3,7 +3,7 @@
     %h4=title 'Неподтвержденные статьи'
   .span7.middle
     .pull-right
-      = render :partial => "common/search_control", :locals => { :current_action_path => non_approved_articles_path }
+      = render :partial => "common/search_control", locals: { current_action_path: non_approved_articles_office_path }
 
 #articles.articles.ujs-pagination
 

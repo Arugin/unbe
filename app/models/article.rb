@@ -11,7 +11,6 @@ class Article
   include Concerns::Shortable
   include Concerns::Taggable
   include Concerns::Commentable
-  include ActionView::Helpers::TextHelper
   include Mongo::Voteable
 
   is_impressionable counter_cache: true, unique: :ip_address

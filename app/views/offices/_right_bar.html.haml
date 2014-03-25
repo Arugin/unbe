@@ -4,11 +4,11 @@
       Модерирование
     %ul.navigation
       %li
-        = active_link_to main_app.non_approved_articles_path, active: :exclusive do
+        = active_link_to non_approved_articles_office_path, active: :exclusive do
           Подтвердить статьи
           %b= "(#{Article.non_approved(current_user).count})" if Article.non_approved(current_user).count > 0
       %li
-        = active_link_to main_app.non_approved_contents_path, active: :exclusive do
+        = active_link_to non_approved_contents_office_path, active: :exclusive do
           Подтвердить работы
           %b= "(#{Content::BaseContent.non_approved(current_user).count})" if Content::BaseContent.non_approved(current_user).count > 0
 
@@ -48,7 +48,7 @@
         = active_link_to profile_path(current_user) do
           Профиль
       %li
-        = active_link_to edit_profile_path do
+        = active_link_to edit_profile_path(current_user) do
           Настроить профиль
       %li
         = active_link_to edit_user_registration_path do

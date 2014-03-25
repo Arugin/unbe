@@ -21,7 +21,7 @@ class ContentsController < ApplicationController
     @content.approved_to_news = params[:approved]
     @content.reviewed = true
     @content.save
-    redirect_to non_approved_contents_path, notice: t(:CONTENT_APPROVE_SUCCESS)
+    redirect_to non_approved_contents_office_path, notice: t(:CONTENT_APPROVE_SUCCESS)
   end
 
   def index
