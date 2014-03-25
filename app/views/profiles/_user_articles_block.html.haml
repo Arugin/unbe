@@ -5,7 +5,7 @@
   - @articles.each do |article|
     .row-fluid
       %h4
-        = link_to user_article_path(article) do
+        = link_to article_profile_path(article) do
           %span= article.title
 
       .publishDate= article.created_at.localtime

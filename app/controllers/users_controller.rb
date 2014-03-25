@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     begin
       @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
-        redirect_to user_profile_path, :notice => t('USER_INFO_UPDATE_SUCCESS')
+        redirect_to profile_path, :notice => t('USER_INFO_UPDATE_SUCCESS')
       else
         redirect_to edit_profile_path(@user), :alert => t('USER_INFO_CAN_NOT_BE_UPDATED')
       end

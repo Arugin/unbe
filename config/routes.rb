@@ -88,34 +88,26 @@ Unbe::Application.routes.draw do
   get '/office/articles/non_approved', to: 'offices#non_approved',as: 'non_approved_articles'
   get '/office/content/non_approved', to: 'offices#non_approved_content',as: 'non_approved_contents'
 
-  # Profile routes
-  get '/profile/edit', to: 'profiles#edit',as: 'edit_profile'
-  get '/profile/:id', to: 'profiles#user_profile',as: 'user_profile'
-  get '/profile/cycles/:id', to: 'profiles#user_cycles',as: 'user_cycles'
-  get '/profile/articles/:id', to: 'profiles#user_articles',as: 'user_articles'
-  get '/profile/projects/:id', to: 'profiles#user_projects',as: 'user_projects'
-  get '/profile/article/:id', to: 'profiles#user_article',as: 'user_article'
-  get '/profile/galleries/:id', to: 'profiles#user_galleries',as: 'user_galleries'
-  get '/profile/comments/:id', to: 'profiles#comments',as: 'user_comments'
+  resources :profiles do
+    member do
+      get 'articles'
+      get 'article'
+      get 'cycles'
+      get 'galleries'
+      get 'projects'
+      get 'comments'
+    end
+  end
 
-  # Community routes
-  get '/community/achievement', to: 'community#achievement',as: 'achieving_community'
-  get '/community/stats', to: 'community#stats',as: 'stats_community'
-  get '/community/about', to: 'community#about',as: 'about_community'
-  get '/community/rules', to: 'community#rules',as: 'rules_community'
-  get '/community/info', to: 'community#info',as: 'info_community'
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  resource :community do
+    member do
+      get 'achievements'
+      get 'stats'
+      get 'about'
+      get 'rules'
+      get 'info'
+    end
+  end
 
   # Sample resource route with sub-resources:
   #   resources :products do

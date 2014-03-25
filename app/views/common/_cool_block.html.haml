@@ -5,7 +5,7 @@
     %h4
       = render partial: "#{collection}/title", locals: {item: item}
       %span
-        = link_to user_profile_path(item.author) do
+        = link_to profile_path(item.author) do
           = "от автора #{item.author.name}"
     .clear
     - unless item.content.nil?

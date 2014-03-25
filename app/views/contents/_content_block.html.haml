@@ -8,7 +8,7 @@
     = link_to content_base_content_path(content) do
       %span= title content.title
   .author
-    = link_to user_profile_path(content.contentable.author) do
+    = link_to profile_path(content.contentable.author) do
       = content.contentable.author.name
   .publishDate
     - if content.created_at.nil?

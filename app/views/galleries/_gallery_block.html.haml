@@ -3,7 +3,7 @@
   %h4
     %span=title gallery.name
   .author
-    = link_to user_profile_path(gallery.author) do
+    = link_to profile_path(gallery.author) do
       = gallery.author.name
   .publishDate
     - unless gallery.created_at.nil?

@@ -2,7 +2,7 @@
   %h4
     = render partial: 'articles/title', locals: {item: article}
   .author
-    = link_to user_profile_path(article.author) do
+    = link_to profile_path(article.author) do
       %span
         = article.author.name
   .publishDate

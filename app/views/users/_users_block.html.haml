@@ -13,7 +13,7 @@
   - @users.each do |user|
     %tr
       %td{title: user.name}
-        = link_to user_profile_path(user) do
+        = link_to profile_path(user) do
           = truncate(user.name, length: 10, :omission => '...')
       %td{title: user.email}= truncate(user.email, length: 20, :omission => '...')
       %td= t(user.highest_role)

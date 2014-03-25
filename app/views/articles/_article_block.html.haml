@@ -15,7 +15,7 @@
   .info
     .credentials
       .author
-        = link_to user_profile_path(article.author) do
+        = link_to profile_path(article.author) do
           %span{itemprop:'author', itemscope:true, itemtype:'http://schema.org/Person'}
             %span{itemprop:'name'}
               = article.author.name
@@ -25,7 +25,7 @@
     .clear
     .views
       = article.author.female? ? 'создала' : 'создал'
-      = link_to user_cycles_path(article.author) do
+      = link_to cycles_profile_path(article.author) do
         = article.author.cycles.all.size - 2
       = Russian::pluralize(article.author.cycles.all.size - 2, 'цикл','цикла', 'циклов')
     .clear

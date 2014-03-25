@@ -6,7 +6,7 @@
     - else
       %span=title "Цикл '#{cycle.title}'"
   .author
-    = link_to user_profile_path(cycle.author) do
+    = link_to profile_path(cycle.author) do
       = cycle.author.name
   .publishDate
     = l cycle.created_at.in_time_zone, format: :short

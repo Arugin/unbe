@@ -14,7 +14,7 @@
               = image_tag(comment.user.avatar.file.url(:mini), :size => "25x25")
           %td.credentials
             .author
-              = link_to user_profile_path(comment.user) do
+              = link_to profile_path(comment.user) do
                 %span
                   %span= comment.user.name
             .publishDate

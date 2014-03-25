@@ -4,7 +4,7 @@
   - @cycles.each do |cycle|
     .row-fluid
       %h4
-        = link_to user_articles_path(cycle) do
+        = link_to articles_profile_path(cycle) do
           %span= cycle.correct_title
       .description= cycle.correct_description.html_safe
       .clear

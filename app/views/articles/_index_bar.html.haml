@@ -17,5 +17,5 @@
   %ul.navigation
     - User.random_entries(3).each do |user|
       %li
-        =link_to main_app.user_profile_path(user) do
+        =link_to profile_path(user) do
           = user.name

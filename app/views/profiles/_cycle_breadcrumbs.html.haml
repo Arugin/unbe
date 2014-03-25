@@ -1,10 +1,10 @@
 %ul.breadcrumb
   %li
-    = link_to user_cycles_path(user) do
+    = link_to cycles_profile_path(user) do
       Циклы
     %span.divider /
   %li
-    = link_to user_articles_path(cycle) do
+    = link_to articles_profile_path(cycle) do
       = cycle.correct_title
     - unless article.nil?
       %span.divider /

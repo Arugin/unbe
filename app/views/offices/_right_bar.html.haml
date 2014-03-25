@@ -45,7 +45,7 @@
         %a{:href=>"#"}
           Избранное
       %li
-        = active_link_to user_profile_path(current_user) do
+        = active_link_to profile_path(current_user) do
           Профиль
       %li
         = active_link_to edit_profile_path do
