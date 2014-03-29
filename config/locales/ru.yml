@@ -65,7 +65,7 @@ ru:
   ARTICLE_CREATE_SUCCESS: Статья успешно создана. Опубликуйте её, чтобы внести проведенные изменения
   ARTICLE_UPDATE_SUCCESS:  Статья успешно обновлена. Опубликуйте её, чтобы внести проведенные изменения
   ARTICLE_APPROVE_SUCCESS: Статья подтверждена
-  CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_NIL: Нельзя опубликовать неизмененную статью
+  CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_BLANK: Нельзя опубликовать статью с пустым содержанием
   ARTICLE_CHANGED: Статья отредактирована
   NO_NON_APPROVEd_ARTICLES: Нет неподтвержденных статей
   NO_ARTICLES_FOUND: Ни одной статьи не найдено

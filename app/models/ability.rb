@@ -43,7 +43,7 @@ class Ability
 
       can :manage, Article, :author => user
       cannot :destroy, Article
-      can :destroy, Article, :author => user, :approved? => false, :is_updated => false
+      can :destroy, Article, :author => user, :approved? => false, :is_updated? => false
 
       can :manage, Cycle, :author => user
       cannot :destroy, Cycle

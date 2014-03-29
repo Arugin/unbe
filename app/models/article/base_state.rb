@@ -1,8 +1,10 @@
 class Article::BaseState < StatePattern::State
   def publish
-    unless stateful.tmpContent.nil?
+    unless stateful.tmpContent.blank?
       transition_to(Article::Published)
       stateful.save!
+    else
+      stateful.errors
     end
   end
 
@@ -10,6 +12,12 @@ class Article::BaseState < StatePattern::State
   end
 
   def to_changed
+    if stateful.tmpContent != stateful.content
+      transition_to(Article::Changed)
+    else
+      stateful.tmpContent = nil
+    end
+    stateful.save!
   end
 
   def to_garbage

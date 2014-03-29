@@ -30,7 +30,7 @@ class Article::Published < Article::BaseState
   end
 
   def is_updated?
-    stateful.tmpContent != stateful.content
+    stateful.content.present? && (stateful.tmpContent != stateful.content)
   end
 
   private

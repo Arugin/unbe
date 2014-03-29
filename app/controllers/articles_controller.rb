@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 
     @articles = Article.unscoped.by_area(current_user, params, @article_area).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(9)
 
-    @article_areas = ArticleArea.without_news
+    @article_areas = ArticleArea.all
 
     respond_with @articles
   end
@@ -46,10 +46,7 @@ class ArticlesController < ApplicationController
     @article.author = current_user
 
     if @article.save
-      change_system_tag
-      push_to_news
-      add_script
-      @article.save
+      additional_actions
       redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
     else
       render action: "new"
@@ -63,10 +60,7 @@ class ArticlesController < ApplicationController
 
     if @article.update_attributes(params[:article])
       @article.to_changed
-      change_system_tag
-      push_to_news
-      add_script
-      @article.save
+      additional_actions
       redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
     else
       render action: "edit"
@@ -103,7 +97,7 @@ class ArticlesController < ApplicationController
 
   def publish
     @article = Article.find(params[:id])
-    redirect_to articles_office_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_NIL) if @article.tmpContent.nil?
+    return redirect_to articles_office_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_BLANK) if @article.tmpContent.blank?
     @article.publish
     redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
   end
@@ -131,7 +125,7 @@ class ArticlesController < ApplicationController
 
   def garbage
     @articles = Article.where(state: 'Article::Garbage').page(params[:page])
-    @article_areas = ArticleArea.without_news
+    @article_areas = ArticleArea.all
   end
 
   protected
@@ -152,6 +146,13 @@ class ArticlesController < ApplicationController
     if can? :script, @article
       @article.script = params[:article][:script]
     end
+  end
+
+  def additional_actions
+    change_system_tag
+    push_to_news
+    add_script
+    @article.save
   end
 
 end

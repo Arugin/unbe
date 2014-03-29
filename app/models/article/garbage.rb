@@ -6,4 +6,8 @@ class Article::Garbage < Article::BaseState
   def garbage?
     true
   end
+
+  def published?
+    true
+  end
 end

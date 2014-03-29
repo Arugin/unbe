@@ -6,4 +6,7 @@ class Article::Changed < Article::BaseState
   def approved?
     true
   end
+
+  def to_changed
+  end
 end
