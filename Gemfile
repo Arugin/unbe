@@ -35,6 +35,7 @@ gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
 gem 'merit', git: 'https://github.com/Arugin/merit'
+gem 'state_pattern'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -3,7 +3,7 @@ module Stats
     include Mongoid::Document
 
     def articles_count
-      Article.not_in(article_area: ArticleArea.where(title: "NEWS").first).and(isApproved: true).count
+      Article.where(state: 'Article::Approved').not_in(article_area: ArticleArea.where(title: "NEWS").first).count
     end
 
     def users_count

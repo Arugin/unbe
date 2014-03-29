@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
   def articles
     @cycle = Cycle.find(params[:id])
     @user = @cycle.author
-    @articles = @cycle.articles.not_in(is_garbage: true).where({isApproved: true}).order_by([:created_at, :desc]).page(params[:page]).per(5)
+    @articles = @cycle.articles.where(state: 'Article::Approved').order_by([:created_at, :desc]).page(params[:page]).per(5)
     respond_with @articles
   end
 

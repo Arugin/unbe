@@ -15,7 +15,7 @@
     - else
       = article.tmpContent.html_safe
   .clear
-  - unless article.is_garbage
+  - unless article.garbage?
     - if article.content.size != article.short_content.size
       .more-info
         = link_to article_path(article) do

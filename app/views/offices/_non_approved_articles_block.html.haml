@@ -11,16 +11,16 @@
           .publishDate
             = article.updated_at.localtime
         %td.thumb-wrapper
-          - if article.isUpdated
+          - if article.is_updated?
             %i.icon-pencil{title: t('ARTICLE_CHANGED')}
-          - if article.is_garbage
+          - if article.garbage?
             %i.icon-trash{title: t('ARTICLE_TRASH')}
         %td.thumb-wrapper
-          - if article.isUpdated && article.isPublished
+          - if article.is_updated?
             .thumb
               =image_tag( "/images/article/update.png",:width=>"25", :height=>"25", :title=>"новая версия статьи находится на модерации")
           - else
-            = render :partial => 'yes_no',:locals => { :is_true => article.isApproved, :title=>"подтверждена"}
+            = render :partial => 'yes_no',:locals => { :is_true => article.approved?, :title=>"подтверждена"}
         %td
           .options
             .btn-group

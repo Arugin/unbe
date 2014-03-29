@@ -34,7 +34,7 @@
       = "#{article.author.female? ? 'оставила' : 'оставил'} #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
   .pull-right
     .control-panel
-      - unless article.is_garbage
+      - unless article.garbage?
         .publishDate
           = "Тип: #{t article.article_type.title}"
         .publishDate
@@ -48,7 +48,7 @@
           = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
   .clear
   .description{itemprop:'articleBody'}
-    - if article.is_garbage
+    - if article.garbage?
       = article.content.html_safe
     - else
       = article.tmpContent.html_safe

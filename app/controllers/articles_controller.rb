@@ -46,7 +46,6 @@ class ArticlesController < ApplicationController
     @article.author = current_user
 
     if @article.save
-      publish_and_approve @article
       change_system_tag
       push_to_news
       add_script
@@ -63,9 +62,7 @@ class ArticlesController < ApplicationController
     @old_article = @article.dup
 
     if @article.update_attributes(params[:article])
-      unless @old_article == @article
-        @article.un_publish
-      end
+      @article.to_changed
       change_system_tag
       push_to_news
       add_script
@@ -108,9 +105,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     redirect_to articles_office_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_NIL) if @article.tmpContent.nil?
     @article.publish
-    if can? :automatic_approve, @article
-      @article.approve
-    end
     redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
   end
 
@@ -136,18 +130,11 @@ class ArticlesController < ApplicationController
   end
 
   def garbage
-    @articles = Article.where(is_garbage:true).page(params[:page])
+    @articles = Article.where(state: 'Article::Garbage').page(params[:page])
     @article_areas = ArticleArea.without_news
   end
 
   protected
-
-  def publish_and_approve(article)
-    if can? :publish_and_approve, article
-      article.publish
-      article.approve
-    end
-  end
 
   def change_system_tag
     if can? :system_tag, @article

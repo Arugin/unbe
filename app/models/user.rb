@@ -106,11 +106,11 @@ class User
   end
 
   def unpublished_articles
-    self.articles.where isPublished: false
+    self.articles.any_of({state: 'Article::Initial'}, {state: 'Article::Changed'})
   end
 
   def unapproved_articles
-    self.articles.any_of({isApproved: false},{isUpdated: true}).and(isPublished: true)
+    self.articles.where(state: 'Article::Published')
   end
 
   def last_comments

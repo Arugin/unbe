@@ -34,7 +34,7 @@ class Ability
     can :read, Cycle
     can :read, User
     can :draft, Article do |article|
-      article.is_garbage || article.tmpContent.present?
+      article.garbage? || article.tmpContent.present?
     end
     cannot :index, User
 
@@ -43,7 +43,7 @@ class Ability
 
       can :manage, Article, :author => user
       cannot :destroy, Article
-      can :destroy, Article, :author => user, :isApproved => false, :isUpdated => false
+      can :destroy, Article, :author => user, :approved? => false, :is_updated => false
 
       can :manage, Cycle, :author => user
       cannot :destroy, Cycle
@@ -64,7 +64,7 @@ class Ability
 
 
       cannot :show, Article do |article|
-         article.is_garbage
+         article.garbage?
       end
       cannot :approve, Article
       cannot :script, Article
@@ -73,7 +73,6 @@ class Ability
       cannot :approve, Content::BaseContent
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
-      cannot :automatic_approve, Article
       cannot :system_tag, Article
       cannot :vote_up, [Article, Content::BaseContent], :author => user
       cannot :vote_down, [Article, Content::BaseContent], :author => user
@@ -87,7 +86,6 @@ class Ability
       can :approve, Article
       can :to_news, Article
       can :approve, Content::BaseContent
-      can :automatic_approve, Article
 
     end
 
@@ -96,8 +94,8 @@ class Ability
       can :manage, :all
 
       cannot :destroy, Article
-      can :destroy, Article, :isApproved => false, :isUpdated => false
-      can :destroy, Article, :is_garbage => true
+      can :destroy, Article, :approved? => false, :is_updated? => false
+      can :destroy, Article, :garbage? => true
 
       cannot :destroy, Cycle
       can :destroy, Cycle do |cycle|

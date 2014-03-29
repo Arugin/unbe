@@ -15,6 +15,8 @@ class Gallery
   field :description, type: String
   field :impressions_count, type: Integer, default: 0
 
+  alias :title :name
+
   validates :name, presence: true, length: {minimum:3,maximum: 70}
   validates :description, length: {maximum: 1000}
 
@@ -26,10 +28,6 @@ class Gallery
   default_scope order_by(created_at: :desc)
 
   search_in :name, :tags
-
-  def title
-    name
-  end
 
   def gallery?
     true
