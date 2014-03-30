@@ -41,11 +41,11 @@ class Article
   validates :tmpContent, length: {maximum: 20000}
 
   scope :last_news, lambda { |user, params = {}|
-    search_for(user,params).where(state: 'Article::Approved').any_of({article_type: ArticleType.where(title: "NEWS").first},{to_news: true}).order_by([:created_at, :desc])
+    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).any_of({article_type: ArticleType.where(title: "NEWS").first},{to_news: true}).order_by([:created_at, :desc])
   }
 
   scope :by_area, lambda { |user, params = {}, area|
-    scope = search_for(user,params).where(state: 'Article::Approved')
+    scope = search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'})
     if area.present?
       scope.where(article_area: area)
     else
@@ -58,11 +58,11 @@ class Article
   }
 
   scope :approved, lambda { |user, params = {}|
-    search_for(user,params).where(state: 'Article::Approved').order_by([:created_at, :desc])
+    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).order_by([:created_at, :desc])
   }
 
   scope :random, lambda {
-    where(state: 'Article::Approved').not_in(article_type: ArticleType.where(title: "NEWS").first)
+    any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).not_in(article_type: ArticleType.where(title: "NEWS").first)
   }
 
   scope :unprocessed, lambda { |user, params = {}|
