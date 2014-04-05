@@ -62,9 +62,13 @@ ru:
   EDIT_CYCLE: Редактировать цикл
 
   #articles
-  ARTICLE_PUBLISH_SUCCESS: Статья успешно опубликована. В ближайшее время она будет рассмотрена и подтверждена модератором
+  ARTICLE_PUBLISH_SUCCESS: Статья успешно опубликована.
   ARTICLE_CREATE_SUCCESS: Статья успешно создана. Опубликуйте её, чтобы внести проведенные изменения
+  ARTICLE_CREATE_PUBLISH_SUCCESS: Статья успешно создана и опубликована. В ближайшее время она будет рассмотрена и подтверждена модератором
+  ARTICLE_CREATE_APPROVE_SUCCESS: Статья успешно создана и подтверждена
   ARTICLE_UPDATE_SUCCESS:  Статья успешно обновлена. Опубликуйте её, чтобы внести проведенные изменения
+  ARTICLE_UPDATE_PUBLISH_SUCCESS: Статья успешно обновлена и опубликована. В ближайшее время она будет рассмотрена и подтверждена модератором
+  ARTICLE_UPDATE_APPROVE_SUCCESS: Статья успешно обновлена и подтверждена
   ARTICLE_APPROVE_SUCCESS: Статья подтверждена
   CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_BLANK: Нельзя опубликовать статью с пустым содержанием
   ARTICLE_CHANGED: Статья отредактирована
@@ -131,24 +135,25 @@ ru:
     submit:
       article:
         create: "Создать %{model}"
-        update: "Сохранить изменения"
+        update: Сохранить изменения
       cycle:
         create: "Создать %{model}"
-        update: "Сохранить изменения"
+        update: Сохранить изменения
       user:
-        update: "Сохранить изменения"
+        update: Сохранить изменения
       comment:
-        create: "Комментировать"
+        create: Комментировать
+        update: Обновить комментарий
       gallery:
         create: "Создать %{model}"
-        update: "Сохранить изменения"
+        update: Сохранить изменения
       content_base_content:
-        create: "Добавить работу"
-        update: "Сохранить изменения"
+        create: Добавить работу
+        update: Сохранить изменения
 
   unauthorized:
     manage:
-      all: "У вас нет доступа к данной странице."
+      all: У вас нет доступа к данной странице
 
   USER_ROLE_CHANGED: Пользователю успешно назначена другая роль
 

@@ -76,7 +76,6 @@ class Ability
       cannot :to_garbage, Article
       cannot :approve, Content::BaseContent
       cannot :publish_news, Article
-      cannot :publish_and_approve, Article
       cannot :system_tag, Article
       cannot :vote_up, [Article, Content::BaseContent, Cycle], author: user
       cannot :vote_down, [Article, Content::BaseContent, Cycle], author: user

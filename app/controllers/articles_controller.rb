@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
 
     if @article.save
       additional_actions
-      redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_CREATE_SUCCESS)
+      redirect_to articles_office_path(scope:'current_user'), notice: t(correct_message(:create))
     else
       render action: "new"
     end
@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
     if @article.update_attributes(params[:article])
       @article.to_changed
       additional_actions
-      redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_UPDATE_SUCCESS)
+      redirect_to articles_office_path(scope:'current_user'), notice: t(correct_message(:update))
     else
       render action: "edit"
     end
@@ -130,6 +130,27 @@ class ArticlesController < ApplicationController
 
   protected
 
+  def correct_message(action)
+    config = (params[:article][:publish].to_i == 1) ? :publish : :no
+    config = (params[:article][:approve].to_i == 1) ? :approve : config
+
+    messages = {
+      create: {
+        no: :ARTICLE_CREATE_SUCCESS,
+        publish: :ARTICLE_CREATE_PUBLISH_SUCCESS,
+        approve: :ARTICLE_CREATE_APPROVE_SUCCESS
+      },
+      update: {
+        no: :ARTICLE_UPDATE_SUCCESS,
+        publish: :ARTICLE_UPDATE_PUBLISH_SUCCESS,
+        approve: :ARTICLE_UPDATE_APPROVE_SUCCESS
+      }
+    }
+
+    messages[action][config]
+
+  end
+
   def change_system_tag
     if can? :system_tag, @article
       @article.system_tag = params[:article][:system_tag]
@@ -148,9 +169,23 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def automatic_publish
+    if params[:article][:publish].to_i == 1
+      @article.publish
+    end
+  end
+
+  def automatic_approve
+    if params[:article][:approve].to_i == 1 && can?(:approve, @article)
+      @article.approve
+    end
+  end
+
   def additional_actions
     change_system_tag
     push_to_news
+    automatic_publish
+    automatic_approve
     add_script
     @article.save
   end
