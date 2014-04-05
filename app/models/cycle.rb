@@ -25,6 +25,8 @@ class Cycle
 
   search_in :title, :tags
 
+  voteable self, up: +1, down: -1
+
   def ordered_articles
     articles.order_by(created_at: :desc)
   end
@@ -62,7 +64,8 @@ class Cycle
     [
         { title: :CREATED_AT, sort_by: :created_at},
         { title: :TITLE, sort_by: :title},
-        { title: :COMMENTS_COUNT, sort_by: :comments_count}
+        { title: :COMMENTS_COUNT, sort_by: :comments_count},
+        { title: :VOTES_COUNT, sort_by: :'votes.point'}
     ]
   end
 

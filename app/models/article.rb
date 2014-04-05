@@ -41,7 +41,7 @@ class Article
   validates :tmpContent, length: {maximum: 20000}
 
   scope :last_news, lambda { |user, params = {}|
-    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).any_of({article_type: ArticleType.where(title: "NEWS").first},{to_news: true}).order_by([:created_at, :desc])
+    search_for(user,params).any_of({'$and' => [{state: 'Article::Approved'}, {to_news: true}]}, {'$and' => [{state: 'Article::Approved'}, {article_type: ArticleType.where(title: "NEWS").first}]}, {'$and' => [{state: 'Article::Changed'}, {to_news: true}]}, {'$and' => [{state: 'Article::Changed'}, {article_type: ArticleType.where(title: "NEWS").first}]}).order_by([:created_at, :desc])
   }
 
   scope :by_area, lambda { |user, params = {}, area|
@@ -101,7 +101,8 @@ class Article
       { title: :CREATED_AT, sort_by: :created_at},
       { title: :TITLE, sort_by: :title},
       { title: :VIEWS, sort_by: :impressions_count},
-      { title: :COMMENTS_COUNT, sort_by: :comments_count}
+      { title: :COMMENTS_COUNT, sort_by: :comments_count},
+      { title: :VOTES_COUNT, sort_by: :'votes.point'}
     ]
   end
 
