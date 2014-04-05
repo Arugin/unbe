@@ -6,39 +6,43 @@
 %dl
   %dt Разделы
   %dd
-    = link_to main_app.news_articles_path do
+    = link_to news_articles_path do
       %span Новости
   %dd
-    = link_to main_app.articles_path do
+    = link_to articles_path do
       %span Статьи
   %dd
-    = link_to main_app.content_base_contents_path do
+    = link_to content_base_contents_path do
       %span Работы
   %dd
-    = link_to main_app.projects_path do
+    = link_to projects_path do
       %span Проекты
   %dd
-    = link_to main_app.stats_community_path do
+    = link_to achievements_community_path(type: 'common') do
       %span Сообщество
 
 %dl
   %dt Инфо
   .clear
-  %dd= link_to 'О сообществе', main_app.info_community_path(system_tag: :about)
-  %dd= link_to 'Правила', main_app.info_community_path(system_tag: :rules)
-  %dd= link_to 'Вопросы', main_app.info_community_path(system_tag: :faq)
-  %dd= link_to "Если нашли ошибку", main_app.info_community_path(system_tag: :errors)
-  %dd= link_to "Идеи и предложения", main_app.info_community_path(system_tag: :ideas)
+  %dd= link_to 'О сообществе', info_community_path(system_tag: :about)
+  %dd= link_to 'Правила', info_community_path(system_tag: :rules)
+  %dd= link_to 'Вопросы', info_community_path(system_tag: :faq)
+  %dd= link_to "Если нашли ошибку", info_community_path(system_tag: :errors)
+  %dd= link_to "Идеи и предложения", info_community_path(system_tag: :ideas)
 
 %dl
   %dt Email:
-  %dd unbecinema@gmail.com
+  %dd unbecinema@gmail.com |
+
 
 %dl
 
 %dl
   %dd unbe © 2011–2014
-  %dd= MySite::Application.version
+  %dd
+    = MySite::Application.version
+    |
+    = link_to "Что нового?", info_community_path(system_tag: :whats_new)
 
 
 
