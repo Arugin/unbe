@@ -55,11 +55,15 @@ class Ability
       can :manage, Content::BaseContent, :author => user
 
       can :update, User, :_id => user._id
+
       can :create, Comment
       can :vote_up, [Comment,Article, Content::BaseContent]
       can :vote_down, [Comment,Article, Content::BaseContent]
       can :destroy, Comment do |comment|
         (comment.user == user)&&(comment.votes_point == 0)
+      end
+      can :update, Comment do |comment|
+        (comment.user == user)&&(comment.votes_point == 0)&&(Time.now < 1.days.since(comment.created_at))
       end
 
 
@@ -74,10 +78,10 @@ class Ability
       cannot :publish_news, Article
       cannot :publish_and_approve, Article
       cannot :system_tag, Article
-      cannot :vote_up, [Article, Content::BaseContent], :author => user
-      cannot :vote_down, [Article, Content::BaseContent], :author => user
-      cannot :vote_up, Comment, :user => user
-      cannot :vote_down, Comment, :user => user
+      cannot :vote_up, [Article, Content::BaseContent, Cycle], author: user
+      cannot :vote_down, [Article, Content::BaseContent, Cycle], author: user
+      cannot :vote_up, Comment, user: user
+      cannot :vote_down, Comment, user: user
 
     end
 

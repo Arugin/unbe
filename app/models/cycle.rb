@@ -64,7 +64,7 @@ class Cycle
     [
         { title: :CREATED_AT, sort_by: :created_at},
         { title: :TITLE, sort_by: :title},
-        { title: :COMMENTS_COUNT, sort_by: :comments_count},
+        { title: :SORT_COMMENTS_COUNT, sort_by: :comments_count},
         { title: :VOTES_COUNT, sort_by: :'votes.point'}
     ]
   end

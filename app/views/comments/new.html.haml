@@ -1,14 +1,8 @@
 %hr
 - if can? :create, Comment
   %h4 Комментировать
-  = simple_form_for([@commentable, @comment], :validate => true) do |f|
-    = f.error_notification
 
-    .form-inputs
-      = render partial: 'common/text_editor', locals: {f: f, field: :content, type: :small, id: 'smallContent', html_class: 'span12', label: false}
-
-    .form-actions
-      = f.button :submit, :class => "btn-primary"
+  = render partial: 'form', locals: {commentable: @commentable, comment: @comment}
 
 - else
   .description Чтобы оставлять комментарии, необходимо зарегистрироваться

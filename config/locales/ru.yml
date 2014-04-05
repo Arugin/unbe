@@ -50,6 +50,7 @@ ru:
   UNABLE_TO_DELETE_COMMENT: Невозможно удалить комментарий
   COMMENT_REMOVE_SUCCESS: Комментарий успешно удален
   COMMENTS_COUNT: Количество комментариев
+  COMMENT_UPDATE_SUCCESS: Комментарий успешно обновлен
 
   # cycles
   CYCLE_CREATE_SUCCESS: Цикл статей успешно создан
@@ -162,7 +163,7 @@ ru:
   # MAIN
   READ_MORE: Подробнее
   COMMENTS: "%{count} %{comment}"
-  COMMENTS_COUNT: Комментарии
+  SORT_COMMENTS_COUNT: Комментарии
   NO_INFO: не указано
   NO_ABOUT: ещё ничего нет
   VOTES_COUNT: Рейтинг

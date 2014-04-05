@@ -25,9 +25,12 @@
                   = link_to polymorphic_path(comment.commentable) do
                     %span= comment.commentable.title
             .pull-right
+              - if can? :update, comment
+                = link_to edit_comment_path(comment) do
+                  %i.fa.fa-pencil
               - if can? :destroy, comment
                 = link_to comment, method: :delete, confirm: "#{t(:SURE)}" do
-                  %i.icon-trash
+                  %i.fa.fa-trash-o
         %tr
           %td.votecell
             .vote-comment
