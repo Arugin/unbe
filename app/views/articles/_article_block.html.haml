@@ -33,7 +33,7 @@
       = "#{article.author.female? ? 'написала' : 'написал'} #{article.author.articles.size} #{Russian::pluralize(article.author.articles.size, 'статья','статьи', 'статей')}"
     .clear
     .views
-      = "#{article.author.female? ? 'оставила' : 'оставил'} #{article.author.comments.size} #{Russian::pluralize(article.author.comments.size, 'комментарий','комментария','комментариев')}"
+      = "#{article.author.female? ? 'оставила' : 'оставил'} #{article.author.comments_count} #{Russian::pluralize(article.author.comments_count, 'комментарий','комментария','комментариев')}"
   .pull-right
     .control-panel
       .edit

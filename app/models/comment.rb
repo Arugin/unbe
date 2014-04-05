@@ -8,7 +8,7 @@ class Comment
 
   validates :content, presence: true, length: {minimum: 3, maximum: 1000}
 
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, counter_cache: :comments_count
   belongs_to :user
 
   default_scope order_by(created_at: :asc)

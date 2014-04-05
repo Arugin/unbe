@@ -24,6 +24,7 @@ class User
   field :email, type: String
   field :encrypted_password, type: String, default: ''
   field :subscribed, type: Boolean, default: true
+  field :comments_count, type: Integer
 
   ## Recoverable
   field :reset_password_token, type: String

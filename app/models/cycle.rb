@@ -61,7 +61,8 @@ class Cycle
   def self.can_be_sorted_by
     [
         { title: :CREATED_AT, sort_by: :created_at},
-        { title: :TITLE, sort_by: :title}
+        { title: :TITLE, sort_by: :title},
+        { title: :COMMENTS_COUNT, sort_by: :comments_count}
     ]
   end
 

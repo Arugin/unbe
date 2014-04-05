@@ -1,10 +1,7 @@
 - keywords cycle.tag_list
 .row-fluid
   %h4
-    - if ['NO_CYCLE','ARCHIVE_CYCLE'].include? cycle.title
-      %span=title t(cycle.title)
-    - else
-      %span=title "Цикл '#{cycle.title}'"
+    %span=title cycle.correct_title
   .author
     = link_to profile_path(cycle.author) do
       = cycle.author.name
@@ -23,8 +20,5 @@
             = cycle.votes_point
   .clear
   .description
-    - if ['NO_CYCLE_DESC','ARCHIVE_CYCLE_DESC'].include? cycle.description
-      %span= t cycle.description.html_safe
-    - else
-      %span=cycle.description.html_safe
+    %span= cycle.correct_description.html_safe
   .clear

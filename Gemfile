@@ -34,7 +34,7 @@ gem 'mongoid_slug'
 gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
-gem 'merit', git: 'https://github.com/Arugin/merit'
+gem 'merit', '~> 2.1'
 gem 'state_pattern'
 
 # Gems used only for assets and not required

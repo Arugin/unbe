@@ -162,6 +162,7 @@ ru:
   # MAIN
   READ_MORE: Подробнее
   COMMENTS: "%{count} %{comment}"
+  COMMENTS_COUNT: Комментарии
   NO_INFO: не указано
   NO_ABOUT: ещё ничего нет
 

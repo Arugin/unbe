@@ -100,7 +100,8 @@ class Article
     [
       { title: :CREATED_AT, sort_by: :created_at},
       { title: :TITLE, sort_by: :title},
-      { title: :VIEWS, sort_by: :impressions_count}
+      { title: :VIEWS, sort_by: :impressions_count},
+      { title: :COMMENTS_COUNT, sort_by: :comments_count}
     ]
   end
 

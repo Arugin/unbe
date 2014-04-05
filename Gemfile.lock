@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/Arugin/merit
-  revision: 57ba5019cb32ab451dbc858ded01ba3b66550463
-  specs:
-    merit (2.0.0)
-      ambry (~> 0.3.0)
-
-GIT
   remote: https://github.com/Arugin/mongoid-paperclip
   revision: 8abbab9085d36ba024aecb509f0f30b31a1282be
   ref: 8abbab9085
@@ -177,6 +170,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    merit (2.1.0)
+      ambry (~> 0.3.0)
     meta-tags (1.5.0)
       actionpack
     mime-types (1.25.1)
@@ -342,7 +337,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kaminari
-  merit!
+  merit (~> 2.1)
   meta-tags
   mongoid
   mongoid-paperclip!

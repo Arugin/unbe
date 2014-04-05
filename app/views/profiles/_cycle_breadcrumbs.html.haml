@@ -15,4 +15,4 @@
 .pull-right
   .more-info
     = link_to cycle_path(cycle), id: 'override-link-color' do
-      =t 'COMMENTS', count: cycle.comments.size, comment: Russian::pluralize(cycle.comments.size, 'комментарий','комментария','комментариев')
+      =t 'COMMENTS', count: cycle.comments_count, comment: Russian::pluralize(cycle.comments_count, 'комментарий','комментария','комментариев')

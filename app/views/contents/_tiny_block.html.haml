@@ -8,4 +8,4 @@
       =t 'READ_MORE'
   .more-info
     = link_to content_base_content_path(content), itemprop:"url" do
-      =t 'COMMENTS', count: content.comments.size, comment: Russian::pluralize(content.comments.size, 'комментарий','комментария','комментариев')
+      =t 'COMMENTS', count: content.comments_count, comment: Russian::pluralize(content.comments_count, 'комментарий','комментария','комментариев')
