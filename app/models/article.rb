@@ -12,6 +12,7 @@ class Article
   include Concerns::Commentable
   include Mongo::Voteable
   include Concerns::Statable
+  include PublicActivity::Model
 
   set_initial_state Initial
 
@@ -39,6 +40,8 @@ class Article
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :tmpContent, length: {maximum: 20000}
+
+  delegate :correct_title, to: :cycle, prefix: true, allow_nil: true
 
   scope :last_news, lambda { |user, params = {}|
     search_for(user,params).any_of({'$and' => [{state: 'Article::Approved'}, {to_news: true}]}, {'$and' => [{state: 'Article::Approved'}, {article_type: ArticleType.where(title: "NEWS").first}]}, {'$and' => [{state: 'Article::Changed'}, {to_news: true}]}, {'$and' => [{state: 'Article::Changed'}, {article_type: ArticleType.where(title: "NEWS").first}]}).order_by([:created_at, :desc])
@@ -69,6 +72,7 @@ class Article
     unscoped.search_for(user, params).not_in(state: 'Article::Approved')
   }
 
+  alias :correct_title :title
 
   attr_protected :to_news, :baseRating, :rating, :system_tag, :script, :state
 

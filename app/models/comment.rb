@@ -3,6 +3,7 @@ class Comment
   include Mongoid::Timestamps
   include Mongo::Voteable
   include ActionView::Helpers::TextHelper
+  include PublicActivity::Model
 
   field :content, type: String
 
@@ -16,6 +17,8 @@ class Comment
   scope :unowned, lambda { |user|
     not_in(author: user.id)
   }
+
+  delegate :correct_title, to: :commentable, prefix: true, allow_nil: true
 
   voteable self, up: +1, down: -1
 

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
   protect_from_forgery
 
   before_filter :set_locale
@@ -27,6 +28,14 @@ class ApplicationController < ActionController::Base
   #can be overridden by engines, for example API will just 401
   def access_denied(exception)
     redirect_to  request.referer || root_path, :alert => exception.message
+  end
+
+  protected
+
+  def off_public_activity(class_name)
+    class_name.public_activity_off
+    yield
+    class_name.public_activity_on
   end
 
 end

@@ -19,3 +19,36 @@ nav.pagination{
     color: darkred;
   }
 }
+
+.activity {
+  border-bottom: solid 1px #CCC;
+  padding: 16px 0;
+  em {
+    color: #777;
+    padding-left: 5px;
+  }
+  .logo{
+    text-align: center;
+    font-size: 24px;
+    color: #777;
+    line-height: 36px;
+  }
+  .avatar{
+    img{
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .badge{
+    height: 20px;
+    i{
+      line-height: 20px;
+      font-size: 12px;
+      top: 1px;
+    }
+    .name{
+      font-size: 10px;
+      line-height: 20px;
+    }
+  }
+}

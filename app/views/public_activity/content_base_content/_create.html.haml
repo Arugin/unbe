@@ -1,0 +1,5 @@
+опубликовал работу
+= link_to activity.parameters['title'], activity.trackable
+- if activity.trackable.present?
+  в галерее
+  = link_to activity.trackable.contentable_title, activity.trackable.contentable

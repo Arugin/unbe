@@ -36,6 +36,7 @@ gem 'clockwork'
 gem 'active_link_to'
 gem 'merit', '~> 2.1'
 gem 'state_pattern'
+gem 'public_activity'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -8,6 +8,9 @@ class Cycle
   include Concerns::Taggable
   include Concerns::Commentable
   include Mongo::Voteable
+  include PublicActivity::Model
+
+  tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present?}, params: {title: :correct_title}
 
   field :title, type: String
   field :description, type: String

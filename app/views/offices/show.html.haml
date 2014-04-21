@@ -1,43 +1,47 @@
 %h4=title 'Личный кабинет'
-.office
-  %dl
-    %dt Текущий статус
-    %dd= t current_user.highest_role
-  %dl
-    %dt
-      Неопублкиованные статьи
-    %dd
-      - if current_user.unpublished_articles.empty?
-        Нет неопубликованных статьей
-      - else
-        = render :partial => 'articles_short_table', :locals => { :articles => current_user.unpublished_articles, :buttons => false }
-  %dl
-    %dt
-      Неподтвержденные статьи
-    %dd
-      - if current_user.unapproved_articles.empty?
-        Нет неподтвержденных статьей
-      - else
-        = render :partial => 'articles_short_table', :locals => { :articles => current_user.unapproved_articles, :buttons => false }
 
-  %dl
-    %dt
-      Последние посещенные страницы
-    %dd
-      - if @last_pages.empty?
-        Ничего не посещалось
-      - else
-        = render :partial => 'pages_short_table', :locals => { :elements => @last_pages }
+%ul.nav.nav-tabs
+  %li.active
+    %a{href: '#response', data:{toggle: 'tab'}} Комментарии
+  %li
+    %a{href: '#my-activity', data:{toggle: 'tab'}} Мои действия
+  %li
+    %a{href: '#status', data:{toggle: 'tab'}} Статус
+.tab-content
+  #status.office.tab-pane
+    %dl
+      %dt Текущий статус
+      %dd= t current_user.highest_role
+    %dl
+      %dt
+        Неопублкиованные статьи
+      %dd
+        - if current_user.unpublished_articles.empty?
+          Нет неопубликованных статьей
+        - else
+          = render :partial => 'articles_short_table', :locals => { :articles => current_user.unpublished_articles, :buttons => false }
+    %dl
+      %dt
+        Неподтвержденные статьи
+      %dd
+        - if current_user.unapproved_articles.empty?
+          Нет неподтвержденных статьей
+        - else
+          = render :partial => 'articles_short_table', :locals => { :articles => current_user.unapproved_articles, :buttons => false }
 
-  %dl
-    %dt
-      Последние комментарии
-    %dd
-      - if current_user.last_comments.empty?
-        Комментариев оставлено не было
-      - else
-        = render :partial => 'comments_short_table', :locals => { :comments => current_user.last_comments }
+    %dl
+      %dt
+        Посещенные страницы
+      %dd
+        - if @last_pages.empty?
+          Ничего не посещалось
+        - else
+          = render :partial => 'pages_short_table', :locals => { :elements => @last_pages }
 
+  #response.tab-pane.active
+    = render 'common/activities_block', activities: @comments
+  #my-activity.tab-pane
+    = render 'common/activities_block', activities: @my_activities
 
 - content_for(:right_bar) do
   = render :partial => 'right_bar'

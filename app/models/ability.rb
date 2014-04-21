@@ -63,7 +63,7 @@ class Ability
         (comment.user == user)&&(comment.votes_point == 0)
       end
       can :update, Comment do |comment|
-        (comment.user == user)&&(comment.votes_point == 0)&&(Time.now < 1.days.since(comment.created_at))
+        (comment.user == user)&&(Time.now < 1.days.since(comment.created_at))
       end
 
 

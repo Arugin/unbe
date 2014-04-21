@@ -347,6 +347,10 @@ body{
       .avatar{
         text-align: center;
         vertical-align: middle;
+        img{
+          width: 25px;
+          height: 25px;
+        }
       }
       .author{
         @extend .author;
@@ -458,6 +462,10 @@ body{
 .span6-5{
   @extend .span6;
   width: 53% !important;
+}
+
+.span0{
+  width: 4% !important;
 }
 
 

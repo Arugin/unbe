@@ -8,6 +8,9 @@ class Gallery
   include Concerns::Taggable
   include Concerns::Commentable
   include Mongo::Voteable
+  include PublicActivity::Model
+
+  tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present? }, params: {title: :title}
 
   is_impressionable counter_cache: true, unique: :ip_address
 
@@ -16,6 +19,7 @@ class Gallery
   field :impressions_count, type: Integer, default: 0
 
   alias :title :name
+  alias :correct_title :name
 
   validates :name, presence: true, length: {minimum:3,maximum: 70}
   validates :description, length: {maximum: 1000}

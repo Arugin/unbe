@@ -8,10 +8,7 @@
       %table
         %tr
           %td.avatar
-            - if comment.user.avatar.nil?
-              = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar", :size => "25x25")
-            - else
-              = image_tag(comment.user.avatar.file.url(:mini), :size => "25x25")
+            = render 'common/avatar', user: comment.user
           %td.credentials
             .author
               = link_to profile_path(comment.user) do
@@ -23,7 +20,7 @@
                 %span.step
                   к
                   = link_to polymorphic_path(comment.commentable) do
-                    %span= comment.commentable.title
+                    %span= comment.commentable_title
             .pull-right
               - if can? :update, comment
                 = link_to edit_comment_path(comment) do

@@ -34,5 +34,6 @@ Clone repository.
 Run 'bundle install'.
 Install MongoDB.
 Run 'rake db:setup'.
+Run 'rake db:migrate'.
 Now you should be able to start rails server.
 Project requires setting some env variables. For example, uploading images, registration (recaptcha) will not work without them

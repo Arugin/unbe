@@ -17,10 +17,12 @@ class ContentsController < ApplicationController
   end
 
   def approve
-    @content = Content::BaseContent.find(params[:id])
-    @content.approved_to_news = params[:approved]
-    @content.reviewed = true
-    @content.save
+    off_public_activity(Content::BaseContent) do
+      @content = Content::BaseContent.find(params[:id])
+      @content.approved_to_news = params[:approved]
+      @content.reviewed = true
+      @content.save
+    end
     redirect_to non_approved_contents_office_path, notice: t(:CONTENT_APPROVE_SUCCESS)
   end
 

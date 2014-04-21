@@ -8,7 +8,7 @@ Merit.setup do |config|
   config.orm = :mongoid
 
   # Add application observers to get notifications when reputation changes.
-  # config.add_observer 'MyObserverClassName'
+  config.add_observer 'ReputationChangeObserver'
 
   # Define :user_model_name. This model will be used to grand badge if no :to option is given. Default is "User".
   config.user_model_name = "User"

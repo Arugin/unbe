@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
     if @comment.save
+      @comment.create_activity action: :create, owner: current_user, recipient: @commentable
       flash[:notice] = t :COMMENT_ADD_SUCCESSFULLY
       redirect_to @commentable
     else

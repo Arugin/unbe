@@ -2,20 +2,21 @@
   %h3.right-bar
     Информация
   %ul.navigation
-    %li= link_to 'Достижения сообщества', achievements_community_path(type: :common)
-    %li= link_to 'О сообществе', info_community_path(system_tag: :about)
-    %li= link_to 'Правила', info_community_path(system_tag: :rules)
-    %li= link_to 'Поддержать', info_community_path(system_tag: :help_us)
-    %li= link_to 'Если нашли ошибку', info_community_path(system_tag: :errors)
-    %li= link_to 'Идеи и предложения', info_community_path(system_tag: :ideas)
+    %li= active_link_to 'Активность',community_path, active: :exclusive
+    %li= active_link_to 'Достижения сообщества', achievements_community_path(type: :common)
+    %li= active_link_to 'О сообществе', info_community_path(system_tag: :about), active: /about/
+    %li= active_link_to 'Правила', info_community_path(system_tag: :rules), active: /rules/
+    %li= active_link_to 'Поддержать', info_community_path(system_tag: :help_us), active: /help_us/
+    %li= active_link_to 'Если нашли ошибку', info_community_path(system_tag: :errors), active: /errors/
+    %li= active_link_to 'Идеи и предложения', info_community_path(system_tag: :ideas), active: /ideas/
 
   %h3.right-bar
     Помощь
   %ul.navigation
-    %li= link_to 'Вопросы', info_community_path(system_tag: :faq)
-    %li= link_to 'Статьи',info_community_path(system_tag: :articles)
-    %li= link_to 'Циклы',info_community_path(system_tag: :cycles)
-    %li= link_to 'Работы',info_community_path(system_tag: :galleries)
-    %li= link_to 'Комментарии',info_community_path(system_tag: :comments)
-    %li= link_to 'Проекты',info_community_path(system_tag: :projects)
-    %li= link_to 'Достижения',info_community_path(system_tag: :achiev)
+    %li= active_link_to 'Вопросы', info_community_path(system_tag: :faq), active: /faq/
+    %li= active_link_to 'Статьи',info_community_path(system_tag: :articles), active: /articles/
+    %li= active_link_to 'Циклы',info_community_path(system_tag: :cycles), active: /cycles/
+    %li= active_link_to 'Работы',info_community_path(system_tag: :galleries), active: /galleries/
+    %li= active_link_to 'Комментарии',info_community_path(system_tag: :comments), active: /comments/
+    %li= active_link_to 'Проекты',info_community_path(system_tag: :projects), active: /projects/
+    %li= active_link_to 'Достижения',info_community_path(system_tag: :achiev), active: /achiev/

@@ -40,9 +40,12 @@ $disabled-color: #979797;
   display: inline-block;
 }
 
-.active{
-  background-color: $dark-link-color;
+a, li{
+  .active{
+    background-color: $dark-link-color;
+  }
 }
+
 
 table.articles-short{
   width: 100%;

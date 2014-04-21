@@ -1,9 +1,6 @@
 .user_header
   %a.avatar{:href=>"#"}
-    - if user.avatar.nil?
-      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
-    - else
-      = image_tag(user.avatar.file.url(:mini))
+    = render 'common/avatar', user: user
   %h2.username
     = link_to profile_path(user) do
       = title user.name

@@ -8,10 +8,7 @@
     = link_to article_path(article), itemprop:"url" do
       %span{itemprop:"name"}= title article.title
   .news-user-avatar
-    - if article.author.avatar.nil?
-      = image_tag("/images/main/profile/stub-user-middle.gif", :title => "user avatar")
-    - else
-      = image_tag(article.author.avatar.file.url(:mini))
+    = render 'common/avatar', user: article.author
   .info
     .credentials
       .author

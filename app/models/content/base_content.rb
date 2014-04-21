@@ -11,6 +11,9 @@ module Content
     include Concerns::Commentable
     include Mongo::Voteable
     include ActionView::Helpers::TextHelper
+    include PublicActivity::Model
+
+    tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present? }, params: {title: :title}
 
     is_impressionable counter_cache: true, :unique => :ip_address
 
@@ -23,10 +26,12 @@ module Content
 
     slug  :title, :history => true
 
-    validates :title, length: {maximum: 70}, allow_blank: true
+    validates :title, presence: true, length: {maximum: 70}, allow_blank: true
     validates :description, length: {maximum: 1500}
     validates :src, presence: true
     validate :youtube_or_vimeo_url
+
+    delegate :title, to: :contentable, prefix: true, allow_nil: true
 
     search_in :title, :tags
 
@@ -43,6 +48,7 @@ module Content
     }
 
     alias :content :description
+    alias :correct_title :title
 
     voteable self, up: +1, down: -1
 

@@ -37,19 +37,19 @@
   .span7.offset1
     %ul.nav.nav-pills#main-menu
       %li
-        = active_link_to main_app.root_path, active: :exclusive do
+        = active_link_to root_path, active: :exclusive do
           %span Новости
       %li
-        = active_link_to main_app.articles_path, active: :exclusive do
+        = active_link_to articles_path, active: :exclusive do
           %span Статьи
       %li
-        = active_link_to main_app.content_base_contents_path, active: :exclusive do
+        = active_link_to content_base_contents_path, active: :exclusive do
           %span Работы
       %li
-        = active_link_to main_app.projects_path, active: :exclusive do
+        = active_link_to projects_path, active: :exclusive do
           %span Проекты
       %li
-        = active_link_to achievements_community_path(type: 'common'), active: :exclusive do
+        = active_link_to community_path, active: :exclusive do
           %span Сообщество
 
   .row-fluid

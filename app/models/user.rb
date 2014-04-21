@@ -6,6 +6,7 @@ class User
   include Concerns::Searchable
   include Concerns::Randomizable
   include Mongo::Voter
+  include PublicActivity::Model
   has_merit
 
   # Include default devise modules. Others available are:
@@ -17,6 +18,7 @@ class User
   after_create :default_cycles
   after_create :default_role
   after_create :default_gender
+  after_create :record_activity
 
   field :name, type: String
   field :second_name, type: String
@@ -74,6 +76,8 @@ class User
 
   accepts_nested_attributes_for :avatar, class_name: 'Picture', allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
 
+
+
   attr_accessible :subscribed,:gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
 
   default_scope order_by(created_at: :desc)
@@ -112,10 +116,6 @@ class User
 
   def unapproved_articles
     self.articles.where(state: 'Article::Published')
-  end
-
-  def last_comments
-    self.comments.limit(10).desc(:created_at)
   end
 
   def active_for_authentication?
@@ -163,6 +163,10 @@ class User
     [ first_name, last_name ].filter(&:presence).compact.map(&:strip) * ' '
   end
 
+  def all_resources_ids
+    articles.map(&:_id).concat(cycles.map(&:_id)).concat(contents.map(&:_id)).concat(galleries.map(&:_id))
+  end
+
   protected
 
   def remove_all_roles
@@ -181,6 +185,10 @@ class User
   def default_gender
     self.gender = Gender.find_by(name:'UNKNOWN')
     self.save
+  end
+
+  def record_activity
+    create_activity action: :create, owner: self
   end
 
 end
