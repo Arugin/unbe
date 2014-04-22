@@ -14,7 +14,7 @@ class Article::Published < Article::BaseState
       prepare_approve
       transition_to(Article::Approved)
       stateful.save!
-      stateful.create_activity action: :publish, owner: Proc.new{ |controller, model| controller.current_user }
+      stateful.create_activity action: :publish, owner: Proc.new{ |controller, model| controller.current_user if controller.present? }
     end
   end
 
