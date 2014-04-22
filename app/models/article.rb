@@ -72,8 +72,6 @@ class Article
     unscoped.search_for(user, params).not_in(state: 'Article::Approved')
   }
 
-  alias :correct_title :title
-
   attr_protected :to_news, :baseRating, :rating, :system_tag, :script, :state
 
   voteable self, up: +1, down: -1
@@ -124,6 +122,10 @@ class Article
 
   def cycle_id
     cycle.nil? ? author.cycles.where(title: :NO_CYCLE).first._id : cycle._id
+  end
+
+  def correct_title
+    truncate(title, length: 40, omission: '...')
   end
 
   protected

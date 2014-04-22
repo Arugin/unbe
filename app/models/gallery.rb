@@ -9,6 +9,7 @@ class Gallery
   include Concerns::Commentable
   include Mongo::Voteable
   include PublicActivity::Model
+  include Concerns::Shortable
 
   tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present? }, params: {title: :title}
 
