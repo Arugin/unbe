@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
 
   # https://gist.github.com/gonzedge/1563416
   unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: lambda { |exception| render_error 500, exception }
-    rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
+    rescue_from Exception, :with => :irrecoverable_exception
+    rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, Mongoid::Errors::DocumentNotFound, with: lambda { |exception| render_error 404, exception }
   end
 
 # Get locale from top-level domain or return nil if such locale is not available
