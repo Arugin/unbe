@@ -133,4 +133,6 @@ Unbe::Application.routes.draw do
   devise_scope :user do
     root to: 'devise/sessions#new'
   end
+
+  match '*not_found', to: 'errors#error_404'
 end

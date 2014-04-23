@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = extract_locale_from_tld || I18n.default_locale
   end
 
+  # https://gist.github.com/gonzedge/1563416
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from Exception, with: lambda { |exception| render_error 500, exception }
+    rescue_from ActionController::RoutingError, ActionController::UnknownController, ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound, with: lambda { |exception| render_error 404, exception }
+  end
+
 # Get locale from top-level domain or return nil if such locale is not available
 # You have to put something like:
 #   127.0.0.1 application.com
@@ -36,6 +42,14 @@ class ApplicationController < ActionController::Base
     class_name.public_activity_off
     yield
     class_name.public_activity_on
+  end
+
+  private
+  def render_error(status, exception)
+    respond_to do |format|
+      format.html { render template: "errors/error_#{status}", layout: 'layouts/application', status: status }
+      format.all { render nothing: true, status: status }
+    end
   end
 
 end

@@ -1,0 +1,20 @@
+.well
+  %h2 500 Ошибка сервера
+  %div
+    %p
+      К сожалению, ваш запрос не может быть обработан
+    = render 'errors/administrator_contact'
+
+    - if current_user.has_role? :ADMIN
+      %h3
+        Ошибка:
+      %p
+        = exception.message
+      %button.btn.btn-info{"data-target" => "#backtrace", "data-toggle" => "collapse", :type => "button"}
+        Стектрейс:
+      %p
+      #backtrace.collapse
+        %pre
+          = exception.backtrace.each do |line|
+            = line
+            %br
