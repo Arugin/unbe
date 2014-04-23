@@ -20,7 +20,7 @@
                 %span.step
                   к
                   = link_to polymorphic_path(comment.commentable) do
-                    %span= comment.commentable_title
+                    %span= comment.commentable_correct_title
             .pull-right
               - if can? :update, comment
                 = link_to edit_comment_path(comment) do
