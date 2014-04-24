@@ -93,6 +93,8 @@ ru:
   UNABLE_TO_DELETE_CONTENT: Невозможно удалить работу
   CONTENT_UPDATE_SUCCESS: Работа обновлена
   EDIT_CONTENT: Редактировать работу
+  YOU_HAVE_BEEN_SUBSCRIBED: Вы успешно подписались на пользователя
+  YOU_HAVE_BEEN_UNSUBSCRIBED: Вы успешно отписались от пользователя
 
   # articles types
   NEWS: Новости

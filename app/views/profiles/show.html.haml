@@ -3,7 +3,15 @@
   .content-left
     = render :partial => 'menu',:locals => { :user => @user }
     .user-profile
-      .fullname= "#{@user.first_name} #{@user.second_name}"
+      .fullname
+        = "#{@user.first_name} #{@user.second_name}"
+        - if can? :subscribe, @user
+          - if current_user.subscribed?(@user)
+            = link_to unsubscribe_profile_path(@user), class: 'btn btn-mini' do
+              Отписаться
+          - else
+            = link_to subscribe_profile_path(@user), class: 'btn btn-mini' do
+              Подписаться
       .clear
       %dl
         %dt Зарегистрирован:

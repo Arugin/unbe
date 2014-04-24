@@ -62,6 +62,8 @@ class User
   has_many :comments, dependent: :restrict
   has_many :galleries, dependent: :restrict, inverse_of: :author
   has_many :contents, dependent: :restrict, inverse_of: :author, class_name: 'Content::BaseContent'
+  has_and_belongs_to_many :subscriptions, class_name: 'User', inverse_of: :subscribers
+  has_and_belongs_to_many :subscribers, class_name: 'User', inverse_of: :subscriptions
 
   search_in :name, :email
 
@@ -165,6 +167,18 @@ class User
 
   def all_resources_ids
     articles.map(&:_id).concat(cycles.map(&:_id)).concat(contents.map(&:_id)).concat(galleries.map(&:_id))
+  end
+
+  def subscribe(user)
+    subscriptions << user
+    save
+  end
+
+  def subscribed?(user)
+    subscriptions.find(user)
+    true
+  rescue => e
+    false
   end
 
   protected

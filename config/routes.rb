@@ -94,6 +94,8 @@ Unbe::Application.routes.draw do
       get 'galleries'
       get 'projects'
       get 'comments'
+      get 'subscribe'
+      get 'unsubscribe'
     end
   end
 

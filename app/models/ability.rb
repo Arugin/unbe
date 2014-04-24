@@ -33,6 +33,10 @@ class Ability
     can :read, Article
     can :read, Cycle
     can :read, User
+    can :subscribe, User do |target|
+      target != user
+    end
+
     can :draft, Article do |article|
       article.garbage? || article.tmpContent.present?
     end
