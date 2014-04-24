@@ -166,7 +166,7 @@ ru:
   VIEWS: Просмотры
 
   # MAIN
-  READ_MORE: Подробнее
+  READ_MORE: Читать дальше →
   COMMENTS: "%{count} %{comment}"
   SORT_COMMENTS_COUNT: Комментарии
   NO_INFO: не указано
