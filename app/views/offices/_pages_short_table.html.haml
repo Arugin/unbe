@@ -1,7 +1,8 @@
 - unless elements.nil?
-  %table.articles-short.table-striped
-    - elements.each do |element|
-      %tr
-        %td
-          = link_to polymorphic_path(element) do
-            %span= element.title
+  .span8
+    %table.articles-short.table-striped
+      - elements.each do |element|
+        %tr
+          %td
+            = link_to polymorphic_path(element) do
+              %span= element.title
