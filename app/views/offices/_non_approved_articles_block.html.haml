@@ -34,6 +34,6 @@
                 %li= link_to t(:TO_GARBAGE), to_garbage_article_path(article)
         %td
           - if can? :destroy, article
-            = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+            = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "icon-trash", :id => 'btn-rm-cm'
 
 = paginate @articles, :remote => true

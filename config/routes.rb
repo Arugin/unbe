@@ -117,5 +117,5 @@ Unbe::Application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  match '*not_found', to: 'errors#error_404'
+  match '*not_found', to: 'errors#error_404', via: :get
 end

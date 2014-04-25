@@ -82,7 +82,7 @@ class User
 
 
 
-  attr_accessible :subscribed,:gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
+  #attr_accessible :subscribed,:gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
 
   default_scope order_by(created_at: :desc)
 

@@ -43,7 +43,7 @@
                         = render :partial => "common/rate_count", locals: { subject: gallery }
                     %td.center
                         - if can? :destroy, gallery
-                            = button_to "Удалить", gallery, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+                            = button_to "Удалить", gallery, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "btn btn-danger"
                 - unless gallery.contents.empty?
                     = render :partial => 'contents_block', locals: {contents: gallery.contents}
 

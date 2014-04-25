@@ -45,6 +45,6 @@
                 = link_to change_role_user_path(user,  {role: :ADMIN}) do
                   = t("ADMIN")
               %li.divider
-              %li= link_to "Удалить", user, method: :delete, confirm: "#{t(:SURE)}"
+              %li= link_to "Удалить", user, method: :delete, data:{confirm: "#{t(:SURE)}"}
 
 = paginate @users, :remote => true

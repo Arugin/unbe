@@ -17,4 +17,4 @@
             = render :partial => "common/rate_count", locals: { subject: content }
         %td.center
             - if can? :destroy, content
-                = button_to "", content, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+                = button_to "", content, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "icon-trash", :id => 'btn-rm-cm'

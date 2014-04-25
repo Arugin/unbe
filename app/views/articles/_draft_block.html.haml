@@ -42,7 +42,7 @@
             %i.icon-pencil{title: t(:EDIT_ARTICLE)}
       .edit
         - if can? :destroy, article
-          = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+          = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "icon-trash", :id => 'btn-rm-cm'
   .clear
   .description{itemprop:'articleBody'}
     - if article.garbage?

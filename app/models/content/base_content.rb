@@ -41,7 +41,8 @@ module Content
     belongs_to :contentable, polymorphic: true
 
     default_scope order_by(:created_at => :desc)
-    scope :random, all.where(approved_to_news: true, reviewed: true)
+    scope :random, ->{ where(approved_to_news: true, reviewed: true) }
+
     scope :non_approved, lambda { |user, params = {}|
       search_for(user,params).where(reviewed: false)
     }
@@ -55,8 +56,8 @@ module Content
 
     voteable self, up: +1, down: -1
 
-    attr_protected :reviewed, :approved_to_news
-    attr_accessible :title, :src, :description, :contentable_id
+    #attr_protected :reviewed, :approved_to_news
+    #attr_accessible :title, :src, :description, :contentable_id
 
     def youtube_or_vimeo_url
       return if(self.src =~ %r{\A(https?)://(www.)?(youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]*)(\&\S+)?.*})

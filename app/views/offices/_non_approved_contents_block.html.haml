@@ -29,7 +29,7 @@
                   = link_to approve_content_base_content_path(content,  approved: false) do
                     = t :NO_APPROVE
         %td
-          = button_to "Удалить", [content], :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+          = button_to "Удалить", [content], :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "btn btn-danger"
 
 
 = paginate @contents, :remote => true
