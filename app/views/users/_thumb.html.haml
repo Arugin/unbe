@@ -1,0 +1,2 @@
+= link_to profile_path(item) do
+  = image_tag(item.avatar.nil? ? '/images/common/filer.png' : item.avatar.file.url(:medium), title: "Хм, а что это?")

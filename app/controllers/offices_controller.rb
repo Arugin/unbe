@@ -77,6 +77,11 @@ class OfficesController < ApplicationController
     redirect_to assign_badges_office_path, notice: t(:BADGE_ADDED, badge: params[:user][:badge_id], user: @user.name)
   end
 
+  def subscriptions
+    @subscriptions = current_user.subscriptions.page(params[:page])
+    @subscribers = current_user.subscribers.page(params[:page])
+  end
+
   private
 
   def scope

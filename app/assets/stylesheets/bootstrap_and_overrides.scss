@@ -186,6 +186,8 @@ body{
       margin-right: 11px;
       position: relative;
       text-align: center;
+      max-width: 50px;
+      max-height: 50px;
     }
 
     .username{
@@ -308,6 +310,8 @@ body{
     @extend .author;
     margin-right: 5px;
     margin-top: 5px;
+    max-width: 50px;
+    max-height: 43px;
   }
 
   .views{

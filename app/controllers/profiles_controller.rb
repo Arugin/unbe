@@ -51,14 +51,14 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     authorize! :subscribe, @user
     current_user.subscribe @user
-    redirect_to profile_path, notice: t(:YOU_HAVE_BEEN_SUBSCRIBED)
+    redirect_to request.referer, notice: t(:YOU_HAVE_BEEN_SUBSCRIBED)
   end
 
   def unsubscribe
     @user = User.find(params[:id])
     authorize! :subscribe, @user
     current_user.unsubscribe @user
-    redirect_to profile_path, notice: t(:YOU_HAVE_BEEN_UNSUBSCRIBED)
+    redirect_to request.referer, notice: t(:YOU_HAVE_BEEN_UNSUBSCRIBED)
   end
 
 end

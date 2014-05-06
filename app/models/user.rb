@@ -174,6 +174,11 @@ class User
     save
   end
 
+  def unsubscribe(user)
+    subscriptions.delete user
+    save
+  end
+
   def subscribed?(user)
     subscriptions.find(user)
     true

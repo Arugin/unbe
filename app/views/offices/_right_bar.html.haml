@@ -42,10 +42,10 @@
         = active_link_to projects_path do
           Мои проекты
       %li
-        %a{:href=>"#"}
-          Избранное
+        = active_link_to subscriptions_office_path do
+          Подписки
       %li
-        = active_link_to profile_path(current_user) do
+        = active_link_to profile_path(current_user), active: :exclusive do
           Профиль
       %li
         = active_link_to edit_profile_path(current_user) do

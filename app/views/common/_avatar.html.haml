@@ -1,5 +1,2 @@
 - if user.present?
-  - if user.avatar.nil?
-    = image_tag('/images/main/profile/stub-user-middle.gif', title: "Хм, а что это?")
-  - else
-    = image_tag(user.avatar.file.url(:mini))
+  = image_tag(user.avatar.nil? ? '/images/common/filer.png' : user.avatar.file.url(:mini), title: "Хм, а что это?")

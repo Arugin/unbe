@@ -1,0 +1,16 @@
+%h4=title 'Подписки'
+
+%ul.nav.nav-tabs
+  %li.active
+    %a{href: '#subscriptions', data:{toggle: 'tab'}} Мои
+  %li
+    %a{href: '#subscribers', data:{toggle: 'tab'}} На меня
+
+.tab-content
+  #subscriptions.office.tab-pane.active
+    = render 'users_cool_block', users: @subscriptions, unsubscribe_action: true
+  #subscribers.tab-pane
+    = render 'users_cool_block', users: @subscribers, unsubscribe_action: false
+
+- content_for(:right_bar) do
+  = render :partial => 'right_bar'

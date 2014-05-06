@@ -32,6 +32,7 @@ ru:
   DAY_COUNT_VIEWS: Количество просмотров за последний день
   SUBSCRIBED: Подписан на рассылку
   NO_USERS_FOUND: Не зарегистрировано ни одного пользователя
+  NO_SUBSCRIPTIONS_FOUND: Нет ни одной подписки
   BADGE_ADDED: "Достижение %{badge} успешно добавлено пользователю %{user}"
   CONTAINS_ARTICLES: "Содержит %{count} %{items}"
   UNABLE_TO_DELETE_USER: Невозможно удалить пользователя

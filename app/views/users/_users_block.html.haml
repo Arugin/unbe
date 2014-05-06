@@ -7,8 +7,8 @@
     %th
     %th
     %th.span1
-  - if @users.nil?
-    %p = t :NO_USERS_FOUND
+  - if @users.empty?
+    %p= t :NO_USERS_FOUND
   %tbody
   - @users.each do |user|
     %tr

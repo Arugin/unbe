@@ -111,8 +111,11 @@ class Ability
 
       cannot :vote_up, [Article, Content::BaseContent], :author => user
       cannot :vote_down, [Article, Content::BaseContent], :author => user
-      cannot :vote_up, Comment, :user => user
-      cannot :vote_down, Comment, :user => user
+      cannot :vote_up, Comment, user: user
+      cannot :vote_down, Comment, user: user
+      cannot :subscribe, User do |target|
+        target == user
+      end
 
     end
   end
