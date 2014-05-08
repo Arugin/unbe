@@ -86,7 +86,7 @@ class OfficesController < ApplicationController
     authorize! :add_points, User
     @user = User.find params[:user][:id]
     @user.add_points params[:user][:points].to_i
-    redirect_to add_points_office_path, notice: t(:POINTS_ADDED, points: params[:user][:point], user: @user.name)
+    redirect_to add_points_office_path, notice: t(:POINTS_ADDED, points: params[:user][:points], user: @user.name)
   end
 
   def subscriptions

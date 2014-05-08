@@ -13,6 +13,7 @@
   %h3.right-bar
     Помощь
   %ul.navigation
+    %li= active_link_to 'Авторские права', info_community_path(system_tag: :license), active: /license/
     %li= active_link_to 'Вопросы', info_community_path(system_tag: :faq), active: /faq/
     %li= active_link_to 'Статьи',info_community_path(system_tag: :articles), active: /articles/
     %li= active_link_to 'Циклы',info_community_path(system_tag: :cycles), active: /cycles/
