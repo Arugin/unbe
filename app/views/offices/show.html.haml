@@ -2,16 +2,19 @@
 
 %ul.nav.nav-tabs
   %li.active
+    %a{href: '#status', data:{toggle: 'tab'}} Статус
+  %li
     %a{href: '#response', data:{toggle: 'tab'}} Комментарии
   %li
     %a{href: '#my-activity', data:{toggle: 'tab'}} Мои действия
-  %li
-    %a{href: '#status', data:{toggle: 'tab'}} Статус
 .tab-content
-  #status.office.tab-pane
+  #status.office.tab-pane.active
     %dl
       %dt Текущий статус
       %dd= t current_user.highest_role
+    %dl
+      %dt Заработано очков опыта
+      %dd= current_user.points
     %dl
       %dt
         Неопублкиованные статьи
@@ -38,7 +41,7 @@
         - else
           = render :partial => 'pages_short_table', :locals => { :elements => @last_pages }
 
-  #response.tab-pane.active
+  #response.tab-pane
     = render 'common/activities_block', activities: @comments
   #my-activity.tab-pane
     = render 'common/activities_block', activities: @my_activities

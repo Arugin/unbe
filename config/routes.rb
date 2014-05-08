@@ -110,6 +110,8 @@ Unbe::Application.routes.draw do
     end
   end
 
+  resources :activities, only: [:destroy], as: :public_activity_activity
+
 
   # Sample resource route with more complex sub-resources
   #   resources :products do

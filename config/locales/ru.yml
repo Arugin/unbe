@@ -97,6 +97,9 @@ ru:
   YOU_HAVE_BEEN_SUBSCRIBED: Вы успешно подписались на пользователя
   YOU_HAVE_BEEN_UNSUBSCRIBED: Вы успешно отписались от пользователя
 
+  UNABLE_TO_DELETE_ACTIVITY: Невозможно удалить активность
+  ACTIVITY_REMOVE_SUCCESS: Активность успешно удалена
+
   # articles types
   NEWS: Новости
   DIRECTION: Режиссура

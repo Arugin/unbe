@@ -7,7 +7,7 @@ class ReputationChangeObserver
     description = changed_data[:description]
 
     # If user is your meritable model, you can grab it like:
-    if changed_data[:merit_object] && changed_data[:merit_object].respond_to?(:activity_logs)
+    if changed_data[:merit_object] && changed_data[:merit_object].respond_to?(:activity_logs) && changed_data[:merit_object].kind_of?(Merit::BadgesSash)
       sash_id = changed_data[:merit_object].sash_id
       user = User.where(sash_id: sash_id).first
       user.create_activity action: :reputation_change, owner: user, params: {description: description}

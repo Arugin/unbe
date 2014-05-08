@@ -39,12 +39,14 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    @gallery = Gallery.find(params[:id])
+    off_public_activity(Gallery) do
+      @gallery = Gallery.find(params[:id])
 
-    if @gallery.update_attributes(params[:gallery])
-      redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_UPDATE_SUCCESS)
-    else
-      render action: "edit"
+      if @gallery.update_attributes(params[:gallery])
+        redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_UPDATE_SUCCESS)
+      else
+        render action: "edit"
+      end
     end
   end
 

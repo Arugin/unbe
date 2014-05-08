@@ -20,4 +20,5 @@ class CommunitiesController < ApplicationController
   def info
     @article = Article.where(system_tag: params[:system_tag]).first
   end
+
 end

@@ -1,7 +1,21 @@
-.user_header
+.user-header
   %a.avatar{:href=>"#"}
     = render 'common/avatar', user: user
   %h2.username
     = link_to profile_path(user) do
       = title user.name
+  .score
+    .hint
+      Ранг
+    - if user.level == 0
+      .experience{title: "Ранг 0"}
+        —
+    - else
+      .rank-image{title: "Ранг #{user.level}"}
+        = image_tag "/images/ranks/#{user.level}.png"
+  .score
+    .hint
+      Опыт
+    .experience{title: 'Опыт'}
+      = user.points
   .clear

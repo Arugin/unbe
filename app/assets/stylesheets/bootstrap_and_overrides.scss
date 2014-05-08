@@ -174,7 +174,7 @@ body{
     outline: 0;
   }
 
-  .user_header{
+  .user-header{
     padding-top: 10px;
     padding-bottom: 5px;
     margin-top: -17px;
@@ -193,16 +193,39 @@ body{
     .username{
       @extend .normal-h2;
       float: left;
-      margin-right: 6px;
-      font-size: 36px;
-      line-height: 40px;
+      line-height: 58px;
+      font-size: 36px;      ;
 
       a{
         text-decoration: none;
         color: $link-color;
       }
     }
+    .score{
+      float: left;
+      margin-left: 35px;
+      text-align: center;
+      margin-top: -5px;
 
+      .hint {
+        font-size: 10px;
+        color: $link-color;
+        margin: 0 auto;
+      }
+
+      .rank-image{
+        img{
+          max-height: 30px;
+        }
+      }
+
+      .experience{
+        float: left;
+        font-size: 36px;
+        color: #03426A;
+        line-height: 32px;
+      }
+    }
     @extend .clear;
   }
 

@@ -11,10 +11,11 @@ class Article::Published < Article::BaseState
 
   def approve
     if stateful.tmpContent.present?
+      grant_points
+      create_activity
       prepare_approve
       transition_to(Article::Approved)
       stateful.save!
-      stateful.create_activity action: :publish, owner: Proc.new{ |controller, model| controller.current_user if controller.present? }
     end
   end
 
@@ -35,6 +36,20 @@ class Article::Published < Article::BaseState
   end
 
   private
+
+  def create_activity
+    if stateful.content.nil?
+      stateful.create_activity action: :publish, owner: Proc.new{ |controller, model| controller.current_user if controller.present? }
+    else
+      stateful.create_activity action: :update, owner: Proc.new{ |controller, model| controller.current_user if controller.present? }
+    end
+  end
+
+  def grant_points
+    if stateful.content.nil?
+      stateful.author.add_points(50)
+    end
+  end
 
   def prepare_approve
     stateful.content = stateful.tmpContent

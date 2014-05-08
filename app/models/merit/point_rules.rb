@@ -13,16 +13,20 @@ module Merit
     include Merit::PointRulesMethods
 
     def initialize
-      # score 10, :on => 'users#update' do
-      #   user.name.present?
-      # end
-      #
-      # score 15, :on => 'reviews#create', :to => [:reviewer, :reviewed]
-      #
-      # score 20, :on => [
-      #   'comments#create',
-      #   'photos#create'
-      # ]
+      score 1, on: 'comments#vote_up', to: :user
+
+      score -1, on: 'comments#vote_down', to: :user
+
+      score 1, on: 'articles#vote_up', to: :author
+
+      score -1, on: 'articles#vote_down', to: :author
+
+      score 1, on: 'contents#vote_up', model_name: 'Content::BaseContent', to: :author
+
+      score -1, on: 'contents#vote_down', model_name: 'Content::BaseContent', to: :author
+
+      score 10, on: 'contents#approve', model_name: 'Content::BaseContent', to: :author
+
     end
   end
 end
