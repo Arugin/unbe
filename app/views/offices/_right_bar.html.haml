@@ -21,6 +21,7 @@
         = active_link_to users_path do
           = "Пользователи (#{User.all.count})"
       %li= active_link_to 'Назначить достижения', assign_badges_office_path
+      %li= active_link_to 'Добавить опыт', add_points_office_path
 
   -if user_signed_in?
     %h3.right-bar

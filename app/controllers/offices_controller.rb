@@ -77,6 +77,18 @@ class OfficesController < ApplicationController
     redirect_to assign_badges_office_path, notice: t(:BADGE_ADDED, badge: params[:user][:badge_id], user: @user.name)
   end
 
+  def add_points_show
+    authorize! :add_points, User
+    @users = User.random
+  end
+
+  def add_points_update
+    authorize! :add_points, User
+    @user = User.find params[:user][:id]
+    @user.add_points params[:user][:points].to_i
+    redirect_to add_points_office_path, notice: t(:POINTS_ADDED, points: params[:user][:point], user: @user.name)
+  end
+
   def subscriptions
     @subscriptions = current_user.subscriptions.page(params[:page])
     @subscribers = current_user.subscribers.page(params[:page])

@@ -34,6 +34,7 @@ ru:
   NO_USERS_FOUND: Не зарегистрировано ни одного пользователя
   NO_SUBSCRIPTIONS_FOUND: Нет ни одной подписки
   BADGE_ADDED: "Достижение %{badge} успешно добавлено пользователю %{user}"
+  POINTS_ADDED: "%{points} очков успешно добавлено пользователю %{user}"
   CONTAINS_ARTICLES: "Содержит %{count} %{items}"
   UNABLE_TO_DELETE_USER: Невозможно удалить пользователя
   USER_REMOVE_SUCCESS: Пользователь успешно удален
@@ -99,6 +100,7 @@ ru:
 
   UNABLE_TO_DELETE_ACTIVITY: Невозможно удалить активность
   ACTIVITY_REMOVE_SUCCESS: Активность успешно удалена
+  NEXT_RANK_NOT_EXISTS: следующего ранга пока не существует
 
   # articles types
   NEWS: Новости

@@ -61,8 +61,12 @@ class Ability
       can :update, User, :_id => user._id
 
       can :create, Comment
-      can :vote_up, [Comment,Article, Content::BaseContent]
-      can :vote_down, [Comment,Article, Content::BaseContent]
+      can :vote_up, [Comment,Article, Content::BaseContent] do |item|
+        user.points >= Utils.RANKS[1]
+      end
+      can :vote_down, [Comment,Article, Content::BaseContent]do |item|
+        user.points >= Utils.RANKS[2]
+      end
       can :destroy, Comment do |comment|
         (comment.user == user)&&(comment.votes_point == 0)
       end

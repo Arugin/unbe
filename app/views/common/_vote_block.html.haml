@@ -1,11 +1,15 @@
 .vote{title: t(:RATING)}
-  - if can? :vote_up, votable
+  - if can? :vote_down, votable
     = link_to polymorphic_path([:vote_down,votable]), remote: true do
-      = image_tag( '/images/votes/minus.png', :title => "Не понравилось")
-  - if (cannot? :vote_up, votable) && (cannot? :vote_down, votable)
+      = image_tag( '/images/votes/minus.png', title: "Не понравилось")
+  - elsif votable.author != current_user
+    %a= image_tag( '/images/votes/minus_inactive.png', title: (user_signed_in? ? "Вы не можете понижать рейтинг, пока ваш опыт не достиг #{Utils.RANKS[2]}" : "Вы должны войти на сайт, чтобы голосовать"))
+  - if votable.author == current_user
     %i.icon-thumbs-up
   .count{class: ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
     = votable.votes_point
-  - if can? :vote_down, votable
+  - if can? :vote_up, votable
     = link_to polymorphic_path([:vote_up,votable]), remote: true do
       = image_tag( '/images/votes/plus.png', :title => "Понравилось")
+  - elsif votable.author != current_user
+    %a= image_tag( '/images/votes/plus_inactive.png', title: (user_signed_in? ? "Вы не можете повышать рейтинг, пока ваш опыт не достиг #{Utils.RANKS[1]}" : "Вы должны войти на сайт, чтобы голосовать"))

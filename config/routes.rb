@@ -76,6 +76,8 @@ Unbe::Application.routes.draw do
     collection do
       get 'assign_badges', action: :assign_badges_show
       post 'assign_badges', action: :assign_badges_update
+      get 'add_points', action: :add_points_show
+      post 'add_points', action: :add_points_update
     end
     member do
       get 'articles'

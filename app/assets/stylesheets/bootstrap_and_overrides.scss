@@ -220,10 +220,7 @@ body{
       }
 
       .experience{
-        float: left;
-        font-size: 36px;
-        color: #03426A;
-        line-height: 32px;
+        @extend .rank
       }
     }
     @extend .clear;
@@ -493,6 +490,13 @@ body{
 
 .span0{
   width: 4% !important;
+}
+
+.rank{
+  float: left;
+  font-size: 36px;
+  color: #03426A;
+  line-height: 32px;
 }
 
 

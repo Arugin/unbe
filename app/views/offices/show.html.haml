@@ -9,12 +9,27 @@
     %a{href: '#my-activity', data:{toggle: 'tab'}} Мои действия
 .tab-content
   #status.office.tab-pane.active
-    %dl
-      %dt Текущий статус
-      %dd= t current_user.highest_role
-    %dl
-      %dt Заработано очков опыта
-      %dd= current_user.points
+
+    .row-fluid
+      .spam1.offset2.pull-left
+        = image_tag "/images/ranks/#{current_user.level}_big.png", title: "Ранг #{current_user.level}"
+      .span8.inline-block.progress-status
+        %span
+          Ранг:
+          %b
+            = current_user.level
+        .status
+          Текущий статус:
+          %b
+            = t current_user.highest_role
+        .points
+          Текущий опыт:
+          %b
+            = current_user.points
+        .progress.progress-info{title: "Опыта до следующего ранга #{to_next_rank_exp(current_user)}"}
+          .bar{style:"width: #{to_next_rank(current_user)}%"}
+
+
     %dl
       %dt
         Неопублкиованные статьи
