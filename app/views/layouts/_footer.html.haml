@@ -43,6 +43,7 @@
     = MySite::Application.version
     |
     = link_to "Что нового?", info_community_path(system_tag: :whats_new)
+  %dd= active_link_to 'Авторские права', info_community_path(system_tag: :license), active: /license/
 
 
 
