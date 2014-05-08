@@ -80,4 +80,6 @@ Unbe::Application.configure do
     "//unbe-cdn#{Digest::MD5.hexdigest(source).to_i(16) % 2}.herokuapp.com"
   end
 
+  config.dependency_loading = true
+
 end
