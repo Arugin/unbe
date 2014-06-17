@@ -1,8 +1,8 @@
-.row-fluid
-  .span5
+.row
+  .col-md-5
     %h4=title 'Назначить достижения'
 
-.row-fluid
+.row
   = simple_form_for :user, url: assign_badges_office_path do |f|
     .form-inputs
       = f.input :id, collection: @users, input_html: { class: 'select2' }, label: 'Пользователь'

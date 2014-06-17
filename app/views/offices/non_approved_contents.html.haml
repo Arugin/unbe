@@ -1,7 +1,7 @@
-.row-fluid
-  .span5
+.row
+  .col-md-5
     %h4=title 'Неподтвержденные работы'
-  .span7.middle
+  .col-md-7.middle
     .pull-right
       = render :partial => "common/search_control", locals: { current_action_path: non_approved_contents_office_path }
 

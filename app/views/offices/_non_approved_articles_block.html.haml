@@ -12,9 +12,9 @@
             = article.updated_at.localtime
         %td.thumb-wrapper
           - if article.is_updated?
-            %i.icon-pencil{title: t('ARTICLE_CHANGED')}
+            %i.glyphicon.glyphicon-pencil{title: t('ARTICLE_CHANGED')}
           - if article.garbage?
-            %i.icon-trash{title: t('ARTICLE_TRASH')}
+            %i.glyphicon.glyphicon-trash{title: t('ARTICLE_TRASH')}
         %td.thumb-wrapper
           - if article.is_updated?
             %i.fa.fa-refresh

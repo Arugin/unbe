@@ -29,7 +29,7 @@
 
                         <h3>
                           <span class="popover-title"></span>
-                          <i class="icon-remove-sign"></i>
+                          <i class="glyphicon glyphicon-remove-sign"></i>
                         </h3>
                         <div class="popover-content"></div>
                       </div>
@@ -48,7 +48,7 @@
       elem.trigger("click")
 
       if elem.data("popover").$tip
-        elem.data("popover").$tip.on "click", ".icon-remove-sign", () ->
+        elem.data("popover").$tip.on "click", ".glyphicon-remove-sign", () ->
           elem.popover("hide")
         $(document).mouseup (e) ->
           if elem.next('div.popover:visible').length

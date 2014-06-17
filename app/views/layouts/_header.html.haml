@@ -1,5 +1,5 @@
-.row-fluid
-  #announcement.span8.offset1
+.row
+  #announcement.col-md-8.col-md-offset-1
     #myCarousel.carousel.slide
       %ol.carousel-indicators
         %li.active{ :data => { :target => "#myCarousel", :"slide-to" => 0 } }
@@ -8,19 +8,19 @@
       .carousel-inner
         .active.item
           %a{:href => "http://youtu.be/e4pUKdY-8Mc" }
-            = image_tag( '/images/banners/sworld.png', :alt=>"Разумный мир")
+            = image_tag( 'banners/sworld.png', :alt=>"Разумный мир")
             .carousel-caption
               %h4 Разумный мир
               %p Мир вокруг нас живет и дышит, и даже у камней есть душа и чувства
         .item
           %a{:href => "http://www.youtube.com/playlist?list=PLd5PAyjwtCfs417ZtzSqEfT-CQZF0XU11"}
-            = image_tag( '/images/banners/gem.png', :alt=>"Проект Жемчужина")
+            = image_tag( 'banners/gem.png', :alt=>"Проект Жемчужина")
             .carousel-caption
               %h4 Проект жемчужина
               %p За любой работой скрывается жемчужина
         .item
           %a{:href => "http://www.youtube.com/playlist?list=PLd5PAyjwtCfvzcr7jXz4V_4jvNnQefUEq"}
-            = image_tag( "/images/banners/ae.png", :alt=>"Уроки Adobe After Effects")
+            = image_tag( "banners/ae.png", :alt=>"Уроки Adobe After Effects")
             .carousel-caption
               %h4 Adobe After Effects: Уроки
               %p Несколько простых шагов - и ваши видео преображаются
@@ -30,11 +30,10 @@
     $('.carousel').carousel({
         interval: 30000
     })
-  #logo.span3
-    = image_tag("/images/main/unbe.png", :alt => "unbe logo")
+  #logo.col-md-3= image_tag("main/unbe.png", alt: "unbe logo")
 
-.row-fluid
-  .span7.offset1
+.row
+  .col-md-7.col-md-offset-1
     %ul.nav.nav-pills#main-menu
       %li
         = active_link_to root_path, active: :exclusive do
@@ -52,8 +51,8 @@
         = active_link_to community_path, active: :exclusive do
           %span Сообщество
 
-  .row-fluid
-    .span4#reg
+  .row
+    .col-md-3#reg
       - unless user_signed_in?
         %div
           %ul.nav.nav-pills

@@ -231,7 +231,7 @@ h4.random-news{
   text-align: center;
   vertical-align: middle;
   min-width: 50px;
-  .icon-thumbs-up{
+  .glyphicon-thumbs-up{
     float: left;
     margin-top: 5px;
   }
@@ -382,8 +382,8 @@ h4.random-news{
   width: 100% !important;
 }
 
-.controls .select2.span8 {
-  @extend .span8;
+.controls .select2.col-md-8 {
+  @extend .col-md-8;
 }
 
 .commercial{
@@ -429,7 +429,7 @@ a.disabled, a[disabled] {
   color: $disabled-color;
 }
 
-.span3.right_content{
+.col-md-3.right_content{
   margin-left: 1%;
 }
 

@@ -25,7 +25,9 @@ class Cycle
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :description, length: {maximum: 1000}
 
-  default_scope order_by(created_at: :desc)
+  default_scope lambda {
+    order_by(created_at: :desc)
+  }
 
   search_in :title, :tags
 

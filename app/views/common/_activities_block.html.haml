@@ -3,9 +3,9 @@
 - else
   - activities.each do |activity|
     .activity
-      .logo.span1
+      .logo.col-md-1
         - public_activity_icon(activity.key)
-      .avatar.span0
+      .avatar.col-md-0
         = render 'common/avatar', user: activity.owner
       .content.inline-block
         .publishDate

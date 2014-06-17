@@ -3,7 +3,7 @@
 %h4.section= title 'Проекты'
 %br
 .projects
-  .alert.alert-error
+  .alert.alert-danger
     %button{type:"button", class:'close', data: {dismiss: 'alert' }} &times;
     Сообщество unbe ещё не готово к проектам
   .clear
@@ -29,28 +29,28 @@
     - max_articles = 350; max_users = 1001; max_works = 200
     %dt= "Статей (#{@stats.articles_count}/#{max_articles})"
     %dd
-      .progress.progress-success.span10
+      .progress.progress-success.col-md-10
         .bar{style:"width: #{@stats.percentage(:articles, max_articles)}%"}
 
   %dl
     %dt= "Работ (#{@stats.content_count}/#{max_works})"
     %dd
-      .progress.progress-success.span10
+      .progress.progress-success.col-md-10
         .bar{style:"width: #{@stats.percentage(:content, max_works)}%"}
   %dl
     %dt= "Пользователей (#{@stats.users_count}/#{max_users})"
     %dd
-      .progress.progress-success.span10
+      .progress.progress-success.col-md-10
         .bar{style:"width: #{@stats.percentage(:users, max_users)}%"}
   %dl
     %dt Готовность раздела (0/100)
     %dd
-      .progress.progress-success.span10
+      .progress.progress-success.col-md-10
         .bar{style:"width: 0%"}
   %dl
     %dt Посещаемость (6/800)
     %dd
-      .progress.progress-success.span10
+      .progress.progress-success.col-md-10
         .bar{style:"width: 0.6%"}
 
 - content_for(:right_bar) do

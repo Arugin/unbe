@@ -4,27 +4,27 @@
     = display_meta_tags site: 'unbe'
     = yield(:head)
     %meta
-      = stylesheet_link_tag "application", :media => "all"
-      = javascript_include_tag "application"
+      = stylesheet_link_tag    'application', media: 'all'
+      = javascript_include_tag 'application'
       %link{rel:'shortcut icon',href:'/images/favicon.ico'}
       = csrf_meta_tags
 
   %body{:class => "#{controller_name} #{action_name}"}
-    #main.row-fluid
-      .span12
-        .row-fluid#header
-          .span12
+    #main.row
+      .col-md-12
+        .row#header
+          .col-md-12
             = render 'layouts/header'
-        .row-fluid#container
-          .span11.offset1
-            .row-fluid
-              .span8
+        .row#container
+          .col-md-11.col-md-offset-1
+            .row
+              .col-md-8
                 #messages
                   = render 'layouts/messages'
                 = yield
-              .span3.right_content
+              .col-md-3.right_content
                 = yield :right_bar
-        .row-fluid#footer
-          .span12
+        .row#footer
+          .col-md-12
             = render 'layouts/footer'
 = render 'layouts/stats'

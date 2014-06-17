@@ -40,7 +40,9 @@ module Content
 
     belongs_to :contentable, polymorphic: true
 
-    default_scope order_by(:created_at => :desc)
+    default_scope lambda {
+      order_by(:created_at => :desc)
+    }
     scope :random, ->{ where(approved_to_news: true, reviewed: true) }
 
     scope :non_approved, lambda { |user, params = {}|

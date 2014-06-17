@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
   protect_from_forgery
+  #enable_authorization
 
   before_filter :set_locale
   after_filter :set_access_control_headers
@@ -26,7 +27,7 @@ class ApplicationController < ActionController::Base
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::Unauthorized do |exception|
     access_denied(exception)
   end
 

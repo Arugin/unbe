@@ -1,4 +1,4 @@
-.row-fluid{itemscope:true, itemtype:'http://schema.org/Article'}
+.row{itemscope:true, itemtype:'http://schema.org/Article'}
   %h4
     = link_to cycle_path(article.cycle) do
       = article.cycle.correct_title
@@ -39,7 +39,7 @@
       .edit
         - if can? :update, article
           = link_to edit_article_path(article) do
-            %i.icon-pencil{title: t(:EDIT_ARTICLE)}
+            %i.glyphicon.glyphicon-pencil{title: t(:EDIT_ARTICLE)}
       .edit
         - if can? :destroy, article
           = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "icon-trash", :id => 'btn-rm-cm'

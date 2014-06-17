@@ -1,12 +1,12 @@
 %table.table.table-striped.users
   %thead
     %th Имя
-    %th.span3 Email
+    %th.col-md-3 Email
     %th Роль
     %th Дата регистрации
     %th
     %th
-    %th.span1
+    %th.col-md-1
   - if @users.empty?
     %p= t :NO_USERS_FOUND
   %tbody
@@ -20,7 +20,7 @@
       %td= l user.created_at.in_time_zone, format: :mini
       %td
         - if user.subscribed
-          %i.icon-envelope{title: t(:SUBSCRIBED)}
+          %i.glyphicon.glyphicon-envelope{title: t(:SUBSCRIBED)}
       %td
         = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td

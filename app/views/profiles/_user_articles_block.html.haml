@@ -3,7 +3,7 @@
   %p= t("NO_CYCLE_ARTICLES")
 - else
   - @articles.each do |article|
-    .row-fluid
+    .row
       %h4
         = link_to article_profile_path(article) do
           %span= article.title

@@ -6,18 +6,21 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 
-ruby '2.0.0'
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 4.1'
+gem 'sass-rails', '~> 4.0.3'
 
 # Bundle edge Rails instead:
 gem 'bson_ext'
-gem 'mongoid', github: 'mongoid/mongoid'
+gem "bson"
+gem "moped", github: "mongoid/moped"
+gem 'mongoid'
 gem 'mongoid_search'
 gem 'rake', '>= 10.0'
 gem 'haml'
+gem 'spring',        group: :development
 gem 'thin', '>= 1.5.0', group: :development
 gem 'passenger', group: :production
-gem 'cancan', '>= 1.6.8'
+gem "cancan", git: "git://github.com/ryanb/cancan.git", branch: "2.0"
 gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'
@@ -29,7 +32,7 @@ gem 'voteable_mongo', git: 'https://github.com/Arugin/voteable_mongo'
 gem 'russian', '~> 0.6.0'
 gem 'impressionist'
 gem 'meta-tags', require: 'meta_tags'
-gem 'mongoid_slug'
+gem 'mongoid_slug', github: 'digitalplaywright/mongoid-slug'
 gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
@@ -70,3 +73,5 @@ gem "capybara", ">= 1.1.2", group: :test
 gem "factory_girl_rails", ">= 4.1.0", group: [:development, :test]
 gem "database_cleaner", ">= 0.9.1", group: :test
 gem 'coveralls', require: false
+
+ruby '2.1.1'

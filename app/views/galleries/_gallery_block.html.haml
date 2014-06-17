@@ -1,5 +1,5 @@
 - keywords gallery.tag_list
-.row-fluid
+.row
   %h4
     %span=title gallery.name
   .author
@@ -13,7 +13,7 @@
       .edit
         - if can? :update, gallery
           = link_to edit_gallery_path(gallery) do
-            %i.icon-pencil{title: t(:EDIT_GALLERY)}
+            %i.glyphicon.glyphicon-pencil{title: t(:EDIT_GALLERY)}
       = render :partial => 'common/views_count', locals: { subject: gallery, growth: false }
   .clear
   .description
@@ -21,7 +21,7 @@
       %span= gallery.description.html_safe
   .clear
 
-.row-fluid
+.row
   .shifted
     - if @gallery.contents.blank?
       .description

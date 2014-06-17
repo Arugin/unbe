@@ -1,5 +1,5 @@
-.row-fluid.community-badge
-  .span3
+.row.community-badge
+  .col-md-3
     = render partial: 'common/badge', locals: {badge: badge}
-  .span8
+  .col-md-8
     = t(badge.description)

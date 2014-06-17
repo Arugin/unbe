@@ -1,7 +1,7 @@
-.row-fluid
-  .span12.list-header.sticky-header
-    .row-fluid
-      .span1
+.row
+  .col-md-12.list-header.sticky-header
+    .row
+      .col-md-1
         .select-switch.dropdown.select-control
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             = check_box_tag 'select'
@@ -12,23 +12,23 @@
             %li.select-none
               %a Выбрать ничего
 
-      .span1-5.buttons-container
+      .col-md-1-5.buttons-container
         - if @_controller.respond_to? :bulk_delete
           = link_to [:bulk_delete, model], class: "btn btn-mini delete-selected",
            rel: :tooltip, title: "Delete selected", 'data-container' => 'body' do
-            %i.icon-remove
+            %i.glyphicon.glyphicon-remove
 
         - if @_controller.respond_to? :bulk_tag
           = link_to [:bulk_tag, model], :class=>"btn btn-mini tag-selected",
            :rel => :tooltip, :title => "Tag selected", 'data-container' => 'body' do
-            %i.icon-tags
+            %i.glyphicon.glyphicon-tags
 
-      .span6-5.center-group
+      .col-md-6-5.center-group
         .pull-left.scope-switch-container
           = render partial: "common/scope_switch", locals: { current_action: current_action, subject: list_title }
         .pull-left
           = render partial: "common/sort_control", locals: { current_action: current_action, model: model }
 
       .pull-right
-        .span3
+        .col-md-3
           = render :partial => "common/search_control", :locals => { :current_action_path => articles_office_path(scope:'current_user') }
