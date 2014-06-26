@@ -21,7 +21,6 @@ gem 'cancan', '>= 1.6.8'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'
-gem "heroku"
 gem "mongoid-paperclip", require: "mongoid_paperclip", git: 'https://github.com/Arugin/mongoid-paperclip', ref: '8abbab9085'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor', group: :production
@@ -59,7 +58,7 @@ gem 'client_side_validations-simple_form'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'fotoramajs'
 gem 'select2-rails'
-gem 'tinymce-rails', git: 'https://github.com/spohlenz/tinymce-rails', branch: 'tinymce-4', ref: 'da19989c52b2368d76abdfab42012b509ea175e2'
+gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 gem "font-awesome-rails"
 
