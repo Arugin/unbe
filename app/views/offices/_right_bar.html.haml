@@ -49,6 +49,9 @@
         = active_link_to profile_path(current_user), active: :exclusive do
           Профиль
       %li
+        = active_link_to authentications_path, active: :exclusive do
+          Связка аккаунтов
+      %li
         = active_link_to edit_profile_path(current_user) do
           Настроить профиль
       %li

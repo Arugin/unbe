@@ -62,7 +62,11 @@
                 %span Войти
             %li
               = link_to main_app.new_user_registration_path do
-                %span Зарегистрироваться
+                %span Регистрация
+            - OmniAuth::Builder.providers.each do |provider|
+              .omni
+                = link_to "/auth/#{provider}" do
+                  = image_tag("/images/omni/#{provider}.png")
       - if user_signed_in?
         %div
           %ul.nav.nav-pills

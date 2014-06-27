@@ -65,6 +65,8 @@ class User
   has_and_belongs_to_many :subscriptions, class_name: 'User', inverse_of: :subscribers
   has_and_belongs_to_many :subscribers, class_name: 'User', inverse_of: :subscriptions
 
+  has_many :authentications, dependent: :destroy
+
   search_in :name, :email
 
   validates :name, presence: true, uniqueness: true,  length: {minimum: 3, maximum: 20}
@@ -186,6 +188,46 @@ class User
     false
   end
 
+  ### OMNIAUTH ###
+
+  def apply_omniauth(omniauth, confirmation)
+    puts omniauth.to_json
+    self.email = omniauth['info']['email'] if email.blank?
+    # Check if email is already into the database => user exists
+    apply_trusted_services(omniauth, confirmation) if self.new_record?
+  end
+
+  # Create a new user
+  def apply_trusted_services(omniauth, confirmation)
+    # Merge user_info && extra.user_info
+    user_info = omniauth['info']
+    if omniauth['extra'] && omniauth['extra']['raw_info']
+      user_info.merge!(omniauth['extra']['raw_info'])
+    end
+    # try name or nickname
+    if self.name.blank?
+      self.name   = user_info['name']   unless user_info['name'].blank?
+      self.name ||= user_info['nickname'] unless user_info['nickname'].blank?
+      self.name ||= (user_info['first_name'] + " " + user_info['last_name']) unless
+        user_info['first_name'].blank? || user_info['last_name'].blank?
+    end
+    if self.email.blank?
+      self.email = user_info['email'] unless user_info['email'].blank?
+    end
+    self.first_name = user_info['first_name'] unless user_info['first_name'].blank?
+    self.second_name = user_info['last_name'] unless user_info['last_name'].blank?
+    # Set a random password for omniauthenticated users
+    self.password, self.password_confirmation = Devise.friendly_token if self.password.blank?
+
+    self.gender = Gender.find_by(name: user_info['gender'].upcase) if user_info['gender'].present?
+    self.avatar = open(user_info['image']) if user_info['image'].present? rescue
+
+
+    if confirmation
+      self.confirmed_at, self.confirmation_sent_at = Time.now
+    end
+  end
+
   protected
 
   def remove_all_roles
@@ -202,8 +244,10 @@ class User
   end
 
   def default_gender
-    self.gender = Gender.find_by(name:'UNKNOWN')
-    self.save
+    if self.gender.nil?
+      self.gender = Gender.find_by(name:'UNKNOWN')
+      self.save
+    end
   end
 
   def record_activity

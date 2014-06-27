@@ -39,6 +39,11 @@ ru:
   UNABLE_TO_DELETE_USER: Невозможно удалить пользователя
   USER_REMOVE_SUCCESS: Пользователь успешно удален
 
+  PROVIDER_ADDED: "%{provider} успешно подключен"
+  SOMETHING_WENT_WRONG: Что-то пошло не так.
+  successfully_destroyed_authentication: "%{provider} успешно отключен"
+  google_oauth2: Google
+
 
   # mailer
   WEEKLY_NEWS: Еженедельные новости unbe

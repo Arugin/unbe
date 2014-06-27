@@ -4,4 +4,5 @@ class Utils
   def self.RANKS
     @@RANKS
   end
+
 end

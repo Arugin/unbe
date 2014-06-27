@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!
-  load_and_authorize_resource
+  before_filter :authenticate_user!, except: [:email, :omni_save]
+  load_and_authorize_resource except: [:email, :omni_save]
 
   respond_to :html, :js
 
@@ -74,6 +74,37 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.access
     redirect_to users_path, :notice => t(:USER_ACCESS_CHANGED)
+  end
+
+  def email
+    if session[:omniauth]
+      @user = User.new
+      @user.email = params[:email]
+      @user.password = params[:password]
+      @user.password_confirmation = params[:password_confirmation]
+      @user.apply_omniauth(session[:omniauth], false)
+    else
+      redirect_to new_user_registration_url
+    end
+  end
+
+  def omni_save
+    if session[:omniauth]
+      @user = User.new params[:user]
+      @user.password = params[:user][:password]
+      @user.password_confirmation = params[:user][:password_confirmation]
+      @user.apply_omniauth(session[:omniauth], session[:omniauth]['info']['email'])
+      if @user.save
+        @user.authentications.create!(provider: session[:omniauth]['provider'], uid: session[:omniauth]['uid'])
+        session[:omniauth] = nil
+        # Create a new User through omniauth
+        # Register the new user + create new authentication
+        flash[:notice] = t('devise.registrations.signed_up')
+        sign_in_and_redirect(:user, @user)
+      else
+        render 'email'
+      end
+    end
   end
 
 end
