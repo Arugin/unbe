@@ -10,6 +10,14 @@
   .form-actions
     = f.button :submit, "Войти", :class => "btn-primary"
 
+
+.row
+  .span3
+  .span8
+    = render 'common/omni_reg', big: true
+
+%br
+
 = render "devise/shared/links"
 
 - content_for(:right_bar) do

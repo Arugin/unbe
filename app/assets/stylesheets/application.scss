@@ -500,10 +500,14 @@ td.credentials i{
   margin: 3px;
 }
 
-.omni{
+.omni-big{
   display: inline-block;
-  margin: 5px 2px;
+  margin: 3px 2px;
+}
+
+.omni{
+  @extend .omni-big;
   img{
-    width: 23px;
+    width: 28px;
   }
 }
