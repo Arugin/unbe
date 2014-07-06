@@ -1,2 +1,2 @@
 = link_to article_path(item) do
-  = image_tag(item.get_logo_url.nil? ? '/images/common/filer.png': item.get_logo_url, title: item.title) rescue "Hi"
+  = image_tag(item.get_logo_url.blank? ? '/images/common/filer.png': item.get_logo_url, title: item.title) rescue "Hi"
