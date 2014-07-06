@@ -13,7 +13,7 @@ gem 'rails', '3.2.17'
 gem 'bson_ext'
 gem 'mongoid'
 gem 'mongoid_search'
-gem 'rake', '>= 10.0'
+gem 'rake'
 gem 'haml', '<= 3.9.9'
 gem 'thin', '>= 1.5.0', group: :development
 gem 'passenger', group: :production
