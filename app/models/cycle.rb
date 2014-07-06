@@ -4,6 +4,7 @@ class Cycle
   include Mongoid::Slug
   include Concerns::Searchable
   include Concerns::Ownerable
+  include Concerns::Sortable
   include Concerns::Shortable
   include Concerns::Taggable
   include Concerns::Commentable
@@ -61,15 +62,6 @@ class Cycle
 
   def cycle?
     true
-  end
-
-  def self.can_be_sorted_by
-    [
-        { title: :CREATED_AT, sort_by: :created_at},
-        { title: :TITLE, sort_by: :title},
-        { title: :SORT_COMMENTS_COUNT, sort_by: :comments_count},
-        { title: :VOTES_COUNT, sort_by: :'votes.point'}
-    ]
   end
 
   def get_logo_url

@@ -9,11 +9,14 @@ module Content
     include Concerns::Ownerable
     include Concerns::Taggable
     include Concerns::Commentable
+    include Concerns::Sortable
     include Mongo::Voteable
     include ActionView::Helpers::TextHelper
     include PublicActivity::Model
 
     tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present? }, params: {title: :title}
+
+    sortable_fields({title: :VIEWS, sort_by: :impressions_count})
 
     is_impressionable counter_cache: true, :unique => :ip_address
 
@@ -67,16 +70,6 @@ module Content
 
     def content?
       true
-    end
-
-    def self.can_be_sorted_by
-      [
-          { title: :CREATED_AT, sort_by: :created_at},
-          { title: :TITLE, sort_by: :title},
-          { title: :VIEWS, sort_by: :impressions_count},
-          { title: :SORT_COMMENTS_COUNT, sort_by: :comments_count},
-          { title: :VOTES_COUNT, sort_by: :'votes.point'}
-      ]
     end
 
   end

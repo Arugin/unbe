@@ -10,11 +10,14 @@ class Article
   include Concerns::Shortable
   include Concerns::Taggable
   include Concerns::Commentable
+  include Concerns::Sortable
   include Mongo::Voteable
   include Concerns::Statable
   include PublicActivity::Model
 
   set_initial_state Initial
+
+  sortable_fields({title: :VIEWS, sort_by: :impressions_count})
 
   is_impressionable counter_cache: true, unique: :ip_address
 
@@ -35,6 +38,7 @@ class Article
   belongs_to :article_area
   belongs_to :article_type
   belongs_to :cycle
+  has_many :images, dependent: :destroy
 
   search_in :title, :tags
 
@@ -89,23 +93,7 @@ class Article
   end
 
   def get_logo_url
-     if logo.present?
-       logo
-     elsif first_image.present? and first_image['src'].index('http://').present?
-       first_image['src']
-     else
-       nil
-     end
-  end
-
-  def self.can_be_sorted_by
-    [
-      { title: :CREATED_AT, sort_by: :created_at},
-      { title: :TITLE, sort_by: :title},
-      { title: :VIEWS, sort_by: :impressions_count},
-      { title: :SORT_COMMENTS_COUNT, sort_by: :comments_count},
-      { title: :VOTES_COUNT, sort_by: :'votes.point'}
-    ]
+     first_image_src || logo
   end
 
   def article?
@@ -128,11 +116,51 @@ class Article
     truncate(title, length: 40, omission: '...')
   end
 
+  def upload_images
+    doc = content_to_doc
+    doc.xpath('//img').each do |image|
+      unless image_exists? image['src']
+        uploaded_image = image_from_url(image['src'])
+        image.set_attribute("src" , uploaded_image.file.url) if uploaded_image.present?
+      end
+    end
+    self.content = doc.to_s
+  end
+
+  def remove_redundant_images
+    self.images.each do |image|
+      image.destroy if content_images.detect{|content_image| content_image['src'] == image.file.url}.nil?
+    end
+  end
+
   protected
 
-  def first_image
-    doc = Nokogiri::HTML(content)
-    doc.xpath('//img').first
+  def content_to_doc
+    Nokogiri::HTML(content)
+  end
+
+  def first_image_src
+    if images.first.present?
+      images.first.file.url :thumb
+    else
+      image = content_images.first
+      image['src'] if image.present? and image['src'].index('http://').present?
+    end
+  end
+
+  def content_images
+    doc = content_to_doc
+    doc.xpath('//img')
+  end
+
+  def image_from_url(url)
+    self.images.create file: open(url)
+  rescue => e
+    puts "Can not upload image from #{url} to #{title}"
+  end
+
+  def image_exists?(src)
+    self.images.detect {|image| puts image.file.url; image.file.url == src}.present?
   end
 
 end

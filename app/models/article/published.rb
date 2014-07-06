@@ -15,6 +15,8 @@ class Article::Published < Article::BaseState
       create_activity
       prepare_approve
       transition_to(Article::Approved)
+      stateful.upload_images
+      stateful.remove_redundant_images
       stateful.save!
     end
   end
@@ -39,15 +41,15 @@ class Article::Published < Article::BaseState
 
   def create_activity
     if stateful.content.nil?
-      stateful.create_activity action: :publish, owner: Proc.new{ |controller, model| controller.current_user if controller.present? }
+      stateful.create_activity action: :publish, owner: stateful.author
     else
-      stateful.create_activity action: :update, owner: Proc.new{ |controller, model| controller.current_user if controller.present? }
+      stateful.create_activity action: :update, owner: stateful.author
     end
   end
 
   def grant_points
     if stateful.content.nil?
-      stateful.author.add_points(50)
+      stateful.author.add_points 25
     end
   end
 
