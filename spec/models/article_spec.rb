@@ -16,6 +16,7 @@ describe Article do
     article = FactoryGirl.create(:article, author: @user, tmpContent: '<p>daddy</p><p><!-- unbebreak --></p>')
     article.publish
     article.approve
+    puts article.short_content.html_safe
     article.short_content.length.should eq 12
   end
 
