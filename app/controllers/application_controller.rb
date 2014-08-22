@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
+  after_filter :set_access_control_headers
 
   def set_locale
     I18n.locale = extract_locale_from_tld || I18n.default_locale
@@ -44,7 +45,12 @@ class ApplicationController < ActionController::Base
     class_name.public_activity_on
   end
 
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = "http://unbe-cdn*.herokuapp.com"
+  end
+
   private
+
   def render_error(status, exception)
     respond_to do |format|
       format.html { render template: "errors/error_#{status}", layout: 'layouts/application', status: status, locals: {exception: exception} }
