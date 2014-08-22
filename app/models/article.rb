@@ -89,7 +89,7 @@ class Article
     doc = Nokogiri::HTML(content)
     break_line = doc.xpath("//p[comment()=' unbebreak ']").first
     end_index = break_line.present? ? content.index(break_line.to_s) : content.length
-    truncate(content, length: end_index, omission: '')
+    truncate(content.sub('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">', ''), length: end_index, omission: '')
   end
 
   def get_logo_url
