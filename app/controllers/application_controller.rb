@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = "http://unbe-cdn*.herokuapp.com"
+    headers['Access-Control-Allow-Origin'] = "*"
   end
 
   private

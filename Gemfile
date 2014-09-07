@@ -66,7 +66,7 @@ gem 'omniauth-facebook'
 gem "omniauth-twitter"
 gem 'omniauth-vkontakte'
 gem "omniauth-google-oauth2"
-
+gem 'rack-cors'
 
 ### development and test
 gem "haml-rails", ">= 0.3.5", group: :development

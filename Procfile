@@ -1,1 +1,1 @@
-web: bundle exec passenger start -p $PORT --no-friendly-error-pages
+web: bundle exec passenger start -p $PORT --no-friendly-error-pages --nginx-config-template ./config/nginx.erb
