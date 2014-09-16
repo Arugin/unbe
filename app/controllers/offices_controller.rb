@@ -15,7 +15,7 @@ class OfficesController < ApplicationController
     elements = Impression.where(user_id: current_user._id).order_by([:created_at, :desc])
     elements.each do |element|
       break if @last_pages.size >= 10
-      checking = element.impressionable_type.constantize.find(element.impressionable_id)
+      checking = element.impressionable_type.constantize.find(element.impressionable_id) rescue "Nothing"
       unless checking == @last_pages.last
         @last_pages << checking
       end
