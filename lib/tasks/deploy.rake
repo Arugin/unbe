@@ -4,13 +4,10 @@ APPS = [
     { remote: 'cdn1',   name: 'unbe-cdn1' },
 ]
 
-desc "Deploys the full app."
-multitask deploy: APPS.map { |app| "deploy:#{app[:remote]}" }
-
-namespace :deploy do
+def deploy_app(action = 'push')
   APPS.each do |app|
     desc "Deploys to #{app[:remote]}"
-    task app[:remote] => "deploy:#{app[:remote]}:push"
+    task app[:remote] => "deploy:#{app[:remote]}:#{action}"
 
     namespace app[:remote] do
       task :push do
@@ -29,7 +26,20 @@ namespace :deploy do
       end
     end
   end
+end
+
+desc "Deploys the full app."
+multitask deploy: APPS.map { |app| "deploy:#{app[:remote]}" }
+multitask force_deploy: APPS.map { |app| "force_deploy:#{app[:remote]}" }
+
+namespace :deploy do
+  deploy_app
 
   desc 'Run migrations on every server'
   multitask migrate: APPS.map { |app| "deploy:#{app[:remote]}:migrate" }
 end
+
+namespace :force_deploy do
+  deploy_app('force_push')
+end
+
