@@ -11,7 +11,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content::BaseContent.find(params[:id])
-    @comments = @content.comments.page(params[:page]).per(15)
+    @comments = @content.comments.page(params[:page]).per(25)
     impressionist(@content,'', unique: [:session_hash, :ip_address])
     respond_with @comments
   end
