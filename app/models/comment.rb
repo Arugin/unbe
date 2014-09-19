@@ -7,7 +7,7 @@ class Comment
 
   field :content, type: String
 
-  validates :content, presence: true, length: {minimum: 3, maximum: 1000}
+  validates :content, presence: true, length: {minimum: 3, maximum: 2000}
 
   belongs_to :commentable, polymorphic: true, counter_cache: :comments_count
   belongs_to :user
