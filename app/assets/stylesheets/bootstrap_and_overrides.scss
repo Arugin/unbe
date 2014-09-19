@@ -46,6 +46,10 @@ body{
     }
   }
 
+  .comment .credentials .author{
+    font-weight: bold;
+  }
+
   .info{
     height: 50px;
     float: left;
@@ -220,7 +224,7 @@ body{
       }
 
       .experience{
-        @extend .rank
+        @extend .rank;
       }
     }
     @extend .clear;
