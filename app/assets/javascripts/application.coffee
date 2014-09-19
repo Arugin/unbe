@@ -12,7 +12,6 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require jquery.ui.all
 #= require jquery.address
 #= require bootstrap
 #= require select2

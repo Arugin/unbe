@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   after_filter :set_access_control_headers
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
 
   def set_locale
     I18n.locale = extract_locale_from_tld || I18n.default_locale

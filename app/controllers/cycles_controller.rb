@@ -73,4 +73,11 @@ class CyclesController < ApplicationController
       return
     end
   end
+
+  private
+
+  def cycle_params
+    params.require(:cycle).permit(:title, :logo, :description, :tags)
+  end
+
 end

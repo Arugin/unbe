@@ -1,6 +1,6 @@
 Unbe::Application.routes.draw do
 
-  match '/auth/:provider/callback' => 'authentications#create'
+  get '/auth/:provider/callback' => 'authentications#create'
 
   resources :authentications
 
@@ -113,9 +113,5 @@ Unbe::Application.routes.draw do
 
   root to: "articles#news"
 
-  devise_scope :user do
-    root to: 'devise/sessions#new'
-  end
-
-  match '*not_found', to: 'errors#error_404', via: :get
+  get '*not_found', to: 'errors#error_404', via: :get
 end

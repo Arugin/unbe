@@ -170,13 +170,13 @@ class ArticlesController < ApplicationController
   end
 
   def automatic_publish
-    if params[:article][:publish].to_i == 1
+    if params[:publish].to_i == 1
       @article.publish
     end
   end
 
   def automatic_approve
-    if params[:article][:approve].to_i == 1 && can?(:approve, @article)
+    if params[:approve].to_i == 1 && can?(:approve, @article)
       @article.approve
     end
   end
@@ -188,6 +188,14 @@ class ArticlesController < ApplicationController
     automatic_approve
     add_script
     @article.save
+  end
+
+  private
+
+  def article_params
+    params[:publish] = params[:article].delete(:publish)
+    params[:approve] = params[:article].delete(:approve)
+    params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tags, :to_news)
   end
 
 end

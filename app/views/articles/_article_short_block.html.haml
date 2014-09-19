@@ -11,9 +11,9 @@
   .clear
   .description
     - unless article.content.nil?
-      = article.short_content.html_safe
+      = raw article.short_content
     - else
-      = article.tmpContent.html_safe
+      = raw article.tmpContent
   .clear
   - unless article.garbage?
     - if article.content.size != article.short_content.size

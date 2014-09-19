@@ -43,13 +43,13 @@
   .clear
   .description{itemprop:'articleBody'}
     - unless article.content.nil?
-      = article.content.html_safe
+      = raw article.content
     - else
-      = article.tmpContent.html_safe
+      = raw article.tmpContent
   .clear
   .center
     - unless article.script.nil?
-      = article.script.html_safe
+      = raw article.script
   .clear
   .pull-right
     .share42init{data:{url:article_url(article),title: article.title,description: article.tiny_content, path: "#{ENV["RAILS_RELATIVE_URL_ROOT"]}/assets/share42/", image:"#{article.get_logo_url.blank? ? '/images/common/filer.png': article.get_logo_url}"}}
