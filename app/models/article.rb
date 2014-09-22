@@ -86,12 +86,9 @@ class Article
   end
 
   def short_content
-    doc = Nokogiri::HTML(content)
-    body = doc.xpath('//body').first
-    break_line = body.xpath("//p[comment()=' unbebreak ']").first
-    end_index = break_line.present? ? body.content.index(break_line.to_s) : body.content.length
-    puts body.content
-    truncate(body.content, length: end_index, omission: '')
+    body = Nokogiri::HTML(content).xpath("//body")
+    content = body.xpath("node()[comment()=' unbebreak ']/preceding-sibling::*")
+    content
   end
 
   def get_logo_url
