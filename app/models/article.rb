@@ -88,7 +88,7 @@ class Article
   def short_content
     body = Nokogiri::HTML(content).xpath("//body")
     content = body.xpath("node()[comment()=' unbebreak ']/preceding-sibling::*")
-    content
+    content.present? ? content.to_html : body.to_html
   end
 
   def get_logo_url

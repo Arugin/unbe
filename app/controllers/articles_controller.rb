@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
+    puts 'ddddd', @article.to_json
     @old_article = @article.dup
 
     if @article.update_attributes(params[:article])
