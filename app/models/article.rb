@@ -76,8 +76,6 @@ class Article
     unscoped.search_for(user, params).not_in(state: 'Article::Approved')
   }
 
-  #attr_protected :to_news, :baseRating, :rating, :system_tag, :script, :state
-
   voteable self, up: +1, down: -1
   voteable Cycle, up: +1, down: -1
 

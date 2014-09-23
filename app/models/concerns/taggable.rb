@@ -63,7 +63,7 @@ module Concerns
 
         begin
           return results.to_a.map!{ |item| { :name => item['_id'], :count => item['value'].to_i } }
-        rescue Exception => e
+        rescue => e
           return []
         end
       end

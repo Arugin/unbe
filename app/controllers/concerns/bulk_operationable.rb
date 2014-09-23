@@ -51,7 +51,7 @@ module Concerns
           return message
         end
 
-      rescue Exception => e
+      rescue => e
         message += e.message
         return message
 

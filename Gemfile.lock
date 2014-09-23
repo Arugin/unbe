@@ -369,7 +369,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kaminari
-  merit
+  merit (~> 2.1)
   meta-tags
   mongoid
   mongoid-paperclip!

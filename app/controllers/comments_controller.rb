@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
         redirect_to @comment, alert: message + @comment.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to @comment, alert: message + e.message
       return
     end
@@ -55,6 +55,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 
   def find_commentable
     params.each do |name, value|

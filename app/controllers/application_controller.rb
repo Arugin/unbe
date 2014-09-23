@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
-    params[resource] &&= send(method) if respond_to?(method, true)
+    params_resource_name = respond_to?(:custom_resource_name, true) ? send(:custom_resource_name) : resource
+    params[resource] = send(method) if respond_to?(method, true) if params[params_resource_name]
   end
 
   def set_locale

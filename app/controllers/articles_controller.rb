@@ -76,7 +76,7 @@ class ArticlesController < ApplicationController
         redirect_to @article, alert: message + @article.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to @article, alert: message + e.message
       return
     end
@@ -193,9 +193,10 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
+    puts 'permit'
     params[:publish] = params[:article].delete(:publish)
     params[:approve] = params[:article].delete(:approve)
-    params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tags, :to_news)
+    params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tag_list, :to_news)
   end
 
 end

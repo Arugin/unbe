@@ -59,10 +59,17 @@ class GalleriesController < ApplicationController
         redirect_to @gallery, alert: message + @gallery.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to @gallery, alert: message + e.message
       return
     end
     redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_REMOVE_SUCCESS)
   end
+
+  private
+
+  def gallery_params
+    params.require(:gallery).permit(:name, :description, :tag_list)
+  end
+
 end
