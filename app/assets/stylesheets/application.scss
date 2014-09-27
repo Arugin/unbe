@@ -1,20 +1,5 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *
- */
-
-$link-color: #666666;
-$dark-link-color:#e6e6e6;
+@import "colors";
 $font: Verdana, sans-serif;
-$disabled-color: #979797;
 @import 'fotorama_and_overrides';
 @import 'bootstrap_and_overrides';
 @import 'editor_fixes';
@@ -33,6 +18,7 @@ $disabled-color: #979797;
 @import "components/single";
 @import "components/custom_popover";
 @import "components/tags_list";
+@import "redisign";
 
 
 .inline-block{
@@ -41,7 +27,7 @@ $disabled-color: #979797;
 
 a, li{
   .active{
-    background-color: $dark-link-color;
+    background-color: $header-selected;
   }
 }
 
@@ -98,7 +84,7 @@ ul.navigation{
       padding: 0 10px;
     }
     a:hover{
-      background: $dark-link-color;
+      background: $header-hover;
     }
   }
 }
@@ -126,16 +112,6 @@ h4.random-news{
   margin-top: 0px;
 }
 
-.sidebar{
-  border-left: 1px solid #e6e6e6;
-  padding: 0 20px 50px;
-  width: 200px;
-}
-
-.sidebar-news{
-  @extend .sidebar;
-  width: 280px;
-}
 
 #galleries{
   .info {
@@ -386,11 +362,6 @@ h4.random-news{
   @extend .col-md-8;
 }
 
-.commercial{
-  margin-top: -30px;
-  margin-bottom: -5px;
-}
-
 .gallery{
   td{
     background-color: rgb(239, 239, 239);
@@ -414,11 +385,6 @@ h4.random-news{
   }
 }
 
-.commercial {
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
 .control-group.article_logo{
   margin-bottom: 0px;
 }
@@ -426,11 +392,7 @@ h4.random-news{
 a.disabled, a[disabled] {
   cursor: default !important;
   pointer-events: none;
-  color: $disabled-color;
-}
-
-.col-md-3.right_content{
-  margin-left: 1%;
+  color: $gray;
 }
 
 .form-search .input-search {
@@ -497,16 +459,4 @@ a.disabled, a[disabled] {
 
 td.credentials i{
   margin: 3px;
-}
-
-.omni-big{
-  display: inline-block;
-  margin: 3px 2px;
-}
-
-.omni{
-  @extend .omni-big;
-  img{
-    width: 28px;
-  }
 }

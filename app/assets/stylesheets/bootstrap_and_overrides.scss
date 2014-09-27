@@ -1,7 +1,7 @@
 @import "bootstrap";
 
-$author-font: 13px Tahoma;
-$info-font: 11px Tahoma;
+$author-font: 13px  Verdana, sans-serif;
+$info-font: 11px Verdana, sans-serif;
 $font: Verdana, sans-serif;
 $light-date-color: #ababab;
 $link-color: #666666;
@@ -17,7 +17,7 @@ body{
     margin-left: 20px;
   }
 
-  #main{
+  .main{
     a{
       text-decoration: none;
       color: $link-color;
@@ -30,18 +30,6 @@ body{
     }
     #override-link-color{
       color: $link-color;
-    }
-  }
-
-  .author{
-    display: block;
-    font: $author-font;
-    color: $light-date-color;
-    margin-left: 2px;
-    margin-right: 20px;
-    float: left;
-    a{
-      color: $light-date-color;
     }
   }
 
@@ -134,19 +122,6 @@ body{
         line-height: 150%;
         margin: 0;
       }
-    }
-  }
-
-  #main-menu {
-    font-size: 27px;
-    a{
-      padding-right: 10px;
-      padding-left: 10px;
-      margin-right: 5px;
-      padding-top: 16px;
-      padding-bottom: 16px;
-      margin-top: 4px;
-      margin-bottom: 4px;
     }
   }
 
@@ -249,21 +224,6 @@ body{
       font-size: 13px;
       margin-top: 10px;
     }
-  }
-  #logo {
-    margin-top: 5px;
-  }
-
-  #logo.col-md-3{
-    margin-left: -8px;
-  }
-
-  #announcement{
-    @extend #logo;
-  }
-
-  #myCarousel{
-    max-width: 800px;
   }
 
   #reg{

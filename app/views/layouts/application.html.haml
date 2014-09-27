@@ -6,25 +6,20 @@
     %meta
       = stylesheet_link_tag    'application', media: 'all'
       = javascript_include_tag 'application'
+      %script{async: true, src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
       %link{rel:'shortcut icon',href:'/images/favicon.ico'}
       = csrf_meta_tags
 
   %body{:class => "#{controller_name} #{action_name}"}
-    #main.row
+    = render 'layouts/header'
+    .row#container
+      .col-md-8.content
+        #messages
+          = render 'layouts/messages'
+        = yield
+      .col-md-4.right-content
+        = yield :right_bar
+    .row#footer
       .col-md-12
-        .row#header
-          .col-md-12
-            = render 'layouts/header'
-        .row#container
-          .col-md-11.col-md-offset-1
-            .row
-              .col-md-8
-                #messages
-                  = render 'layouts/messages'
-                = yield
-              .col-md-3.right_content
-                = yield :right_bar
-        .row#footer
-          .col-md-12
-            = render 'layouts/footer'
+        = render 'layouts/footer'
 = render 'layouts/stats'

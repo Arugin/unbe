@@ -1,12 +1,5 @@
 - keywords "новости кино, новости сериалов, киноиндустрия статьи, новости сообщества unbe, статьи про кино"
 - description "unbe - независимое творческое сообщество, цель которого - сделать систему кинопроизводства в России открытой, а также поднять уровень компетенции и качество работ и роликов на новый уровень"
-.row
-  .col-md-4
-    %h4.section=title 'Новости'
-  .col-md-8
-    .pull-right#article-search
-      = render :partial => "common/search_control", :locals => { :current_action_path => news_articles_path }
-
 #news.ujs-pagination
   = render :partial => 'articles_short_block'
 

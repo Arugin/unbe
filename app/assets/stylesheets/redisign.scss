@@ -1,0 +1,173 @@
+@import 'colors';
+$bordered: 1px solid $gray;
+
+body{
+  min-width: 1265px;
+  color: $header-hover;
+  font-family: $font;
+
+  .header {
+    min-width: 1265px;
+    font-size: 28px;
+    background-color: $header-background;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+    width: 100%;
+    clear: both;
+    margin: 0;
+
+    .nav-pills{
+      li{
+        margin-left: 0px;
+        a{
+          border-radius: 0px;
+        }
+      }
+    }
+
+    #main-menu {
+      margin-top: 56px;
+      margin-left: 10px;
+    }
+    .fixed-menu {
+      min-width: 710px;
+    }
+
+    #logo {
+      @extend .col-md-2;
+      text-align: center;
+      margin-top: 20px;
+      width: 270px;
+    }
+
+    .col-md-2#reg {
+      font-size: 16px;
+      text-align: right;
+      float: right;
+      padding-right: 20px;
+      padding-top: 30px;
+      a{
+        padding: 0;
+        margin: 0;
+        &:hover{
+          background-color: inherit;
+        }
+        &.active{
+          background-color:inherit;
+        }
+      }
+      .omni{
+        @extend .omni-big;
+        img{
+          width: 24px;
+        }
+      }
+    }
+
+    .user-name{
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .user-avatar{
+      height: 50px;
+      float: right;
+    }
+
+    .exit{
+      margin-top: 4px;
+    }
+
+    a{
+      padding-right: 12px;
+      padding-left: 12px;
+      margin-right: 0px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      color: $header-text-color;
+      &.active{
+        background-color:$header-selected;
+      }
+      &:hover{
+        background-color: $header-hover;
+      }
+    }
+  }
+  .row{
+    .header{
+      @extend .header;
+      height: 119px;
+    }
+  }
+
+  .omni-big{
+    display: inline-block;
+    margin: 3px 2px;
+  }
+
+  #container{
+    padding: 20px;
+    margin: 0;
+    margin-top: 120px;
+  }
+
+  .content{
+    border-right: $bordered;
+    padding-right: 10px;
+  }
+
+  .piece-item {
+    border-bottom: $bordered;
+    margin-right: 0px;
+    padding-bottom: 10px;
+  }
+
+  .sidebar{
+    padding: 0 20px 50px;
+  }
+
+  .sidebar-news{
+    @extend .sidebar;
+  }
+
+  .right-content{
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+
+  .commercial {
+    z-index: -100;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    height: 250px;
+    clear: both;
+    ins {
+      width: 100%;
+      height: 250px !important;
+      overflow: hidden;
+    }
+  }
+
+  .author{
+    display: block;
+    font: $author-font;
+    color: $link-color;
+    margin-left: 2px;
+    margin-right: 10px;
+    float: left;
+    a{
+      color: $link-color;
+    }
+  }
+
+  .publishDate{
+    @extend .author;
+    color: $date-gray;
+  }
+
+}

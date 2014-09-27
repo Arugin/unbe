@@ -1,4 +1,4 @@
-.row
+.row.piece-item
   %h4
     = render partial: 'articles/title', locals: {item: article}
   .author
@@ -7,6 +7,7 @@
         = article.author.name
   .publishDate
     %span
+      опубликовал
       = l article.created_at.in_time_zone, format: :short
   .clear
   .description
