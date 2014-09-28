@@ -30,48 +30,48 @@ end
       id: (badge_id = badge_id + 1),
       name: 'RAFFLE_PARTICIPANT',
       description: 'RAFFLE_PARTICIPANT_DESC',
-      custom_fields: { category: :activity, difficulty: :bronze, icon: 'icon-star-alt' }
+      custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-star' }
    }, {
       id: (badge_id = badge_id + 1),
       name: 'RAFFLE_WINNER',
       description: 'RAFFLE_WINNER_DESC',
-      custom_fields: { category: :activity, difficulty: :gold, icon: 'icon-star-empty' }
+      custom_fields: { category: :activity, difficulty: :gold, icon: 'fa fa-star-o' }
    }, {
       id: (badge_id = badge_id + 1),
       name: 'COMMUNICABLE',
       description: 'COMMUNICABLE_DESC',
       level: 1,
-      custom_fields: { category: :activity, difficulty: :bronze, icon: 'icon-address-book' }
+      custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-book' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'COMMENTATOR_1',
        description: 'COMMENTATOR_1_DESC',
        level: 1,
-       custom_fields: { category: :comments, difficulty: :bronze, icon: 'icon-comment' }
+       custom_fields: { category: :comments, difficulty: :bronze, icon: 'fa fa-comment' }
    } , {
        id: (badge_id = badge_id + 1),
        name: 'COMMENTATOR_2',
        description: 'COMMENTATOR_2_DESC',
        level: 2,
-       custom_fields: { category: :comments, difficulty: :copper, icon: 'icon-comment' }
+       custom_fields: { category: :comments, difficulty: :copper, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'COMMENTATOR_3',
        description: 'COMMENTATOR_3_DESC',
        level: 3,
-       custom_fields: { category: :comments, difficulty: :silver, icon: 'icon-comment' }
+       custom_fields: { category: :comments, difficulty: :silver, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'COMMENTATOR_4',
        description: 'COMMENTATOR_4_DESC',
        level: 4,
-       custom_fields: { category: :comments, difficulty: :gold, icon: 'icon-comment' }
+       custom_fields: { category: :comments, difficulty: :gold, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'COMMENTATOR_5',
        description: 'COMMENTATOR_5_DESC',
        level: 5,
-       custom_fields: { category: :comments, difficulty: :platinum, icon: 'icon-comment' }
+       custom_fields: { category: :comments, difficulty: :platinum, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'RATED_COMMENT_1',

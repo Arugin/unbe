@@ -14,14 +14,14 @@
 
       .col-md-1-5.buttons-container
         - if @_controller.respond_to? :bulk_delete
-          = link_to [:bulk_delete, model], class: "btn btn-mini delete-selected",
+          = link_to [:bulk_delete, model], class: "btn btn-xs delete-selected",
            rel: :tooltip, title: "Delete selected", 'data-container' => 'body' do
-            %i.glyphicon.glyphicon-remove
+            %i.fa.fa-times
 
         - if @_controller.respond_to? :bulk_tag
-          = link_to [:bulk_tag, model], :class=>"btn btn-mini tag-selected",
+          = link_to [:bulk_tag, model], :class=>"btn btn-xs tag-selected",
            :rel => :tooltip, :title => "Tag selected", 'data-container' => 'body' do
-            %i.glyphicon.glyphicon-tags
+            %i.fa.fa-tags
 
       .col-md-6-5.center-group
         .pull-left.scope-switch-container

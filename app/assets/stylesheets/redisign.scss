@@ -3,8 +3,15 @@ $bordered: 1px solid $gray;
 
 body{
   min-width: 1265px;
-  color: $header-hover;
   font-family: $font;
+
+  a:hover{
+    text-decoration: none;
+    color: $link-hover;
+    span:hover{
+      color: $link-hover;
+    }
+  }
 
   .header {
     min-width: 1265px;
@@ -93,6 +100,10 @@ body{
       }
       &:hover{
         background-color: $header-hover;
+        color: $header-text-color;
+      }
+      span:hover{
+        color: $header-text-color;
       }
     }
   }
@@ -168,6 +179,10 @@ body{
   .publishDate{
     @extend .author;
     color: $date-gray;
+  }
+
+  #profile{
+    margin-top: 10px;
   }
 
 }

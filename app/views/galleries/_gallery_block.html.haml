@@ -13,7 +13,7 @@
       .edit
         - if can? :update, gallery
           = link_to edit_gallery_path(gallery) do
-            %i.glyphicon.glyphicon-pencil{title: t(:EDIT_GALLERY)}
+            %i.fa.fa-pencil{title: t(:EDIT_GALLERY)}
       = render :partial => 'common/views_count', locals: { subject: gallery, growth: false }
   .clear
   .description

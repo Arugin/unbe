@@ -7,10 +7,10 @@
         = "#{@user.first_name} #{@user.second_name}"
         - if current_user.present? && can?(:subscribe, @user)
           - if current_user.subscribed?(@user)
-            = link_to unsubscribe_profile_path(@user), class: 'btn btn-mini' do
+            = link_to unsubscribe_profile_path(@user), class: 'btn btn-xs' do
               Отписаться
           - else
-            = link_to subscribe_profile_path(@user), class: 'btn btn-mini' do
+            = link_to subscribe_profile_path(@user), class: 'btn btn-xs' do
               Подписаться
       .clear
       %dl

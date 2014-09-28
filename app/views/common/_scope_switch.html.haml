@@ -1,10 +1,10 @@
 .scope-switch
   %span Показать:
-  %span.btn-group
+  .btn-group
     = link_to 'Все', current_action.call(scope: 'current_user'),
-     class: "btn btn-mini scope-all #{'on' unless params[:unprocessed]}",
+     class: "btn btn-xs scope-all #{'on' unless params[:unprocessed]}",
      rel: :tooltip, title: "Все #{subject}", 'data-container' => 'body'
     = link_to current_action.call(unprocessed: true),
-     class: "btn btn-mini scope-my #{'on' if params[:unprocessed]}",
+     class: "btn btn-xs scope-my #{'on' if params[:unprocessed]}",
      rel: :tooltip, title: "Неопубликованные/неподтвержденные", 'data-container' => 'body' do
       %i.fa.fa-warning

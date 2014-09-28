@@ -1,10 +1,8 @@
 @import "bootstrap";
+@import "bootstrap/glyphicons";
 
 $author-font: 13px  Verdana, sans-serif;
 $info-font: 11px Verdana, sans-serif;
-$font: Verdana, sans-serif;
-$light-date-color: #ababab;
-$link-color: #666666;
 
 body{
   font-family: $font;
@@ -55,7 +53,7 @@ body{
   }
   .small-notice{
     font: $author-font;
-    color: $light-date-color;
+    color: $date-gray;
   }
 
   .more-info{
@@ -388,32 +386,6 @@ body{
 .form-actions{
   background-color: white;
   border-top: none;
-}
-
-.btn-primary {
-  color: #FFFFFF;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #03426A;
-  *background-color: #03426A;
-  background-image: -moz-linear-gradient(top, #24587A, #03426A);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#24587A), to(#03426A));
-  background-image: -webkit-linear-gradient(top, #24587A, #03426A);
-  background-image: -o-linear-gradient(top, #24587A, #03426A);
-  background-image: linear-gradient(to bottom, #24587A, #03426A);
-  background-repeat: repeat-x;
-  border-color: #03426A;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#24587A', endColorstr='#03426A', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary.active,
-.btn-primary.disabled,
-.btn-primary[disabled] {
-  color: #FFFFFF;
-  background-color: #03426A;
-  *background-color: #003bb3;
 }
 
 .pull-right a.btn-primary {

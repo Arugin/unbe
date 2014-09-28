@@ -39,10 +39,10 @@
       .edit
         - if can? :update, article
           = link_to edit_article_path(article) do
-            %i.glyphicon.glyphicon-pencil{title: t(:EDIT_ARTICLE)}
+            %i.fa.fa-pencil{title: t(:EDIT_ARTICLE)}
       .edit
         - if can? :destroy, article
-          = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "icon-trash", :id => 'btn-rm-cm'
+          = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "fa fa-trash-o", :id => 'btn-rm-cm'
   .clear
   .description{itemprop:'articleBody'}
     - if article.garbage?

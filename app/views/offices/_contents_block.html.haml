@@ -8,7 +8,7 @@
 
         %td.center
             = link_to edit_content_base_content_path content do
-                %i.glyphicon.glyphicon-pencil{title: t(:EDIT_CONTENT)}
+                %i.fa.fa-pencil{title: t(:EDIT_CONTENT)}
         %td.long
             = render :partial => "common/views_count", locals: { subject: content, growth: true }
         %td.views-wrapper

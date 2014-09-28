@@ -1,4 +1,4 @@
 .rate-count{title: t(:RATING)}
-  %i.glyphicon.glyphicon-thumbs-up
+  %i.fa.fa-thumbs-o-up
   .count{:class => ((subject.votes_point > 0 ? 'positive' : 'negative') unless subject.votes_point ==0 )}
     = subject.votes_point

@@ -1,11 +1,10 @@
 = form_tag current_action_path, method: 'get', id: 'models_search', class: "form-search" do
   - if params[:scope].present?
     = hidden_field_tag :scope, params[:scope]
-  .input-search
-    .input-prepend
-      .add-on
-        %span.glyphicon.glyphicon-filter
-      = text_field_tag :search, params[:search], class: "input-medium search-query", placeholder: "#{t :SEARCH}"
-    .input-append#clear-search
-      .clear-search
-        %i.glyphicon.glyphicon-remove
+  .input-group
+    %span.input-group-addon
+      %i.fa.fa-filter
+    = text_field_tag :search, params[:search], class: "input-medium search-query", placeholder: "#{t :SEARCH}"
+    %span.iinput-group-addon#clear-search
+    .clear-search
+      %i.fa.fa-times

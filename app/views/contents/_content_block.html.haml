@@ -20,7 +20,7 @@
       .edit
         - if can? :update, content
           = link_to edit_content_base_content_path(content) do
-            %i.glyphicon.glyphicon-pencil{title: t(:EDIT_CONTENT)}
+            %i.fa.fa-pencil{title: t(:EDIT_CONTENT)}
       = render :partial => 'common/views_count', locals: { subject: content, growth: false }
       %div{class:"vote-#{content._id}"}
         = render :partial => 'common/vote_block', locals: { votable: content }

@@ -36,7 +36,7 @@
       .edit
         - if can? :update, article
           = link_to edit_article_path(article) do
-            %i.glyphicon.glyphicon-pencil{title: t(:EDIT_ARTICLE)}
+            %i.fa.fa-pencil{title: t(:EDIT_ARTICLE)}
       = render :partial => 'common/views_count', locals: { subject: article, growth: false }
       %div{class:"vote-#{article._id}"}
         = render :partial => 'common/vote_block', :locals => { :votable => article }

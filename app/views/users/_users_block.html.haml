@@ -20,7 +20,7 @@
       %td= l user.created_at.in_time_zone, format: :mini
       %td
         - if user.subscribed
-          %i.glyphicon.glyphicon-envelope{title: t(:SUBSCRIBED)}
+          %i.fa.fa-envelope{title: t(:SUBSCRIBED)}
       %td
         = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
