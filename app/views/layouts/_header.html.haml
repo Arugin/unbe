@@ -28,12 +28,13 @@
           Войти
       = render 'common/omni_reg'
     - if user_signed_in?
-      %div
+      %div{style: 'margin-top: -9px;'}
         .user-name.inline-block
           = link_to office_path do
             = current_user.name
         .user-avatar.inline-block
-          = render 'common/avatar', user: current_user
+          = link_to office_path do
+            = render 'common/avatar', user: current_user
 
       .exit
         = link_to destroy_user_session_path, :method=>'delete' do

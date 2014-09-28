@@ -89,7 +89,7 @@ body{
     }
 
     .exit{
-      margin-top: 4px;
+      margin-top: 11px;
     }
 
     a{
@@ -226,6 +226,42 @@ body{
   .span-0 {
     width: 4% !important;
     display: inline-flex;
+  }
+
+  .pull-right{
+    .control-panel{
+      padding-right: 10px;
+      min-width: 50%;
+      height: auto;
+      display: block;
+      .views-count{
+        @extend .views-count;
+      }
+      .edit{
+        float:left;
+        margin: 2px 5px 0px 5px;
+      }
+      div{
+        float: left;
+      }
+      .vote{
+        @extend .vote;
+      }
+      .mini-vote{
+        @extend .vote;
+        min-width: 20px;
+      }
+    }
+  }
+
+  .share42init{
+    padding-right: 10px;
+  }
+
+  .form-horizontal{
+    .form-actions{
+      @extend .col-md-offset-3;
+    }
   }
 
 }

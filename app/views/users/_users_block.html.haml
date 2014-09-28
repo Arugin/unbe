@@ -6,7 +6,7 @@
     %th Дата регистрации
     %th
     %th
-    %th.col-md-1
+    %th.col-md-2
   - if @users.empty?
     %p= t :NO_USERS_FOUND
   %tbody
@@ -25,11 +25,11 @@
         = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
         .options
-          .btn-group
-            %button.btn
+          .btn-group-xs
+            %button.btn.btn-default
               = link_to block_user_path(user) do
                 = t :BLOCK
-            %button.btn.dropdown-toggle{data:{toggle:"dropdown"}}
+            %button.btn.btn-default.dropdown-toggle{data:{toggle:"dropdown"}}
               %span.caret
             %ul.dropdown-menu
               %li

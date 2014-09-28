@@ -183,29 +183,7 @@ h4.random-news{
   width: auto;
 }
 
-.pull-right{
-  .control-panel{
-    min-width: 50%;
-    height: auto;
-    .views-count{
-      @extend .views-count;
-    }
-    .edit{
-      float:left;
-      margin: 2px 5px 0px 5px;
-    }
-    div{
-      float: left;
-    }
-    .vote{
-      @extend .vote;
-    }
-    .mini-vote{
-      @extend .vote;
-      min-width: 20px;
-    }
-  }
-}
+
 .vote{
   float: left;
   text-align: center;
@@ -396,7 +374,7 @@ h4.random-news{
 a.disabled, a[disabled] {
   cursor: default !important;
   pointer-events: none;
-  color: $gray;
+  color: $date-gray;
 }
 
 

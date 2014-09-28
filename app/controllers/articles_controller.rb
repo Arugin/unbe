@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   include Concerns::BulkOperationable
   include Concerns::Votable
 
-  before_filter :authenticate_user!, except: [:news,:index, :show]
-  load_and_authorize_resource except: [:news, :index]
+  before_filter :authenticate_user!, except: [:news, :index, :show]
+  load_and_authorize_resource except: [:news, :index, :show]
 
   bulk_actions :delete, :tag
 
