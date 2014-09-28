@@ -21,7 +21,7 @@ nav.pagination{
 }
 
 .activity {
-  border-bottom: solid 1px #CCC;
+  border-bottom: $bordered;
   padding: 16px 0;
   em {
     color: #777;
@@ -50,5 +50,8 @@ nav.pagination{
       font-size: 10px;
       line-height: 20px;
     }
+  }
+  .pull-right{
+    padding-top: 5px;
   }
 }

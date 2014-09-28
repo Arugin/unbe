@@ -1,5 +1,6 @@
 @import "colors";
 $font: Verdana, sans-serif;
+$bordered: 1px solid $gray;
 @import 'fotorama_and_overrides';
 @import 'bootstrap_and_overrides';
 @import 'editor_fixes';
@@ -73,6 +74,9 @@ ul.navigation{
   position: relative;
   list-style: none;
   font-size: 14px;
+  padding-left: 0px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   li {
     list-style-image: none;
     list-style-type: none;
@@ -84,7 +88,7 @@ ul.navigation{
       padding: 0 10px;
     }
     a:hover{
-      background: $header-hover;
+      background: $gray;
     }
   }
 }
