@@ -1,0 +1,15 @@
+%h3 Настройка аккаунта
+= horizontal_simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  = f.error_notification
+  = f.input :email, :required => true, :autofocus => true
+  = f.input :subscribed, :as => :boolean, :inline_label => 'еженедельная рассылка'
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %p
+      Currently waiting confirmation for: #{resource.unconfirmed_email}
+  = f.input :password, :autocomplete => "off", :hint => t(:DEVICE_LEAVE_BLANK_PASSWORD), :required => false
+  = f.input :password_confirmation, :required => false
+  = f.input :current_password, :hint => t(:DEVICE_CONFIRM_PASSWORD), :required => true
+  .form-actions
+    = f.button :submit, "Сохранить изменения", :class => "btn-primary"
+- content_for(:right_bar) do
+  = render :partial => 'offices/right_bar'

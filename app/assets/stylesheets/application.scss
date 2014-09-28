@@ -1,10 +1,12 @@
 @import "colors";
 $font: Verdana, sans-serif;
-$bordered: 1px solid $gray;
+$bordered: 1px solid $light-gray;
+$bordered-dotted: 1px dotted $light-gray;
 @import 'fotorama_and_overrides';
 @import 'bootstrap_and_overrides';
 @import 'editor_fixes';
 @import 'select2';
+@import 'select2-bootstrap';
 @import "font-awesome";
 @import "articles";
 @import "badges";
@@ -28,7 +30,7 @@ $bordered: 1px solid $gray;
 
 a, li{
   .active{
-    background-color: $gray;
+    background-color: $light-gray;
   }
 }
 
@@ -88,7 +90,7 @@ ul.navigation{
       padding: 0 10px;
     }
     a:hover{
-      background: $gray;
+      background: $light-gray;
     }
   }
 }
