@@ -36,7 +36,7 @@ gem 'mongoid_slug', github: 'digitalplaywright/mongoid-slug'
 gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
-gem 'merit', '~> 2.1'
+gem 'merit'
 gem 'state_pattern'
 gem 'public_activity'
 

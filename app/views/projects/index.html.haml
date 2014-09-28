@@ -27,31 +27,39 @@
   .clear
   %dl
     - max_articles = 350; max_users = 1001; max_works = 200
-    %dt= "Статей (#{@stats.articles_count}/#{max_articles})"
+    %dt= "Статей:"
     %dd
-      .progress.progress-success.col-md-10
-        .bar{style:"width: #{@stats.percentage(:articles, max_articles)}%"}
+      .progress{title: "Статей написано #{@stats.articles_count}/#{max_articles}"}
+        .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"#{@stats.percentage(:articles, max_articles)}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{@stats.percentage(:articles, max_articles)}%"}
+          = "#{@stats.articles_count}/#{max_articles}"
 
   %dl
-    %dt= "Работ (#{@stats.content_count}/#{max_works})"
+    %dt= "Работ:"
     %dd
-      .progress.progress-success.col-md-10
-        .bar{style:"width: #{@stats.percentage(:content, max_works)}%"}
+      .progress{title: "Работ опубликовано #{@stats.content_count}/#{max_works}"}
+        .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"#{@stats.percentage(:content, max_works)}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{@stats.percentage(:content, max_works)}%"}
+          = "#{@stats.content_count}/#{max_works}"
+
   %dl
-    %dt= "Пользователей (#{@stats.users_count}/#{max_users})"
+    %dt= "Пользователей:"
     %dd
-      .progress.progress-success.col-md-10
-        .bar{style:"width: #{@stats.percentage(:users, max_users)}%"}
+      .progress{title: "Пользователей зарегистрировано: #{@stats.users_count}/#{max_users}"}
+        .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"#{@stats.percentage(:users, max_users)}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{@stats.percentage(:users, max_users)}%"}
+          = "#{@stats.users_count}/#{max_users}"
+
   %dl
-    %dt Готовность раздела (0/100)
+    %dt Готовность раздела
     %dd
-      .progress.progress-success.col-md-10
-        .bar{style:"width: 0%"}
+      .progress{title: "Готовность раздела проектов: 3%"}
+        .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"3", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: 3%"}
+          = "3%"
+
   %dl
-    %dt Посещаемость (6/800)
+    %dt Посещаемость
     %dd
-      .progress.progress-success.col-md-10
-        .bar{style:"width: 0.6%"}
+      .progress{title: "Посещаемость проекта unbe: 30 человек из 800"}
+        .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"4", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: 4%"}
+          = "30/800"
 
 - content_for(:right_bar) do
   = render :partial => 'articles/index_bar'

@@ -14,8 +14,7 @@ begin
              {:name => 'USER'},
              {:name => 'MODERATOR'},
              {:name => 'READER'}
-             ],
-            :without_protection => true)
+             ])
 
 
   puts 'CREATING GENDERS'
@@ -63,11 +62,7 @@ begin
                   article_type: type_article,
                   article_area: area_no,
                   created_at: DateTime.parse("2013-06-28 08:14:00"),
-                  isPublished: true,
-                  isApproved: true,
-                  isUpdated: false,
                   system_tag: :about,
-                  is_garbage: false,
                   author: user
                  }).approve
   Article.create({title: "Эпизод 1. \"Чудеса\"",
@@ -76,10 +71,6 @@ begin
                   article_type: type_news,
                   article_area: area_news,
                   created_at: DateTime.parse("2011-03-25 12:00:00"),
-                  isPublished: true,
-                  isApproved: true,
-                  isUpdated: false,
-                  is_garbage: false,
                   author: user
                  }).approve
   Article.create({title: "Эпизод 3 \"Ребятки\"",
@@ -88,10 +79,6 @@ begin
                   article_type: type_news,
                   article_area: area_news,
                   created_at: DateTime.parse("2011-04-03 09:53:00"),
-                  isPublished: true,
-                  isApproved: true,
-                  isUpdated: false,
-                  is_garbage: false,
                   author: user
                  }).approve
   Article.create({title: "Проект \"Кум\" приостановлен",
@@ -100,10 +87,6 @@ begin
                   article_type: type_news,
                   article_area: area_news,
                   created_at: DateTime.parse("2011-06-30 03:50:00"),
-                  isPublished: true,
-                  isApproved: true,
-                  isUpdated: false,
-                  is_garbage: false,
                   author: user
                  }).approve
   Article.create({title: "Деятельность \"unbe\" приостановлена",
@@ -112,10 +95,6 @@ begin
                   article_type: type_news,
                   article_area: area_news,
                   created_at: DateTime.parse("2011-08-31 03:15:00"),
-                  isPublished: true,
-                  isApproved: true,
-                  isUpdated: false,
-                  is_garbage: false,
                   author: user
                  }).approve
   Article.create({title: "Деятельность сообщества unbe восстановлена",
@@ -124,10 +103,6 @@ begin
                   article_type: type_news,
                   article_area: area_news,
                   created_at: DateTime.parse("2013-07-21 18:36:00"),
-                  isPublished: true,
-                  isApproved: true,
-                  isUpdated: false,
-                  is_garbage: false,
                   author: user
                  }).approve
   puts "Articles were created"
