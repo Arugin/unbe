@@ -2,7 +2,7 @@
 - description "На unbe вы можете поделиться своими видео работами и роликами, получить конструктивную критику и помощь в выполнении своих работ"
 
 - if can? :create, Gallery
-  .row
+  .row{style: 'margin-right: -15px;'}
     .col-md-12
       .pull-right
         = link_to new_gallery_path, :class=>'btn btn-primary' do

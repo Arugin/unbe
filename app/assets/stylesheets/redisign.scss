@@ -142,6 +142,9 @@ body{
     &:last-child{
       border-bottom: none;
     }
+    &:first-child h3{
+      margin-top: 0px;
+    }
   }
 
   .sidebar{
@@ -347,4 +350,20 @@ body{
     }
   }
 
+  .ujs-pagination .breadcrumb{
+    margin-top: 10px;
+  }
+
+  #profile{
+    .row {
+      margin: 0;
+    }
+    .clear{
+      margin-bottom: 10px;
+    }
+  }
+
+  &.contents.show h3, &.galleries.show h3, &.articles.show h3, &.cycles.show h3 {
+    margin-top: 0px !important;
+  }
 }
