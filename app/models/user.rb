@@ -92,6 +92,10 @@ class User
     all.not_in(is_active: false)
   }
 
+  def self.very_active
+    User.all.sort{|a, b| b.points <=> a.points}[0..10]
+  end
+
   def highest_role
     curr_role = nil
     roles.each do |role|

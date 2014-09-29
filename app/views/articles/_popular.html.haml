@@ -1,0 +1,5 @@
+%h3 Популярные статьи
+%ul.items-card-list.popular
+  - Article.popular.each do |article|
+    %li.item
+      = render 'common/cool_block', item: article, collection: 'articles'

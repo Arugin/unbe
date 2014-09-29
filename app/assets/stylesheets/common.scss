@@ -9,11 +9,15 @@ nav.pagination{
   overffloat: left;
 }
 
+.green{
+  color: darkgreen;
+}
+
 .check-status{
   margin: 0px 5px;
   font-size: 14px;
   .fa-check{
-    color: darkgreen;
+    @extend .green;
   }
   .fa-warning{
     color: darkred;

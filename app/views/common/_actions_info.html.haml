@@ -1,0 +1,13 @@
+.actions-info
+  .inline-block{title: item_count_title(user, :have, :subscribers)}
+    %i.fa.fa-users
+    = user.subscribers.count
+  .inline-block{title: item_count_title(user, :create, :cycles)}
+    %i.fa.fa-folder-open-o
+    = user.cycles.count
+  .inline-block{title: item_count_title(user, :create, :articles)}
+    %i.fa.fa-leaf
+    = user.articles.count
+  .inline-block{title: item_count_title(user, :comment, :comments)}
+    %i.fa.fa-comment
+    = user.comments.count

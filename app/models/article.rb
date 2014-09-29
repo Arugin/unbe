@@ -51,6 +51,8 @@ class Article
     search_for(user,params).any_of({'$and' => [{state: 'Article::Approved'}, {to_news: true}]}, {'$and' => [{state: 'Article::Approved'}, {article_type: ArticleType.where(title: "NEWS").first}]}, {'$and' => [{state: 'Article::Changed'}, {to_news: true}]}, {'$and' => [{state: 'Article::Changed'}, {article_type: ArticleType.where(title: "NEWS").first}]}).order_by([:created_at, :desc])
   }
 
+  scope :popular, -> {unscoped.order_by(impressions_count: :desc).limit(2)}
+
   scope :by_area, lambda { |user, params = {}, area|
     scope = search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'})
     if area.present?
@@ -65,7 +67,7 @@ class Article
   }
 
   scope :approved, lambda { |user, params = {}|
-    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).order_by([:created_at, :desc])
+    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).order_by(created_at: :desc)
   }
 
   scope :random, lambda {

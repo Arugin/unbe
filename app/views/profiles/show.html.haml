@@ -43,7 +43,10 @@
           .clear
           = render partial: 'common/badges', locals: {target: @user}
 
-
-- content_for(:right_bar) do
-  = render partial: 'offices/right_bar'
+- if user_signed_in?
+  - content_for(:right_bar) do
+    = render partial: 'offices/right_bar'
+- else
+  - content_for(:right_bar) do
+    = render partial: 'articles/index_bar'
 

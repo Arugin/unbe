@@ -1,0 +1,15 @@
+%h3 Активные пользователи
+
+%table.table.table-hover.active-users
+  %thead
+    %th Имя
+    %th Активность
+    %th Опыт
+
+  %tbody
+    - User.very_active.each do |user|
+      %tr
+        %td= link_to user.name, profile_path(user)
+        %td= render 'common/actions_info', user: user
+        %td.green= user.points
+

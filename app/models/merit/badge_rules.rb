@@ -39,7 +39,11 @@ module Merit
         user.full_profile?
       end
 
-      grant_on ['articles#create','contents#create'], badge: 'PART_OF_WHOLE', to: :author do |subject|
+      grant_on ['articles#create'], badge: 'PART_OF_WHOLE', to: :author do |subject|
+        subject.author.full_actions?
+      end
+
+      grant_on ['contents#create'], model_name: 'Content::BaseContent',badge: 'PART_OF_WHOLE', to: :author do |subject|
         subject.author.full_actions?
       end
 

@@ -2,20 +2,15 @@
   .commercial
     = render :partial => 'common/commercial_block'
   - if user_signed_in? and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
-    %ul.navigation
-      %li
-        =link_to main_app.new_news_articles_path do
-          Опубликовать новость
-  %h3.right-bar
-  = render :partial => 'contents/tiny_block', locals: { :content => Content::BaseContent.random_entry }
-  .clear
-  %h3.right-bar
-  = render :partial => 'articles/article_tiny_block', locals: { :article => Article.random_entry }
+    = link_to main_app.new_news_articles_path do
+      Опубликовать новость
 
-  %h3.right-bar
-    Пользователи
-  %ul.navigation
-    - User.random_entries(3).each do |user|
-      %li
-        =link_to profile_path(user) do
-          = user.name
+  .right-bar
+    = render 'articles/popular'
+
+  .right-bar
+    = render 'contents/tiny_block', content: Content::BaseContent.random_entry
+  .clear
+
+  .right-bar
+    = render 'users/active_users'
