@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ContentsController do
+describe ContentsController, type: :controller do
   def valid_session
     {}
   end

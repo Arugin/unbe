@@ -42,8 +42,8 @@
         = render :partial => 'common/vote_block', :locals => { :votable => article }
   .clear
   .description{itemprop:'articleBody'}
-    - unless article.content.nil?
-      = raw article.content
+    - unless article.clean_content.nil?
+      = raw article.clean_content
     - else
       = raw article.tmpContent
   .clear

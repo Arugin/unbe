@@ -11,13 +11,13 @@
       = l article.created_at.in_time_zone, format: :short
   .clear
   .description
-    - unless article.content.nil?
+    - unless article.clean_content.nil?
       = raw article.short_content
     - else
       = raw article.tmpContent
   .clear
   - unless article.garbage?
-    - if article.content.size != article.short_content.size
+    - if article.clean_content.size != article.short_content.size
       .more-info
         = link_to article_path(article) do
           =t 'READ_MORE'

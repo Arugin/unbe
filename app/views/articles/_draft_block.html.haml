@@ -46,6 +46,6 @@
   .clear
   .description{itemprop:'articleBody'}
     - if article.garbage?
-      = article.content.html_safe
+      = article.clean_content.html_safe
     - else
       = article.tmpContent.html_safe

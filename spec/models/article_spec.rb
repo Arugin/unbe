@@ -16,7 +16,6 @@ describe Article do
     article = FactoryGirl.create(:article, author: @user, tmpContent: '<p>daddy</p><p><!-- unbebreak --></p>')
     article.publish
     article.approve
-    puts article.short_content.html_safe
     article.short_content.length.should eq 12
   end
 
@@ -28,10 +27,11 @@ describe Article do
   end
 
   it "should do nothing if no unbebreak in content or it's not a comment" do
-    article = FactoryGirl.create(:article, author: @user, tmpContent: '<p>daddy</p><p>unbebreak</p><daddy/>')
+    tmpContent = '<noo><p>daddy</p><p>unbebreak</p><daddy></daddy></noo>'
+    article = FactoryGirl.create(:article, author: @user, tmpContent: tmpContent)
     article.publish
     article.approve
-    article.short_content.length.should eq 36
+    article.short_content.should eq tmpContent
   end
 
   it "should publish article if tmpContent present"  do
@@ -41,11 +41,11 @@ describe Article do
   end
 
   it "should publish article if tmpContent present"  do
-    tmpContent = 'Some content here'
+    tmpContent = '<p>Some content here</p>'
     article = FactoryGirl.create(:article, author: @user, tmpContent: tmpContent, state: 'Article::Published')
     article.approve
     article.approved?.should be true
-    article.content.should eq tmpContent
+    article.clean_content.should eq tmpContent
   end
 
   it "should move article to changed if it's content changed" do
@@ -58,8 +58,8 @@ describe Article do
   end
 
   it "should not move article to changed if it's content not changed" do
-    article = FactoryGirl.create(:article, author: @user, content: 'Some content here', state: 'Article::Approved')
-    article.tmpContent = 'Some content here'
+    article = FactoryGirl.create(:article, author: @user, content: '<p>Some content here</p>', state: 'Article::Approved')
+    article.tmpContent = '<p>Some content here</p>'
     article.to_changed
     article.is_updated?.should be false
     article.tmpContent.should be nil
@@ -73,11 +73,11 @@ describe Article do
   end
 
   it "should move article to garbaget"  do
-    tmpContent = 'Some content here'
+    tmpContent = '<p>Some content here</p>'
     article = FactoryGirl.create(:article, author: @user, tmpContent: tmpContent, state: 'Article::Published')
     article.to_garbage
     article.approved?.should be true
     article.garbage?.should be true
-    article.content.should eq tmpContent
+    article.clean_content.should eq tmpContent
   end
 end
