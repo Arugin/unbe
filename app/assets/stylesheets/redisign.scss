@@ -60,6 +60,8 @@ body{
       float: right;
       padding-right: 20px;
       padding-top: 30px;
+      height: 120px;
+      background: linear-gradient(to right, $header-background, $dark-blue);
       a{
         padding: 0;
         margin: 0;
