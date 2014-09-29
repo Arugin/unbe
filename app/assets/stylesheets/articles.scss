@@ -94,6 +94,9 @@
         width: 33%;
         padding-top: 5px !important;
         margin-top: 0px !important;
+        &.floated-vote{
+          text-align: left !important;
+        }
         .count{
           margin-top: 0px !important;
           float: none !important;

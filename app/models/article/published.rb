@@ -19,6 +19,7 @@ class Article::Published < Article::BaseState
       stateful.remove_redundant_images
       stateful.save!
     end
+    stateful
   end
 
   def to_garbage

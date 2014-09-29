@@ -25,7 +25,7 @@ class CyclesController < ApplicationController
   end
 
   def create
-    @cycle = Cycle.new(params[:cycle])
+    @cycle = Cycle.new(cycle_params)
     @cycle.author = current_user
 
     if @cycle.save
@@ -43,7 +43,7 @@ class CyclesController < ApplicationController
       return
     end
 
-    if @cycle.update_attributes(params[:cycle])
+    if @cycle.update_attributes(cycle_params)
       redirect_to cycles_office_path(scope:'current_user'), notice: t(:CYCLE_UPDATE_SUCCESS)
     else
       render action: "edit"

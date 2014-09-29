@@ -7,7 +7,7 @@ module Concerns
     module ClassMethods
 
       def random_entries(count)
-        (0..name.constantize.random.count-1).sort_by{rand}.slice(0, count).collect! do |i|
+        (0..name.constantize.random.count - 1).sort_by{rand}.slice(0, count).collect! do |i|
           name.constantize.random.skip(i).first
         end
       end

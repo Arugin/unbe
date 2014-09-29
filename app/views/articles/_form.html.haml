@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :title, input_html: { class: "span8" }
     = f.input :logo, input_html: { class: "span8" }
-    = render partial: 'common/form_note', locals: {text: 'Если логотип не указан, то будет взято первое изображение из содержания статьи'}
+    = render 'common/form_note', text: 'Если логотип не указан, то будет взято первое изображение из содержания статьи', full: true
     = f.association :article_area, collection: ArticleArea.all.order_by([:title, :desc]), input_html: { class: "select2" }, selected: @article.article_area_id, label_method: lambda { |area| t(area.title) }
     = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "select2" }, selected: @article.article_type_id, label_method: lambda { |type| t(type.title) }
     = f.association :cycle, collection: Cycle.search_for(current_user,{scope:'current_user'}).order_by([:title, :asc]), input_html: { class: "select2" }, selected: @article.cycle_id, label_method: lambda { |cycle| cycle.correct_title }

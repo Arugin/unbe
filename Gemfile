@@ -20,7 +20,7 @@ gem 'haml'
 gem 'spring',        group: :development
 gem 'thin', '>= 1.5.0', group: :development
 gem 'passenger', group: :production
-gem "cancan", git: "git://github.com/ryanb/cancan.git", branch: "2.0"
+gem 'cancancan', '~> 1.9'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'

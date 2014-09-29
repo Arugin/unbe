@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   include Concerns::Votable
 
   before_filter :authenticate_user!, :except => [:show, :index]
-  load_and_authorize_resource class: 'Content::BaseContent', :except => [:show, :index]
+  load_and_authorize_resource class: 'Content::BaseContent', except: [:show, :index], param_method: :content_base_content_params
 
 
   respond_to :html, :js
@@ -38,7 +38,7 @@ class ContentsController < ApplicationController
   def create
     session[:gallery] ||= request.referer
     @gallery = Gallery.find params[:gallery_id]
-    @content = @gallery.contents.build(params[:content])
+    @content = @gallery.contents.build(content_base_content_params)
     @content.author = current_user
     if @content.save
       flash[:notice] = t :CONTENT_ADD_SUCCESSFULLY
@@ -59,7 +59,7 @@ class ContentsController < ApplicationController
       @content.author = current_user
       @content.save
     end
-    if @content.update_attributes(params[:content])
+    if @content.update_attributes(content_base_content_params)
       @content.reviewed = false
       @content.save
       redirect_to edit_gallery_path(@content.contentable), notice: t(:CONTENT_UPDATE_SUCCESS)
@@ -91,9 +91,10 @@ class ContentsController < ApplicationController
     :content_base_content
   end
 
-  def content_params
-    params[:content] = params.delete(:content_base_content)
-    params.require(:content).permit(:title, :description, :src, :tag_list, :contentable_id)
+  def content_base_content_params
+    #params[:content_base_content] = params.delete(:content_base_content)
+    #puts 'ttttttttttt', params[:content]
+    params.require(:content_base_content).permit(:title, :description, :src, :tag_list, :contentable_id)
   end
 
 end

@@ -1,7 +1,7 @@
 class AddConfirmable < Mongoid::Migration
   def self.up
     User.all.each do |user|
-      user.set :confirmed_at, Time.zone.now
+      user.set confirmed_at: Time.zone.now
     end
   end
 

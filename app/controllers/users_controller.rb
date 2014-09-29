@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     @user.is_active = true
 
     if @user.save
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def update
     begin
       @user = User.find(params[:id])
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
         redirect_to profile_path, :notice => t('USER_INFO_UPDATE_SUCCESS')
       else
         redirect_to edit_profile_path(@user), :alert => t('USER_INFO_CAN_NOT_BE_UPDATED')

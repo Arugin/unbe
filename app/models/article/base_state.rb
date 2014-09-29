@@ -3,6 +3,7 @@ class Article::BaseState < StatePattern::State
     unless stateful.tmpContent.blank?
       transition_to(Article::Published)
       stateful.save!
+      stateful
     else
       stateful.errors
     end

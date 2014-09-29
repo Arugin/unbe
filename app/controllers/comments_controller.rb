@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(params[:comment])
+    @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
       @comment.create_activity action: :create, owner: current_user, recipient: @commentable
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update_attributes(params[:comment])
+    if @comment.update_attributes(comment_params)
       redirect_to @comment.commentable, notice: t(:COMMENT_UPDATE_SUCCESS)
     else
       render action: "edit"

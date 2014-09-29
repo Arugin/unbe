@@ -93,35 +93,7 @@ body{
     min-height: 400px;
   }
 
-  #footer{
-    font-size: 11px;
-    font-family: $font;
-    color: #949494;
-    overflow: hidden;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    border-top: 1px solid #CCCCCC;
-    margin: 15px auto 0;
-    text-align: left;
-    width: 1050px;
-    dl{
-      display: block;
-      float: left;
-      width: 15%;
-      margin: 0;
-      dt{
-        margin-bottom: 5px;
-        font-size: 13px;
-        margin: 0;
-        text-align: left;
-      }
-      dd{
-        margin-bottom: 5px;
-        line-height: 150%;
-        margin: 0;
-      }
-    }
-  }
+
 
   .user-profile{
     float:left;

@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new(article_params)
     @article.author = current_user
 
     if @article.save
@@ -55,10 +55,9 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    puts 'ddddd', @article.to_json
     @old_article = @article.dup
 
-    if @article.update_attributes(params[:article])
+    if @article.update_attributes(article_params)
       @article.to_changed
       additional_actions
       redirect_to articles_office_path(scope:'current_user'), notice: t(correct_message(:update))
@@ -131,8 +130,8 @@ class ArticlesController < ApplicationController
   protected
 
   def correct_message(action)
-    config = (params[:article][:publish].to_i == 1) ? :publish : :no
-    config = (params[:article][:approve].to_i == 1) ? :approve : config
+    config = @publish ? :publish : :no
+    config = @approve ? :approve : config
 
     messages = {
       create: {
@@ -170,13 +169,13 @@ class ArticlesController < ApplicationController
   end
 
   def automatic_publish
-    if params[:publish].to_i == 1
+    if @publish
       @article.publish
     end
   end
 
   def automatic_approve
-    if params[:approve].to_i == 1 && can?(:approve, @article)
+    if @approve && can?(:approve, @article)
       @article.approve
     end
   end
@@ -193,9 +192,8 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    puts 'permit'
-    params[:publish] = params[:article].delete(:publish)
-    params[:approve] = params[:article].delete(:approve)
+    @publish ||= params[:article].delete(:publish)
+    @approve ||= params[:article].delete(:approve)
     params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tag_list, :to_news)
   end
 

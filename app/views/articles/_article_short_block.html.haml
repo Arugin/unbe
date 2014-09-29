@@ -1,14 +1,18 @@
 .row.piece-item
   %h4
     = render partial: 'articles/title', locals: {item: article}
-  .author
-    = link_to profile_path(article.author) do
-      %span
-        = article.author.name
-  .publishDate
-    %span
-      опубликовал
-      = l article.created_at.in_time_zone, format: :short
+  %div
+    %div
+      .author
+        = link_to profile_path(article.author) do
+          %span
+            = article.author.name
+      .publishDate
+        %span
+          опубликовал
+          = l article.created_at.in_time_zone, format: :short
+    .pull-right
+      = render 'articles/control_panel', article: article
   .clear
   .description
     - unless article.clean_content.nil?

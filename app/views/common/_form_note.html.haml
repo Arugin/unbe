@@ -1,5 +1,9 @@
 .form-group
-  .controls
-    %span.help-inline
+  - if defined? full
+    %span.label.label-info Note
+    = text
+  - else
+    .col-md-3
+    .col-md-9
       %span.label.label-info Note
       = text

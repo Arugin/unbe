@@ -20,26 +20,21 @@
         %span{itemprop:'datePublished', content:article.created_at}
           = l article.created_at.in_time_zone, format: :short
     .clear
-    .views
-      = article.author.female? ? 'создала' : 'создал'
-      = link_to cycles_profile_path(article.author) do
-        = article.author.cycles.all.size - 2
-      = Russian::pluralize(article.author.cycles.all.size - 2, 'цикл','цикла', 'циклов')
-    .clear
-    .views
-      = "#{article.author.female? ? 'написала' : 'написал'} #{article.author.articles.size} #{Russian::pluralize(article.author.articles.size, 'статья','статьи', 'статей')}"
-    .clear
-    .views
-      = "#{article.author.female? ? 'оставила' : 'оставил'} #{article.author.comments_count} #{Russian::pluralize(article.author.comments_count, 'комментарий','комментария','комментариев')}"
+    .actions-info
+      .inline-block{title: item_count_title(article.author, :create, :cycles)}
+        %i.fa.fa-folder-open-o
+        = article.author.cycles.count
+      .inline-block{title: item_count_title(article.author, :create, :articles)}
+        %i.fa.fa-leaf
+        = article.author.articles.count
+      .inline-block{title: item_count_title(article.author, :comment, :comments)}
+        %i.fa.fa-comment
+        = article.author.comments.count
+      .inline-block{title: item_count_title(article.author, :have, :subscribers)}
+        %i.fa.fa-users
+        = article.author.subscribers.count
   .pull-right
-    .control-panel
-      .edit
-        - if can? :update, article
-          = link_to edit_article_path(article) do
-            %i.fa.fa-pencil{title: t(:EDIT_ARTICLE)}
-      = render :partial => 'common/views_count', locals: { subject: article, growth: false }
-      %div{class:"vote-#{article._id}"}
-        = render :partial => 'common/vote_block', :locals => { :votable => article }
+    = render 'control_panel', article: article
   .clear
   .description{itemprop:'articleBody'}
     - unless article.clean_content.nil?

@@ -20,18 +20,18 @@ class Ability
 
     if user.has_role? :USER or user.has_role? :MODERATOR
 
-      can :access, Article, :author => user
+      can :manage, Article, :author => user
       cannot :destroy, Article
       can :destroy, Article, :author => user, :approved? => false, :is_updated? => false
 
-      can :access, Cycle, :author => user
+      can :manage, Cycle, :author => user
       cannot :destroy, Cycle
       can :destroy, Cycle do |cycle|
         (cycle.author == user)&&(cycle.articles.empty?)&&(not(cycle.system))
       end
 
-      can :access, Gallery, :author => user
-      can :access, Content::BaseContent, :author => user
+      can :manage, Gallery, :author => user
+      can :manage, Content::BaseContent, :author => user
 
       can :update, User, :_id => user._id
 
@@ -51,7 +51,7 @@ class Ability
 
 
       cannot :show, Article do |article|
-         article.garbage?
+        article.garbage?
       end
       cannot :approve, Article
       cannot :script, Article
@@ -77,7 +77,7 @@ class Ability
 
     if user.has_role? :ADMIN
 
-      can :access, :all
+      can :manage, :all
 
       cannot :destroy, Article
       can :destroy, Article, :approved? => false, :is_updated? => false

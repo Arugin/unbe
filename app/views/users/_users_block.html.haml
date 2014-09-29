@@ -25,11 +25,11 @@
         = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
         .options
-          .btn-group-xs
-            %button.btn.btn-default
+          .btn-group
+            %button.btn.btn-default.btn-xs
               = link_to block_user_path(user) do
                 = t :BLOCK
-            %button.btn.btn-default.dropdown-toggle{data:{toggle:"dropdown"}}
+            %button.btn.btn-default.btn-xs.dropdown-toggle{data:{toggle:"dropdown"}}
               %span.caret
             %ul.dropdown-menu
               %li

@@ -22,7 +22,7 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    @gallery = Gallery.new(params[:gallery])
+    @gallery = Gallery.new(gallery_params)
     @gallery.author = current_user
 
     if @gallery.save
@@ -42,7 +42,7 @@ class GalleriesController < ApplicationController
     off_public_activity(Gallery) do
       @gallery = Gallery.find(params[:id])
 
-      if @gallery.update_attributes(params[:gallery])
+      if @gallery.update_attributes(gallery_params)
         redirect_to galleries_office_path(scope:'current_user'), notice: t(:GALLERY_UPDATE_SUCCESS)
       else
         render action: "edit"

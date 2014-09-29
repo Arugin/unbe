@@ -1,16 +1,9 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController
   protect_from_forgery
-  #enable_authorization
 
   before_filter :set_locale
   after_filter :set_access_control_headers
-  before_filter do
-    resource = controller_name.singularize.to_sym
-    method = "#{resource}_params"
-    params_resource_name = respond_to?(:custom_resource_name, true) ? send(:custom_resource_name) : resource
-    params[resource] = send(method) if respond_to?(method, true) if params[params_resource_name]
-  end
 
   def set_locale
     I18n.locale = extract_locale_from_tld || I18n.default_locale
@@ -33,7 +26,7 @@ class ApplicationController < ActionController::Base
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
   end
 
-  rescue_from CanCan::Unauthorized do |exception|
+  rescue_from CanCan::AccessDenied do |exception|
     access_denied(exception)
   end
 
