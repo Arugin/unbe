@@ -1,16 +1,10 @@
 Unbe::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
-  Mongoid.identity_map_enabled = true
-
   Mongoid.logger.level = Logger::ERROR
   Moped.logger.level = Logger::ERROR
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
-  # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -25,9 +19,6 @@ Unbe::Application.configure do
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
-  # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
-
   # Raise exception on mass assignment protection for Active Record models
   #config.active_record.mass_assignment_sanitizer = :strict
 
@@ -36,9 +27,10 @@ Unbe::Application.configure do
   #config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Do not compress assets
-  config.assets.compress = false
+  config.assets.js_compressor = :uglifier
   config.assets.compile = true
   # Expands the lines which load the assets
-  config.assets.debug = false
+  config.assets.debug = true
   config.assets.initialize_on_precompile = false
+  config.eager_load = false
 end

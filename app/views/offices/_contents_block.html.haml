@@ -1,14 +1,14 @@
 - contents.each do |content|
     %tr
         %td.content-header
-            .header
+            .office-header
                 = link_to content_base_content_path(content) do
                     = content.title
         %td
 
         %td.center
             = link_to edit_content_base_content_path content do
-                %i.icon-pencil{title: t(:EDIT_CONTENT)}
+                %i.fa.fa-pencil{title: t(:EDIT_CONTENT)}
         %td.long
             = render :partial => "common/views_count", locals: { subject: content, growth: true }
         %td.views-wrapper
@@ -17,4 +17,4 @@
             = render :partial => "common/rate_count", locals: { subject: content }
         %td.center
             - if can? :destroy, content
-                = button_to "", content, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+                = button_to "", content, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "icon-trash", :id => 'btn-rm-cm'

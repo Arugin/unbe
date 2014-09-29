@@ -22,7 +22,7 @@
       #Rendered popover will be slight shifted after modifications
       $popover.css('left', parseInt($popover.css('left')) - (parseInt($popover.css('width')) - parseInt(old_width))/2);
 
-      $popover.find('.icon-remove-sign').add($popover.find('.cancel')).click () ->
+      $popover.find('.glyphicon-remove-sign').add($popover.find('.cancel')).click () ->
         $el.popover('hide');
 
       $popover.find('.apply').click ()->

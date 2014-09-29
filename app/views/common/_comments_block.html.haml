@@ -26,7 +26,7 @@
                 = link_to edit_comment_path(comment) do
                   %i.fa.fa-pencil
               - if can? :destroy, comment
-                = link_to comment, method: :delete, confirm: "#{t(:SURE)}" do
+                = link_to comment, method: :delete, data:{confirm: "#{t(:SURE)}"} do
                   %i.fa.fa-trash-o
         %tr
           %td.votecell

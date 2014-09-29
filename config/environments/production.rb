@@ -1,8 +1,5 @@
 Unbe::Application.configure do
-  Mongoid.identity_map_enabled = true
-  # Settings specified here will take precedence over those in config/application.rb
-
-  # Code is not reloaded between requests
+    # Code is not reloaded between requests
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
@@ -13,7 +10,7 @@ Unbe::Application.configure do
   config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.js_compressor = :uglifier
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
@@ -61,9 +58,6 @@ Unbe::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
-  # Enable threaded mode
-  # config.threadsafe!
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
@@ -80,6 +74,7 @@ Unbe::Application.configure do
     "//unbe-cdn#{Digest::MD5.hexdigest(source).to_i(16) % 2}.herokuapp.com"
   end
 
+  config.eager_load = true
   config.dependency_loading = true
 
 end

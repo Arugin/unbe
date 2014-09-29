@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ArticlesController do
+describe ArticlesController, type: :controller do
 
   def valid_session
     {}

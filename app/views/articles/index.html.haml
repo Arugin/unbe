@@ -2,8 +2,8 @@
 - description "unbe - независимое творческое сообщество, цель которого - сделать систему кинопроизводства в России открытой, а также поднять уровень компетенции и качество работ и роликов на новый уровень"
 
 - if can? :create, Article
-  .row-fluid
-    .span12
+  .row
+    .col-md-12
       .pull-right
         = link_to new_article_path, :class=>'btn btn-primary' do
           %i

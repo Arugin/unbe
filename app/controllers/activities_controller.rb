@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
         redirect_to community_path, alert: message + @activity.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to community_path, alert: message + e.message
       return
     end

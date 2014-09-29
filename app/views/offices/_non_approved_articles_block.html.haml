@@ -5,16 +5,16 @@
     - @articles.each do |article|
       %tr
         %td
-          .header
+          .office-header
             = link_to draft_article_path(article) do
               %span= article.title
           .publishDate
             = article.updated_at.localtime
         %td.thumb-wrapper
           - if article.is_updated?
-            %i.icon-pencil{title: t('ARTICLE_CHANGED')}
+            %i.fa.fa-pencil{title: t('ARTICLE_CHANGED')}
           - if article.garbage?
-            %i.icon-trash{title: t('ARTICLE_TRASH')}
+            %i.fa.fa-trash-o{title: t('ARTICLE_TRASH')}
         %td.thumb-wrapper
           - if article.is_updated?
             %i.fa.fa-refresh
@@ -23,10 +23,10 @@
         %td
           .options
             .btn-group
-              %button.btn
+              %button.btn.btn-default
                 = link_to approve_article_path(article) do
                   = t :APPROVE
-              %button.btn.dropdown-toggle{data:{toggle:"dropdown"}}
+              %button.btn.btn-default.dropdown-toggle{data:{toggle:"dropdown"}}
                 %span.caret
               %ul.dropdown-menu
                 %li= link_to t(:APPROVE), approve_article_path(article)
@@ -34,6 +34,6 @@
                 %li= link_to t(:TO_GARBAGE), to_garbage_article_path(article)
         %td
           - if can? :destroy, article
-            = button_to "", article, :method => :delete, confirm: "#{t(:SURE)}", :class => "icon-trash", :id => 'btn-rm-cm'
+            = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "fa fa-trash-o", :id => 'btn-rm-cm'
 
 = paginate @articles, :remote => true

@@ -1,4 +1,4 @@
-.row-fluid
+.row.piece-item
   %h4
     = render partial: 'articles/title', locals: {item: article}
   .author
@@ -7,16 +7,17 @@
         = article.author.name
   .publishDate
     %span
+      опубликовал
       = l article.created_at.in_time_zone, format: :short
   .clear
   .description
-    - unless article.content.nil?
-      = article.short_content.html_safe
+    - unless article.clean_content.nil?
+      = raw article.short_content
     - else
-      = article.tmpContent.html_safe
+      = raw article.tmpContent
   .clear
   - unless article.garbage?
-    - if article.content.size != article.short_content.size
+    - if article.clean_content.size != article.short_content.size
       .more-info
         = link_to article_path(article) do
           =t 'READ_MORE'

@@ -1,40 +1,6 @@
-.row-fluid
-  #announcement.span8.offset1
-    #myCarousel.carousel.slide
-      %ol.carousel-indicators
-        %li.active{ :data => { :target => "#myCarousel", :"slide-to" => 0 } }
-        %li{ :data => { :target => "#myCarousel", :"slide-to" => 1 } }
-        %li{ :data => { :target => "#myCarousel", :"slide-to" => 2 } }
-      .carousel-inner
-        .active.item
-          %a{:href => "http://youtu.be/e4pUKdY-8Mc" }
-            = image_tag( '/images/banners/sworld.png', :alt=>"Разумный мир")
-            .carousel-caption
-              %h4 Разумный мир
-              %p Мир вокруг нас живет и дышит, и даже у камней есть душа и чувства
-        .item
-          %a{:href => "http://www.youtube.com/playlist?list=PLd5PAyjwtCfs417ZtzSqEfT-CQZF0XU11"}
-            = image_tag( '/images/banners/gem.png', :alt=>"Проект Жемчужина")
-            .carousel-caption
-              %h4 Проект жемчужина
-              %p За любой работой скрывается жемчужина
-        .item
-          %a{:href => "http://www.youtube.com/playlist?list=PLd5PAyjwtCfvzcr7jXz4V_4jvNnQefUEq"}
-            = image_tag( "/images/banners/ae.png", :alt=>"Уроки Adobe After Effects")
-            .carousel-caption
-              %h4 Adobe After Effects: Уроки
-              %p Несколько простых шагов - и ваши видео преображаются
-      %a.carousel-control.left{:href=>"#myCarousel", :data=>{:slide=>"prev"}} &lsaquo;
-      %a.carousel-control.right{:href=>"#myCarousel", :data=>{:slide=>"next"}} &rsaquo;
-  :javascript
-    $('.carousel').carousel({
-        interval: 30000
-    })
-  #logo.span3
-    = image_tag("/images/main/unbe.png", :alt => "unbe logo")
-
-.row-fluid
-  .span7.offset1
+.row.header
+  #logo= image_tag("main/unbe.png", alt: "unbe logo")
+  .col-md-7.fixed-menu
     %ul.nav.nav-pills#main-menu
       %li
         = active_link_to root_path, active: :exclusive do
@@ -52,28 +18,29 @@
         = active_link_to community_path, active: :exclusive do
           %span Сообщество
 
-  .row-fluid
-    .span4#reg
-      - unless user_signed_in?
-        %div
-          %ul.nav.nav-pills
-            %li
-              = link_to main_app.new_user_session_path do
-                %span Войти
-            %li
-              = link_to main_app.new_user_registration_path do
-                %span Регистрация
-            = render 'common/omni_reg'
-      - if user_signed_in?
-        %div
-          %ul.nav.nav-pills
-            %li
-              = link_to office_path do
-                %span
-                  = current_user.name
-            %li
-              = link_to destroy_user_session_path, :method=>'delete' do
-                %span Выйти
+  .col-md-2#reg
+    - unless user_signed_in?
+      %div
+        = link_to main_app.new_user_registration_path do
+          Регистрация
+      %div
+        = link_to main_app.new_user_session_path do
+          Войти
+      = render 'common/omni_reg'
+    - if user_signed_in?
+      %div{style: 'margin-top: -9px;'}
+        .user-name.inline-block
+          = link_to office_path do
+            = current_user.name
+        .user-avatar.inline-block
+          = link_to office_path do
+            = render 'common/avatar', user: current_user
+
+      .exit
+        = link_to destroy_user_session_path, :method=>'delete' do
+          %span Выйти
+
+.header-separator
 
 
 

@@ -1,5 +1,5 @@
 - keywords cycle.tag_list
-.row-fluid
+.row
   %h4
     %span=title cycle.correct_title
   .author
@@ -13,7 +13,7 @@
       .edit
         - if can? :update, cycle
           = link_to edit_cycle_path(cycle) do
-            %i.icon-pencil{title: t(:EDIT_CYCLE)}
+            %i.fa.fa-pencil{title: t(:EDIT_CYCLE)}
       %div{class:"vote-#{cycle._id}"}
         .mini-vote{title: t(:RATING)}
           .count{:class => ((cycle.votes_point > 0 ? 'positive' : 'negative') unless cycle.votes_point ==0 )}

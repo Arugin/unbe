@@ -2,7 +2,7 @@
   %p= t("NO_OFFICE_GALLERIES")
 - else
   - @galleries.each do |gallery|
-    .row-fluid
+    .row
       %h4
         =link_to gallery_path(gallery) do
           %span= gallery.name

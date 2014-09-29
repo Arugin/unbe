@@ -1,4 +1,4 @@
-.row-fluid
+.row
   %h4.random-news
     = link_to article_path(article) do
       %span= article.title
@@ -12,7 +12,7 @@
       = l article.created_at.in_time_zone, format: :short
   .clear
   .description
-    - unless article.content.nil?
+    - unless article.clean_content.nil?
       %p
         = article.tiny_content
   .clear

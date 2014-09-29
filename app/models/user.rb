@@ -53,7 +53,7 @@ class User
   field :statusPoints, type: Integer
   field :about, type: String
 
-  slug  :name, :history => true, reserve: ['admin', 'root']
+  slug  :name, history: true, reserve: ['admin', 'root']
 
   embeds_one :avatar, as: :imageable, class_name: 'Picture', cascade_callbacks: true
   belongs_to :gender
@@ -80,11 +80,9 @@ class User
 
   accepts_nested_attributes_for :avatar, class_name: 'Picture', allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
 
-
-
-  attr_accessible :subscribed,:gender, :gender_id, :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :from, :first_name, :second_name, :about, :avatar, :avatar_attributes
-
-  default_scope order_by(created_at: :desc)
+  default_scope lambda {
+    order_by(created_at: :desc)
+  }
 
   scope :random, lambda {
     all.not_in(is_active: false)

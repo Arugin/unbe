@@ -14,7 +14,7 @@
     %ul.item-meta
       %li.publishDate
         %span
-          %i.icon-leaf{title: t(:PUBLISH_FULL)}
+          %i.fa.fa-leaf{title: t(:PUBLISH_FULL)}
           = item.created_at.nil? ? 'До начала времен': l(item.created_at.in_time_zone, format: :short)
 
     %ul.item-stats

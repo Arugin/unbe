@@ -1,6 +1,6 @@
 .single {
   background-color: ghostwhite;
-  border: 1px solid $link-color;
+  border: $bordered;
   border-radius: 4px;
   padding: 20px;
   .item-container {

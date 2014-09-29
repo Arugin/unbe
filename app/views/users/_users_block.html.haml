@@ -1,12 +1,12 @@
 %table.table.table-striped.users
   %thead
     %th Имя
-    %th.span3 Email
+    %th.col-md-3 Email
     %th Роль
     %th Дата регистрации
     %th
     %th
-    %th.span1
+    %th.col-md-2
   - if @users.empty?
     %p= t :NO_USERS_FOUND
   %tbody
@@ -20,16 +20,16 @@
       %td= l user.created_at.in_time_zone, format: :mini
       %td
         - if user.subscribed
-          %i.icon-envelope{title: t(:SUBSCRIBED)}
+          %i.fa.fa-envelope{title: t(:SUBSCRIBED)}
       %td
         = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
         .options
-          .btn-group
-            %button.btn
+          .btn-group-xs
+            %button.btn.btn-default
               = link_to block_user_path(user) do
                 = t :BLOCK
-            %button.btn.dropdown-toggle{data:{toggle:"dropdown"}}
+            %button.btn.btn-default.dropdown-toggle{data:{toggle:"dropdown"}}
               %span.caret
             %ul.dropdown-menu
               %li
@@ -45,6 +45,6 @@
                 = link_to change_role_user_path(user,  {role: :ADMIN}) do
                   = t("ADMIN")
               %li.divider
-              %li= link_to "Удалить", user, method: :delete, confirm: "#{t(:SURE)}"
+              %li= link_to "Удалить", user, method: :delete, data:{confirm: "#{t(:SURE)}"}
 
 = paginate @users, :remote => true

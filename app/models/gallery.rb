@@ -30,7 +30,9 @@ class Gallery
   has_many :contents, dependent: :destroy, as: :contentable, class_name: 'Content::BaseContent'
   accepts_nested_attributes_for :contents, :reject_if => lambda { |b| b[:src].blank? }
 
-  default_scope order_by(created_at: :desc)
+  default_scope lambda {
+    order_by(created_at: :desc)
+  }
 
   search_in :name, :tags
 

@@ -14,22 +14,22 @@
             - @galleries.each do |gallery|
                 %tr.gallery
                     %td
-                        .header
+                        .office-header
                             = link_to gallery_path(gallery) do
                                 =gallery.name
                         .publishDate
                             = l gallery.created_at.in_time_zone, format: :short
                     %td.views-wrapper
                         .info
-                            %i.icon-th-list{title: "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"}
+                            %i.fa.fa-th-list{title: "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"}
                             = gallery.contents.size
                     %td.center
                         .options
                             .btn-group
-                                %button.btn
+                                %button.btn.btn-default
                                     = link_to edit_gallery_path gallery do
                                         Изменить
-                                %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                                %button.btn.btn-default.dropdown-toggle{data: {toggle: "dropdown"}}
                                     %span.caret
                                 %ul.dropdown-menu
                                     %li
@@ -43,7 +43,7 @@
                         = render :partial => "common/rate_count", locals: { subject: gallery }
                     %td.center
                         - if can? :destroy, gallery
-                            = button_to "Удалить", gallery, :method => :delete, confirm: "#{t(:SURE)}", :class => "btn btn-danger"
+                            = button_to "Удалить", gallery, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "btn btn-danger"
                 - unless gallery.contents.empty?
                     = render :partial => 'contents_block', locals: {contents: gallery.contents}
 

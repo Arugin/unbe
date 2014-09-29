@@ -74,6 +74,11 @@
           width: 100px;
           margin: 0 15px;
           text-align: left;
+          a{
+            img {
+              width: 100px;
+            }
+          }
         }
         .o-info-container{
           max-width: 430px;

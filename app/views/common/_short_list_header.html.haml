@@ -1,11 +1,11 @@
-.row-fluid
-  .span12.list-header.sticky-header.short-list-header
-    .row-fluid
-      .span4
+.row{style: 'margin-right: 0px; margin-top: 10px;'}
+  .col-md-12.list-header.sticky-header.short-list-header
+    .row
+      .col-md-4
         %h4.section-small.no-bottom-margin= title list_title
-      .span5.center-group
+      .col-md-5.center-group
         = render partial: "common/sort_control", locals: { current_action: current_action, model: model }
 
-      .pull-right
-        .span3
+      .col-md-3{style: 'padding-right: 0px;'}
+        .pull-right
           = render :partial => "common/search_control", :locals => { :current_action_path => articles_office_path(scope:'current_user') }

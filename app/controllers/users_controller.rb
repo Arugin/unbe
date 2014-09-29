@@ -38,7 +38,7 @@ class UsersController < ApplicationController
       else
         redirect_to edit_profile_path(@user), :alert => t('USER_INFO_CAN_NOT_BE_UPDATED')
       end
-    rescue Exception => e
+    rescue => e
       redirect_to edit_profile_path(@user), :alert => "#{t('USER_INFO_CAN_NOT_BE_UPDATED')}: #{e.message}"
     end
   end
@@ -105,6 +105,12 @@ class UsersController < ApplicationController
         render 'email'
       end
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :first_name, :second_name, :gender_id, :from, :about, :email, :password, :password_confirmation, :remember_me, avatar_attributes:[:id, :file])
   end
 
 end

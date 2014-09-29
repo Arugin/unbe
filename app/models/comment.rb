@@ -12,7 +12,9 @@ class Comment
   belongs_to :commentable, polymorphic: true, counter_cache: :comments_count
   belongs_to :user
 
-  default_scope order_by(created_at: :asc)
+  default_scope lambda {
+    order_by(created_at: :asc)
+  }
 
   scope :unowned, lambda { |user|
     not_in(author: user.id)

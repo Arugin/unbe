@@ -1,9 +1,9 @@
-.row-fluid
-  .span4
+.row
+  .col-md-4
     %h4.section-small
       =title 'Мои циклы'
       %span.o-count= @cycles.size
-  .span8
+  .col-md-8
     .pull-right
       = link_to new_cycle_path, :class=>'btn btn-primary' do
         %i

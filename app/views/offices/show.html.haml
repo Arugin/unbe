@@ -10,10 +10,10 @@
 .tab-content
   #status.office.tab-pane.active
 
-    .row-fluid
-      .spam1.offset2.pull-left
+    .row
+      .col-md-1.col-md-2.pull-left
         = image_tag "/images/ranks/#{current_user.level}_big.png", title: "Ранг #{current_user.level}"
-      .span8.inline-block.progress-status
+      .col-md-8.inline-block.progress-status
         %span
           Ранг:
           %b
@@ -26,8 +26,10 @@
           Текущий опыт:
           %b
             = current_user.points
-        .progress.progress-info{title: "Опыта до следующего ранга #{to_next_rank_exp(current_user)}"}
-          .bar{style:"width: #{to_next_rank(current_user)}%"}
+        - percentage = to_next_rank(current_user)
+        .progress{title: "Опыта до следующего ранга #{to_next_rank_exp(current_user)}"}
+          .progress-bar.progress-bar-info{role:"progressbar", 'aria-valuenow'=>"#{percentage}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{percentage}%"}
+            = percentage
 
 
     %dl

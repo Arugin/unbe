@@ -1,12 +1,12 @@
-.row-fluid
-  .span4
+.row
+  .col-md-4
     %h4.section=title 'Свалка'
-  .span5
+  .col-md-5
     .pull-right
-  .span3.middle#article-search
+  .col-md-3.middle#article-search
     = render :partial => "common/search_control", :locals => { :current_action_path => garbage_articles_path }
 
-.alert.alert-error
+.alert.alert-danger
   %button{type:"button", class:'close', data: {dismiss: 'alert' }} &times;
   Внимание! В этот раздел попали все статьи, которые нарушают правила сообщества, или не соответствуют тематике сайта, или требуют серьезной доработки, чтобы стать читаемыми.
 #articles.ujs-pagination

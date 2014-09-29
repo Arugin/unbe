@@ -59,7 +59,7 @@ class CyclesController < ApplicationController
         redirect_to @cycle, alert: message + @cycle.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to @cycle, alert: message + e.message
       return
     end
@@ -73,4 +73,11 @@ class CyclesController < ApplicationController
       return
     end
   end
+
+  private
+
+  def cycle_params
+    params.require(:cycle).permit(:title, :logo, :description, :tag_list)
+  end
+
 end

@@ -1,9 +1,9 @@
-.row-fluid
-  .span4
+.row
+  .col-md-4
     %h4.section-small
       = title 'Мои статьи'
       %span.o-count= @articles.size
-  .span8
+  .col-md-8
     .pull-right
       = link_to new_article_path, :class=>'btn btn-primary' do
         %i

@@ -5,8 +5,7 @@ begin
        {:name => 'USER'},
        {:name => 'MODERATOR'},
        {:name => 'READER'}
-      ],
-      :without_protection => true)
+      ])
   Gender.create ({:name => 'UNKNOWN'})
   @male = Gender.create ({:name => 'MALE'})
   Gender.create ({:name => 'FEMALE'})

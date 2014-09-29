@@ -38,7 +38,7 @@ class ContentsController < ApplicationController
   def create
     session[:gallery] ||= request.referer
     @gallery = Gallery.find params[:gallery_id]
-    @content = @gallery.contents.build(params[:content_base_content])
+    @content = @gallery.contents.build(params[:content])
     @content.author = current_user
     if @content.save
       flash[:notice] = t :CONTENT_ADD_SUCCESSFULLY
@@ -59,7 +59,7 @@ class ContentsController < ApplicationController
       @content.author = current_user
       @content.save
     end
-    if @content.update_attributes(params[:content_base_content])
+    if @content.update_attributes(params[:content])
       @content.reviewed = false
       @content.save
       redirect_to edit_gallery_path(@content.contentable), notice: t(:CONTENT_UPDATE_SUCCESS)
@@ -78,11 +78,22 @@ class ContentsController < ApplicationController
         redirect_to session.delete(:destroy_gallery), alert: message + @content.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to session.delete(:destroy_gallery), alert: message + e.message
       return
     end
     redirect_to session[:destroy_gallery], notice: t(:CONTENT_REMOVE_SUCCESS)
+  end
+
+  private
+
+  def custom_resource_name
+    :content_base_content
+  end
+
+  def content_params
+    params[:content] = params.delete(:content_base_content)
+    params.require(:content).permit(:title, :description, :src, :tag_list, :contentable_id)
   end
 
 end

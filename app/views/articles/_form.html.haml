@@ -12,15 +12,15 @@
     = f.input :script, as: :text, input_html: { class: "span12", rows: 5 } if can? :script, Article
     = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Article}
     = f.input :system_tag, :label => "Пометить" if can? :system_tag, Article
-    .row-fluid
+    .row
       - if can? :to_news, Article
-        .span3
-          = f.input :to_news, as: :boolean, :label => "В новости?",input_html: { class: "u-checkbox" }
-      .span3
-        = f.input :publish, as: :boolean, :label => "Опубликовать?",input_html: { class: "u-checkbox", checked: false }
+        .col-md-3
+          = f.input :to_news, as: :boolean, label:"В новости?",input_html: { class: "u-checkbox" }
+      .col-md-3
+        = f.input :publish, as: :boolean, label: "Опубликовать?",input_html: { class: "u-checkbox", checked: false }
       - if can? :approve, Article
-        .span3
-          = f.input :approve, as: :boolean, :label => "Подтвердить?",input_html: { class: "u-checkbox" , checked: false}
+        .col-md-3
+          = f.input :approve, as: :boolean, label: "Подтвердить?",input_html: { class: "u-checkbox" , checked: false}
 
 
   .form-actions

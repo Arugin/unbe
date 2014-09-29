@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   include Concerns::BulkOperationable
   include Concerns::Votable
 
-  before_filter :authenticate_user!, except: [:news,:index, :show]
-  load_and_authorize_resource except: [:news, :index]
+  before_filter :authenticate_user!, except: [:news, :index, :show]
+  load_and_authorize_resource except: [:news, :index, :show]
 
   bulk_actions :delete, :tag
 
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-
+    puts 'ddddd', @article.to_json
     @old_article = @article.dup
 
     if @article.update_attributes(params[:article])
@@ -76,7 +76,7 @@ class ArticlesController < ApplicationController
         redirect_to @article, alert: message + @article.errors.full_messages.join(', ')
         return
       end
-    rescue Exception => e
+    rescue => e
       redirect_to @article, alert: message + e.message
       return
     end
@@ -170,13 +170,13 @@ class ArticlesController < ApplicationController
   end
 
   def automatic_publish
-    if params[:article][:publish].to_i == 1
+    if params[:publish].to_i == 1
       @article.publish
     end
   end
 
   def automatic_approve
-    if params[:article][:approve].to_i == 1 && can?(:approve, @article)
+    if params[:approve].to_i == 1 && can?(:approve, @article)
       @article.approve
     end
   end
@@ -188,6 +188,15 @@ class ArticlesController < ApplicationController
     automatic_approve
     add_script
     @article.save
+  end
+
+  private
+
+  def article_params
+    puts 'permit'
+    params[:publish] = params[:article].delete(:publish)
+    params[:approve] = params[:article].delete(:approve)
+    params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tag_list, :to_news)
   end
 
 end

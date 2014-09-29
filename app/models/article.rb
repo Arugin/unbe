@@ -76,8 +76,6 @@ class Article
     unscoped.search_for(user, params).not_in(state: 'Article::Approved')
   }
 
-  attr_protected :to_news, :baseRating, :rating, :system_tag, :script, :state
-
   voteable self, up: +1, down: -1
   voteable Cycle, up: +1, down: -1
 
@@ -86,10 +84,14 @@ class Article
   end
 
   def short_content
-    doc = Nokogiri::HTML(content)
-    break_line = doc.xpath("//p[comment()=' unbebreak ']").first
-    end_index = break_line.present? ? content.index(break_line.to_s) : content.length
-    truncate(content.sub('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">', ''), length: end_index, omission: '')
+    body = Nokogiri::HTML(content).xpath("//body")
+    content = body.xpath("node()[comment()=' unbebreak ']/preceding-sibling::*")
+    content.present? ? content.to_html : body.xpath("//body/node()").to_html.gsub("\n", "")
+  end
+
+  def clean_content
+    return nil if content.nil?
+    Nokogiri::HTML(content).xpath("//body/node()").to_html
   end
 
   def get_logo_url

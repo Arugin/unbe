@@ -12,7 +12,7 @@
             =link_to " #{t(s[:title]) || s[:sort_by]}", current_action.call(sort_by: s[:sort_by]), 'data-sort-by' => s[:sort_by]
 
     = link_to current_action.call( direction: (params[:direction] == 'asc' ? :desc : :asc) ),
-      :class => "btn btn-mini btn-narrow sort-order" do
+      :class => "btn btn-xs btn-narrow sort-order btn-default" do
       %i.fa{class: (params[:direction] == 'asc' ? 'fa-arrow-up' : 'fa-arrow-down')}
   - else
     %span Не сортируемо

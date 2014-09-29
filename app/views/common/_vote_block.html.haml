@@ -5,7 +5,7 @@
   - elsif votable.author != current_user
     %a= image_tag( '/images/votes/minus_inactive.png', title: (user_signed_in? ? "Вы не можете понижать рейтинг, пока ваш опыт не достиг #{Utils.RANKS[2]}" : "Вы должны войти на сайт, чтобы голосовать"))
   - if votable.author == current_user
-    %i.icon-thumbs-up
+    %i.fa.fa-thumbs-o-up
   .count{class: ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
     = votable.votes_point
   - if can? :vote_up, votable
