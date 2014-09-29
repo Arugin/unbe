@@ -22,13 +22,18 @@
       %span Сообщество
 
 %dl
-  %dt Инфо
+  %dt Информация
   .clear
   %dd= link_to 'О сообществе', info_community_path(system_tag: :about)
   %dd= link_to 'Правила', info_community_path(system_tag: :rules)
   %dd= link_to 'Вопросы', info_community_path(system_tag: :faq)
   %dd= link_to "Если нашли ошибку", info_community_path(system_tag: :errors)
   %dd= link_to "Идеи и предложения", info_community_path(system_tag: :ideas)
+
+%dl
+  %dd= link_to 'Авторские права', info_community_path(system_tag: :license)
+  %dd= link_to 'Поощрение авторов', info_community_path(system_tag: :promotion)
+
 
 %dl
   %dt Email:

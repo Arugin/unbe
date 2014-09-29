@@ -1,6 +1,6 @@
 - keywords article.tag_list
 - description article.tiny_content
-.row{itemscope:true, itemtype:'http://schema.org/Article'}
+.row.bordered{itemscope:true, itemtype:'http://schema.org/Article'}
   %h4
     = link_to cycle_path(article.cycle) do
       = article.cycle.correct_title
@@ -21,6 +21,9 @@
           = l article.created_at.in_time_zone, format: :short
     .clear
     .actions-info
+      .inline-block{title: item_count_title(article.author, :have, :subscribers)}
+        %i.fa.fa-users
+        = article.author.subscribers.count
       .inline-block{title: item_count_title(article.author, :create, :cycles)}
         %i.fa.fa-folder-open-o
         = article.author.cycles.count
@@ -30,9 +33,6 @@
       .inline-block{title: item_count_title(article.author, :comment, :comments)}
         %i.fa.fa-comment
         = article.author.comments.count
-      .inline-block{title: item_count_title(article.author, :have, :subscribers)}
-        %i.fa.fa-users
-        = article.author.subscribers.count
   .pull-right
     = render 'control_panel', article: article
   .clear

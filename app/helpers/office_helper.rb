@@ -1,7 +1,7 @@
 module OfficeHelper
   def to_next_rank(user)
     if Utils.RANKS[user.level+1].present?
-      (user.points/Utils.RANKS[user.level+1].to_f)*100
+      ((user.points/Utils.RANKS[user.level+1].to_f) * 100).round
     else
       0
     end

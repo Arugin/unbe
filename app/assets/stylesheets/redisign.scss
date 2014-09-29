@@ -314,4 +314,9 @@ body{
     }
   }
 
+  .bordered{
+    border-bottom: $bordered;
+    padding-bottom: 20px;
+  }
+
 }
