@@ -12,8 +12,10 @@
       = content.contentable.author.name
   .publishDate
     - if content.created_at.nil?
+      = sex_action(content.contentable.author, :publish)
       = l content.contentable.created_at.in_time_zone, format: :short
     - else
+      = sex_action(content.contentable.author, :publish)
       = l content.created_at.in_time_zone, format: :short
   .pull-right
     .control-panel

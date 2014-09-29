@@ -9,7 +9,7 @@
             = article.author.name
       .publishDate
         %span
-          опубликовал
+          = sex_action(article.author, :publish)
           = l article.created_at.in_time_zone, format: :short
     .pull-right
       = render 'articles/control_panel', article: article

@@ -198,7 +198,7 @@ ru:
 
   time:
     formats:
-      short: "%e %B %Y в %k:%M:%S"
+      short: "%e %B %Y в %k:%M"
       mini: "%e.%m.%y %k:%M"
 
   ONLY_IMAGES_CAN_BE_UPLOADED: Файлы следующих форматов разрешено загружать (jpeg/png)
