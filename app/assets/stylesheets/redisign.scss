@@ -366,4 +366,12 @@ body{
   &.contents.show h3, &.galleries.show h3, &.articles.show h3, &.cycles.show h3 {
     margin-top: 0px;
   }
+  &.contents.index{
+    .item-thumb{
+      height: 160px !important;
+    }
+    .item-card p{
+      height: 110px;
+    }
+  }
 }

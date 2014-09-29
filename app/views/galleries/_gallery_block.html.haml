@@ -2,12 +2,18 @@
 .row
   %h3
     %span=title gallery.name
-  .author
-    = link_to profile_path(gallery.author) do
-      = gallery.author.name
-  .publishDate
-    - unless gallery.created_at.nil?
-      = l gallery.created_at.in_time_zone, format: :short
+  .news-user-avatar
+    = render 'common/avatar', user: gallery.author
+  .info
+    .credentials
+      .author
+        = link_to profile_path(gallery.author) do
+          = gallery.author.name
+      .publishDate
+        - unless gallery.created_at.nil?
+          = l gallery.created_at.in_time_zone, format: :short
+    .clear
+      = render 'common/actions_info', user: gallery.author
   .pull-right
     .control-panel
       .edit

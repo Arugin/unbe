@@ -7,16 +7,22 @@
     %span.divider /
     = link_to content_base_content_path(content) do
       %span= title content.title
-  .author
-    = link_to profile_path(content.contentable.author) do
-      = content.contentable.author.name
-  .publishDate
-    - if content.created_at.nil?
-      = sex_action(content.contentable.author, :publish)
-      = l content.contentable.created_at.in_time_zone, format: :short
-    - else
-      = sex_action(content.contentable.author, :publish)
-      = l content.created_at.in_time_zone, format: :short
+  .news-user-avatar
+    = render 'common/avatar', user: content.contentable.author
+  .info
+    .credentials
+      .author
+        = link_to profile_path(content.contentable.author) do
+          = content.contentable.author.name
+      .publishDate
+        - if content.created_at.nil?
+          = sex_action(content.contentable.author, :publish)
+          = l content.contentable.created_at.in_time_zone, format: :short
+        - else
+          = sex_action(content.contentable.author, :publish)
+          = l content.created_at.in_time_zone, format: :short
+    .clear
+    = render 'common/actions_info', user: content.contentable.author
   .pull-right
     .control-panel
       .edit

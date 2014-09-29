@@ -14,7 +14,7 @@ module ArticlesHelper
   end
 
   def sex_action(author, action)
-    actions = {create: ['создала', 'создал'], comment: ['оставила','оставил'], have:['очаровала','очаровал'], publish:['опубликовала','опубликовал']}
+    actions = {write: ['написала', 'написал'],create: ['создала', 'создал'], comment: ['оставила','оставил'], have:['очаровала','очаровал'], publish:['опубликовала','опубликовал']}
     author.female? ?  actions[action][0] : actions[action][1]
   end
 end

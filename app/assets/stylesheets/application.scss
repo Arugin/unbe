@@ -243,6 +243,7 @@ h4.random-news{
   .long{
     @extend .views-wrapper;
     min-width: 65px;
+    overflow: hidden;
   }
   .thumb-wrapper{
     @extend .thumb-wrapper;

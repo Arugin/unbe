@@ -5,7 +5,7 @@
   .inline-block{title: item_count_title(user, :create, :cycles)}
     %i.fa.fa-folder-open-o
     = user.cycles.count
-  .inline-block{title: item_count_title(user, :create, :articles)}
+  .inline-block{title: item_count_title(user, :write, :articles)}
     %i.fa.fa-leaf
     = user.articles.count
   .inline-block{title: item_count_title(user, :comment, :comments)}
