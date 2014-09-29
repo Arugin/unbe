@@ -44,14 +44,14 @@ body{
       margin-left: 10px;
     }
     .fixed-menu {
-      min-width: 710px;
+      min-width: 800px;
     }
 
     #logo {
       @extend .col-md-2;
       text-align: center;
       margin-top: 20px;
-      width: 270px;
+      width: 250px;
     }
 
     .col-md-2#reg {
@@ -112,6 +112,7 @@ body{
     }
   }
   .row{
+    margin-right: 0px;
     .header{
       @extend .header;
       height: 119px;
@@ -131,7 +132,7 @@ body{
 
   .content{
     border-right: $bordered;
-    padding-right: 10px;
+    padding-right: 20px;
   }
 
   .piece-item {
@@ -230,7 +231,6 @@ body{
 
   .pull-right{
     .control-panel{
-      padding-right: 10px;
       min-width: 50%;
       height: auto;
       display: block;
@@ -252,10 +252,6 @@ body{
         min-width: 20px;
       }
     }
-  }
-
-  .share42init{
-    padding-right: 10px;
   }
 
   .form-horizontal{
