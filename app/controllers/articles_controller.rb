@@ -192,8 +192,8 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    @publish ||= params[:article].delete(:publish)
-    @approve ||= params[:article].delete(:approve)
+    @publish ||= (params[:article].delete(:publish)).to_i == 1
+    @approve ||= (params[:article].delete(:approve)).to_i == 1
     params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tag_list, :to_news)
   end
 
