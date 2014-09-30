@@ -23,7 +23,7 @@
     .clear
     = render 'common/actions_info', user: article.author
   .pull-right
-    = render 'control_panel', article: article
+    = render 'articles/control_panel', article: article
   .clear
   .description{itemprop:'articleBody'}
     - unless article.clean_content.nil?

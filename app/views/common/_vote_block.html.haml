@@ -1,17 +1,9 @@
 .vote{title: t(:RATING)}
-  - if can? :vote_down, votable
-    = link_to polymorphic_path([:vote_down,votable]), remote: true do
-      %i.fa.fa-minus{title: "Не понравилось"}
-  - elsif votable.author != current_user
-    %a
-      %i.fa.fa-minus.inactive{title: (user_signed_in? ? "Вы не можете понижать рейтинг, пока ваш опыт не достиг #{Utils.RANKS[2]}" : "Вы должны войти на сайт, чтобы голосовать")}
-  - if votable.author == current_user
-    %i.fa.fa-thumbs-o-up
+  = link_to polymorphic_path([:vote_down,votable]), remote: true do
+    %i.fa.fa-minus{class: votable_class(:vote_down, votable), title: votable_title(:vote_down, votable)}
+
   .count{class: ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
     = votable.votes_point
-  - if can? :vote_up, votable
-    = link_to polymorphic_path([:vote_up,votable]), remote: true do
-      %i.fa.fa-plus
-  - elsif votable.author != current_user
-    %a
-      %i.fa.fa-plus.inactive{title: (user_signed_in? ? "Вы не можете повышать рейтинг, пока ваш опыт не достиг #{Utils.RANKS[1]}" : "Вы должны войти на сайт, чтобы голосовать")}
+
+  = link_to polymorphic_path([:vote_up,votable]), remote: true do
+    %i.fa.fa-plus{class: votable_class(:vote_up, votable), title: votable_title(:vote_up, votable)}

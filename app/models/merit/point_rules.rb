@@ -13,19 +13,6 @@ module Merit
     include Merit::PointRulesMethods
 
     def initialize
-      score 1, on: 'comments#vote_up', to: :user
-
-      score -1, on: 'comments#vote_down', to: :user
-
-      score 1, on: 'articles#vote_up', to: :author
-
-      score -1, on: 'articles#vote_down', to: :author
-
-      score 1, on: 'contents#vote_up', model_name: 'Content::BaseContent', to: :author
-
-      score -1, on: 'contents#vote_down', model_name: 'Content::BaseContent', to: :author
-
-      score 10, on: 'contents#approve', model_name: 'Content::BaseContent', to: :author
 
     end
   end

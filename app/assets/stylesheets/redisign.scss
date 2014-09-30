@@ -336,16 +336,17 @@ body{
     }
   }
 
-  .fa-plus{
+  .fa.fa-plus{
     @extend .green;
   }
 
-  .fa-minus{
+  .fa.fa-minus{
     color: darkred;
   }
 
-  .inactive{
+  .fa.inactive{
     color: gray;
+    cursor: default;
   }
 
   .actions-info{

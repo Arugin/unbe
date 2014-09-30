@@ -28,6 +28,10 @@ class Comment
     truncate(content, length: 50, omission: '...')
   end
 
+  def author
+    self.user
+  end
+
   def commentable_author
     commentable.author
   end
