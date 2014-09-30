@@ -1,4 +1,5 @@
 class Article::BaseState < StatePattern::State
+
   def publish
     unless stateful.tmpContent.blank?
       transition_to(Article::Published)
