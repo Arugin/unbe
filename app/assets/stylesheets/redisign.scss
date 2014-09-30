@@ -78,10 +78,42 @@ body{
           width: 24px;
         }
       }
+      .add{
+        z-index: 10001;
+        margin-top: 1px;
+        margin-right: 10px;
+        a {
+          color: $textcolor;
+          &:hover{
+            color: $textcolor;
+          }
+        }
+        button {
+          background-color:$header-background;
+          border-color: $super-dark-gray;
+          padding: 1px 10px;
+          i {
+            color: $header-text-color;
+          }
+          &:hover{
+            background-color: $header-text-color;
+            i {
+              color: $header-background;
+            }
+          }
+        }
+        .dropdown-menu{
+          top: 66px;
+          right: 77px;
+          a{
+            padding: 5px;
+            padding-left: 10px;
+          }
+        }
+      }
     }
 
     .user-name{
-      height: 50px;
       margin-right: 10px;
     }
 
@@ -90,8 +122,10 @@ body{
       float: right;
     }
 
+
+
     .exit{
-      margin-top: 11px;
+      margin-top: 12px;
     }
 
     a{
@@ -329,7 +363,7 @@ body{
   ul.items-card-list.popular{
     li.item {
       width: 185px;
-      margin-right: 10px;
+      margin-right: 4%;
       &:last-child{
         margin-right: 0px;
       }
