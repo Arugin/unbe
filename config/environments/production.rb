@@ -50,13 +50,16 @@ Unbe::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
-      :address =>        'smtp.mandrillapp.com',
+      :address =>        'smtp.webfaction.com ',
       :user_name =>      ENV['MANDRILL_USERNAME'],
       :password =>       ENV['MANDRILL_APIKEY'],
-      :domain =>         'heroku.com',
-      :authentication => :plain
+      :domain =>         'unbe.ru',
+      :enable_starttls_auto => true
   }
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)

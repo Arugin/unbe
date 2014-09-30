@@ -65,6 +65,7 @@ gem "omniauth-twitter"
 gem 'omniauth-vkontakte'
 gem "omniauth-google-oauth2"
 gem 'rack-cors'
+gem 'therubyracer', group: :production
 
 ### development and test
 gem "haml-rails", group: :development
@@ -73,5 +74,6 @@ gem "capybara", ">= 1.1.2", group: :test
 gem "factory_girl_rails", ">= 4.1.0", group: [:development, :test]
 gem "database_cleaner", ">= 0.9.1", group: :test
 gem 'coveralls', require: false
+gem 'capistrano', '~> 2.15'
 
-ruby '2.1.1'
+ruby '2.0.0'
