@@ -50,7 +50,7 @@ Unbe::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
-      :address =>        'smtp.webfaction.com ',
+      :address =>        'smtp.webfaction.com',
       :user_name =>      ENV['MANDRILL_USERNAME'],
       :password =>       ENV['MANDRILL_APIKEY'],
       :domain =>         'unbe.ru',

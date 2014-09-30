@@ -21,6 +21,8 @@ set :use_sudo, false
 set :deploy_via, :checkout
 set :branch, "master"
 
+set :keep_releases, 4
+
 set :default_environment, {
     'PATH' => "#{deploy_to}/bin:$PATH",
     'GEM_HOME' => "#{deploy_to}/gems",
@@ -71,7 +73,7 @@ namespace :deploy do
   namespace :assets do
     desc 'Run the precompile task locally and rsync with shared'
     task :precompile, :roles => :web, :except => { :no_release => true } do
-      %x{bundle exec rake assets:precompile}
+      run "cd #{deploy_to}/current; bundle exec rake assets:precompile"
     end
   end
 end
