@@ -4,7 +4,7 @@
   - if subject.respond_to? :impressions
     %i.fa.fa-eye
     = count
-    - if growth && (count > 0)
+    - if growth && (subject.impressionist_count(start_date: DateTime.now.beginning_of_day) > 0)
       %span.grow{title: t(:DAY_COUNT_VIEWS)}
         = "+#{subject.impressionist_count(start_date: DateTime.now.beginning_of_day)}"
   - else
