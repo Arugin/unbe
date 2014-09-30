@@ -1,8 +1,0 @@
-.shifted
-  - if articles.blank?
-    .description
-      %p= t("NO_CYCLE_ARTICLES")
-  - articles.each do |article|
-    = render :partial => 'articles/article_short_block',:locals => { :article => article }
-
-= paginate articles, :param_name => 'articles_page', :remote => true

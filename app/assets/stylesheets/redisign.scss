@@ -376,4 +376,10 @@ body{
       height: 110px;
     }
   }
+  i {
+    color: $link-color;
+  }
+  .control-panel i{
+    @extend i;
+  }
 }
