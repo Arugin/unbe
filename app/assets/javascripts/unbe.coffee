@@ -61,6 +61,15 @@ class @Unbe
         search_clear.hide()
         return
 
+  isBreakpoint: ( alias ) ->
+    $('.device-' + alias).is(':visible')
+
+  shouldLogoDisplay: ()->
+    if unbe.isBreakpoint('xs') or unbe.isBreakpoint('sm')
+      $('#logo').css('display', 'none')
+    else
+      $('#logo').css('display', 'block')
+
 unless @unbe?
   @unbe = new Unbe()
 

@@ -18,7 +18,7 @@ body{
 
 
   .header {
-    min-width: 1265px;
+    min-width: 1236px;
     font-size: 28px;
     background-color: $header-background;
     box-shadow: 0 1px 10px rgba(0,0,0,0.1);
@@ -41,11 +41,10 @@ body{
 
     #main-menu {
       margin-top: 56px;
-      margin-left: 10px;
     }
 
     .fixed-menu {
-      min-width: 800px;
+      min-width: 780px;
       padding-right: 0px;
     }
 
@@ -108,7 +107,7 @@ body{
         .dropdown-menu{
           top: 66px;
           right: 77px;
-          min-width: 200px;
+          min-width: 210px;
           a{
             padding: 5px;
             padding-left: 10px;
