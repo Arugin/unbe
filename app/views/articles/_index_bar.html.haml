@@ -1,10 +1,6 @@
 .sidebar-news
   .commercial
     = render :partial => 'common/commercial_block'
-  - if user_signed_in? and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
-    = link_to main_app.new_news_articles_path do
-      Опубликовать новость
-
   .right-bar
     = render 'articles/popular'
 

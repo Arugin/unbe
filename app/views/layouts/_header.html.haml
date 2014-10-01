@@ -29,7 +29,7 @@
       = render 'common/omni_reg'
     - if user_signed_in?
       %div{style: 'margin-top: -9px;'}
-        %div.inline-block{style: 'width: 120px;'}
+        %div.inline-block{style: 'min-width: 140px;'}
           .user-name
             = link_to office_path do
               = current_user.name
@@ -42,17 +42,23 @@
                 = link_to new_article_path do
                   %i.fa.fa-leaf
                   &nbsp;
-                  =t(:NEW_ARTICLE)
+                  Написать статью
+              - if user_signed_in? and (current_user.has_role? :ADMIN or current_user.has_role? :MODERATOR)
+                %li
+                  = link_to main_app.new_news_articles_path do
+                    %i.fa.fa-bell
+                    &nbsp;
+                    Опубликовать новость
               %li
                 = link_to new_cycle_path do
                   %i.fa.fa-folder-open-o
                   &nbsp;
-                  = t(:NEW_CYCLE)
+                  Создать статью
               %li
                 = link_to new_gallery_path do
                   %i.fa.fa-film
                   &nbsp;
-                  = t(:NEW_GALLERY)
+                  Создать галерею
 
         .user-avatar.inline-block
           = link_to office_path do

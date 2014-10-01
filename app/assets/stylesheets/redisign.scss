@@ -43,8 +43,10 @@ body{
       margin-top: 56px;
       margin-left: 10px;
     }
+
     .fixed-menu {
       min-width: 800px;
+      padding-right: 0px;
     }
 
     #logo {
@@ -62,6 +64,7 @@ body{
       padding-top: 30px;
       height: 120px;
       background: linear-gradient(to right, $header-background, $dark-blue);
+      padding-left: 0px;
       a{
         padding: 0;
         margin: 0;
@@ -81,7 +84,7 @@ body{
       .add{
         z-index: 10001;
         margin-top: 1px;
-        margin-right: 10px;
+        margin-right: 10px;        ;
         a {
           color: $textcolor;
           &:hover{
@@ -105,6 +108,7 @@ body{
         .dropdown-menu{
           top: 66px;
           right: 77px;
+          min-width: 200px;
           a{
             padding: 5px;
             padding-left: 10px;
@@ -204,11 +208,11 @@ body{
     margin-bottom: 10px;
     width: 100%;
     text-align: center;
-    height: 200px !important;
+    max-height: 200px !important;
     clear: both;
     ins {
       width: 100%;
-      height: 200px !important;
+      max-height: 200px !important;
       overflow: hidden;
     }
   }
