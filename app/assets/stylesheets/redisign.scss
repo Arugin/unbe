@@ -420,4 +420,12 @@ body{
   .control-panel i{
     @extend i;
   }
+  .description{
+    p{
+      a{
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+  }
 }
