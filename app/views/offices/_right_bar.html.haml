@@ -51,9 +51,13 @@
       %li
         = active_link_to authentications_path, active: :exclusive do
           Связка аккаунтов
+      %br
       %li
         = active_link_to edit_profile_path(current_user) do
           Настроить профиль
+      %li
+        = active_link_to settings_office_path do
+          Настройки отображения сайта
       %li
         = active_link_to edit_user_registration_path do
           Настройки аккаунта

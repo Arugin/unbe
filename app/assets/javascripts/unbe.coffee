@@ -70,6 +70,36 @@ class @Unbe
     else
       $('#logo').css('display', 'block')
 
+  lockHeader: ()->
+    $('#main-header').css
+      position: 'fixed'
+      top: '0px'
+      left: '0px'
+
+    $('#container').css
+      'margin-top': '120px'
+
+
+  unlockHeader: ()->
+    $('#main-header').css
+      position: 'relative'
+
+    $('#container').css
+      'margin-top': '0px'
+
+  settings: ()->
+    gon.settings
+
+  isDefaultSettings: ()->
+    @settings().default?
+
+  checkHeaderState: ()->
+    if not @isDefaultSettings() and @settings().unlock_top_menu
+      @unlockHeader()
+    else
+      @lockHeader()
+
+
 unless @unbe?
   @unbe = new Unbe()
 

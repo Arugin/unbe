@@ -145,6 +145,11 @@ GEM
       railties (>= 3.2, < 5.0)
     fotoramajs (4.6.2)
       sprockets (>= 2)
+    gon (5.2.0)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -285,6 +290,7 @@ GEM
     rake (10.3.2)
     recaptcha (0.3.6)
     ref (1.0.5)
+    request_store (1.1.0)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -382,6 +388,7 @@ DEPENDENCIES
   factory_girl_rails (>= 4.1.0)
   font-awesome-rails
   fotoramajs
+  gon
   haml
   haml-rails
   impressionist

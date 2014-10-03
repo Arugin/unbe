@@ -22,6 +22,8 @@ $(document).ready ()->
       unbe.shouldLogoDisplay()
     , 100, fullDateString.getTime()
 
+  unbe.checkHeaderState()
+
 
 
 

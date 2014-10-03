@@ -39,7 +39,7 @@ gem 'active_link_to'
 gem 'merit'
 gem 'state_pattern'
 gem 'public_activity'
-
+gem 'gon'
 
 # migration
 gem 'rails-observers'

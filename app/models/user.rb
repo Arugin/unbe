@@ -18,6 +18,7 @@ class User
   after_create :default_cycles
   after_create :default_role
   after_create :default_gender
+  after_create :add_settings
   after_create :record_activity
 
   field :name, type: String
@@ -64,6 +65,10 @@ class User
   has_many :contents, dependent: :restrict, inverse_of: :author, class_name: 'Content::BaseContent'
   has_and_belongs_to_many :subscriptions, class_name: 'User', inverse_of: :subscribers
   has_and_belongs_to_many :subscribers, class_name: 'User', inverse_of: :subscriptions
+  embeds_one :settings, class_name: 'Settings'
+
+  accepts_nested_attributes_for :settings, autobuild: true
+  accepts_nested_attributes_for :avatar, class_name: 'Picture', allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
 
   has_many :authentications, dependent: :destroy
 
@@ -77,8 +82,6 @@ class User
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
-
-  accepts_nested_attributes_for :avatar, class_name: 'Picture', allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
 
   default_scope lambda {
     order_by(created_at: :desc)
@@ -239,6 +242,10 @@ class User
 
   def default_role
     self.add_role :USER
+  end
+
+  def add_settings
+    self.create_settings
   end
 
   def default_cycles

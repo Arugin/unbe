@@ -79,6 +79,7 @@ Unbe::Application.routes.draw do
       get 'articles'
       get 'cycles'
       get 'galleries'
+      get 'settings'
       get 'subscriptions'
       get 'non_approved_articles'
       get 'non_approved_contents'

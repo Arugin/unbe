@@ -94,6 +94,10 @@ class OfficesController < ApplicationController
     @subscribers = current_user.subscribers.page(params[:page])
   end
 
+  def settings
+    @user = current_user
+  end
+
   private
 
   def scope

@@ -13,3 +13,8 @@
 # ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.uncountable %w( settings )
+  inflect.irregular 'settings', 'settings'
+end
