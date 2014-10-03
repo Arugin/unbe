@@ -15,7 +15,7 @@
     .row
       - if can? :to_news, Article
         .col-md-3
-          = f.input :to_news, as: :boolean, label:"В новости?",input_html: { class: "u-checkbox" }
+          = f.input :to_news, as: :boolean, label:"На главную?",input_html: { class: "u-checkbox" }
       .col-md-3
         = f.input :publish, as: :boolean, label: "Опубликовать?",input_html: { class: "u-checkbox", checked: false }
       - if can? :approve, Article

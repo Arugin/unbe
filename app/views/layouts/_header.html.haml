@@ -34,7 +34,13 @@
             = link_to office_path do
               = current_user.name
 
-          .add
+          .add.inline-block{style: 'margin-right: 0px;'}
+            %button.btn.btn-default.btn-xs.dropdown-toggle{data: {toggle: "dropdown"}}
+              %i.fa.fa-list
+            %ul.dropdown-menu{role:"menu"}
+              = render 'offices/item_list'
+
+          .add.inline-block
             %button.btn.btn-default.btn-xs.dropdown-toggle{data: {toggle: "dropdown"}}
               %i.fa.fa-plus
             %ul.dropdown-menu{role:"menu"}

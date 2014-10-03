@@ -30,34 +30,5 @@
       %li
         = active_link_to office_path, active: :exclusive do
           Статус
-      %li
-        = active_link_to articles_office_path, active: :exclusive do
-          Мои статьи
-      %li
-        = active_link_to cycles_office_path do
-          Мои циклы
-      %li
-        = active_link_to galleries_office_path do
-          Мои работы
-      %li
-        = active_link_to projects_path do
-          Мои проекты
-      %li
-        = active_link_to subscriptions_office_path do
-          Подписки
-      %li
-        = active_link_to profile_path(current_user), active: :exclusive do
-          Профиль
-      %li
-        = active_link_to authentications_path, active: :exclusive do
-          Связка аккаунтов
-      %br
-      %li
-        = active_link_to edit_profile_path(current_user) do
-          Настроить профиль
-      %li
-        = active_link_to settings_office_path do
-          Настройки отображения сайта
-      %li
-        = active_link_to edit_user_registration_path do
-          Настройки аккаунта
+
+      = render 'offices/item_list'
