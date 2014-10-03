@@ -111,6 +111,15 @@ class ArticlesController < ApplicationController
     redirect_to non_approved_articles_office_path, notice: t(:ARTICLE_APPROVE_SUCCESS)
   end
 
+  def to_main
+    @article = Article.find(params[:id])
+    if can?(:to_news, @article)
+      @article.to_news = true
+      @article.save
+    end
+    redirect_to articles_path, notice: t(:ARTICLE_TOM_MAIN_SUCCESS)
+  end
+
   def new_news
     @article = Article.new
   end

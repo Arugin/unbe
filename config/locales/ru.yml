@@ -84,6 +84,7 @@ ru:
   ARTICLE_REMOVE_SUCCESS: Статья успешно удалена
   EDIT_ARTICLE: Редактировать статью
   ARTICLE_APPROVE_TO_GARBAGE: Статья отправлена в мусор
+  ARTICLE_TOM_MAIN_SUCCESS: Статья успешно отправлена на главную страницу
 
   # galleries
   GALLERY_CREATE_SUCCESS: Галерея успешно создана

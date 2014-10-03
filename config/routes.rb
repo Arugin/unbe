@@ -50,6 +50,7 @@ Unbe::Application.routes.draw do
     member do
       get 'publish'
       get 'approve'
+      get 'to_main'
       get 'vote_up'
       get 'vote_down'
       get 'draft'
