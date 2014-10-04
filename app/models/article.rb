@@ -97,7 +97,7 @@ class Article
   end
 
   def get_logo_url
-     first_image_src || logo
+    logo.present? ? logo : first_image_src
   end
 
   def article?
