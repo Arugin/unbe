@@ -32,6 +32,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     impressionist(@article, '', unique: [:session_hash, :ip_address])
     @comments = @article.comments.page(params[:page]).per(25)
+    @related = {prev: @article.cycle.previous_article(@article), next: @article.cycle.next_article(@article)}
+    puts @related
     respond_with @comments
   end
 

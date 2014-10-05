@@ -33,6 +33,14 @@ class Cycle
 
   voteable self, up: +1, down: -1
 
+  def previous_article article
+    self.articles.order_by(created_at: :asc).where(:created_at.lt => article.created_at).last
+  end
+
+  def next_article article
+    self.articles.order_by(created_at: :asc).where(:created_at.gt => article.created_at).first
+  end
+
   def ordered_articles
     articles.order_by(created_at: :desc)
   end

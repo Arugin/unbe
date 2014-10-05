@@ -25,11 +25,21 @@
   .pull-right
     = render 'articles/control_panel', article: article
   .clear
+  - if @related[:prev].present?
+    .previous-article
+      %p
+        Предыдущая статья:
+        = link_to @related[:prev].title, @related[:prev]
   .description{itemprop:'articleBody'}
     - unless article.clean_content.nil?
       = raw article.clean_content
     - else
       = raw article.tmpContent
+  - if @related[:next].present?
+    .next-article
+      %p
+        Следующая статья:
+        = link_to @related[:next].title, @related[:next]
   .clear
   .center
     - unless article.script.nil?

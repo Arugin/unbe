@@ -1,14 +1,15 @@
 default:
   selector: "textarea#tmpContent"
   language: 'ru'
-  width: 750
+  width: 770
   height: 550
   plugins:
      - "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker"
      - "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking"
      - "save table contextmenu directionality template paste textcolor autosave"
   invalid_elements: 'script'
-  toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | forecolor"
+  toolbar: "undo redo pagebreak | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | forecolor"
+  gecko_spellcheck: true
 
 
 small:
@@ -20,5 +21,4 @@ small:
   invalid_elements: "script"
   toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media"
   plugins: "link image autosave"
-
-
+  gecko_spellcheck: true

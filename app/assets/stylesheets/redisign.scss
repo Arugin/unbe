@@ -424,4 +424,13 @@ body{
       }
     }
   }
+  .previous-article {
+    @extend .description;
+    margin-bottom: 0px;
+  }
+  .next-article{
+    @extend .description;
+    margin-top: 0px;
+  }
+
 }
