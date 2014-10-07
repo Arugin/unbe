@@ -71,21 +71,10 @@ class @Unbe
       $('#logo').css('display', 'block')
 
   lockHeader: ()->
-    $('#main-header').css
-      position: 'fixed'
-      top: '0px'
-      left: '0px'
-
-    $('#container').css
-      'margin-top': '120px'
-
+    $('body').addClass "locked-header"
 
   unlockHeader: ()->
-    $('#main-header').css
-      position: 'relative'
-
-    $('#container').css
-      'margin-top': '0px'
+    $('body').addClass "unlocked-header"
 
   settings: ()->
     gon.settings
@@ -94,10 +83,13 @@ class @Unbe
     @settings().default?
 
   checkHeaderState: ()->
-    if not @isDefaultSettings() and @settings().unlock_top_menu
+    if @isHeaderUnlocked()
       @unlockHeader()
     else
       @lockHeader()
+
+  isHeaderUnlocked: ()->
+    not @isDefaultSettings() and @settings().unlock_top_menu
 
 
 unless @unbe?

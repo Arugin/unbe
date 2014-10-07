@@ -10,12 +10,12 @@
 .down {
   .sticky-header {
     top: 0;
-    left: 8.51064%;
+    left: 20px;
     z-index:999;
     border:none;
     box-shadow: 0 0 0 10px #FFFFFF, 0 12px 8px rgba(0, 0, 0, 0.7);
     position:fixed;
-    width: 60.34%;
+    width: 64.5%;
     margin: 0;
     margin-top: 10px;
     padding-bottom: 0px;
@@ -23,6 +23,12 @@
 
   .header-dummy {
     display: block;
+  }
+}
+
+.locked-header.down  {
+  .sticky-header {
+    top: 100px;
   }
 }
 

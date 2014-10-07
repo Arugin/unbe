@@ -1,6 +1,6 @@
 .row{style: "margin-right: 0px"}
   .col-md-12.list-header.sticky-header
-    .row
+    .row{style: "margin-right: 0px"}
       .col-md-1
         .select-switch.dropdown.select-control
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
@@ -29,6 +29,6 @@
         .pull-left
           = render partial: "common/sort_control", locals: { current_action: current_action, model: model }
 
-      .col-md-3{style: "padding-right: 0px"}
+      .col-md-3{style: "padding-right: 0px; width: 28.6%;"}
         .pull-right
           = render :partial => "common/search_control", :locals => { :current_action_path => articles_office_path(scope:'current_user') }

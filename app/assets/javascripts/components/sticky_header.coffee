@@ -12,6 +12,7 @@
 
     boundaryElement = if $(topElementSelector).length > 0 then $(topElementSelector).first().offset().top else $(containerElement).first().offset().top
     stickyEdge = boundaryElement - cloneOffset
+    stickyEdge -= 100 unless unbe.isHeaderUnlocked()
 
     $(window).on "scroll", ->
       fromTop = $(window).scrollTop()
