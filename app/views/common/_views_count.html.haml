@@ -1,8 +1,8 @@
 - count  = subject.respond_to?(:impressions) ? subject.impressionist_count(filter: :ip_address) : subject.included_impressions
 
-.views-count{title: "#{t(:COUNT_VIEWS)}: #{count}", data: {toggle: 'tooltip', placement:'top'}}
+.views-count
   - if subject.respond_to? :impressions
-    %i.fa.fa-eye
+    %i.fa.fa-eye{title: "#{t(:COUNT_VIEWS)}: #{count}", data: {toggle: 'tooltip', placement:'top'}}
     = count
     - new = subject.impressionist_count(start_date: DateTime.now.beginning_of_day)
     - if growth && (new > 0)
