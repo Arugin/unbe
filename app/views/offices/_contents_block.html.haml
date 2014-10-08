@@ -8,7 +8,7 @@
 
         %td.center
             = link_to edit_content_base_content_path content do
-                %i.fa.fa-pencil{title: t(:EDIT_CONTENT)}
+                %i.fa.fa-pencil{title: t(:EDIT_CONTENT), data: {toggle: 'tooltip', placement:'top'}}
         %td.long
             = render :partial => "common/views_count", locals: { subject: content, growth: true }
         %td.views-wrapper

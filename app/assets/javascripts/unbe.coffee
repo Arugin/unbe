@@ -2,9 +2,9 @@ class @Unbe
   Init: class Init
     initHome: (spinner)->
       jQuery.ajaxSetup({ cache: false });
-      $(".select2tags").select2({width: "380px", tags: $(".select2tags").data("tags"), tokenSeparators: [","]})
-      $(".select2tags_short").select2({width: '100%', tags: $(".select2tags_short").data("tags"), tokenSeparators: [","]})
-      $(".select2").select2({width: '66%'})
+      $(".select2tags").select2(width: "380px", tags: $(".select2tags").data("tags"), tokenSeparators: [","])
+      $(".select2tags_short").select2(width: '100%', tags: $(".select2tags_short").data("tags"), tokenSeparators: [","])
+      $(".select2").select2(width: '66%')
       spinner.hide();
 
   Search: class Search
@@ -91,6 +91,8 @@ class @Unbe
   isHeaderUnlocked: ()->
     not @isDefaultSettings() and @settings().unlock_top_menu
 
+  initTooltips: ()->
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' })
 
 unless @unbe?
   @unbe = new Unbe()

@@ -28,7 +28,7 @@
       .edit
         - if can? :update, content
           = link_to edit_content_base_content_path(content) do
-            %i.fa.fa-pencil{title: t(:EDIT_CONTENT)}
+            %i.fa.fa-pencil{title: t(:EDIT_CONTENT), data: {toggle: 'tooltip', placement:'top'}}
       = render :partial => 'common/views_count', locals: { subject: content, growth: false }
       %div{class:"vote-#{content._id}"}
         = render :partial => 'common/vote_block', locals: { votable: content }

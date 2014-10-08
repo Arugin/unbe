@@ -29,35 +29,35 @@
     - max_articles = 350; max_users = 1001; max_works = 200
     %dt= "Статей:"
     %dd
-      .progress{title: "Статей написано #{@stats.articles_count}/#{max_articles}"}
+      .progress{data: {toggle: 'tooltip', placement:'top'}, title: "Статей написано #{@stats.articles_count}/#{max_articles}"}
         .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"#{@stats.percentage(:articles, max_articles)}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{@stats.percentage(:articles, max_articles)}%"}
           = "#{@stats.articles_count}/#{max_articles}"
 
   %dl
     %dt= "Работ:"
     %dd
-      .progress{title: "Работ опубликовано #{@stats.content_count}/#{max_works}"}
+      .progress{data: {toggle: 'tooltip', placement:'top'}, title: "Работ опубликовано #{@stats.content_count}/#{max_works}"}
         .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"#{@stats.percentage(:content, max_works)}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{@stats.percentage(:content, max_works)}%"}
           = "#{@stats.content_count}/#{max_works}"
 
   %dl
     %dt= "Пользователей:"
     %dd
-      .progress{title: "Пользователей зарегистрировано: #{@stats.users_count}/#{max_users}"}
+      .progress{data: {toggle: 'tooltip', placement:'top'}, title: "Пользователей зарегистрировано: #{@stats.users_count}/#{max_users}"}
         .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"#{@stats.percentage(:users, max_users)}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{@stats.percentage(:users, max_users)}%"}
           = "#{@stats.users_count}/#{max_users}"
 
   %dl
     %dt Готовность раздела
     %dd
-      .progress{title: "Готовность раздела проектов: 3%"}
+      .progress{data: {toggle: 'tooltip', placement:'top'}, title: "Готовность раздела проектов: 3%"}
         .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"3", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: 3%"}
           = "3%"
 
   %dl
     %dt Посещаемость
     %dd
-      .progress{title: "Посещаемость проекта unbe: 30 человек из 800"}
+      .progress{data: {toggle: 'tooltip', placement:'top'}, title: "Посещаемость проекта unbe: 30 человек из 800"}
         .progress-bar.progress-bar-success{role:"progressbar", 'aria-valuenow'=>"4", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: 4%"}
           = "30/800"
 

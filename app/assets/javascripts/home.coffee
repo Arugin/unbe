@@ -24,6 +24,10 @@ $(document).ready ()->
 
   unbe.checkHeaderState()
 
+  $(document).on "ready page:change", ()->
+    unbe.initTooltips()
+
+
 
 
 

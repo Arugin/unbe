@@ -12,8 +12,10 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery-ui
 #= require jquery.address
-#= require bootstrap
+#= require bootstrap-sprockets
+#= require bootstrap/tooltip
 #= require select2
 #= require fotorama
 #= require unbe

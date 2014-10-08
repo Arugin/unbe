@@ -1,2 +1,2 @@
 = link_to profile_path(item) do
-  = image_tag(item.avatar.nil? ? '/images/common/filer.png' : item.avatar.file.url(:medium), title: "Хм, а что это?")
+  = image_tag(item.avatar.nil? ? '/images/common/filer.png' : item.avatar.file.url(:medium), data: {toggle: 'tooltip', placement:'top'}, title: "Хм, а что это?")

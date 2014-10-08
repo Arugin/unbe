@@ -32,11 +32,11 @@
           %td.votecell
             .vote-comment{style: 'padding-top: 5px;'}
               = link_to polymorphic_path([:vote_up,comment]), remote: true do
-                %i.fa.fa-plus{class: votable_class(:vote_up, comment), title: votable_title(:vote_up, comment)}
+                %i.fa.fa-plus{class: votable_class(:vote_up, comment), title: votable_title(:vote_up, comment), data: {toggle: 'tooltip', placement:'top'}}
               .count{:class => ((comment.votes_point > 0 ? 'positive' : 'negative') unless comment.votes_point ==0 )}
                 =comment.votes_point
               = link_to polymorphic_path([:vote_down,comment]), remote: true do
-                %i.fa.fa-minus{style: 'margin-top: 8px;',class: votable_class(:vote_down, comment), title: votable_title(:vote_down, comment)}
+                %i.fa.fa-minus{style: 'margin-top: 8px;',class: votable_class(:vote_down, comment), title: votable_title(:vote_down, comment), data: {toggle: 'tooltip', placement:'top'}}
           %td.contentcell
             = comment.content.html_safe
 

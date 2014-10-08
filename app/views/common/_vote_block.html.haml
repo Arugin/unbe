@@ -1,9 +1,9 @@
-.vote{title: t(:RATING)}
+.vote
   = link_to polymorphic_path([:vote_down,votable]), remote: true do
-    %i.fa.fa-minus{class: votable_class(:vote_down, votable), title: votable_title(:vote_down, votable)}
+    %i.fa.fa-minus{class: votable_class(:vote_down, votable), title: votable_title(:vote_down, votable), data: {toggle: 'tooltip', placement:'top'}}
 
-  .count{class: ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 )}
+  .count{class: ((votable.votes_point > 0 ? 'positive' : 'negative') unless votable.votes_point ==0 ), title: t(:RATING), data: {toggle: 'tooltip', placement:'top'}}
     = votable.votes_point
 
   = link_to polymorphic_path([:vote_up,votable]), remote: true do
-    %i.fa.fa-plus{class: votable_class(:vote_up, votable), title: votable_title(:vote_up, votable)}
+    %i.fa.fa-plus{class: votable_class(:vote_up, votable), title: votable_title(:vote_up, votable), data: {toggle: 'tooltip', placement:'top'}}

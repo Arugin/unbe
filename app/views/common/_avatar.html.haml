@@ -1,2 +1,2 @@
 - if user.present?
-  = image_tag(user.avatar.nil? ? '/images/common/mini-filer.png' : user.avatar.file.url(:mini), title: "Хм, а что это?")
+  = image_tag(user.avatar.nil? ? '/images/common/mini-filer.png' : user.avatar.file.url(:mini), title: "Хм, а что это?", data: {toggle: 'tooltip', placement:'top'})

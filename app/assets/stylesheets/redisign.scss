@@ -454,5 +454,9 @@ body{
       margin-top: 0px;
     }
   }
-
+  .tooltip-inner {
+    word-wrap: break-word;
+    white-space:pre-wrap;
+    max-width: 300px;
+  }
 }

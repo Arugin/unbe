@@ -21,7 +21,7 @@
                             = l gallery.created_at.in_time_zone, format: :short
                     %td.views-wrapper
                         .info
-                            %i.fa.fa-th-list{title: "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"}
+                            %i.fa.fa-th-list{data: {toggle: 'tooltip', placement:'top'}, title: "#{gallery.contents.size} #{Russian::pluralize(gallery.contents.size, 'работа','работы', 'работ')}"}
                             = gallery.contents.size
                     %td.center
                         .options

@@ -1,13 +1,13 @@
 - count  = subject.respond_to?(:impressions) ? subject.impressionist_count(filter: :ip_address) : subject.included_impressions
 
-.views-count{title: "#{t(:COUNT_VIEWS)}: #{count}"}
+.views-count{title: "#{t(:COUNT_VIEWS)}: #{count}", data: {toggle: 'tooltip', placement:'top'}}
   - if subject.respond_to? :impressions
     %i.fa.fa-eye
     = count
     - new = subject.impressionist_count(start_date: DateTime.now.beginning_of_day)
     - if growth && (new > 0)
-      %span.grow{title: t(:DAY_COUNT_VIEWS)}
+      %span.grow{title: t(:DAY_COUNT_VIEWS), data: {toggle: 'tooltip', placement:'top'}}
         = "+#{new}"
   - else
-    %i.fa.fa-eye{title: t(:COUNT_INCLUDED_VIEWS)}
+    %i.fa.fa-eye{title: t(:COUNT_INCLUDED_VIEWS), data: {toggle: 'tooltip', placement:'top'}}
       = subject.included_impressions

@@ -39,7 +39,7 @@
       .edit
         - if can? :update, article
           = link_to edit_article_path(article) do
-            %i.fa.fa-pencil{title: t(:EDIT_ARTICLE)}
+            %i.fa.fa-pencil{title: t(:EDIT_ARTICLE), data: {toggle: 'tooltip', placement:'top'}}
       .edit
         - if can? :destroy, article
           = button_to "", article, :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "fa fa-trash-o", :id => 'btn-rm-cm'

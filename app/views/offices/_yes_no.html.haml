@@ -1,6 +1,6 @@
 .check-status
   - if is_true
-    %i.fa.fa-check{title: title}
+    %i.fa.fa-check{title: title, data: {toggle: 'tooltip', placement:'top'}}
   - else
-    %i.fa.fa-warning{title: "не #{title}"}
+    %i.fa.fa-warning{title: "не #{title}", data: {toggle: 'tooltip', placement:'top'}}
 

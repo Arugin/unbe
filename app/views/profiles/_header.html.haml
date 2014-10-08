@@ -8,14 +8,14 @@
     .hint
       Ранг
     - if user.level == 0
-      .experience{title: "Ранг 0"}
+      .experience{data: {toggle: 'tooltip', placement:'top'}, title: "Ранг 0"}
         —
     - else
-      .rank-image{title: "Ранг #{user.level}"}
+      .rank-image{data: {toggle: 'tooltip', placement:'top'}, title: "Ранг #{user.level}"}
         = image_tag "/images/ranks/#{user.level}.png"
   .score
     .hint
       Опыт
-    .experience{title: 'Опыт'}
+    .experience{data: {toggle: 'tooltip', placement:'top'}, title: 'Опыт'}
       = user.points
   .clear

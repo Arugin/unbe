@@ -19,7 +19,7 @@
       .edit
         - if can? :update, gallery
           = link_to edit_gallery_path(gallery) do
-            %i.fa.fa-pencil{title: t(:EDIT_GALLERY)}
+            %i.fa.fa-pencil{title: t(:EDIT_GALLERY), data: {toggle: 'tooltip', placement:'top'}}
       = render :partial => 'common/views_count', locals: { subject: gallery, growth: false }
   .clear
   .description

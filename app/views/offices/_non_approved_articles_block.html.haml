@@ -12,9 +12,9 @@
             = article.updated_at.localtime
         %td.thumb-wrapper
           - if article.is_updated?
-            %i.fa.fa-pencil{title: t('ARTICLE_CHANGED')}
+            %i.fa.fa-pencil{title: t('ARTICLE_CHANGED'), data: {toggle: 'tooltip', placement:'top'}}
           - if article.garbage?
-            %i.fa.fa-trash-o{title: t('ARTICLE_TRASH')}
+            %i.fa.fa-trash-o{title: t('ARTICLE_TRASH'), data: {toggle: 'tooltip', placement:'top'}}
         %td.thumb-wrapper
           - if article.is_updated?
             %i.fa.fa-refresh

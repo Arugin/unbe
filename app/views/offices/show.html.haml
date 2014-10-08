@@ -12,7 +12,7 @@
 
     .row
       .col-md-1.col-md-2.pull-left
-        = image_tag "/images/ranks/#{current_user.level}_big.png", title: "Ранг #{current_user.level}"
+        = image_tag "/images/ranks/#{current_user.level}_big.png", title: "Ранг #{current_user.level}", data: {toggle: 'tooltip', placement:'top'}
       .col-md-8.inline-block.progress-status
         %span
           Ранг:
@@ -27,7 +27,7 @@
           %b
             = current_user.points
         - percentage = to_next_rank(current_user)
-        .progress{title: "Опыта до следующего ранга #{to_next_rank_exp(current_user)}"}
+        .progress{title: "Опыта до следующего ранга #{to_next_rank_exp(current_user)}", data: {toggle: 'tooltip', placement:'top'}}
           .progress-bar.progress-bar-info{role:"progressbar", 'aria-valuenow'=>"#{percentage}", 'aria-valuemin'=>"0", 'aria-valuemax'=>"100", style:"width: #{percentage}%"}
             = "#{percentage} %"
 
