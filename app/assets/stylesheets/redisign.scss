@@ -1,5 +1,9 @@
 @import 'colors';
 
+html{
+  font-size: 62.5%;
+}
+
 body{
   font-family: $font;
 
@@ -17,7 +21,7 @@ body{
 
 
   .header {
-    font-size: 28px;
+    font-size: 2.8rem;
     background-color: $header-background;
     box-shadow: 0 1px 10px rgba(0,0,0,0.1);
     z-index: 10000;
@@ -51,7 +55,7 @@ body{
     }
 
     .col-md-2#reg {
-      font-size: 16px;
+      font-size: 1.6rem;
       text-align: right;
       float: right;
       padding-right: 20px;
@@ -234,7 +238,7 @@ body{
 
   .form-search {
     .search-query {
-      font-size: 15px;
+      font-size: 1.5rem;
       padding: 4px;
     }
 
@@ -243,7 +247,7 @@ body{
     }
 
     i {
-      font-size: 12px;
+      font-size: 1.2rem;
       color: $header-background;
     }
 
@@ -304,7 +308,7 @@ body{
   }
 
   #footer{
-    font-size: 11px;
+    font-size: 1.1rem;
     font-family: $font;
     color: #949494;
     overflow: hidden;
@@ -323,7 +327,7 @@ body{
       dt{
         margin: 0;
         margin-bottom: 5px;
-        font-size: 13px;
+        font-size: 1.3rem;
         text-align: left;
       }
       dd{
@@ -467,7 +471,7 @@ body{
       border-right: none;
     }
     .header{
-      font-size: 27px;
+      font-size: 2.7rem;
       a{
         padding-right: 8px;
         padding-left: 8px;
@@ -484,7 +488,7 @@ body{
       border-right: none;
     }
     .header{
-      font-size: 26px;
+      font-size: 2.6rem;
       a{
         padding-right: 10px;
         padding-left: 10px;
@@ -497,7 +501,7 @@ body{
 
   @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
     .header{
-      font-size: 20px;
+      font-size: 2rem;
       a{
         padding-right: 8px;
         padding-left: 8px;
@@ -513,7 +517,7 @@ body{
 
   @media (min-width: $screen-lg-min) {
     .header{
-      font-size: 24px;
+      font-size: 2.4rem;
       #main-menu{
         margin-top: 42px;
       }

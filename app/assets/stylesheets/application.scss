@@ -63,7 +63,7 @@ table.users .thumb {
 }
 
 h3.right-bar{
-  font-size: 13px;
+  font-size: 1.3rem;
   color: $textcolor;
   margin: 0 0 2px;
   text-transform: uppercase;
@@ -75,7 +75,7 @@ ul.navigation{
   z-index: 4;
   position: relative;
   list-style: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   padding-left: 0px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -96,7 +96,7 @@ ul.navigation{
 }
 
 h4.section{
-  font-size: 26px;
+  font-size: 2.6rem;
   font-weight: normal;
   margin: 9px 0;
   font-family: $font;
@@ -104,12 +104,12 @@ h4.section{
 
 h4.section-small{
   @extend .section;
-  font-size: 25px;
+  font-size: 2.5rem;
   margin-top: 7px;
 }
 
 span.o-count{
-  font-size: 20px;
+  font-size: 2rem;
   margin-left: 5px;
   font-weight: bold;
 }
