@@ -52,6 +52,7 @@ class ProfilesController < ApplicationController
     @profile = @user # For merit
     authorize! :subscribe, @user
     current_user.subscribe @user
+    @user.create_activity action: :subscribe, owner: current_user, recipient: @user
     redirect_to request.referer, notice: t(:YOU_HAVE_BEEN_SUBSCRIBED)
   end
 
@@ -59,6 +60,7 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:id])
     authorize! :subscribe, @user
     current_user.unsubscribe @user
+    @user.create_activity action: :subscribe, owner: current_user, recipient: @user
     redirect_to request.referer, notice: t(:YOU_HAVE_BEEN_UNSUBSCRIBED)
   end
 

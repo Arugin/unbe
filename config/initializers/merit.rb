@@ -28,204 +28,204 @@ end
  [
    {
       id: (badge_id = badge_id + 1),
-      name: 'RAFFLE_PARTICIPANT',
-      description: 'RAFFLE_PARTICIPANT_DESC',
+      name: 'badges.raffle_participant.title',
+      description: 'badges.raffle_participant.description',
       custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-star' }
    }, {
       id: (badge_id = badge_id + 1),
-      name: 'RAFFLE_WINNER',
-      description: 'RAFFLE_WINNER_DESC',
+      name: 'badges.raffle_winner.title',
+      description: 'badges.raffle_winner.description',
       custom_fields: { category: :activity, difficulty: :gold, icon: 'fa fa-star-o' }
    }, {
       id: (badge_id = badge_id + 1),
-      name: 'COMMUNICABLE',
-      description: 'COMMUNICABLE_DESC',
+      name: 'badges.communicable.title',
+      description: 'badges.communicable.description',
       level: 1,
       custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-book' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'COMMENTATOR_1',
-       description: 'COMMENTATOR_1_DESC',
+       name: 'badges.commentator.1.title',
+       description: 'badges.commentator.1.description',
        level: 1,
        custom_fields: { category: :comments, difficulty: :bronze, icon: 'fa fa-comment' }
    } , {
        id: (badge_id = badge_id + 1),
-       name: 'COMMENTATOR_2',
-       description: 'COMMENTATOR_2_DESC',
+       name: 'badges.commentator.2.title',
+       description: 'badges.commentator.2.description',
        level: 2,
        custom_fields: { category: :comments, difficulty: :copper, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'COMMENTATOR_3',
-       description: 'COMMENTATOR_3_DESC',
+       name: 'badges.commentator.3.title',
+       description: 'badges.commentator.3.description',
        level: 3,
        custom_fields: { category: :comments, difficulty: :silver, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'COMMENTATOR_4',
-       description: 'COMMENTATOR_4_DESC',
+       name: 'badges.commentator.4.title',
+       description: 'badges.commentator.4.description',
        level: 4,
        custom_fields: { category: :comments, difficulty: :gold, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'COMMENTATOR_5',
-       description: 'COMMENTATOR_5_DESC',
+       name: 'badges.commentator.5.title',
+       description: 'badges.commentator.5.description',
        level: 5,
        custom_fields: { category: :comments, difficulty: :platinum, icon: 'fa fa-comment' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_COMMENT_1',
-       description: 'RATED_COMMENT_1_DESC',
+       name: 'badges.rated_comment.1.title',
+       description: 'badges.rated_comment.1.description',
        level: 1,
        custom_fields: { category: :comments, difficulty: :bronze, icon: 'fa fa-comments-o' }
    } , {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_COMMENT_2',
-       description: 'RATED_COMMENT_2_DESC',
+       name: 'badges.rated_comment.2.title',
+       description: 'badges.rated_comment.2.description',
        level: 2,
        custom_fields: { category: :comments, difficulty: :copper, icon: 'fa fa-comments-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_COMMENT_3',
-       description: 'RATED_COMMENT_3_DESC',
+       name: 'badges.rated_comment.3.title',
+       description: 'badges.rated_comment.3.description',
        level: 3,
        custom_fields: { category: :comments, difficulty: :silver, icon: 'fa fa-comments-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_COMMENT_4',
-       description: 'RATED_COMMENT_4_DESC',
+       name: 'badges.rated_comment.4.title',
+       description: 'badges.rated_comment.4.description',
        level: 4,
        custom_fields: { category: :comments, difficulty: :gold, icon: 'fa fa-comments-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_COMMENT_5',
-       description: 'RATED_COMMENT_5_DESC',
+       name: 'badges.rated_comment.5.title',
+       description: 'badges.rated_comment.5.description',
        level: 5,
        custom_fields: { category: :comments, difficulty: :platinum, icon: 'fa fa-comments-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'WRITER_1',
-       description: 'WRITER_1_DESC',
+       name: 'badges.writer.1.title',
+       description: 'badges.writer.1.description',
        level: 1,
        custom_fields: { category: :articles, difficulty: :bronze, icon: 'fa fa-pencil-square-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'WRITER_2',
-       description: 'WRITER_2_DESC',
+       name: 'badges.writer.2.title',
+       description: 'badges.writer.2.description',
        level: 2,
        custom_fields: { category: :articles, difficulty: :copper, icon: 'fa fa-pencil-square-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'WRITER_3',
-       description: 'WRITER_3_DESC',
+       name: 'badges.writer.3.title',
+       description: 'badges.writer.3.description',
        level: 3,
        custom_fields: { category: :articles, difficulty: :silver, icon: 'fa fa-pencil-square-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'WRITER_4',
-       description: 'WRITER_4_DESC',
+       name: 'badges.writer.4.title',
+       description: 'badges.writer.4.description',
        level: 4,
        custom_fields: { category: :articles, difficulty: :gold, icon: 'fa fa-pencil-square-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'WRITER_5',
-       description: 'WRITER_5_DESC',
+       name: 'badges.writer.5.title',
+       description: 'badges.writer.5.description',
        level: 5,
        custom_fields: { category: :articles, difficulty: :platinum, icon: 'fa fa-pencil-square-o' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_ARTICLE_1',
-       description: 'RATED_ARTICLE_1_DESC',
+       name: 'badges.rated_article.1.title',
+       description: 'badges.rated_article.1.description',
        level: 1,
        custom_fields: { category: :articles, difficulty: :bronze, icon: 'fa fa-pencil' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_ARTICLE_2',
-       description: 'RATED_ARTICLE_2_DESC',
+       name: 'badges.rated_article.2.title',
+       description: 'badges.rated_article.2.description',
        level: 2,
        custom_fields: { category: :articles, difficulty: :copper, icon: 'fa fa-pencil' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_ARTICLE_3',
-       description: 'RATED_ARTICLE_3_DESC',
+       name: 'badges.rated_article.3.title',
+       description: 'badges.rated_article.3.description',
        level: 3,
        custom_fields: { category: :articles, difficulty: :silver, icon: 'fa fa-pencil' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_ARTICLE_4',
-       description: 'RATED_ARTICLE_4_DESC',
+       name: 'badges.rated_article.4.title',
+       description: 'badges.rated_article.4.description',
        level: 4,
        custom_fields: { category: :articles, difficulty: :gold, icon: 'fa fa-pencil' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'RATED_ARTICLE_5',
-       description: 'RATED_ARTICLE_5_DESC',
+       name: 'badges.rated_article.5.title',
+       description: 'badges.rated_article.5.description',
        level: 5,
        custom_fields: { category: :articles, difficulty: :platinum, icon: 'fa fa-pencil' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'HOLIVAR_1',
-       description: 'HOLIVAR_1_DESC',
+       name: 'badges.holivar.1.title',
+       description: 'badges.holivar.1.description',
        level: 1,
        custom_fields: { category: :articles, difficulty: :copper, icon: 'fa fa-bell' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'HOLIVAR_2',
-       description: 'HOLIVAR_2_DESC',
+       name: 'badges.holivar.2.title',
+       description: 'badges.holivar.2.description',
        level: 2,
        custom_fields: { category: :articles, difficulty: :silver, icon: 'fa fa-bell' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'HOLIVAR_3',
-       description: 'HOLIVAR_3_DESC',
+       name: 'badges.holivar.3.title',
+       description: 'badges.holivar.3.description',
        level: 3,
        custom_fields: { category: :articles, difficulty: :gold, icon: 'fa fa-bell' }
    }, {
-      id: (badge_id = badge_id + 1),
-      name: 'PART_OF_WHOLE',
-      description: 'PART_OF_WHOLE_DESC',
-      custom_fields: { category: :common, difficulty: :bronze, icon: 'fa fa-apple' }
+       id: (badge_id = badge_id + 1),
+       name: 'badges.part_of_whole.title',
+       description: 'badges.part_of_whole.description',
+       custom_fields: { category: :common, difficulty: :bronze, icon: 'fa fa-apple' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'ARTICLE_VIEWS_1',
-       description: 'ARTICLE_VIEWS_1_DESC',
+       name: 'badges.article_views.1.title',
+       description: 'badges.article_views.1.description',
        level: 1,
        custom_fields: { category: :articles, difficulty: :bronze, icon: 'fa fa-eye' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'ARTICLE_VIEWS_2',
-       description: 'ARTICLE_VIEWS_2_DESC',
+       name: 'badges.article_views.2.title',
+       description: 'badges.article_views.2.description',
        level: 2,
        custom_fields: { category: :articles, difficulty: :copper, icon: 'fa fa-eye' }
    }, {
        id: (badge_id = badge_id + 1),
-       name: 'ARTICLE_VIEWS_3',
-       description: 'ARTICLE_VIEWS_3_DESC',
+       name: 'badges.article_views.3.title',
+       description: 'badges.article_views.3.description',
        level: 3,
        custom_fields: { category: :articles, difficulty: :silver, icon: 'fa fa-eye' }
    }, {
-     id: (badge_id = badge_id + 1),
-     name: 'badges.incredible.title',
-     description: 'badges.incredible.description',
-     custom_fields: { category: :great, difficulty: :platinum, icon: 'fa fa-question' }
+       id: (badge_id = badge_id + 1),
+       name: 'badges.incredible.title',
+       description: 'badges.incredible.description',
+       custom_fields: { category: :great, difficulty: :platinum, icon: 'fa fa-question' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'badges.subscribable.1.title',
        description: 'badges.subscribable.1.description',
        level: 1,
-       custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-chain-broken' }
+       custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-chain' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'badges.subscribable.2.title',
        description: 'badges.subscribable.2.description',
        level: 1,
-       custom_fields: { category: :activity, difficulty: :copper, icon: 'fa fa-chain-broken' }
+       custom_fields: { category: :activity, difficulty: :copper, icon: 'fa fa-chain' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'badges.subscribable.3.title',
        description: 'badges.subscribable.3.description',
        level: 1,
-       custom_fields: { category: :activity, difficulty: :silver, icon: 'fa fa-chain-broken' }
+       custom_fields: { category: :activity, difficulty: :silver, icon: 'fa fa-chain' }
    }
  ].each do |attrs|
    Merit::Badge.create! attrs

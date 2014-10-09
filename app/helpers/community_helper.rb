@@ -6,7 +6,7 @@ module CommunityHelper
       comment: {create: 'fa fa-comment', update: 'fa fa-comment', destroy: 'fa fa-trash-o'},
       gallery: {create: 'fa fa-film', update: 'fa fa-film', destroy: 'fa fa-trash-o'},
       content_base_content: {create: 'fa fa-picture-o', update: 'fa fa-picture-o', destroy: 'fa fa-trash-o'},
-      user: {create: 'fa fa-user', reputation_change: 'fa fa-trophy'}
+      user: {create: 'fa fa-user', reputation_change: 'fa fa-trophy', subscribe:'fa fa-chain', unsubscribe:'fa fa-chain-broken'}
   }
 
   def public_activity_icon(key)
