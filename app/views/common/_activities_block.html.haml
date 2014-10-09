@@ -2,12 +2,12 @@
   %p Никто ничего пока ещё не сделал
 - else
   - activities.each do |activity|
-    .activity
-      .logo.col-md-1
+    .activity.row
+      .logo.col-xs-1.col-md-1
         - public_activity_icon(activity.key)
-      .avatar.span-0
+      .avatar.col-xs-1.col-md-1
         = render 'common/avatar', user: activity.owner
-      .content.inline-block
+      .col-xs-8.col-md-8{style:'padding-left: 0px'}
         .publishDate
           = l activity.created_at.in_time_zone, format: :short
         .clear

@@ -1,7 +1,6 @@
 default:
   selector: "textarea#tmpContent"
   language: 'ru'
-  width: 770
   height: 550
   plugins:
      - "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker"
@@ -16,7 +15,6 @@ small:
   selector: "textarea"
   menubar : false
   language : 'ru'
-  width: 550
   height: 300
   invalid_elements: "script"
   toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media"

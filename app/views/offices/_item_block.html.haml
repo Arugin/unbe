@@ -1,7 +1,7 @@
 %li.o-item
   .o-item-content
     .o-item-content-primary
-      %span.o-item-checkbox.item-select
+      %span.o-item-checkbox.item-select.hidden-xs
         = check_box_tag "select_#{collection.singularize}[]", item.id
       .o-thumb
         = render partial: "#{collection}/thumb", locals: {item: item}
