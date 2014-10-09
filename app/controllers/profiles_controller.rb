@@ -49,6 +49,7 @@ class ProfilesController < ApplicationController
 
   def subscribe
     @user = User.find(params[:id])
+    @profile = @user # For merit
     authorize! :subscribe, @user
     current_user.subscribe @user
     redirect_to request.referer, notice: t(:YOU_HAVE_BEEN_SUBSCRIBED)

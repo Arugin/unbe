@@ -203,6 +203,29 @@ end
        description: 'ARTICLE_VIEWS_3_DESC',
        level: 3,
        custom_fields: { category: :articles, difficulty: :silver, icon: 'fa fa-eye' }
+   }, {
+     id: (badge_id = badge_id + 1),
+     name: 'badges.incredible.title',
+     description: 'badges.incredible.description',
+     custom_fields: { category: :great, difficulty: :platinum, icon: 'fa fa-question' }
+   }, {
+       id: (badge_id = badge_id + 1),
+       name: 'badges.subscribable.1.title',
+       description: 'badges.subscribable.1.description',
+       level: 1,
+       custom_fields: { category: :activity, difficulty: :bronze, icon: 'fa fa-chain-broken' }
+   }, {
+       id: (badge_id = badge_id + 1),
+       name: 'badges.subscribable.2.title',
+       description: 'badges.subscribable.2.description',
+       level: 1,
+       custom_fields: { category: :activity, difficulty: :copper, icon: 'fa fa-chain-broken' }
+   }, {
+       id: (badge_id = badge_id + 1),
+       name: 'badges.subscribable.3.title',
+       description: 'badges.subscribable.3.description',
+       level: 1,
+       custom_fields: { category: :activity, difficulty: :silver, icon: 'fa fa-chain-broken' }
    }
  ].each do |attrs|
    Merit::Badge.create! attrs

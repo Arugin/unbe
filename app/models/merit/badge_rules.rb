@@ -43,7 +43,7 @@ module Merit
         subject.author.full_actions?
       end
 
-      grant_on ['contents#create'], model_name: 'Content::BaseContent',badge: 'PART_OF_WHOLE', to: :author do |subject|
+      grant_on ['contents#create'], model_name: 'Content::BaseContent', badge: 'PART_OF_WHOLE', to: :author do |subject|
         subject.author.full_actions?
       end
 
@@ -153,6 +153,18 @@ module Merit
 
       grant_on 'articles#show', badge: 'ARTICLE_VIEWS_3', level: 3, to: :author do |article|
         article.impressions_count >= 10000
+      end
+
+      grant_on 'profiles#subscribe', model_name: 'User', badge: 'badges.subscribable.1.title', level: 1, to: :itself do |user|
+        user.subscribers.count >= 10
+      end
+
+      grant_on 'profiles#subscribe', model_name: 'User', badge: 'badges.subscribable.2.title', level: 2, to: :itself do |user|
+        user.subscribers.count >= 100
+      end
+
+      grant_on 'profiles#subscribe', model_name: 'User', badge: 'badges.subscribable.3.title', level: 3, to: :itself do |user|
+        user.subscribers.count >= 1000
       end
 
     end
