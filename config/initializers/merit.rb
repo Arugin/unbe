@@ -218,13 +218,13 @@ end
        id: (badge_id = badge_id + 1),
        name: 'badges.subscribable.2.title',
        description: 'badges.subscribable.2.description',
-       level: 1,
+       level: 2,
        custom_fields: { category: :activity, difficulty: :copper, icon: 'fa fa-chain' }
    }, {
        id: (badge_id = badge_id + 1),
        name: 'badges.subscribable.3.title',
        description: 'badges.subscribable.3.description',
-       level: 1,
+       level: 3,
        custom_fields: { category: :activity, difficulty: :silver, icon: 'fa fa-chain' }
    }
  ].each do |attrs|

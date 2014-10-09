@@ -15,6 +15,22 @@ module CommunityHelper
   end
 
   def badge_by_name(name)
+    mapping = { 'RAFFLE_PARTICIPANT' => 'badges.raffle_participant.title',
+                'RAFFLE_WINNER' => 'badges.raffle_winner.title',
+                'COMMUNICABLE' => 'badges.communicable.title',
+                'COMMENTATOR_1' => 'badges.commentator.1.title',
+                'COMMENTATOR_2' => 'badges.commentator.2.title',
+                'RATED_COMMENT_1' => 'badges.rated_comment.1.title',
+                'RATED_COMMENT_2' => 'badges.rated_comment.2.title',
+                'WRITER_1' => 'badges.writer.1.title',
+                'WRITER_2' => 'badges.writer.2.title',
+                'RATED_ARTICLE_1' => 'badges.rated_article.1.title',
+                'RATED_ARTICLE_2' => 'badges.rated_article.2.title',
+                'HOLIVAR_1' => 'badges.holivar.1.title',
+                'ARTICLE_VIEWS_1' => 'badges.article_views.1.title',
+                'ARTICLE_VIEWS_2' => 'badges.article_views.2.title',
+                'PART_OF_WHOLE' => 'badges.part_of_whole.title'}
+    name = mapping[name] if mapping[name].present?
     Merit::Badge.by_name(name).first
   end
 end
