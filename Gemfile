@@ -40,6 +40,7 @@ gem 'merit'
 gem 'state_pattern'
 gem 'public_activity'
 gem 'gon'
+gem 'whenever', require: false
 
 # migration
 gem 'rails-observers'
@@ -75,5 +76,3 @@ gem "factory_girl_rails", ">= 4.1.0", group: [:development, :test]
 gem "database_cleaner", ">= 0.9.1", group: :test
 gem 'coveralls', require: false
 gem 'capistrano', '~> 2.15'
-
-ruby '2.0.0'
