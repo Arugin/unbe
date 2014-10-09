@@ -466,9 +466,15 @@ body{
       padding-right: 0px;
       border-right: none;
     }
-    .header a{
-      padding-right: 8px;
-      padding-left: 8px;
+    .header{
+      font-size: 27px;
+      a{
+        padding-right: 8px;
+        padding-left: 8px;
+      }
+      #main-menu{
+        margin-top: 40px;
+      }
     }
   }
 
