@@ -8,8 +8,8 @@ module OfficeHelper
   end
 
   def to_next_rank_exp(user)
-    if Utils.RANKS[user.level+1].present?
-      Utils.RANKS[user.level+1] - Utils.RANKS[user.level]
+    if Utils.RANKS[user.level + 1].present?
+      Utils.RANKS[user.level + 1] - user.points
     else
       t :NEXT_RANK_NOT_EXISTS
     end
