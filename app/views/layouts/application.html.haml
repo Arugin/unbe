@@ -5,23 +5,25 @@
     = yield(:head)
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    %meta{name:"viewport", content: "width=device-width, initial-scale=1"}
     %script{async: true, src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
     %link{rel:'shortcut icon',href:'/images/favicon.ico'}
     = csrf_meta_tags
     = include_gon
 
   %body{:class => "#{controller_name} #{action_name}"}
-    = render 'layouts/header'
-    .row#container
-      .col-md-8.col-xs-12.content
-        #messages
-          = render 'layouts/messages'
-        = yield
-      .col-md-4.right-content.hidden-xs
-        = yield :right_bar
-    .row#footer
-      .col-md-12.hidden-xs
-        = render 'layouts/footer'
+    .container-fluid
+      = render 'layouts/header'
+      .row#container
+        .col-md-8.col-xs-12.content
+          #messages
+            = render 'layouts/messages'
+          = yield
+        .col-md-4.right-content.hidden-xs
+          = yield :right_bar
+      .row#footer
+        .col-md-12.hidden-xs
+          = render 'layouts/footer'
     .device-xs.visible-xs
     .device-sm.visible-sm
     .device-md.visible-md
