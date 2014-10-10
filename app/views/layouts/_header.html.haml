@@ -1,6 +1,6 @@
 .row.header#main-header
   #logo.col-md-2.hidden-xs= image_tag("main/unbe2.png", alt: "unbe logo")
-  .col-xs-8.col-sm-9.col-md-7.fixed-menu
+  .col-xs-6.col-sm-9.col-md-7.fixed-menu
     %ul.nav.nav-pills#main-menu
       %li
         = active_link_to root_path, active: :exclusive do
@@ -18,7 +18,7 @@
         = active_link_to community_path, active: :exclusive do
           %span Сообщество
 
-  .col-xs-4.col-sm-3.col-md-2#reg
+  .col-xs-6.col-sm-3.col-md-2#reg
     - unless user_signed_in?
       %div
         = link_to main_app.new_user_registration_path do
