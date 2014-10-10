@@ -3,13 +3,12 @@
   %head
     = display_meta_tags site: 'unbe'
     = yield(:head)
-    %meta
-      = stylesheet_link_tag    'application', media: 'all'
-      = javascript_include_tag 'application'
-      %script{async: true, src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
-      %link{rel:'shortcut icon',href:'/images/favicon.ico'}
-      = csrf_meta_tags
-      = include_gon
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    %script{async: true, src: "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+    %link{rel:'shortcut icon',href:'/images/favicon.ico'}
+    = csrf_meta_tags
+    = include_gon
 
   %body{:class => "#{controller_name} #{action_name}"}
     = render 'layouts/header'

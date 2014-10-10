@@ -1,52 +1,48 @@
 .col-md-1
-%dl
-  %dt Ресурсы
-  %dd= link_to "YouTube", "http://www.youtube.com/user/unbecinema"
-  %dd= link_to "Twitter", "http://twitter.com/unbe_"
-  %dd= link_to "vk.com"," http://vk.com/unbecinema"
-%dl
-  %dt Разделы
-  %dd
+.col-md-2
+  %h5 Ресурсы
+  %p= link_to "YouTube", "http://www.youtube.com/user/unbecinema"
+  %p= link_to "Twitter", "http://twitter.com/unbe_"
+  %p= link_to "vk.com"," http://vk.com/unbecinema"
+
+.col-md-2
+  %h5 Разделы
+  %p
     = link_to news_articles_path do
       %span Новости
-  %dd
+  %p
     = link_to articles_path do
       %span Статьи
-  %dd
+  %p
     = link_to content_base_contents_path do
       %span Работы
-  %dd
+  %p
     = link_to projects_path do
       %span Проекты
-  %dd
+  %p
     = link_to community_path do
       %span Сообщество
 
-%dl
-  %dt Информация
-  .clear
-  %dd= link_to 'О сообществе', info_community_path(system_tag: :about)
-  %dd= link_to 'Правила', info_community_path(system_tag: :rules)
-  %dd= link_to 'Вопросы', info_community_path(system_tag: :faq)
-  %dd= link_to "Если нашли ошибку", info_community_path(system_tag: :errors)
-  %dd= link_to "Идеи и предложения", info_community_path(system_tag: :ideas)
+.col-md-2
+  %h5 Информация
+  %p= link_to "Если нашли ошибку", info_community_path(system_tag: :errors)
+  %p= link_to "Идеи и предложения", info_community_path(system_tag: :ideas)
+  %p= link_to 'О сообществе',info_community_path(system_tag: :about)
+  %p= link_to 'Правила', info_community_path(system_tag: :rules)
+  %p= link_to 'Вопросы', info_community_path(system_tag: :faq)
 
-%dl
-  %dd= link_to 'Авторские права', info_community_path(system_tag: :license)
-  %dd= link_to 'Поощрение авторов', info_community_path(system_tag: :promotion)
-
-
-%dl
-  %dt Email:
-  %dd unbecinema@gmail.com |
-
-
-%dl
-
-%dl
-  %dd= "unbe © 2011 – #{Time.now.year}"
-  %dd
+.col-md-4
+  %h5 О сайте
+  %p
+    = link_to 'Авторские права', info_community_path(system_tag: :license)
+    |
+    = link_to 'Поощрение авторов', info_community_path(system_tag: :promotion)
+  %p
+    %strong Для связи:
+    unbecinema@gmail.com
+  %p
+    = "unbe © 2011 – #{Time.now.year}"
+    &nbsp;&nbsp;
     = MySite::Application.version
     |
     = link_to "Что нового?", info_community_path(system_tag: :whats_new)
-  %dd= active_link_to 'Авторские права', info_community_path(system_tag: :license), active: /license/
