@@ -94,6 +94,9 @@ class @Unbe
   initTooltips: ()->
     $("body").tooltip({ selector: '[data-toggle=tooltip]' })
 
+  resizeImgContainers: ()->
+    $('.description p:has(img)').addClass('p-imagable')
+
 unless @unbe?
   @unbe = new Unbe()
 
