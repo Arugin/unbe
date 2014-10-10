@@ -410,6 +410,10 @@ body{
       a{
         text-decoration: underline;
       }
+      img{
+        max-width: 800px;
+        max-height: 600px;
+      }
     }
   }
   .previous-article {
@@ -466,6 +470,13 @@ body{
         margin-top: 38px;
       }
     }
+    .description{
+      p{
+        img{
+          max-width: $screen-xs-max - 40px;
+        }
+      }
+    }
   }
 
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
@@ -481,6 +492,13 @@ body{
       }
       #main-menu{
         margin-top: 39px;
+      }
+    }
+    .description{
+      p{
+        img{
+          max-width: $screen-sm-max - 40px;
+        }
       }
     }
   }
