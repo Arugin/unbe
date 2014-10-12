@@ -9,7 +9,7 @@ set :application, "unbe"
 set :repository,  "https://github.com/Arugin/unberails.git"
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-set :deploy_to, "/home/arugin/webapps/unbe/"
+set :deploy_to, "/home/arugin/webapps/unbe"
 set :default_stage, "production"
 
 role :web, "web441.webfaction.com"                          # Your HTTP server, Apache/etc
@@ -82,6 +82,7 @@ namespace :deploy do
 end
 
 after "deploy", "logs"
+after "deploy", "deploy:cleanup"
 after "deploy", "deploy:assets:precompile"
 after "deploy", "deploy:migrate"
 after "deploy", "restart"
