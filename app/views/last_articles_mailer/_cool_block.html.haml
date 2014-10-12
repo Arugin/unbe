@@ -1,13 +1,13 @@
 .item-wrapper{style:'border-radius: 9px; background: #eee;padding: 4px;margin-bottom: 20px;clear: both;'}
   .item-card{style:'overflow: hidden;border-radius: 6px;border: 1px solid #ddd;position: relative;background-color: #fff;padding: 5px;height: 390px;'}
     .item-thumb{style:'width: 212px;height: 150px;margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;text-align: center;'}
-      = link_to article_url(item), style:'text-decoration: none;color: #666666;' do
-        = image_tag(item.get_logo_url.blank ? 'http://unbe.ru/images/common/filer.png': item.get_logo_url, title: item.title, style:'max-width:100%;max-height:100%;')
+      = link_to article_url(item), style:'text-decoration: none;color: #666666;width: 212px;' do
+        = image_tag(item.get_logo_url.blank? ? 'http://unbe.ru/images/common/filer.png': item.get_logo_url, title: item.title, style:'max-width:100%;max-height:auto;')
     %h4{style:'font-size: 12px;font-weight: bold;line-height: 15px;padding: 0 5px;margin-bottom: 5px;min-height: 50px;'}
       = link_to article_url(item), style:'text-decoration: none;color: #666666;' do
         %strong{style:'display: block;max-height: 30px;overflow: hidden;'}= item.title
       %span{style:'display: block;font-size: 11px;max-height: 15px;overflow: hidden;color: #999;font-weight: normal;padding-top: 2px;'}
-        = link_to user_profile_url(item.author), style:'text-decoration: none;color: #666666;' do
+        = link_to profile_url(item.author), style:'text-decoration: none;color: #666666;' do
           = "от автора #{item.author.name}"
     .clear
     - unless item.content.nil?
