@@ -50,6 +50,18 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Origin'] = "*"
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    if request.env['omniauth.origin']
+      request.env['omniauth.origin']
+    else
+      root_path
+    end
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    request.referrer || stored_location_for(:user) || root_path
+  end
+
   private
 
   def set_settings

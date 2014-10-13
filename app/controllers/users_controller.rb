@@ -90,9 +90,9 @@ class UsersController < ApplicationController
 
   def omni_save
     if session[:omniauth]
-      @user = User.new params[:user]
-      @user.password = params[:user][:password]
-      @user.password_confirmation = params[:user][:password_confirmation]
+      @user = User.new user_params
+      @user.password = user_params[:password]
+      @user.password_confirmation = user_params[:password_confirmation]
       @user.apply_omniauth(session[:omniauth], session[:omniauth]['info']['email'])
       if @user.save
         @user.authentications.create!(provider: session[:omniauth]['provider'], uid: session[:omniauth]['uid'])
@@ -100,6 +100,7 @@ class UsersController < ApplicationController
         # Create a new User through omniauth
         # Register the new user + create new authentication
         flash[:notice] = t('devise.registrations.signed_up')
+        puts "save!!!!!!!!!!! #{@user}"
         sign_in_and_redirect(:user, @user)
       else
         render 'email'
@@ -110,7 +111,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :first_name, :second_name, :gender_id, :from, :about, :email, :password, :password_confirmation, :remember_me, avatar_attributes:[:id, :file], settings_attributes:[:_id, :unlock_top_menu])
+    params.require(:user).permit(:name, :first_name, :second_name, :gender_id, :from, :about, :email, :password, :password_confirmation, :remember_me, :subscribed, avatar_attributes:[:id, :file], settings_attributes:[:_id, :unlock_top_menu])
   end
 
 end
