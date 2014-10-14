@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
       @address_additor = "?article_area=#{@article_area.id}"
     end
 
-    @articles = Article.unscoped.by_area(current_user, params, @article_area).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(9)
+    @articles = Article.unscoped.by_area(current_user, params, @article_area).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(12)
 
     @article_areas = ArticleArea.all
 
