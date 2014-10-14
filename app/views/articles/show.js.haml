@@ -1,2 +1,2 @@
 $("#comments").updateHtml("#{escape_javascript(render :partial => 'common/comments_block', :locals => { :commentable => @article } )}");
-$(".vote-#{@article._id}").updateHtml("#{escape_javascript(render :partial => 'common/vote_block', :locals => { :votable => @article } )}");
+$(".vote-#{@article.id}").updateHtml("#{escape_javascript(render :partial => 'common/vote_block', :locals => { :votable => @article } )}");

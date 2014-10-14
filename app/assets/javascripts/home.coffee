@@ -27,8 +27,3 @@ $(document).ready ()->
   $(document).on "ready page:change", ()->
     unbe.initTooltips()
     unbe.resizeImgContainers()
-
-
-
-
-

@@ -40,4 +40,4 @@
           %td.contentcell
             = comment.content.html_safe
 
-= paginate @comments, :remote => true
+= paginate @comments, :remote => true, params: { anchor: 'comments-anchor' }

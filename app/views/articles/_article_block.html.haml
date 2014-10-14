@@ -41,7 +41,7 @@
         Следующая статья:
         = link_to @related[:next].title, @related[:next]
   .clear
-  .center
+  .center#comments-anchor
     - unless article.script.nil?
       = raw article.script
   .clear

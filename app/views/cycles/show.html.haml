@@ -1,7 +1,9 @@
 = render :partial => 'cycle_block',:locals => { :cycle => @cycle }
 
 #cycle_articles.ujs-pagination
+
 .clear
+
 #comments.ujs-pagination
   = render :partial => 'common/comments_block', :locals => { :commentable => @cycle }
 
