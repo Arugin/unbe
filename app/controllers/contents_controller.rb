@@ -31,7 +31,7 @@ class ContentsController < ApplicationController
     params[:sort_by] ||= 'created_at'
     params[:direction] ||= 'desc'
 
-    @contents = Content::BaseContent.approved(current_user, params).page(params[:page]).per(9)
+    @contents = Content::BaseContent.approved(current_user, params).page(params[:page]).per(12)
 
     respond_with @contents
   end
