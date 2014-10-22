@@ -53,6 +53,7 @@ $(function () {
     if ($(".ujs-pagination").length !== 0) {
         $(document).on('ujs:complete', function () {
             $("#spinner").hide();
+            $('body').scrollTop(0);
         });
         $.address.change(function (event) {
             // Show a spinner
