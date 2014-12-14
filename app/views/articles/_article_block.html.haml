@@ -25,7 +25,7 @@
   .pull-right
     = render 'articles/control_panel', article: article
   .clear
-  - if @related[:prev].present?  && @related[:prev].approved?
+  - if defined?(@related) && @related[:prev].present?  && @related[:prev].approved?
     .previous-article
       %p
         Предыдущая статья:
@@ -35,7 +35,7 @@
       = raw article.clean_content
     - else
       = raw article.tmpContent
-  - if @related[:next].present? && @related[:next].approved?
+  - if defined?(@related) && @related[:next].present? && @related[:next].approved?
     .next-article
       %p
         Следующая статья:
