@@ -1,0 +1,3 @@
+class Painter < CrewRole
+
+end

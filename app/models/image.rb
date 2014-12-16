@@ -3,6 +3,7 @@ class Image
   include Mongoid::Paperclip
 
   belongs_to :article
+  belongs_to :imagable, polymorphic: true
 
   has_mongoid_attached_file :file,
                             path:           '/articles/:attachment/:id_partition/:style/:filename',

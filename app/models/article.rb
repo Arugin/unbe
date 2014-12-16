@@ -38,6 +38,7 @@ class Article
   belongs_to :article_area
   belongs_to :article_type
   belongs_to :cycle
+  belongs_to :film
   has_many :images, dependent: :destroy
 
   search_in :title, :tags

@@ -1,0 +1,3 @@
+class Composer < CrewRole
+
+end

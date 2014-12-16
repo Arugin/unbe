@@ -1,0 +1,3 @@
+class Screenwriter < CrewRole
+
+end
