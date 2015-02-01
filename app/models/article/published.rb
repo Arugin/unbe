@@ -11,13 +11,13 @@ class Article::Published < Article::BaseState
 
   def approve
     if stateful.tmpContent.present?
-      grant_points
-      create_activity
       prepare_approve
       transition_to(Article::Approved)
       stateful.upload_images
       stateful.remove_redundant_images
       stateful.save!
+      grant_points
+      create_activity
     end
     stateful
   end

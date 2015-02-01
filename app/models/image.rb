@@ -20,7 +20,7 @@ class Image
                             },
                             convert_options: { all: '-background white -flatten +matte' }
 
-  validates_attachment_size :file, less_than: 10000.kilobytes, message: I18n.t(:FILE_SIZE_IS_LIMITED)
-  validates_attachment_content_type :file, content_type: /^image\/(jpg|jpeg|pjpeg|png|x-png)$/, message: I18n.t(:ONLY_IMAGES_CAN_BE_UPLOADED)
+  validates_attachment_size :file, less_than: 10000.kilobytes, message: I18n.t(:FILE_SIZE_IS_LIMITED_ARTICLE)
+  validates_attachment_content_type :file, content_type: /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/, message: I18n.t(:ONLY_IMAGES_CAN_BE_UPLOADED)
 
 end
