@@ -9,6 +9,9 @@ default:
   invalid_elements: 'script'
   toolbar: "undo redo pagebreak | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | forecolor"
   gecko_spellcheck: true
+  relative_urls: false
+  convert_urls: false
+  remove_script_host: false
 
 
 small:
@@ -20,3 +23,6 @@ small:
   toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image media"
   plugins: "link image autosave"
   gecko_spellcheck: true
+  relative_urls: false
+  convert_urls: false
+  remove_script_host: false
