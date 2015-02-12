@@ -149,6 +149,12 @@ body{
       }
     }
   }
+
+  .no-hover:hover{
+    background-color: $header-background !important;
+  }
+
+
   .row{
     margin-right: 0px;
     .header{
