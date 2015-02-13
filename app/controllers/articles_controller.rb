@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   include Concerns::BulkOperationable
   include Concerns::Votable
 
-  before_filter :authenticate_user!, except: [:news, :index, :show]
-  load_and_authorize_resource except: [:news, :index, :show]
+  before_filter :authenticate_user!, except: [:news, :index, :show, :feed]
+  load_and_authorize_resource except: [:news, :index, :show, :feed]
 
   bulk_actions :delete, :tag
 
@@ -87,6 +87,13 @@ class ArticlesController < ApplicationController
   def news
     @articles = Article.last_news(current_user, params).page(params[:page]).per(12)
     respond_with @articles
+  end
+
+  def feed
+    @articles = Article.last_news(current_user, params).page(params[:page]).per(25)
+    respond_to do |format|
+      format.rss { render layout: false }
+    end
   end
 
   def edit

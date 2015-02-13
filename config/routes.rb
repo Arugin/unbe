@@ -46,6 +46,7 @@ Unbe::Application.routes.draw do
       get 'garbage'
       get 'bulk_delete'
       get 'bulk_tag'
+      get 'feed'
     end
     member do
       get 'publish'
