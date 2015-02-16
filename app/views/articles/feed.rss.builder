@@ -18,11 +18,6 @@ xml.rss :version => "2.0" do
         xml.guid article.id
 
         xml.description html_escape(article.tiny_content)
-
-        xml.tag! 'content:encoded' do
-          xml.cdata! article.clean_content
-        end
-
       end
     end
   end
