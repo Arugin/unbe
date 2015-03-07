@@ -1,4 +1,4 @@
-h1. unbe "!https://travis-ci.org/Arugin/unberails.png(Build Status)!":http://travis-ci.org/Arugin/unberails !https://coveralls.io/repos/Arugin/unberails/badge.png(Coverage Status)!:https://coveralls.io/r/Arugin/unberails "!https://codeclimate.com/github/Arugin/unberails.png!":https://codeclimate.com/github/Arugin/unberails
+h1. unbe "!https://travis-ci.org/Arugin/unbe.png(Build Status)!":http://travis-ci.org/Arugin/unberails !https://coveralls.io/repos/Arugin/unberails/badge.png(Coverage Status)!:https://coveralls.io/r/Arugin/unberails "!https://codeclimate.com/github/Arugin/unberails.png!":https://codeclimate.com/github/Arugin/unberails
 
 unbe - is the creative association of independent filmmaking.
 

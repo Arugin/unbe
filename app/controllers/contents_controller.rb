@@ -19,7 +19,7 @@ class ContentsController < ApplicationController
   def approve
     off_public_activity(Content::BaseContent) do
       @content = Content::BaseContent.find(params[:id])
-      @content.add_points(10) unless @content.approved_to_news
+      @content.author.add_points(10) unless @content.approved_to_news
       @content.approved_to_news = params[:approved]
       @content.reviewed = true
       @content.save
