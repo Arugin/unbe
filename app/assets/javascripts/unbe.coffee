@@ -82,6 +82,15 @@ class @Unbe
   isDefaultSettings: ()->
     @settings().default?
 
+  changeLinkBechaviour: ()->
+    a = new RegExp('/' + window.location.host + '/')
+    $('a').each ->
+      unless a.test(@href)
+        $(@).click (event) ->
+          event.preventDefault()
+          event.stopPropagation()
+          window.open @href, '_blank'
+
   checkHeaderState: ()->
     if @isHeaderUnlocked()
       @unlockHeader()

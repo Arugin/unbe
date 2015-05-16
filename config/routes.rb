@@ -1,5 +1,9 @@
 Unbe::Application.routes.draw do
 
+  constraints subdomain: "www" do
+    get "*" => redirect { |params, request| redirect_to request.url.sub('www', '') }
+  end
+
   get '/auth/:provider/callback' => 'authentications#create'
 
   resources :authentications
