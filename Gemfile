@@ -9,10 +9,12 @@ end
 gem 'rails', '~> 4.1'
 gem 'sass-rails', '~> 4.0.3'
 
+gem 'dotenv-rails'
+
 # Bundle edge Rails instead:
 gem 'bson_ext'
 gem "bson"
-gem "moped", github: "mongoid/moped"
+gem "moped"
 gem 'mongoid'
 gem 'mongoid_search'
 gem 'rake', '>= 10.0'
@@ -41,6 +43,7 @@ gem 'state_pattern'
 gem 'public_activity'
 gem 'gon'
 gem 'whenever', require: false
+gem 'eventmachine', '~> 1.0.4'
 
 # migration
 gem 'rails-observers'
@@ -75,4 +78,11 @@ gem "capybara", ">= 1.1.2", group: :test
 gem "factory_girl_rails", ">= 4.1.0", group: [:development, :test]
 gem "database_cleaner", ">= 0.9.1", group: :test
 gem 'coveralls', require: false
-gem 'capistrano', '~> 2.15'
+
+group :development do
+  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-passenger', require: false
+end

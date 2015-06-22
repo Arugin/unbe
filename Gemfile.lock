@@ -7,15 +7,6 @@ GIT
       stringex (~> 2.0)
 
 GIT
-  remote: git://github.com/mongoid/moped.git
-  revision: 2d92a6b9df638ed6b32843323cf795744a422f3d
-  specs:
-    moped (2.0.0)
-      bson (~> 2.2)
-      connection_pool (~> 2.0)
-      optionable (~> 0.2.0)
-
-GIT
   remote: git://github.com/plataformatec/simple_form.git
   revision: 517a0fcc12937d238fba3192a1b12c83dda9301a
   specs:
@@ -79,16 +70,25 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
-    bson (2.3.0)
+    bson (3.1.1)
     bson_ext (1.5.1)
     builder (3.2.2)
     cancancan (1.9.2)
-    capistrano (2.15.5)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-passenger (0.1.0)
+      capistrano (~> 3.0)
+    capistrano-rails (1.1.3)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.0.3)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
     capybara (2.4.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -110,14 +110,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    connection_pool (2.0.0)
+    colorize (0.7.7)
+    connection_pool (2.2.0)
     coveralls (0.7.1)
       multi_json (~> 1.3)
       rest-client
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    daemon_controller (1.2.0)
     daemons (1.1.9)
     database_cleaner (1.3.0)
     devise (3.3.0)
@@ -128,11 +128,15 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
     elusive-icons-sass-rails (1.0.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     erubis (2.7.0)
-    eventmachine (1.0.3)
+    eventmachine (1.0.7)
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -159,7 +163,6 @@ GEM
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
     hashie (3.3.1)
-    highline (1.6.21)
     hike (1.2.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -174,7 +177,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.0)
       railties (>= 3.2.16)
-    json (1.8.2)
+    json (1.8.3)
     jwt (1.0.0)
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
@@ -188,8 +191,8 @@ GEM
       actionpack (>= 3.0.0)
     mime-types (2.3)
     mini_portile (0.6.0)
-    minitest (5.5.1)
-    mongoid (4.0.0)
+    minitest (5.7.0)
+    mongoid (4.0.2)
       activemodel (~> 4.0)
       moped (~> 2.0.0)
       origin (~> 2.1)
@@ -202,16 +205,16 @@ GEM
     mongoid_search (0.3.2)
       fast-stemmer (~> 1.0.0)
       mongoid (>= 3.0.0)
+    moped (2.0.6)
+      bson (~> 3.0)
+      connection_pool (~> 2.0)
+      optionable (~> 0.2.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.2)
-      net-ssh (>= 2.6.5)
-    net-ssh (2.9.1)
-    net-ssh-gateway (1.2.0)
-      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
     netrc (0.7.7)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -253,8 +256,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    passenger (4.0.50)
-      daemon_controller (>= 1.2.0)
+    passenger (5.0.11)
       rack
       rake (>= 0.8.1)
     public_activity (1.4.2)
@@ -262,7 +264,7 @@ GEM
       activerecord (>= 3.0)
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-cors (0.2.9)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -337,6 +339,10 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sshkit (1.7.1)
+      colorize (>= 0.7.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     state_pattern (2.0.1)
     stringex (2.5.2)
     term-ansicolor (1.3.0)
@@ -349,7 +355,7 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     tins (1.3.3)
     tinymce-rails (4.1.6)
@@ -380,14 +386,20 @@ DEPENDENCIES
   bson
   bson_ext
   cancancan (~> 1.9)
-  capistrano (~> 2.15)
+  capistrano (~> 3.0)
+  capistrano-bundler
+  capistrano-passenger
+  capistrano-rails
+  capistrano-rbenv
   capybara (>= 1.1.2)
   clockwork
   coffee-rails
   coveralls
   database_cleaner (>= 0.9.1)
   devise (>= 2.1.2)
+  dotenv-rails
   elusive-icons-sass-rails
+  eventmachine (~> 1.0.4)
   factory_girl_rails (>= 4.1.0)
   font-awesome-rails
   fotoramajs
@@ -405,7 +417,7 @@ DEPENDENCIES
   mongoid_rails_migrations (>= 1.0.0)
   mongoid_search
   mongoid_slug!
-  moped!
+  moped
   nokogiri
   omniauth
   omniauth-facebook
@@ -435,3 +447,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   voteable_mongo!
   whenever
+
+BUNDLED WITH
+   1.10.4

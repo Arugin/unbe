@@ -1,88 +1,30 @@
-require "bundler/capistrano"
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+# config valid only for current version of Capistrano
+lock '3.4.0'
 
+set :rbenv_ruby, '2.2.2'
+set :rbenv_map_bins, %w{rake gem bundle ruby rails eye whenever}
+
+set :application, 'unbe'
+set :repo_url, 'https://github.com/Arugin/unberails.git'
 set :whenever_command, "bundle exec whenever"
-require "whenever/capistrano"
 
-set :application, "unbe"
-set :repository,  "https://github.com/Arugin/unberails.git"
-
-set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-set :deploy_to, "/home/arugin/webapps/unbe"
-set :default_stage, "production"
-
-role :web, "web441.webfaction.com"                          # Your HTTP server, Apache/etc
-role :app, "web441.webfaction.com"                          # This may be the same as your `Web` server
-role :db,  "web441.webfaction.com", :primary => true        # This is where Rails migrations will run
-
+set :deploy_to, '/home/ec2-user/unbe'
+set :format, :pretty
 set :default_shell, "bash -l"
+set :rails_env, 'production'
+set :passenger_restart_with_sudo, true
 
-set :user, "arugin"
-set :scm_username, "Arugin"
-set :use_sudo, false
-set :deploy_via, :checkout
-set :branch, "master"
+# Default value for :log_level is :debug
+# set :log_level, :debug
 
-set :keep_releases, 4
+# Default value for :pty is false
+set :pty, true
 
-set :default_environment, {
-    'PATH' => "#{deploy_to}/bin:$PATH",
-    'GEM_HOME' => "#{deploy_to}/gems",
-    'RAILS_ENV' => "#{default_stage}"
-}
+# Default value for :linked_files is []
+set :linked_files, fetch(:linked_files, []).push('.env')
 
-desc "Restart nginx"
-task :restart do
-  run "#{deploy_to}/bin/restart"
-end
+# Default value for linked_dirs is []
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
-desc "Start nginx"
-task :start do
-  run "#{deploy_to}/bin/start"
-end
-
-desc "Stop nginx"
-task :stop do
-  run "#{deploy_to}/bin/stop"
-end
-
-desc "Logs"
-task :logs do
-  run "cd #{deploy_to}/current; rm -rf log; mkdir log"
-end
-
-namespace :deploy do
-  puts "============================================="
-  puts "SIT BACK AND RELAX WHILE CAPISTRANO ROCKS ON!"
-  puts "============================================="
-
-  desc "Seed database"
-  task :remakedb do
-    run "cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=#{default_stage}"
-    run "cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=#{default_stage}"
-  end
-
-  desc "Seed database"
-  task :seed do
-    run "cd #{deploy_to}/current; bundle exec rake db:seed RAILS_ENV=#{default_stage}"
-  end
-
-  desc "Migrate database"
-  task :migrate do
-    run "cd #{deploy_to}/current; bundle exec rake db:migrate RAILS_ENV=#{default_stage}"
-  end
-
-  namespace :assets do
-    desc 'Run the precompile task locally and rsync with shared'
-    task :precompile, :roles => :web, :except => { :no_release => true } do
-      run "cd #{deploy_to}/current; bundle exec rake assets:precompile"
-    end
-  end
-end
-
-after "deploy", "logs"
-after "deploy", "deploy:cleanup"
-after "deploy", "deploy:assets:precompile"
-after "deploy", "deploy:migrate"
-after "deploy", "restart"
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
