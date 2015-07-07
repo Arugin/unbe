@@ -6,13 +6,11 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails eye whenever}
 
 set :application, 'unbe'
 set :repo_url, 'https://github.com/Arugin/unberails.git'
-set :whenever_command, "bundle exec whenever"
 
 set :deploy_to, '/home/ec2-user/unbe'
 set :format, :pretty
 set :default_shell, "bash -l"
 set :rails_env, 'production'
-set :passenger_restart_with_sudo, true
 
 # Default value for :log_level is :debug
 # set :log_level, :debug
@@ -28,3 +26,16 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+namespace :deploy do
+  desc "Update crontab with whenever"
+  task :update_cron do
+    on roles(:app) do
+      within current_path do
+        execute :bundle, :exec, "whenever --update-crontab #{fetch(:application)}"
+      end
+    end
+  end
+
+  after :finishing, 'deploy:update_cron'
+end

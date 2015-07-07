@@ -1,6 +1,6 @@
-set :output, '/home/arugin/webapps/unbe/file.log'
+set :output, '/home/ec2-user/unbe/file.log'
 
-job_type :rake, "cd :path && :environment_variable=:environment GEM_HOME=$HOME/webapps/unbe/gems RUBY_LIB=$HOME/webapps/unbe/lib PATH=$HOME/webapps/unbe/bin:/usr/local/bin:$PATH rake :task --silent :output"
+job_type :rake, "cd :path && :environment_variable=:environment rake :task --silent :output"
 
 every :friday, at: '8pm' do
   rake  "mail:last_articles"
