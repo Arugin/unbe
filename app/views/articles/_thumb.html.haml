@@ -1,6 +1,6 @@
 = link_to article_path(item) do
   = image_tag(item.get_logo_url.blank? ? '/images/common/filer.png': item.get_logo_url, title: item.title, data: {toggle: 'tooltip', placement:'top'}) rescue "Hi"
 
-- if can? :to_news, item
+- if can?(:to_news, item) && !item.to_news
   = link_to to_main_article_path(item) do
-    %i.fa.fa-upload.to-main{class: item.to_news ? 'inactive' : 'green'}
+    %i.fa.fa-upload.to-main.green

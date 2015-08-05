@@ -4,6 +4,7 @@
     %th.col-md-3 Email
     %th Роль
     %th Дата регистрации
+    %th uid
     %th
     %th
     %th.col-md-2
@@ -12,15 +13,18 @@
   %tbody
   - @users.each do |user|
     %tr
-      %td{title: user.name, data: {toggle: 'tooltip', placement:'top'}}
+      %td{title: user.name}
         = link_to profile_path(user) do
           = truncate(user.name, length: 10, :omission => '...')
-      %td{data: {toggle: 'tooltip', placement:'top'}, title: user.email}= truncate(user.email, length: 20, :omission => '...')
+      %td{title: user.email}= truncate(user.email, length: 20, :omission => '...')
       %td= t(user.highest_role)
       %td= l user.created_at.in_time_zone, format: :mini
       %td
+        - user.authentications.each do |auth|
+          = " #{auth.provider}: #{auth.uid}"
+      %td
         - if user.subscribed
-          %i.fa.fa-envelope{data: {toggle: 'tooltip', placement:'top'}, title: t(:SUBSCRIBED)}
+          %i.fa.fa-envelope{title: t(:SUBSCRIBED)}
       %td
         = render partial: "offices/yes_no", locals: { is_true: user.is_active?, title: 'активнен' }
       %td
