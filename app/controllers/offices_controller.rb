@@ -47,6 +47,12 @@ class OfficesController < ApplicationController
     respond_with @cycles
   end
 
+  def usage
+    authorize! :usage, SystemManagement
+    @system_info = SystemManagement.get_system_info
+    @storage_info = SystemManagement.get_storage_info
+  end
+
   def non_approved_articles
     @articles = Article.non_approved(current_user, params).page(params[:page]).per(15)
     authorize! :approve, Article

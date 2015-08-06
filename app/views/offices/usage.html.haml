@@ -1,0 +1,48 @@
+.row
+  .col-md-12
+    .hband
+      %h4 System information
+    .content
+      .inputs
+        %p
+          %strong> System version
+          \: #{@system_info.system_version}
+        %p
+          %strong> Application version
+          \: #{@system_info.application_version}
+        %p
+          %strong> Ruby version
+          \: #{@system_info.ruby_version}
+        %p
+          %strong> CPUs
+          \: #{@system_info.ncpu}
+        %p
+          %strong> RAM
+          \: #{Rounding.humanize_number(@system_info.physmem, 0, "bytes", " ")}
+    .clear
+
+    .hband
+      %h4 Storage
+    .content     
+      .inputs
+        %div
+          %p
+            Database size:
+            %strong= Rounding.humanize_number(@storage_info.db, 0, "bytes", " ")
+        %div
+          %p
+            Local application storage capacity: #{Rounding.humanize_number(@storage_info.total, 0, "bytes", " ")}
+        %table.table.table-hover.table-bordered.table-striped
+          %thead
+            %th Коллекция
+            %th Количество документов
+            %th Размер
+          %tbody
+            - @storage_info.all_collections_info.each do |collection|
+              %tr
+                %td= collection[:name]
+                %td= collection[:count]
+                %td= Rounding.humanize_number(collection[:size], 0, "bytes", " ")
+
+- content_for(:right_bar) do
+  = render 'right_bar'

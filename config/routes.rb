@@ -84,6 +84,7 @@ Unbe::Application.routes.draw do
       post 'add_points', action: :add_points_update
     end
     member do
+      get 'usage'
       get 'articles'
       get 'cycles'
       get 'galleries'
