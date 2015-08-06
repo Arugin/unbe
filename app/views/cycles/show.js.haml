@@ -1,2 +1,2 @@
-$("#comments").updateHtml("#{escape_javascript(render :partial => 'common/comments_block', :locals => { :commentable => @cycle } )}");
-$("#cycle_articles").updateHtml("#{escape_javascript(render :partial => 'articles/index_articles_block', :locals => { :articles => @articles } )}");
+$("#comments").updateHtml("#{escape_javascript(render 'common/comments_block', commentable: @cycle )}");
+$("#cycle_articles").updateHtml("#{escape_javascript(render 'articles/index_articles_block', articles: @articles, param_name: :articles_page )}");

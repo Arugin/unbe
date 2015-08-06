@@ -16,7 +16,8 @@ class CyclesController < ApplicationController
   def show
     @cycle = Cycle.find(params[:id])
     @comments = @cycle.comments.page(params[:page]).per(25)
-    @articles = @cycle.ordered_articles.page(params[:articles_page])
+    @articles = @cycle.ordered_articles.page(params[:articles_page]).per(15)
+
     respond_with @comments
   end
 

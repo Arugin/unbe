@@ -1,9 +1,10 @@
-- if @articles.blank?
+- param_name ||= :page
+- if articles.blank?
   %p= t("NO_ARTICLES_FOUND")
 - else
   %ul.items-card-list
-    - @articles.each do |article|
+    - articles.each do |article|
       %li.item
-        = render :partial => 'common/cool_block', locals: { item: article, collection: 'articles' }
+        = render 'common/cool_block', item: article, collection: 'articles'
 
-= paginate @articles, :remote => true
+= paginate articles, remote: true, param_name: param_name
