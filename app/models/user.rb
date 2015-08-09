@@ -196,7 +196,6 @@ class User
   ### OMNIAUTH ###
 
   def apply_omniauth(omniauth, confirmation)
-    puts omniauth.to_json
     self.email = omniauth['info']['email'] if email.blank?
     # Check if email is already into the database => user exists
     apply_trusted_services(omniauth, confirmation) if self.new_record?

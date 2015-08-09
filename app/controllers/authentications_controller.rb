@@ -31,7 +31,7 @@ class AuthenticationsController < ApplicationController
       current_user.authentications.create!(provider: omniauth['provider'], uid: omniauth['uid'])
       flash[:notice] = t(:PROVIDER_ADDED, provider: omniauth['provider'])
       redirect_to authentications_url
-    elsif (omniauth['provider'] == 'twitter' || omniauth['provider'] == 'linked_in') &&
+    elsif (omniauth['provider'] == 'twitter' || omniauth['provider'] == 'vkontakte' || omniauth['provider'] == 'linked_in') &&
         omniauth['uid'] && (omniauth['info']['name'] || omniauth['info']['nickname'] ||
         (omniauth['info']['first_name'] && omniauth['info']['last_name']))
       session[:omniauth] = omniauth.except('extra')
