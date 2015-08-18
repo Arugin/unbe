@@ -12,7 +12,7 @@ class OfficesController < ApplicationController
   def show
     @last_pages = []
 
-    elements = Impression.where(user_id: current_user._id).order_by([:created_at, :desc])
+    elements = Impression.where(user_id: current_user.id).order(created_at: :desc)
     elements.each do |element|
       break if @last_pages.size >= 10
       checking = element.impressionable_type.constantize.find(element.impressionable_id) rescue @last_pages.last
@@ -21,8 +21,8 @@ class OfficesController < ApplicationController
       end
     end
 
-    @my_activities = PublicActivity::Activity.where(owner_id: current_user.id).order_by(created_at: :desc).page(params[:page]).per(20)
-    @comments = PublicActivity::Activity.where(:recipient_id.in => current_user.all_resources_ids).order_by(created_at: :desc).page(params[:page]).per(20)
+    @my_activities = PublicActivity::Activity.where(owner_id: current_user.id).order(created_at: :desc).page(params[:page]).per(20)
+    @comments = PublicActivity::Activity.where(:recipient_id.in => current_user.all_resources_ids).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def articles
@@ -33,7 +33,7 @@ class OfficesController < ApplicationController
     else
       scope = Article.unscoped.search_for(current_user, params)
     end
-    @articles = scope.order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+    @articles = scope.order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
 
     respond_with @articles
   end
@@ -42,7 +42,7 @@ class OfficesController < ApplicationController
     params[:sort_by] ||= 'created_at'
     params[:direction] ||= 'desc'
 
-    @cycles = Cycle.unscoped.search_for(current_user, params).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+    @cycles = Cycle.unscoped.search_for(current_user, params).order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
 
     respond_with @cycles
   end
@@ -65,8 +65,8 @@ class OfficesController < ApplicationController
   end
 
   def non_approved_contents
-    @contents = Content::BaseContent.non_approved(current_user, params).page(params[:page])
-    authorize! :approve, Content::BaseContent
+    @contents = Content.non_approved(current_user, params).page(params[:page])
+    authorize! :approve, Content
     respond_with @contents
   end
 

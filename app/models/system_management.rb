@@ -23,21 +23,21 @@ class SystemManagement
 end
 
 class SystemInfo < ActiveRecord::Base
-  field :system_version, type: String
-  field :application_version, type: String
+  #field :system_version, type: String
+  #field :application_version, type: String
 
-  field :ncpu, type: Integer
-  field :ruby_version, type: String
-  field :physmem, type: Integer
+  #field :ncpu, type: Integer
+  #field :ruby_version, type: String
+  #field :physmem, type: Integer
 end
 
 class StorageInfo < ActiveRecord::Base
-  field :db, type: Integer
-  field :db_total, type: Integer
+  #field :db, type: Integer
+  #field :db_total, type: Integer
 
-  field :projects, type: Integer, default: 0
-  field :tests, type: Integer, default: 0
-  field :total, type: Integer, default: 0
+  #field :projects, type: Integer, default: 0
+  #field :tests, type: Integer, default: 0
+  #field :total, type: Integer, default: 0
 
   def all_collections_info
 

@@ -1,20 +1,13 @@
-#code from https://github.com/chebyte/mongoid-simple-tags
-#using unscoped.map_reduce to solve problem with default_scope order_by
 module Concerns
   module Taggable
     extend ActiveSupport::Concern
-
-    included do
-      field :tags, type: Array, default: []
-      index({ tags: 1 }, { background: true })
-    end
 
     def tag_list=(tags)
       self.tags = string2tags(tags)
     end
 
     def tag_list
-      self.tags.join(", ") if tags
+      tags.join(", ") if tags
     end
 
     def tags
@@ -66,11 +59,6 @@ module Concerns
         rescue => e
           return []
         end
-      end
-
-      def scoped_tags(scope = {})
-        warn "[DEPRECATION] `scoped_tags` is deprecated.  Please use `all_tags` instead."
-        all_tags(scope)
       end
 
       def tagged_with(tags)

@@ -13,7 +13,7 @@ module Stats
     end
 
     def content_count
-      Content::BaseContent.where(approved_to_news: true).count
+      Content.where(approved_to_news: true).count
     end
 
   end

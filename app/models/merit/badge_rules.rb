@@ -43,7 +43,7 @@ module Merit
         subject.author.full_actions?
       end
 
-      grant_on ['contents#create'], model_name: 'Content::BaseContent', badge: 'badges.part_of_whole.title', to: :author do |subject|
+      grant_on ['contents#create'], model_name: 'Content', badge: 'badges.part_of_whole.title', to: :author do |subject|
         subject.author.full_actions?
       end
 
@@ -52,83 +52,83 @@ module Merit
       end
 
       grant_on 'comments#vote_up', badge: 'badges.commentator.1.title', level: 1, to: :user do |comment|
-        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 25
+        comment.user.comments.find_all {|item| item.votes_for.size >= 1 }.count >= 25
       end
 
       grant_on 'comments#vote_up', badge: 'badges.commentator.2.title', level: 2, to: :user do |comment|
-        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 100
+        comment.user.comments.find_all {|item| item.votes_for.size >= 1 }.count >= 100
       end
 
       grant_on 'comments#vote_up', badge: 'badges.commentator.3.title', level: 3, to: :user do |comment|
-        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 400
+        comment.user.comments.find_all {|item| item.votes_for.size >= 1 }.count >= 400
       end
 
       grant_on 'comments#vote_up', badge: 'badges.commentator.4.title', level: 4, to: :user do |comment|
-        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 2000
+        comment.user.comments.find_all {|item| item.votes_for.size >= 1 }.count >= 2000
       end
 
       grant_on 'comments#vote_up', badge: 'badges.commentator.5.title', level: 5, to: :user do |comment|
-        comment.user.comments.find_all {|item| item.votes_point >= 1 }.count >= 10000
+        comment.user.comments.find_all {|item| item.votes_for.size >= 1 }.count >= 10000
       end
 
       grant_on 'comments#vote_up', badge: 'badges.rated_comment.1.title', level: 1, to: :user do |comment|
-        comment.votes_point >= 25
+        comment.votes_for.size >= 25
       end
 
       grant_on 'comments#vote_up', badge: 'badges.rated_comment.2.title', level: 2, to: :user do |comment|
-        comment.votes_point >= 50
+        comment.votes_for.size >= 50
       end
 
       grant_on 'comments#vote_up', badge: 'badges.rated_comment.3.title', level: 3, to: :user do |comment|
-        comment.votes_point >= 75
+        comment.votes_for.size >= 75
       end
 
       grant_on 'comments#vote_up', badge: 'badges.rated_comment.4.title', level: 4, to: :user do |comment|
-        comment.votes_point >= 100
+        comment.votes_for.size >= 100
       end
 
       grant_on 'comments#vote_up', badge: 'badges.rated_comment.5.title', level: 5, to: :user do |comment|
-        comment.votes_point >= 200
+        comment.votes_for.size >= 200
       end
 
       grant_on 'articles#vote_up', badge: 'badges.writer.1.title', level: 1, to: :author do |article|
-        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 5
+        article.author.articles.find_all {|item| item.votes_for.size >= 1 }.count >= 5
       end
 
       grant_on 'articles#vote_up', badge: 'badges.writer.2.title', level: 2, to: :author do |article|
-        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 25
+        article.author.articles.find_all {|item| item.votes_for.size >= 1 }.count >= 25
       end
 
       grant_on 'articles#vote_up', badge: 'badges.writer.3.title', level: 3, to: :author do |article|
-        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 75
+        article.author.articles.find_all {|item| item.votes_for.size >= 1 }.count >= 75
       end
 
       grant_on 'articles#vote_up', badge: 'badges.writer.4.title', level: 4, to: :author do |article|
-        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 150
+        article.author.articles.find_all {|item| item.votes_for.size >= 1 }.count >= 150
       end
 
       grant_on 'articles#vote_up', badge: 'badges.writer.5.title', level: 5, to: :author do |article|
-        article.author.articles.find_all {|item| item.votes_point >= 1 }.count >= 250
+        article.author.articles.find_all {|item| item.votes_for.size >= 1 }.count >= 250
       end
 
       grant_on 'articles#vote_up', badge: 'badges.rated_article.1.title', level: 1, to: :author do |article|
-        article.votes_point >= 25
+        article.votes_for.size >= 25
       end
 
       grant_on 'articles#vote_up', badge: 'badges.rated_article.2.title', level: 2, to: :author do |article|
-        article.votes_point >= 75
+        article.votes_for.size >= 75
       end
 
       grant_on 'articles#vote_up', badge: 'badges.rated_article.3.title', level: 3, to: :author do |article|
-        article.votes_point >= 150
+        article.votes_for.size >= 150
       end
 
       grant_on 'articles#vote_up', badge: 'badges.rated_article.4.title', level: 4, to: :author do |article|
-        article.votes_point >= 300
+        article.votes_for.size >= 300
       end
 
       grant_on 'articles#vote_up', badge: 'badges.rated_article.5.title', level: 5, to: :author do |article|
-        article.votes_point >= 500
+        article.votes_for.size >= 500
       end
 
       grant_on 'comments#create', badge: 'badges.holivar.1.title', level: 1, to: :commentable_author do |comment|

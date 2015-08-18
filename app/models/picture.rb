@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  embedded_in :imageable, polymorphic: true
+  belongs_to :imageable, polymorphic: true
 
   has_attached_file :file,
                             path: '/:class/:attachment/:id_partition/:style/:filename',

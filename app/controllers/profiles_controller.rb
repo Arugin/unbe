@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
   def articles
     @cycle = Cycle.find(params[:id])
     @user = @cycle.author
-    @articles = @cycle.articles.where(state: 'Article::Approved').order_by([:created_at, :desc]).page(params[:page]).per(5)
+    @articles = @cycle.articles.where(state: 'Article::Approved').order(created_at: :desc).page(params[:page]).per(5)
     respond_with @articles
   end
 
@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
 
   def comments
     @user = User.find(params[:id])
-    @comments = @user.comments.order_by([:created_at, :desc]).page(params[:page]).per(20)
+    @comments = @user.comments.order(created_at: :desc).page(params[:page]).per(20)
     respond_with @comments
   end
 

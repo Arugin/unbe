@@ -62,5 +62,8 @@ module Unbe
     I18n.config.enforce_available_locales = true
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    config.active_record.raise_in_transactional_callbacks = true
+    config.active_record.schema_format = :sql
   end
 end

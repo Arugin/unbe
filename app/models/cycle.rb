@@ -1,45 +1,37 @@
 class Cycle < ActiveRecord::Base
+  extend FriendlyId
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Sortable
   include Concerns::Shortable
   include Concerns::Taggable
   include Concerns::Commentable
-  include Mongo::Voteable
   include PublicActivity::Model
+  include PgSearch
+
+  acts_as_votable
 
   tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present?}, params: {title: :correct_title}
 
-  field :title, type: String
-  field :description, type: String
-  field :system, type: Boolean, default: false
-  field :logo, type: String
+  friendly_id  :title, use: [:history, :slugged, :finders]
 
-  slug  :title, history: true
-
-  has_many :articles, dependent: :restrict
+  has_many :articles, dependent: :restrict_with_error
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :description, length: {maximum: 1000}
 
-  default_scope lambda {
-    order_by(created_at: :desc)
-  }
-
-  search_in :title, :tags
-
-  voteable self, up: +1, down: -1
+  pg_search_scope :search, against: [:title, :tags]
 
   def previous_article article
-    self.articles.order_by(created_at: :asc).where(:created_at.lt => article.created_at).last
+    articles.order(created_at: :asc).where('created_at < ?', article.created_at).last
   end
 
   def next_article article
-    self.articles.order_by(created_at: :asc).where(:created_at.gt => article.created_at).first
+    articles.order(created_at: :asc).where('created_at > ?', article.created_at).first
   end
 
   def ordered_articles
-    articles.order_by(created_at: :desc)
+    articles.order(created_at: :desc)
   end
 
   def correct_title

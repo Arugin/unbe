@@ -43,8 +43,14 @@ begin
   ArticleArea.create ({:title => :MANAGEMENT})
 
   puts 'CREATING Default user'
-  user = User.create! :name => 'Arugin', :email => 'unbecinema@gmail.com', :password => 'welcome', :password_confirmation => 'welcome', :first_name => 'Валерий', :second_name => 'Маяцкий', :from => 'Санкт-Петербург', :gender => male
-  user2 = User.create! :name => 'Aro', :email => 'aro@example.com', :password => 'welcome', :password_confirmation => 'welcome'
+  user = User.new name: 'Arugin', email: 'unbecinema@gmail.com', password: 'welcome', password_confirmation: 'welcome', first_name: 'Валерий', second_name: 'Маяцкий', from: 'Санкт-Петербург', gender: male
+  user2 = User.new name: 'Aro', email: 'aro@example.com', password: 'welcome', password_confirmation: 'welcome'
+
+  user.skip_confirmation!
+  user2.skip_confirmation!
+
+  user.save!
+  user2.save!
 
   puts "setiing user roles"
   user.change_role :ADMIN

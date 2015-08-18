@@ -1,5 +1,6 @@
 #encoding: utf-8
 class Article < ActiveRecord::Base
+  extend FriendlyId
   require 'nokogiri'
   include Concerns::Searchable
   include Concerns::Ownerable
@@ -8,9 +9,11 @@ class Article < ActiveRecord::Base
   include Concerns::Taggable
   include Concerns::Commentable
   include Concerns::Sortable
-  include Mongo::Voteable
   include StatePattern::ActiveRecord
   include PublicActivity::Model
+  include PgSearch
+
+  acts_as_votable
 
   set_initial_state Initial
 
@@ -18,26 +21,14 @@ class Article < ActiveRecord::Base
 
   is_impressionable counter_cache: true, unique: :ip_address
 
-  field :title, type: String
-  field :logo, type: String
-  field :content, type: String
-  field :tmpContent, type: String
-  field :script, type: String
-  field :baseRating, type: Integer
-  field :rating, type: Integer
-  field :system_tag, type: Symbol
-  field :to_news, type: Boolean, default: false
-  field :impressions_count, type: Integer, default: 0
-  field :state, type: String
-
-  slug  :title, history: true
+  friendly_id :title, use: [:slugged, :history, :finders]
 
   belongs_to :article_area
   belongs_to :article_type
   belongs_to :cycle
   has_many :images, dependent: :destroy
 
-  search_in :title, :tags
+  pg_search_scope :search, against: [:title, :tags]
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
   validates :tmpContent, length: {maximum: 30000}
@@ -45,13 +36,13 @@ class Article < ActiveRecord::Base
   delegate :correct_title, to: :cycle, prefix: true, allow_nil: true
 
   scope :last_news, lambda { |user, params = {}|
-    search_for(user,params).any_of({'$and' => [{state: 'Article::Approved'}, {to_news: true}]}, {'$and' => [{state: 'Article::Approved'}, {article_type: ArticleType.where(title: "NEWS").first}]}, {'$and' => [{state: 'Article::Changed'}, {to_news: true}]}, {'$and' => [{state: 'Article::Changed'}, {article_type: ArticleType.where(title: "NEWS").first}]}).order_by([:created_at, :desc])
+    joins(:article_type).where(state: 'Article::Approved', to_news: true).or.where(state: 'Article::Approved', article_type: {title: "NEWS"}).or.where(state: 'Article::Changed', to_news: true).or(state: 'Article::Changed', article_type: {title: "NEWS"}).order(created_at: :desc)
   }
 
-  scope :popular, -> {unscoped.order_by(impressions_count: :desc).limit(2)}
+  scope :popular, -> {unscoped.order(impressions_count: :desc).limit(2)}
 
   scope :by_area, lambda { |user, params = {}, area|
-    scope = search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'})
+    scope = where("state = 'Article::Approved' OR state = 'Article::Changed'")
     if area.present?
       scope.where(article_area: area)
     else
@@ -64,7 +55,7 @@ class Article < ActiveRecord::Base
   }
 
   scope :approved, lambda { |user, params = {}|
-    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).order_by(created_at: :desc)
+    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).order(created_at: :desc)
   }
 
   scope :random, lambda {
@@ -75,11 +66,8 @@ class Article < ActiveRecord::Base
     unscoped.search_for(user, params).not_in(state: 'Article::Approved')
   }
 
-  voteable self, up: +1, down: -1
-  voteable Cycle, up: +1, down: -1
-
   def tiny_content
-    truncate(strip_tags(short_content), length: 200, omission: '...')
+    short_content.truncate(200)
   end
 
   def short_content
@@ -102,19 +90,23 @@ class Article < ActiveRecord::Base
   end
 
   def article_area_id
-    article_area.nil? ? ArticleArea.default_id : article_area._id
+    article_area.nil? ? ArticleArea.default_id : article_area.id
   end
 
   def article_type_id
-    article_type.nil? ? ArticleType.default_id : article_type._id
+    article_type.nil? ? ArticleType.default_id : article_type.id
   end
 
   def cycle_id
-    cycle.nil? ? author.cycles.where(title: :NO_CYCLE).first._id : cycle._id
+    if self.cycle.nil?
+      author.cycles.where(title: :NO_CYCLE).first.id
+    else
+      self.cycle.id
+    end
   end
 
   def correct_title
-    truncate(title, length: 40, omission: '...')
+    title.truncate(40)
   end
 
   def upload_images

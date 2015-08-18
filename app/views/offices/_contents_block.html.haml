@@ -2,12 +2,12 @@
     %tr
         %td.content-header
             .office-header
-                = link_to content_base_content_path(content) do
+                = link_to content_path(content) do
                     = content.title
         %td
 
         %td.center
-            = link_to edit_content_base_content_path content do
+            = link_to edit_content_path content do
                 %i.fa.fa-pencil{title: t(:EDIT_CONTENT), data: {toggle: 'tooltip', placement:'top'}}
         %td.long
             = render :partial => "common/views_count", locals: { subject: content, growth: true }

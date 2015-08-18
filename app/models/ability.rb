@@ -31,19 +31,19 @@ class Ability
       end
 
       can :manage, Gallery, :author => user
-      can :manage, Content::BaseContent, :author => user
+      can :manage, Content, :author => user
 
-      can :update, User, :_id => user._id
+      can :update, User, :id => user.id
 
       can :create, Comment
-      can :vote_up, [Comment,Article, Content::BaseContent] do |item|
+      can :vote_up, [Comment,Article, Content] do |item|
         user.points >= Utils.RANKS[1]
       end
-      can :vote_down, [Comment,Article, Content::BaseContent]do |item|
+      can :vote_down, [Comment,Article, Content]do |item|
         user.points >= Utils.RANKS[2]
       end
       can :destroy, Comment do |comment|
-        (comment.user == user)&&(comment.votes_point == 0)
+        (comment.user == user)&&(comment.votes_for.size == 0)
       end
       can :update, Comment do |comment|
         (comment.user == user)&&(Time.now < 1.days.since(comment.created_at))
@@ -57,11 +57,11 @@ class Ability
       cannot :script, Article
       cannot :to_news, Article
       cannot :to_garbage, Article
-      cannot :approve, Content::BaseContent
+      cannot :approve, Content
       cannot :publish_news, Article
       cannot :system_tag, Article
-      cannot :vote_up, [Article, Content::BaseContent, Cycle], author: user
-      cannot :vote_down, [Article, Content::BaseContent, Cycle], author: user
+      cannot :vote_up, [Article, Content, Cycle], author: user
+      cannot :vote_down, [Article, Content, Cycle], author: user
       cannot :vote_up, Comment, user: user
       cannot :vote_down, Comment, user: user
 
@@ -71,7 +71,7 @@ class Ability
 
       can :approve, Article
       can :to_news, Article
-      can :approve, Content::BaseContent
+      can :approve, Content
 
     end
 
@@ -88,8 +88,8 @@ class Ability
         (cycle.articles.empty?)&&(cycle.system == false)
       end
 
-      cannot :vote_up, [Article, Content::BaseContent], :author => user
-      cannot :vote_down, [Article, Content::BaseContent], :author => user
+      cannot :vote_up, [Article, Content], :author => user
+      cannot :vote_down, [Article, Content], :author => user
       cannot :vote_up, Comment, user: user
       cannot :vote_down, Comment, user: user
       cannot :subscribe, User do |target|

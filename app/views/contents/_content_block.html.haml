@@ -5,7 +5,7 @@
     = link_to gallery_path(content.contentable) do
       = content.contentable.title
     %span.divider /
-    = link_to content_base_content_path(content) do
+    = link_to content_path(content) do
       %span= title content.title
   .news-user-avatar
     = render 'common/avatar', user: content.contentable.author
@@ -27,10 +27,10 @@
     .control-panel
       .edit
         - if can? :update, content
-          = link_to edit_content_base_content_path(content) do
+          = link_to edit_content_path(content) do
             %i.fa.fa-pencil{title: t(:EDIT_CONTENT), data: {toggle: 'tooltip', placement:'top'}}
       = render :partial => 'common/views_count', locals: { subject: content, growth: false }
-      %div{class:"vote-#{content._id}"}
+      %div{class:"vote-#{content.id}"}
         = render :partial => 'common/vote_block', locals: { votable: content }
   .clear
   %br

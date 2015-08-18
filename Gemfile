@@ -6,7 +6,7 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 
-gem 'rails', '~> 4.1'
+gem 'rails', '~> 4.2'
 gem 'sass-rails', '~> 4.0.3'
 
 gem 'dotenv-rails'
@@ -52,7 +52,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'kaminari'
-gem 'simple_form', '~> 3.1.0.rc2', github: 'plataformatec/simple_form'
+gem 'simple_form'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'fotoramajs'
 gem 'select2-rails'

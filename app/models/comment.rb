@@ -2,16 +2,12 @@ class Comment < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PublicActivity::Model
 
-  field :content, type: String
+  acts_as_votable
 
   validates :content, presence: true, length: {minimum: 3, maximum: 2000}
 
-  belongs_to :commentable, polymorphic: true, counter_cache: :comments_count
+  belongs_to :commentable, polymorphic: true
   belongs_to :user
-
-  default_scope lambda {
-    order_by(created_at: :asc)
-  }
 
   scope :unowned, lambda { |user|
     not_in(author: user.id)
@@ -19,14 +15,12 @@ class Comment < ActiveRecord::Base
 
   delegate :correct_title, to: :commentable, prefix: true, allow_nil: true
 
-  voteable self, up: +1, down: -1
-
   def short_content
     truncate(content, length: 50, omission: '...')
   end
 
   def author
-    self.user
+    user
   end
 
   def commentable_author

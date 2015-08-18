@@ -1,5 +1,5 @@
 .sidebar
-  - if can? :approve, [Article,Content::BaseContent]
+  - if can? :approve, [Article, Content]
     %h3.right-bar
       Модерирование
     %ul.navigation
@@ -10,7 +10,7 @@
       %li
         = active_link_to non_approved_contents_office_path, active: :exclusive do
           Подтвердить работы
-          %b= "(#{Content::BaseContent.non_approved(current_user).count})" if Content::BaseContent.non_approved(current_user).count > 0
+          %b= "(#{Content.non_approved(current_user).count})" if Content.non_approved(current_user).count > 0
 
 
   - if user_signed_in? and current_user.has_role? :ADMIN

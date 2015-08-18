@@ -1,9 +1,7 @@
 class ArticleArea < ActiveRecord::Base
-  field :title, type: Symbol
-
-  has_many :articles, dependent: :restrict
+  has_many :articles, dependent: :restrict_with_error
 
   def self.default_id
-    where(title: :NO_AREA).first._id
+    where(title: :NO_AREA).first.id
   end
 end

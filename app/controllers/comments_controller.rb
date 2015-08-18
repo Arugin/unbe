@@ -70,11 +70,7 @@ class CommentsController < ApplicationController
   end
 
   def specific_name(name)
-    if name == 'content_base_content'
-      'Content::BaseContent'
-    else
-      name.classify
-    end
+    name.classify
   end
 
 end

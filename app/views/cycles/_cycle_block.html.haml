@@ -19,10 +19,10 @@
         - if can? :update, cycle
           = link_to edit_cycle_path(cycle) do
             %i.fa.fa-pencil{title: t(:EDIT_CYCLE), data: {toggle: 'tooltip', placement:'top'}}
-      %div{class:"vote-#{cycle._id}"}
+      %div{class:"vote-#{cycle.id}"}
         .mini-vote{title: t(:RATING), data: {toggle: 'tooltip', placement:'top'}}
-          .count{:class => ((cycle.votes_point > 0 ? 'positive' : 'negative') unless cycle.votes_point ==0 )}
-            = cycle.votes_point
+          .count{:class => ((cycle.votes_for.size > 0 ? 'positive' : 'negative') unless cycle.votes_for.size ==0 )}
+            = cycle.votes_for.size
   .clear
   .description
     %span= cycle.correct_description.html_safe
