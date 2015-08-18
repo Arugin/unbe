@@ -1,7 +1,4 @@
-class Cycle
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
+class Cycle < ActiveRecord::Base
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Sortable

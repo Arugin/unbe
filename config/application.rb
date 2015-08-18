@@ -1,14 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "rails/test_unit/railtie"
+require 'rails/all'
 require "sprockets/railtie"
 require 'net/http'
-
-require "bson"
-require "moped"
-Moped::BSON = BSON
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

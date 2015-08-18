@@ -1,7 +1,4 @@
-class Gallery
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Slug
+class Gallery < ActiveRecord::Base
   include Concerns::Ownerable
   include Concerns::Searchable
   include Concerns::Shortable

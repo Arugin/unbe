@@ -1,10 +1,7 @@
-class Image
-  include Mongoid::Document
-  include Mongoid::Paperclip
-
+class Image < ActiveRecord::Base
   belongs_to :article
 
-  has_mongoid_attached_file :file,
+  has_attached_file :file,
                             path:           '/articles/:attachment/:id_partition/:style/:filename',
                             storage:        :s3,
                             url:            ':s3_domain_url',

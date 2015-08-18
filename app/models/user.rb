@@ -1,11 +1,7 @@
-class User
-  include Mongoid::Document
-  include Mongoid::Slug
+class User < ActiveRecord::Base
   rolify
-  include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::Randomizable
-  include Mongo::Voter
   include PublicActivity::Model
   has_merit
 

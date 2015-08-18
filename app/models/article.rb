@@ -1,9 +1,6 @@
 #encoding: utf-8
-class Article
+class Article < ActiveRecord::Base
   require 'nokogiri'
-  include Mongoid::Document
-  include Mongoid::Slug
-  include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::Ownerable
   include Concerns::Randomizable
@@ -12,7 +9,7 @@ class Article
   include Concerns::Commentable
   include Concerns::Sortable
   include Mongo::Voteable
-  include Concerns::Statable
+  include StatePattern::ActiveRecord
   include PublicActivity::Model
 
   set_initial_state Initial

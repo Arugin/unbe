@@ -1,5 +1,4 @@
-class ArticleType
-  include Mongoid::Document
+class ArticleType < ActiveRecord::Base
   field :title, type: String
 
   has_many :articles, dependent: :restrict

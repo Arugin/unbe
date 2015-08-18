@@ -1,7 +1,5 @@
 module Stats
-  class Base
-    include Mongoid::Document
-
+  class Base < ActiveRecord::Base
     def articles_count
       Article.where(state: 'Article::Approved').not_in(article_area: ArticleArea.where(title: "NEWS").first).count
     end

@@ -1,7 +1,4 @@
-class Comment
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongo::Voteable
+class Comment < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PublicActivity::Model
 

@@ -1,3 +1,3 @@
 PublicActivity::Config.set do
-  orm :mongoid
+  orm :active_record
 end

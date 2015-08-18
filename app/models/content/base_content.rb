@@ -1,8 +1,5 @@
 module Content
-  class BaseContent
-    include Mongoid::Document
-    include Mongoid::Timestamps
-    include Mongoid::Slug
+  class BaseContent < ActiveRecord::Base
     include Concerns::Randomizable
     include Concerns::Shortable
     include Concerns::Searchable

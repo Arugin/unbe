@@ -1,3 +1,3 @@
-class Project
-  include Mongoid::Document
+class Project < ActiveRecord::Base
+
 end

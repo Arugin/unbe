@@ -1,5 +1,4 @@
-class Gender
-  include Mongoid::Document
+class Gender < ActiveRecord::Base
   has_many :users, autosave: true
 
   field :name, type: String

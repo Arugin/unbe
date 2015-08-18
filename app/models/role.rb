@@ -1,12 +1,10 @@
-class Role
-  include Mongoid::Document
-  
+class Role < ActiveRecord::Base
+  scopify
   has_and_belongs_to_many :users
   belongs_to :resource, polymorphic: true
   
   field :name, type: String
   index({ name: 1 }, { unique: true })
-
 
   index({
     name: 1,
@@ -14,6 +12,4 @@ class Role
     resource_id: 1
   },
   { unique: true})
-  
-  scopify
 end

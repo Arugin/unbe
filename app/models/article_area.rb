@@ -1,5 +1,4 @@
-class ArticleArea
-  include Mongoid::Document
+class ArticleArea < ActiveRecord::Base
   field :title, type: Symbol
 
   has_many :articles, dependent: :restrict
