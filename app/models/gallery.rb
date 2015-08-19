@@ -13,8 +13,8 @@ class Gallery < ActiveRecord::Base
 
   is_impressionable counter_cache: true, unique: :ip_address
 
-  alias :title :name
-  alias :correct_title :name
+  alias_attribute :title, :name
+  alias_attribute :correct_title, :name
 
   validates :name, presence: true, length: {minimum:3,maximum: 70}
   validates :description, length: {maximum: 1000}

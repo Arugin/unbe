@@ -29,7 +29,7 @@ Unbe::Application.configure do
   config.assets.js_compressor = :uglifier
   config.assets.compile = true
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
   config.assets.initialize_on_precompile = false
   config.eager_load = false
 end

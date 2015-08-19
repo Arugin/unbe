@@ -31,7 +31,7 @@ class OfficesController < ApplicationController
     if params[:unprocessed]
       scope = Article.unprocessed(current_user, params)
     else
-      scope = Article.unscoped.search_for(current_user, params)
+      scope = Article.where(author: current_user)
     end
     @articles = scope.order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
 
@@ -42,7 +42,7 @@ class OfficesController < ApplicationController
     params[:sort_by] ||= 'created_at'
     params[:direction] ||= 'desc'
 
-    @cycles = Cycle.unscoped.search_for(current_user, params).order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+    @cycles = Cycle.where(author: current_user).order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
 
     respond_with @cycles
   end
@@ -60,7 +60,7 @@ class OfficesController < ApplicationController
   end
 
   def galleries
-    @galleries = Gallery.search_for(current_user,params).page(params[:page]).per(10)
+    @galleries = Gallery.where(author: current_user).page(params[:page]).per(10)
     respond_with @galleries
   end
 

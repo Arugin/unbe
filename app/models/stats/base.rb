@@ -1,7 +1,7 @@
 module Stats
-  class Base < ActiveRecord::Base
+  class Base
     def articles_count
-      Article.where(state: 'Article::Approved').not_in(article_area: ArticleArea.where(title: "NEWS").first).count
+      Article.joins(:article_area).where("article_areas.title NOT IN ('NEWS')").where(state: 'Article::Approved').count
     end
 
     def users_count

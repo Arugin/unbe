@@ -36,7 +36,7 @@ class Article < ActiveRecord::Base
   delegate :correct_title, to: :cycle, prefix: true, allow_nil: true
 
   scope :last_news, lambda { |user, params = {}|
-    joins(:article_type).where(state: 'Article::Approved', to_news: true).or.where(state: 'Article::Approved', article_type: {title: "NEWS"}).or.where(state: 'Article::Changed', to_news: true).or(state: 'Article::Changed', article_type: {title: "NEWS"}).order(created_at: :desc)
+    joins(:article_type).where("state = 'Article::Approved' OR state = 'Article::Changed'").where("article_types.title = 'NEWS' OR to_news = true")
   }
 
   scope :popular, -> {unscoped.order(impressions_count: :desc).limit(2)}
@@ -51,19 +51,19 @@ class Article < ActiveRecord::Base
   }
 
   scope :non_approved, lambda { |user, params = {}|
-    search_for(user,params).where(state: 'Article::Published')
+    where(author: user, state: 'Article::Published')
   }
 
   scope :approved, lambda { |user, params = {}|
-    search_for(user,params).any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).order(created_at: :desc)
+    where(author: user).where("state = 'Article::Approved' OR state: 'Article::Changed'").order(created_at: :desc)
   }
 
   scope :random, lambda {
-    any_of({state: 'Article::Approved'},{state: 'Article::Changed'}).not_in(article_type: ArticleType.where(title: "NEWS").first)
+    where("state = 'Article::Approved' OR state: 'Article::Changed'").first
   }
 
   scope :unprocessed, lambda { |user, params = {}|
-    unscoped.search_for(user, params).not_in(state: 'Article::Approved')
+    where(author: user).where("state NOT IN ?", ['Article::Approved'])
   }
 
   def tiny_content

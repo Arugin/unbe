@@ -35,11 +35,11 @@ class Content < ActiveRecord::Base
   scope :random, ->{ where(approved_to_news: true, reviewed: true) }
 
   scope :non_approved, lambda { |user, params = {}|
-    search_for(user,params).where(reviewed: false)
+    where(reviewed: false)
   }
 
   scope :approved, lambda { |user, params = {}|
-    unscoped.search_for(user,params).where(approved_to_news: true, reviewed: true).order(params[:sort_by].to_sym => params[:direction].to_sym)
+    where(approved_to_news: true, reviewed: true).order(params[:sort_by].to_sym => params[:direction].to_sym)
   }
 
   #alias :content :description

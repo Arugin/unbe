@@ -40,6 +40,8 @@ gem 'acts_as_votable'
 gem 'friendly_id'
 gem 'pg'
 gem 'pg_search'
+gem 'responders'
+gem 'activerecord-session_store'
 
 # migration
 gem 'rails-observers'
