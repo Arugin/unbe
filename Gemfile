@@ -42,6 +42,7 @@ gem 'pg'
 gem 'pg_search'
 gem 'responders'
 gem 'activerecord-session_store'
+gem 'sanitize'
 
 # migration
 gem 'rails-observers'

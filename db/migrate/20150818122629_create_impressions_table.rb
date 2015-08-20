@@ -12,7 +12,7 @@ class CreateImpressionsTable < ActiveRecord::Migration
       t.string :session_hash
       t.text :message
       t.text :referrer
-      t.timestamps
+      t.timestamps  null: false
     end
     add_index :impressions, [:impressionable_type, :message, :impressionable_id], :name => "impressionable_type_message_index", :unique => false, :length => {:message => 255 }
     add_index :impressions, [:impressionable_type, :impressionable_id, :request_hash], :name => "poly_request_index", :unique => false

@@ -31,7 +31,7 @@ class Article < ActiveRecord::Base
   pg_search_scope :search, against: [:title, :tags]
 
   validates :title, presence: true, length: {minimum: 4, maximum: 70}
-  validates :tmpContent, length: {maximum: 30000}
+  validates :tmp_content, length: {maximum: 30000}
 
   delegate :correct_title, to: :cycle, prefix: true, allow_nil: true
 
@@ -67,7 +67,7 @@ class Article < ActiveRecord::Base
   }
 
   def tiny_content
-    short_content.truncate(200)
+    Sanitize.fragment(short_content).truncate(200)
   end
 
   def short_content

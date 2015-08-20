@@ -13,7 +13,7 @@ class Ability
     end
 
     can :draft, Article do |article|
-      article.garbage? || article.tmpContent.present?
+      article.garbage? || article.tmp_content.present?
     end
     cannot :index, User
 

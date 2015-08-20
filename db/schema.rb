@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.text     "parameters"
     t.integer  "recipient_id"
     t.string   "recipient_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.string   "title"
     t.string   "logo"
     t.text     "content"
-    t.text     "tmpContent"
+    t.text     "tmp_content"
     t.text     "script"
     t.integer  "baseRating"
     t.integer  "rating"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.string   "tags",                                           array: true
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "user_id"
     t.integer  "gallery_id"
   end
 
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
   add_index "contents", ["slug"], name: "index_contents_on_slug", using: :btree
   add_index "contents", ["tags"], name: "index_contents_on_tags", using: :gin
   add_index "contents", ["title"], name: "index_contents_on_title", using: :btree
+  add_index "contents", ["user_id"], name: "index_contents_on_user_id", using: :btree
 
   create_table "cycles", force: :cascade do |t|
     t.string   "title"
@@ -193,8 +195,8 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.string   "session_hash"
     t.text     "message"
     t.text     "referrer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
@@ -215,8 +217,8 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.integer  "target_id"
     t.text     "target_data"
     t.boolean  "processed",     default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "merit_activity_logs", force: :cascade do |t|
@@ -257,16 +259,16 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.string   "name"
     t.integer  "resource_id"
     t.string   "resource_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "sashes", force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -343,8 +345,8 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.boolean  "vote_flag"
     t.string   "vote_scope"
     t.integer  "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
@@ -357,6 +359,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
   add_foreign_key "authentications", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "contents", "galleries"
+  add_foreign_key "contents", "users"
   add_foreign_key "cycles", "users"
   add_foreign_key "galleries", "users"
   add_foreign_key "images", "articles"

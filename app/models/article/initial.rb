@@ -1,7 +1,7 @@
 class Article::Initial < Article::BaseState
 
   def publish
-    unless stateful.tmpContent.blank?
+    unless stateful.tmp_content.blank?
       transition_to(Article::Published)
       stateful.created_at = Time.now
       stateful.save!

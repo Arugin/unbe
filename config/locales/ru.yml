@@ -241,7 +241,7 @@ ru:
         title: Заголовок
         article_area: Область
         article_type: Тип статьи
-        tmpContent: Содержание
+        tmp_content: Содержание
         cycle: Цикл статей
         tag_list: Ключевые слова
         script: Разного рода скрипты

@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
       @address_additor = "?article_area=#{@article_area.id}"
     end
 
-    @articles = Article.unscoped.by_area(current_user, params, @article_area).order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(12)
+    @articles = Article.by_area(current_user, params, @article_area).order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(12)
 
     @article_areas = ArticleArea.all
 
@@ -98,14 +98,14 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    if @article.tmpContent.nil?
-      @article.tmpContent = @article.content
+    if @article.tmp_content.nil?
+      @article.tmp_content = @article.content
     end
   end
 
   def publish
     @article = Article.find(params[:id])
-    return redirect_to articles_office_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_BLANK) if @article.tmpContent.blank?
+    return redirect_to articles_office_path(scope:'current_user'), alert: t(:CANNOT_PUBLISH_ARTICLE_TMP_CONTENT_BLANK) if @article.tmp_content.blank?
     @article.publish
     redirect_to articles_office_path(scope:'current_user'), notice: t(:ARTICLE_PUBLISH_SUCCESS)
   end
@@ -212,7 +212,7 @@ class ArticlesController < ApplicationController
   def article_params
     @publish ||= (params[:article].delete(:publish)).to_i == 1
     @approve ||= (params[:article].delete(:approve)).to_i == 1
-    params.require(:article).permit(:title, :logo, :tmpContent, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tag_list, :to_news)
+    params.require(:article).permit(:title, :logo, :tmp_content, :script, :system_tag, :article_area_id, :article_type_id, :cycle_id, :tag_list, :to_news)
   end
 
 end

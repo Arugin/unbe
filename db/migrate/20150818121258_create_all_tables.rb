@@ -4,7 +4,7 @@ class CreateAllTables < ActiveRecord::Migration
       t.string :title
       t.string :logo
       t.text :content
-      t.text :tmpContent
+      t.text :tmp_content
       t.text :script
       t.integer :baseRating
       t.integer :rating
@@ -123,6 +123,7 @@ class CreateAllTables < ActiveRecord::Migration
     add_reference :comments, :user, index: true, foreign_key: true
     add_reference :authentications, :user, index: true, foreign_key: true
     add_reference :settings, :user, index: true, foreign_key: true
+    add_reference :contents, :user, index: true, foreign_key: true
 
     add_reference :articles, :article_area, index: true, foreign_key: true
     add_reference :articles, :article_type, index: true, foreign_key: true
