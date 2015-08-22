@@ -9,6 +9,8 @@ class Gallery < ActiveRecord::Base
   include Concerns::Shortable
   include PgSearch
 
+  acts_as_votable
+
   tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present? }, params: {title: :title}
 
   is_impressionable counter_cache: true, unique: :ip_address

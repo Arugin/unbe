@@ -1,5 +1,5 @@
 .sidebar
-  - if can? :approve, [Article, Content]
+  - if can?(:approve, Article) && can?(:approve, Content)
     %h3.right-bar
       Модерирование
     %ul.navigation

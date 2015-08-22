@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.string   "title"
     t.string   "src"
     t.text     "description"
+    t.integer  "contentable_id"
+    t.string   "contentable_type"
     t.boolean  "approved_to_news",  default: false
     t.boolean  "reviewed",          default: false
     t.integer  "impressions_count", default: 0
@@ -114,10 +116,8 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "user_id"
-    t.integer  "gallery_id"
   end
 
-  add_index "contents", ["gallery_id"], name: "index_contents_on_gallery_id", using: :btree
   add_index "contents", ["slug"], name: "index_contents_on_slug", using: :btree
   add_index "contents", ["tags"], name: "index_contents_on_tags", using: :gin
   add_index "contents", ["title"], name: "index_contents_on_title", using: :btree
@@ -358,7 +358,6 @@ ActiveRecord::Schema.define(version: 20150819184156) do
   add_foreign_key "articles", "users"
   add_foreign_key "authentications", "users"
   add_foreign_key "comments", "users"
-  add_foreign_key "contents", "galleries"
   add_foreign_key "contents", "users"
   add_foreign_key "cycles", "users"
   add_foreign_key "galleries", "users"

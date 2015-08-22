@@ -67,11 +67,12 @@ class CreateAllTables < ActiveRecord::Migration
       t.string :title
       t.string :src
       t.text :description
+      t.integer :contentable_id
+      t.string  :contentable_type
       t.boolean :approved_to_news, default: false
       t.boolean :reviewed, default: false
       t.integer :impressions_count, default: 0
       t.string :slug
-
       t.string :tags, array: true
 
       t.timestamps null: false
@@ -129,9 +130,6 @@ class CreateAllTables < ActiveRecord::Migration
     add_reference :articles, :article_type, index: true, foreign_key: true
     add_reference :articles, :cycle, index: true, foreign_key: true
     add_reference :images, :article, index: true, foreign_key: true
-
-    add_reference :contents, :gallery, index: true, foreign_key: true
-
     add_reference :users, :gender, index: true, foreign_key: true
 
     add_index :comments, :commentable_id

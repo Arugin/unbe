@@ -55,13 +55,9 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :encrypted_password
 
-  scope :random, lambda {
-    all.not_in(is_active: false)
-  }
+  scope :random, lambda { where('NOT is_active = false') }
 
-  scope :active, lambda {
-    all.not_in(is_active: false)
-  }
+  scope :active, lambda { where('NOT is_active = false') }
 
   def self.very_active
     User.all.sort{|a, b| b.points <=> a.points}[0..10]
@@ -88,7 +84,7 @@ class User < ActiveRecord::Base
   end
 
   def unpublished_articles
-    self.articles.any_of({state: 'Article::Initial'}, {state: 'Article::Changed'})
+    self.articles.where("state = 'Article::Initial' OR state = 'Article::Changed'")
   end
 
   def unapproved_articles
@@ -141,7 +137,7 @@ class User < ActiveRecord::Base
   end
 
   def all_resources_ids
-    articles.map(&:_id).concat(cycles.map(&:_id)).concat(contents.map(&:_id)).concat(galleries.map(&:_id))
+    articles.map(&:id).concat(cycles.map(&:id)).concat(contents.map(&:id)).concat(galleries.map(&:id))
   end
 
   def subscribe(user)

@@ -1,4 +1,4 @@
 .rate-count{title: t(:RATING), data: {toggle: 'tooltip', placement:'top'}}
   %i.fa.fa-thumbs-o-up
-  .count{:class => ((subject.votes_for.size > 0 ? 'positive' : 'negative') unless subject.votes_for.size ==0 )}
+  .count{:class => ((subject.get_upvotes.size - subject.get_downvotes.size  > 0 ? 'positive' : 'negative') unless subject.votes_for.size == 0 )}
     = subject.votes_for.size

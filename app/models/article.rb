@@ -39,7 +39,7 @@ class Article < ActiveRecord::Base
     joins(:article_type).where("state = 'Article::Approved' OR state = 'Article::Changed'").where("article_types.title = 'NEWS' OR to_news = true")
   }
 
-  scope :popular, -> {unscoped.order(impressions_count: :desc).limit(2)}
+  scope :popular, -> { unscoped.order(impressions_count: :desc).limit(2) }
 
   scope :by_area, lambda { |user, params = {}, area|
     scope = where("state = 'Article::Approved' OR state = 'Article::Changed'")
@@ -50,21 +50,15 @@ class Article < ActiveRecord::Base
     end
   }
 
-  scope :non_approved, lambda { |user, params = {}|
-    where(author: user, state: 'Article::Published')
-  }
+  scope :non_approved, lambda { |user, params = {}| where(author: user, state: 'Article::Published') }
 
   scope :approved, lambda { |user, params = {}|
     where(author: user).where("state = 'Article::Approved' OR state: 'Article::Changed'").order(created_at: :desc)
   }
 
-  scope :random, lambda {
-    where("state = 'Article::Approved' OR state: 'Article::Changed'").first
-  }
+  scope :random, lambda { where("state = 'Article::Approved' OR state = 'Article::Changed'").order("RANDOM()") }
 
-  scope :unprocessed, lambda { |user, params = {}|
-    where(author: user).where("state NOT IN ?", ['Article::Approved'])
-  }
+  scope :unprocessed, lambda { |user, params = {}| where(author: user).where("state NOT IN ?", ['Article::Approved']) }
 
   def tiny_content
     Sanitize.fragment(short_content).truncate(200)

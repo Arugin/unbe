@@ -15,9 +15,9 @@ class Content < ActiveRecord::Base
 
   tracked owner: Proc.new{ |controller, model| controller.current_user if controller.present? }, params: {title: :title}
 
-  sortable_fields({title: :VIEWS, sort_by: :impressions_count})
+  sortable_fields title: :VIEWS, sort_by: :impressions_count
 
-  is_impressionable counter_cache: true, :unique => :ip_address
+  is_impressionable counter_cache: true, unique: :ip_address
 
   friendly_id  :title,  use: [:history, :slugged, :finders]
 
@@ -32,18 +32,16 @@ class Content < ActiveRecord::Base
 
   belongs_to :contentable, polymorphic: true
 
-  scope :random, ->{ where(approved_to_news: true, reviewed: true) }
+  scope :random, ->{ where(approved_to_news: true, reviewed: true).order("RANDOM()") }
 
-  scope :non_approved, lambda { |user, params = {}|
-    where(reviewed: false)
-  }
+  scope :non_approved, lambda { |user, params = {}| where(reviewed: false) }
 
   scope :approved, lambda { |user, params = {}|
     where(approved_to_news: true, reviewed: true).order(params[:sort_by].to_sym => params[:direction].to_sym)
   }
 
-  #alias :content :description
-  #alias :correct_title :title
+  alias_attribute :content, :description
+  alias_attribute :correct_title, :title
 
   def youtube_or_vimeo_url
     return if(self.src =~ %r{\A(https?)://(www.)?(youtube\.com/watch\?v=|youtu\.be/)([A-Za-z0-9_-]*)(\&\S+)?.*})
@@ -52,7 +50,7 @@ class Content < ActiveRecord::Base
   end
 
   def tiny_content
-    #strip_tags description
+    Sanitize.fragment(description)
   end
 
   def content?

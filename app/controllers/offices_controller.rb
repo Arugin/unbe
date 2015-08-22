@@ -22,7 +22,7 @@ class OfficesController < ApplicationController
     end
 
     @my_activities = PublicActivity::Activity.where(owner_id: current_user.id).order(created_at: :desc).page(params[:page]).per(20)
-    @comments = PublicActivity::Activity.where(:recipient_id.in => current_user.all_resources_ids).order(created_at: :desc).page(params[:page]).per(20)
+    @comments = PublicActivity::Activity.where('recipient_id IN (?)', current_user.all_resources_ids).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def articles

@@ -1,3 +1,3 @@
-- action, badge_name, badge = activity.parameters['description'].split(' ')
+- action, badge_name, badge = activity.parameters[:description].split(' ')
 = t "#{action}_#{badge}"
 = render 'common/badge', badge: badge_by_name(badge_name)

@@ -100,7 +100,6 @@ class UsersController < ApplicationController
         # Create a new User through omniauth
         # Register the new user + create new authentication
         flash[:notice] = t('devise.registrations.signed_up')
-        puts "save!!!!!!!!!!! #{@user}"
         sign_in_and_redirect(:user, @user)
       else
         render 'email'
@@ -111,7 +110,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :first_name, :second_name, :gender_id, :from, :about, :email, :password, :password_confirmation, :remember_me, :subscribed, avatar_attributes:[:id, :file], settings_attributes:[:_id, :unlock_top_menu])
+    params.require(:user).permit(:name, :first_name, :second_name, :gender_id, :from, :about, :email, :password, :password_confirmation, :remember_me, :subscribed, avatar_attributes:[:id, :file], settings_attributes:[:id, :unlock_top_menu])
   end
 
 end

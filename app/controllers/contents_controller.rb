@@ -3,8 +3,7 @@ class ContentsController < ApplicationController
   include Concerns::Votable
 
   before_filter :authenticate_user!, :except => [:show, :index]
-  load_and_authorize_resource except: [:show, :index], param_method: :content_base_content_params
-
+  load_and_authorize_resource except: [:show, :index]
 
   respond_to :html, :js
 
@@ -38,7 +37,7 @@ class ContentsController < ApplicationController
   def create
     session[:gallery] ||= request.referer
     @gallery = Gallery.find params[:gallery_id]
-    @content = @gallery.contents.build(contents_params)
+    @content = @gallery.contents.build(content_params)
     @content.author = current_user
     if @content.save
       flash[:notice] = t :CONTENT_ADD_SUCCESSFULLY
@@ -59,7 +58,7 @@ class ContentsController < ApplicationController
       @content.author = current_user
       @content.save
     end
-    if @content.update_attributes(contents_params)
+    if @content.update_attributes(content_params)
       @content.reviewed = false
       @content.save
       redirect_to edit_gallery_path(@content.contentable), notice: t(:CONTENT_UPDATE_SUCCESS)
@@ -87,8 +86,8 @@ class ContentsController < ApplicationController
 
   private
 
-  def contents_params
-    params.require(:contents).permit(:title, :description, :src, :tag_list, :contentable_id)
+  def content_params
+    params.require(:content).permit(:title, :description, :src, :tag_list, :contentable_id)
   end
 
 end

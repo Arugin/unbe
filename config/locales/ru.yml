@@ -235,7 +235,7 @@ ru:
           tb: "TB"
 
 
-  mongoid:
+  activerecord:
     attributes:
       article:
         title: Заголовок

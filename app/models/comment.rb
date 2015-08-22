@@ -9,9 +9,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
-  scope :unowned, lambda { |user|
-    not_in(author: user.id)
-  }
+  scope :unowned, lambda { |user| where('author NOT IN (?)', user.id) }
 
   delegate :correct_title, to: :commentable, prefix: true, allow_nil: true
 

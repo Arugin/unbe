@@ -3,4 +3,5 @@ ru:
   ACTIVITY_CYCLE: цикл
   ACTIVITY_GALLERY: галерею
   ACTIVITY_CONTENT: работу
-  granted_badge: заработал достижение
+  merit:
+    granted_badge: заработал достижение
