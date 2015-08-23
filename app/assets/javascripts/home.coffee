@@ -31,3 +31,5 @@ $(document).ready ()->
   $(document).on 'ujs:complete', ->
     unbe.changeLinkBechaviour()
 
+  $(".list-header").listHeader();
+  $(".sticky-header").stickyHeader();

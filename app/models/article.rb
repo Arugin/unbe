@@ -41,10 +41,10 @@ class Article < ActiveRecord::Base
 
   scope :popular, -> { unscoped.order(impressions_count: :desc).limit(2) }
 
-  scope :by_area, lambda { |user, params = {}, area|
+  scope :by_area, lambda { |area|
     scope = where("state = 'Article::Approved' OR state = 'Article::Changed'")
     if area.present?
-      scope.where(article_area: area)
+      scope.joins(:article_area).where('article_areas.title = ?', area)
     else
       scope
     end

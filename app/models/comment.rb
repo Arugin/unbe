@@ -13,6 +13,9 @@ class Comment < ActiveRecord::Base
 
   delegate :correct_title, to: :commentable, prefix: true, allow_nil: true
 
+  after_create :increment_counter
+  before_destroy :decrement_counter
+
   def short_content
     truncate(content, length: 50, omission: '...')
   end
@@ -23,6 +26,22 @@ class Comment < ActiveRecord::Base
 
   def commentable_author
     commentable.author
+  end
+
+  protected
+
+  def increment_counter(direction = :increment)
+    klass = commentable_type.constantize
+
+    p klass.column_names.include? 'comments_count'
+
+    if klass.column_names.include? 'comments_count'
+      klass.send "#{direction}_counter", 'comments_count', commentable_id
+    end
+  end
+
+  def decrement_counter
+    increment_counter :decrement
   end
 
 end

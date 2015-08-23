@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.string   "system_tag"
     t.boolean  "to_news",           default: false
     t.integer  "impressions_count", default: 0
+    t.integer  "comments_count",    default: 0
     t.string   "state"
     t.string   "slug"
     t.string   "tags",                                           array: true
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.boolean  "approved_to_news",  default: false
     t.boolean  "reviewed",          default: false
     t.integer  "impressions_count", default: 0
+    t.integer  "comments_count",    default: 0
     t.string   "slug"
     t.string   "tags",                                           array: true
     t.datetime "created_at",                        null: false
@@ -126,12 +128,13 @@ ActiveRecord::Schema.define(version: 20150819184156) do
   create_table "cycles", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.boolean  "system",      default: false
+    t.boolean  "system",         default: false
     t.string   "logo"
     t.string   "slug"
-    t.string   "tags",                                     array: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "comments_count", default: 0
+    t.string   "tags",                                        array: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
   end
 
@@ -158,6 +161,7 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.text     "description"
     t.integer  "impressions_count", default: 0
     t.string   "slug"
+    t.integer  "comments_count",    default: 0
     t.string   "tags",                                       array: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

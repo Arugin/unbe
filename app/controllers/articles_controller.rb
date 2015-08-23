@@ -12,16 +12,8 @@ class ArticlesController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    params[:sort_by] ||= 'created_at'
-    params[:direction] ||= 'desc'
-
-    @article_area =  ArticleArea.where(title: params[:article_area]).first
-    @address_additor = ''
-    unless @article_area.nil?
-      @address_additor = "?article_area=#{@article_area.id}"
-    end
-
-    @articles = Article.by_area(current_user, params, @article_area).order(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(12)
+    scope = Article.by_area(params[:article_area])
+    @articles = Article.search_for(params, scope).page(params[:page]).per(12)
 
     @article_areas = ArticleArea.all
 
@@ -33,7 +25,7 @@ class ArticlesController < ApplicationController
     impressionist(@article, '', unique: [:session_hash, :ip_address])
     @comments = @article.comments.page(params[:page]).per(25)
     @related = {prev: @article.cycle.previous_article(@article), next: @article.cycle.next_article(@article)}
-    puts @related
+
     respond_with @comments
   end
 

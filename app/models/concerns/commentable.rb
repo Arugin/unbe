@@ -3,7 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      has_many :comments, dependent: :restrict_with_error, as: :commentable, class_name: 'Comment', counter_cache: true
+      has_many :comments, as: :commentable, dependent: :restrict_with_error
     end
 
     def article?
@@ -20,10 +20,6 @@ module Concerns
 
     def content?
       false
-    end
-
-    def comments_count
-      comments.count
     end
 
   end

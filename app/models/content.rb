@@ -36,9 +36,7 @@ class Content < ActiveRecord::Base
 
   scope :non_approved, lambda { |user, params = {}| where(reviewed: false) }
 
-  scope :approved, lambda { |user, params = {}|
-    where(approved_to_news: true, reviewed: true).order(params[:sort_by].to_sym => params[:direction].to_sym)
-  }
+  scope :approved, lambda { |user, params = {}| where(approved_to_news: true, reviewed: true) }
 
   alias_attribute :content, :description
   alias_attribute :correct_title, :title

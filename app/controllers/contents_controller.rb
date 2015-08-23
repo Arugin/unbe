@@ -26,10 +26,9 @@ class ContentsController < ApplicationController
   end
 
   def index
-    params[:sort_by] ||= 'created_at'
-    params[:direction] ||= 'desc'
+    scope = Content.approved(current_user, params)
 
-    @contents = Content.approved(current_user, params).page(params[:page]).per(12)
+    @contents = Content.search_for(params, scope).page(params[:page]).per(12)
 
     respond_with @contents
   end

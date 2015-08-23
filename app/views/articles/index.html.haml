@@ -1,7 +1,7 @@
 - keywords "киноиндустрия статьи, статьи про кино, режиссура, актерское мастерство, операторское дело, сценарное мастерство, как попасть в киноиндустрию"
 - description "unbe - независимое творческое сообщество, цель которого - сделать систему кинопроизводства в России открытой, а также поднять уровень компетенции и качество работ и роликов на новый уровень"
 
-= render partial: 'common/short_list_header', locals: { current_action: lambda { |*args| articles_path(*args) }, model: Article, list_title:'Статьи' }
+= render 'common/short_list_header', current_action: lambda { |*args| articles_path(*args) }, model: Article, list_title:'Статьи'
 
 #articles.ujs-pagination
   = render 'index_articles_block', articles: @articles

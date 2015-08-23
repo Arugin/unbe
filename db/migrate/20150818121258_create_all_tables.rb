@@ -11,6 +11,7 @@ class CreateAllTables < ActiveRecord::Migration
       t.string :system_tag
       t.boolean :to_news, default: false
       t.integer :impressions_count, default: 0
+      t.integer :comments_count, default: 0
       t.string :state
       t.string :slug
 
@@ -47,6 +48,8 @@ class CreateAllTables < ActiveRecord::Migration
       t.string :logo
       t.string :slug
 
+      t.integer :comments_count, default: 0
+
       t.string :tags, array: true
 
       t.timestamps null: false
@@ -57,6 +60,8 @@ class CreateAllTables < ActiveRecord::Migration
       t.text :description
       t.integer :impressions_count, default: 0
       t.string :slug
+
+      t.integer :comments_count, default: 0
 
       t.string :tags, array: true
 
@@ -72,6 +77,7 @@ class CreateAllTables < ActiveRecord::Migration
       t.boolean :approved_to_news, default: false
       t.boolean :reviewed, default: false
       t.integer :impressions_count, default: 0
+      t.integer :comments_count, default: 0
       t.string :slug
       t.string :tags, array: true
 

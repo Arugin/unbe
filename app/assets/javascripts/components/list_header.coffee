@@ -28,6 +28,7 @@
       direction = if $arrow.hasClass('fa-arrow-down') then 'asc' else 'desc'
       $.address.parameter( 'direction', direction )
       $arrow.toggleClass("fa-arrow-up fa-arrow-down");
+      $.getScript($.address.value());
 
     # Sort by
     $('.sort-control .dropdown-menu a').click (e) ->
@@ -37,6 +38,16 @@
 
       $.address.parameter( 'sort_by', $target.attr('data-sort-by') )
       $('.sort-control .dropdown-toggle .text').text($target.html())
+      $.getScript($.address.value());
+
+    $('#models_search').submit () ->
+      initPath()
+      form = $(@)
+      search = form.find('#search').val();
+      $.address.parameter( 'search', search )
+      $.getScript($.address.value());
+      false
+
 
 
 )(jQuery)

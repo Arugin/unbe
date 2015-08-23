@@ -19,7 +19,6 @@
 #= require select2
 #= require fotorama
 #= require unbe
-#= require deep_linking
 #= require_tree ./views
 #= require share42/share42
 #= require home
