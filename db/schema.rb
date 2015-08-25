@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819184156) do
+ActiveRecord::Schema.define(version: 20150823144844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,22 +50,28 @@ ActiveRecord::Schema.define(version: 20150819184156) do
     t.integer  "baseRating"
     t.integer  "rating"
     t.string   "system_tag"
-    t.boolean  "to_news",           default: false
-    t.integer  "impressions_count", default: 0
-    t.integer  "comments_count",    default: 0
+    t.boolean  "to_news",            default: false
+    t.integer  "impressions_count",  default: 0
+    t.integer  "comments_count",     default: 0
     t.string   "state"
     t.string   "slug"
-    t.string   "tags",                                           array: true
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.string   "tags",                                            array: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "user_id"
     t.integer  "article_area_id"
     t.integer  "article_type_id"
     t.integer  "cycle_id"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
   end
 
   add_index "articles", ["article_area_id"], name: "index_articles_on_article_area_id", using: :btree
   add_index "articles", ["article_type_id"], name: "index_articles_on_article_type_id", using: :btree
+  add_index "articles", ["cached_votes_down"], name: "index_articles_on_cached_votes_down", using: :btree
+  add_index "articles", ["cached_votes_total"], name: "index_articles_on_cached_votes_total", using: :btree
+  add_index "articles", ["cached_votes_up"], name: "index_articles_on_cached_votes_up", using: :btree
   add_index "articles", ["cycle_id"], name: "index_articles_on_cycle_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", using: :btree
   add_index "articles", ["tags"], name: "index_articles_on_tags", using: :gin

@@ -6,11 +6,11 @@
       %li
         = active_link_to non_approved_articles_office_path, active: :exclusive do
           Подтвердить статьи
-          %b= "(#{Article.non_approved(current_user).count})" if Article.non_approved(current_user).count > 0
+          %b= "(#{Article.non_approved.count})" if Article.non_approved.count > 0
       %li
         = active_link_to non_approved_contents_office_path, active: :exclusive do
           Подтвердить работы
-          %b= "(#{Content.non_approved(current_user).count})" if Content.non_approved(current_user).count > 0
+          %b= "(#{Content.non_approved.count})" if Content.non_approved.count > 0
 
 
   - if user_signed_in? and current_user.has_role? :ADMIN

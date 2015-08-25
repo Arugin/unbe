@@ -4,7 +4,7 @@ module Concerns
 
     included do
       class_attribute :SORTABLE_FIELDS
-      self.SORTABLE_FIELDS = [:created_at, :title, :comments_count, :'votes.point']
+      self.SORTABLE_FIELDS = [:created_at, :title, :comments_count, :cached_votes_total]
     end
 
     module ClassMethods

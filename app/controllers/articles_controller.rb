@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.last_news(current_user, params).page(params[:page]).per(12)
+    @articles = Article.last_news(current_user, params).order(created_at: :desc).page(params[:page]).per(12)
     respond_with @articles
   end
 

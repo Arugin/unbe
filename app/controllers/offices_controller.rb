@@ -54,8 +54,9 @@ class OfficesController < ApplicationController
   end
 
   def non_approved_articles
-    @articles = Article.non_approved(current_user, params).page(params[:page]).per(15)
     authorize! :approve, Article
+    scope = Article.non_approved
+    @articles = Article.search_for(params, scope).page(params[:page]).per(25)
     respond_with @articles
   end
 
@@ -65,8 +66,11 @@ class OfficesController < ApplicationController
   end
 
   def non_approved_contents
-    @contents = Content.non_approved(current_user, params).page(params[:page])
     authorize! :approve, Content
+
+    scope = Content.non_approved
+    @contents = Content.search_for(params, scope).page(params[:page]).per(25)
+
     respond_with @contents
   end
 

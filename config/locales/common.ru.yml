@@ -4,4 +4,5 @@ ru:
   ACTIVITY_GALLERY: галерею
   ACTIVITY_CONTENT: работу
   merit:
-    granted_badge: заработал достижение
+    granted:
+      badge: "заработал достижение"

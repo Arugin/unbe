@@ -185,8 +185,7 @@ ru:
   COMMENTS_COUNT: Комментарии
   NO_INFO: не указано
   NO_ABOUT: ещё ничего нет
-  VOTES:
-    POINT: Рейтинг
+  CACHED_VOTES_TOTAL: Рейтинг
 
   MALE: мужской
   FEMALE: женский

@@ -34,7 +34,7 @@ class Content < ActiveRecord::Base
 
   scope :random, ->{ where(approved_to_news: true, reviewed: true).order("RANDOM()") }
 
-  scope :non_approved, lambda { |user, params = {}| where(reviewed: false) }
+  scope :non_approved, lambda { where(reviewed: false) }
 
   scope :approved, lambda { |user, params = {}| where(approved_to_news: true, reviewed: true) }
 

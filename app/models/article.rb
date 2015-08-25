@@ -50,7 +50,7 @@ class Article < ActiveRecord::Base
     end
   }
 
-  scope :non_approved, lambda { |user, params = {}| where(author: user, state: 'Article::Published') }
+  scope :non_approved, lambda { where( state: 'Article::Published') }
 
   scope :approved, lambda { |user, params = {}|
     where(author: user).where("state = 'Article::Approved' OR state: 'Article::Changed'").order(created_at: :desc)
