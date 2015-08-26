@@ -58,7 +58,7 @@ class Article < ActiveRecord::Base
 
   scope :random, lambda { where("state = 'Article::Approved' OR state = 'Article::Changed'").order("RANDOM()") }
 
-  scope :unprocessed, lambda { |user, params = {}| where(author: user).where("state NOT IN ?", ['Article::Approved']) }
+  scope :unprocessed, lambda { |user| where(author: user).where("state NOT IN ('Article::Approved')") }
 
   def tiny_content
     Sanitize.fragment(short_content).truncate(200)

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   respond_to :html, :js
 
   def index
-    @users = User.page(params[:page]).per(15)
+    @users = User.search_for(params, nil).page(params[:page]).per(15)
     respond_with @users
   end
 

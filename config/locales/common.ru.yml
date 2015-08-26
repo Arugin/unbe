@@ -3,6 +3,7 @@ ru:
   ACTIVITY_CYCLE: цикл
   ACTIVITY_GALLERY: галерею
   ACTIVITY_CONTENT: работу
+  granted_badge: заработал достижение
   merit:
-    granted:
-      badge: "заработал достижение"
+    granted_badge: "granted %{badge_name} badge"
+    removed_badge: "removed %{badge_name} badge"

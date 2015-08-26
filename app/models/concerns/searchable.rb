@@ -4,7 +4,9 @@ module Concerns
 
     module ClassMethods
       def search_for(params = {}, base_scope)
-        base_scope ||= all
+        p base_scope.present?, params
+        base_scope ||= self.all
+        p self.all
 
         if params[:search].present?
           scope = with_search(params, base_scope)

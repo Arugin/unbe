@@ -18,6 +18,7 @@
 
       scope = if $target.hasClass('scope-my') then 'true' else ''
       $.address.parameter( 'unprocessed', scope )
+      $.getScript($.address.value());
 
     # Sort direction
     $('.sort-order').click (e) ->
