@@ -1,4 +1,3 @@
-# Allow to change list items without page refresh. Depend on Jquery.address plugin.
 (($) ->
   $.fn.listHeader = (opts = {}) ->
     return if this.hasClass('dynamic-reload')
@@ -7,7 +6,6 @@
     initPath = ()->
       $.address.path(document.location.pathname) if $.address.path() == '/'
 
-    # All/my scope
     $('.scope-switch a').click (e) ->
       e.preventDefault()
       initPath()
@@ -20,7 +18,6 @@
       $.address.parameter( 'unprocessed', scope )
       $.getScript($.address.value());
 
-    # Sort direction
     $('.sort-order').click (e) ->
       e.preventDefault()
       initPath()
@@ -31,7 +28,6 @@
       $arrow.toggleClass("fa-arrow-up fa-arrow-down");
       $.getScript($.address.value());
 
-    # Sort by
     $('.sort-control .dropdown-menu a').click (e) ->
       e.preventDefault()
       initPath()
@@ -41,6 +37,17 @@
       $('.sort-control .dropdown-toggle .text').text($target.html())
       $.getScript($.address.value());
 
+    $('.area-link').click (e) ->
+      if document.location.pathname != '/articles/garbage'
+        e.preventDefault()
+        initPath()
+        item = $(this)
+        area = item.data('area')
+        $.address.parameter( 'article_area', area )
+        $('.all-articles li a').removeClass('active')
+        item.find('a').addClass('active')
+        $.getScript($.address.value());
+
     $('#models_search').submit () ->
       initPath()
       form = $(@)
@@ -48,7 +55,5 @@
       $.address.parameter( 'search', search )
       $.getScript($.address.value());
       false
-
-
 
 )(jQuery)

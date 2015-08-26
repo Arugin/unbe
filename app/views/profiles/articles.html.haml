@@ -4,6 +4,7 @@
     = render :partial => 'menu',:locals => { :user => @user }
     .user-profile
       #articles-list.cycle-list.ujs-pagination
+        = render 'user_articles_block'
 
 
 - content_for(:right_bar) do
