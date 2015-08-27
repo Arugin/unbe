@@ -15,9 +15,7 @@ module Concerns
     end
 
     def add_tags(tags)
-      if (tags)
-        self.tags |= string2tags(tags)
-      end
+      self.tags |= string2tags(tags) if tags.present?
     end
 
     private

@@ -399,7 +399,7 @@ body{
   }
   &.contents.index{
     .item-thumb{
-      height: 160px !important;
+      height: 160px;
     }
     .item-card p{
       height: 110px;
@@ -533,5 +533,11 @@ body{
 .offices {
   .to-main {
     display: none;
+  }
+}
+
+.pull-right {
+  .btn-primary{
+
   }
 }

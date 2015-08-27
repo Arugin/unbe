@@ -1,2 +1,1 @@
 $("#articles").html("#{escape_javascript(render partial: 'articles_block')}");
-$(".tag-selected").tagsPopover({ tags_input: "#{escape_javascript(render partial: "common/tags_popover_content", locals:{model: Article})}" })

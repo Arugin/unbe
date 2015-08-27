@@ -1,7 +1,5 @@
-= form_tag current_action_path, method: 'get', id: 'models_search', class: "form-search" do
+= form_tag current_action_path, method: 'get', id: 'models_search', class: "form-search form-inline" do
   .input-group
     %span.input-group-addon
       %i.fa.fa-filter
     = text_field_tag :search, params[:search], class: "input-medium search-query", placeholder: t(:SEARCH)
-    %span.input-append#clear-search
-      %i.fa.fa-times.clear-search

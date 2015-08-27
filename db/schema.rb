@@ -101,11 +101,17 @@ ActiveRecord::Schema.define(version: 20150823144844) do
     t.text     "content"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
   end
 
+  add_index "comments", ["cached_votes_down"], name: "index_comments_on_cached_votes_down", using: :btree
+  add_index "comments", ["cached_votes_total"], name: "index_comments_on_cached_votes_total", using: :btree
+  add_index "comments", ["cached_votes_up"], name: "index_comments_on_cached_votes_up", using: :btree
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
@@ -115,17 +121,23 @@ ActiveRecord::Schema.define(version: 20150823144844) do
     t.text     "description"
     t.integer  "contentable_id"
     t.string   "contentable_type"
-    t.boolean  "approved_to_news",  default: false
-    t.boolean  "reviewed",          default: false
-    t.integer  "impressions_count", default: 0
-    t.integer  "comments_count",    default: 0
+    t.boolean  "approved_to_news",   default: false
+    t.boolean  "reviewed",           default: false
+    t.integer  "impressions_count",  default: 0
+    t.integer  "comments_count",     default: 0
     t.string   "slug"
-    t.string   "tags",                                           array: true
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.string   "tags",                                            array: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "user_id"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
   end
 
+  add_index "contents", ["cached_votes_down"], name: "index_contents_on_cached_votes_down", using: :btree
+  add_index "contents", ["cached_votes_total"], name: "index_contents_on_cached_votes_total", using: :btree
+  add_index "contents", ["cached_votes_up"], name: "index_contents_on_cached_votes_up", using: :btree
   add_index "contents", ["slug"], name: "index_contents_on_slug", using: :btree
   add_index "contents", ["tags"], name: "index_contents_on_tags", using: :gin
   add_index "contents", ["title"], name: "index_contents_on_title", using: :btree

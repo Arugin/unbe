@@ -6,6 +6,9 @@
     initPath = ()->
       $.address.path(document.location.pathname) if $.address.path() == '/'
 
+    request = ()->
+      $.getScript($.address.value());
+
     $('.scope-switch a').click (e) ->
       e.preventDefault()
       initPath()
@@ -16,7 +19,7 @@
 
       scope = if $target.hasClass('scope-my') then 'true' else ''
       $.address.parameter( 'unprocessed', scope )
-      $.getScript($.address.value());
+      request()
 
     $('.sort-order').click (e) ->
       e.preventDefault()
@@ -26,7 +29,7 @@
       direction = if $arrow.hasClass('fa-arrow-down') then 'asc' else 'desc'
       $.address.parameter( 'direction', direction )
       $arrow.toggleClass("fa-arrow-up fa-arrow-down");
-      $.getScript($.address.value());
+      request()
 
     $('.sort-control .dropdown-menu a').click (e) ->
       e.preventDefault()
@@ -35,7 +38,7 @@
 
       $.address.parameter( 'sort_by', $target.attr('data-sort-by') )
       $('.sort-control .dropdown-toggle .text').text($target.html())
-      $.getScript($.address.value());
+      request()
 
     $('.area-link').click (e) ->
       if document.location.pathname != '/articles/garbage'
@@ -46,14 +49,14 @@
         $.address.parameter( 'article_area', area )
         $('.all-articles li a').removeClass('active')
         item.find('a').addClass('active')
-        $.getScript($.address.value());
+        request()
 
     $('#models_search').submit () ->
       initPath()
       form = $(@)
       search = form.find('#search').val();
       $.address.parameter( 'search', search )
-      $.getScript($.address.value());
+      request()
       false
 
 )(jQuery)

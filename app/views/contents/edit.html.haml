@@ -5,7 +5,7 @@
   .form-inputs
     = f.input :title, input_html: { class: "span8" }, label: 'Название'
     = f.input :src, input_html: { class: "span8" }, label: 'Ссылка на видео'
-    = render partial: 'common/text_editor', locals: {f: f, field: :description, type: :small, id: 'smallContent', html_class: 'span12', label: false}
+    = render partial: 'common/text_editor', locals: {f: f, field: :description, type: :small, id: 'smallContent', html_class: 'col-md-12', label: ''}
     = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Content}
 
   .form-actions
