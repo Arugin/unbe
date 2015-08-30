@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
                           join_table: :subscriptions,
                           foreign_key: :subscription_id,
                           association_foreign_key: :user_id
-  has_one :settings, class_name: 'Settings'
+  has_one :settings, class_name: 'Settings', dependent: :destroy
 
   accepts_nested_attributes_for :settings
   accepts_nested_attributes_for :avatar, allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
