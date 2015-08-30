@@ -1,6 +1,7 @@
 = render :partial => 'cycle_block',:locals => { :cycle => @cycle }
 
 #cycle_articles.ujs-pagination
+  = render 'articles/index_articles_block', articles: @articles, param_name: :articles_page
 
 .clear
 

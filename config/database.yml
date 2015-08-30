@@ -13,3 +13,6 @@ test:
   pool: 5
   username: unbe
   password: mypgpassword
+
+production:
+  url: <%= ENV['POSTGRESS_URL'] %>

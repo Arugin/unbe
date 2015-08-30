@@ -90,12 +90,14 @@ class CreateAllTables < ActiveRecord::Migration
 
     create_table :images do |t|
       t.attachment :file
+      t.string :old_id
     end
 
     create_table :pictures do |t|
       t.attachment :file
       t.integer :imageable_id
       t.string  :imageable_type
+      t.string :old_id
     end
 
     create_table :projects
@@ -112,7 +114,6 @@ class CreateAllTables < ActiveRecord::Migration
       t.integer :comments_count, default: 0
       t.string :from
       t.boolean :is_active, default: true
-      t.string :userAvatar
       t.text :about
       t.string :slug
 

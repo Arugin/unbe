@@ -33,8 +33,6 @@ class Comment < ActiveRecord::Base
   def increment_counter(direction = :increment)
     klass = commentable_type.constantize
 
-    p klass.column_names.include? 'comments_count'
-
     if klass.column_names.include? 'comments_count'
       klass.send "#{direction}_counter", 'comments_count', commentable_id
     end

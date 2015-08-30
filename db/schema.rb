@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20150823144844) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "old_id"
     t.integer  "article_id"
   end
 
@@ -270,6 +271,7 @@ ActiveRecord::Schema.define(version: 20150823144844) do
     t.datetime "file_updated_at"
     t.integer  "imageable_id"
     t.string   "imageable_type"
+    t.string   "old_id"
   end
 
   add_index "pictures", ["imageable_id"], name: "index_pictures_on_imageable_id", using: :btree
@@ -323,7 +325,6 @@ ActiveRecord::Schema.define(version: 20150823144844) do
     t.integer  "comments_count",         default: 0
     t.string   "from"
     t.boolean  "is_active",              default: true
-    t.string   "userAvatar"
     t.text     "about"
     t.string   "slug"
     t.datetime "created_at",                            null: false
