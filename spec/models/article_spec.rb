@@ -6,78 +6,78 @@ describe Article do
     @user = FactoryGirl.create(:user, gender: @male)
   end
 
-  it "should not publish article if tmpContent nil" do
+  it "should not publish article if tmp_content nil" do
     article = FactoryGirl.create(:article, author: @user)
     article.publish
-    article.published?.should be false
+    expect(article.published?).to be false
   end
 
   it "should truncate the content when unbebreak exists" do
-    article = FactoryGirl.create(:article, author: @user, tmpContent: '<p>daddy</p><p><!-- unbebreak --></p>')
+    article = FactoryGirl.create(:article, author: @user, tmp_content: '<p>daddy</p><p><!-- unbebreak --></p>')
     article.publish
     article.approve
-    article.short_content.length.should eq 12
+    expect(article.short_content.length).to eq 12
   end
 
   it "should truncate the content when unbebreak exists and p have trash" do
-    article = FactoryGirl.create(:article, author: @user, tmpContent: "<p alighn='center'>daddy</p><p><!-- unbebreak --></p>")
+    article = FactoryGirl.create(:article, author: @user, tmp_content: "<p alighn='center'>daddy</p><p><!-- unbebreak --></p>")
     article.publish
     article.approve
-    article.short_content.length.should eq 28
+    expect(article.short_content.length).to eq 28
   end
 
   it "should do nothing if no unbebreak in content or it's not a comment" do
-    tmpContent = '<noo><p>daddy</p><p>unbebreak</p><daddy></daddy></noo>'
-    article = FactoryGirl.create(:article, author: @user, tmpContent: tmpContent)
+    tmp_content = '<noo><p>daddy</p><p>unbebreak</p><daddy></daddy></noo>'
+    article = FactoryGirl.create(:article, author: @user, tmp_content: tmp_content)
     article.publish
     article.approve
-    article.short_content.should eq tmpContent
+    expect(article.short_content).to eq tmp_content
   end
 
-  it "should publish article if tmpContent present"  do
-    article = FactoryGirl.create(:article, author: @user, tmpContent: 'Some content here')
+  it "should publish article if tmp_content present"  do
+    article = FactoryGirl.create(:article, author: @user, tmp_content: 'Some content here')
     article.publish
-    article.published?.should be true
+    expect(article.published?).to be true
   end
 
-  it "should publish article if tmpContent present"  do
-    tmpContent = '<p>Some content here</p>'
-    article = FactoryGirl.create(:article, author: @user, tmpContent: tmpContent, state: 'Article::Published')
+  it "should publish article if tmp_content present"  do
+    tmp_content = '<p>Some content here</p>'
+    article = FactoryGirl.create(:article, author: @user, tmp_content: tmp_content, state: 'Article::Published')
     article.approve
-    article.approved?.should be true
-    article.clean_content.should eq tmpContent
+    expect(article.approved?).to be true
+    expect(article.clean_content).to eq tmp_content
   end
 
   it "should move article to changed if it's content changed" do
     article = FactoryGirl.create(:article, author: @user, content: 'Some content here', state: 'Article::Approved')
-    article.tmpContent = 'Daddy'
+    article.tmp_content = 'Daddy'
     article.to_changed
-    article.approved?.should be true
-    article.is_updated?.should be true
-    article.published?.should be false
+    expect(article.approved?).to be true
+    expect(article.is_updated?).to be true
+    expect(article.published?).to be false
   end
 
   it "should not move article to changed if it's content not changed" do
     article = FactoryGirl.create(:article, author: @user, content: '<p>Some content here</p>', state: 'Article::Approved')
-    article.tmpContent = '<p>Some content here</p>'
+    article.tmp_content = '<p>Some content here</p>'
     article.to_changed
-    article.is_updated?.should be false
-    article.tmpContent.should be nil
+    expect(article.is_updated?).to be false
+    expect(article.tmp_content).to be nil
   end
 
   it "should publish changed article, but marked it as changed", :focus => true do
-    article = FactoryGirl.create(:article, author: @user, content: 'Some content here', tmpContent: 'Daddy', state: 'Article::Changed')
+    article = FactoryGirl.create(:article, author: @user, content: 'Some content here', tmp_content: 'Daddy', state: 'Article::Changed')
     article.publish
-    article.is_updated?.should be true
-    article.published?.should be true
+    expect(article.is_updated?).to be true
+    expect(article.published?).to be true
   end
 
   it "should move article to garbaget"  do
-    tmpContent = '<p>Some content here</p>'
-    article = FactoryGirl.create(:article, author: @user, tmpContent: tmpContent, state: 'Article::Published')
+    tmp_content = '<p>Some content here</p>'
+    article = FactoryGirl.create(:article, author: @user, tmp_content: tmp_content, state: 'Article::Published')
     article.to_garbage
-    article.approved?.should be true
-    article.garbage?.should be true
-    article.clean_content.should eq tmpContent
+    expect(article.approved?).to be true
+    expect(article.garbage?).to be true
+    expect(article.clean_content).to eq tmp_content
   end
 end

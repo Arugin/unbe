@@ -2,34 +2,37 @@ module Concerns
   module Searchable
     extend ActiveSupport::Concern
 
-    included do
-      include Mongoid::Search
-
-=begin
-        Performs search for included class objects based on following:
-         - if passed params contains search key and it's length more then mongoid minimum word size
-              search is performed on all searchable fields for the value (using )
-         - if passed params contains scope for current user and class has support for Concerns::Privatable then
-              only objects for current user are returned
-         - if class does not have support for Concerns::Privatable then all objects are returned
-=end
-      scope :search_for, lambda { |user, params = {}|
-        query_search = all
-        unless params[:search].blank?
-          if params[:search].length >= Mongoid::Search.minimum_word_size
-            query_search = full_text_search(params[:search])
-          end
-        end
-
-        if !params[:scope].blank? && params[:scope] == 'current_user'
-          query_user = of(user)
-        elsif respond_to?(:all_for)
-          query_user = all_for(user)
+    module ClassMethods
+      def search_for(params = {}, base_scope)
+        base_scope ||= self.all
+        if params[:search].present?
+          scope = with_search(params, base_scope)
         else
-          query_user = all
+          scope = without_search(params, base_scope)
         end
-        all_of([query_search.selector, query_user.selector])
-      }
+        scope
+      end
+
+      protected
+
+      def with_search(params, scope)
+        scope = scope.search(params[:search])
+        if params[:sort_by].present? || params[:direction].present?
+          init_params params
+          scope = scope.reorder(params[:sort_by].to_sym => params[:direction].to_sym)
+        end
+        scope
+      end
+
+      def init_params(params)
+        params[:sort_by] ||= 'created_at'
+        params[:direction] ||= 'desc'
+      end
+
+      def without_search(params, scope)
+        init_params params
+        scope.order(params[:sort_by].to_sym => params[:direction].to_sym)
+      end
 
     end
 

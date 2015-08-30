@@ -18,7 +18,7 @@
     - unless article.clean_content.nil?
       = raw article.short_content
     - else
-      = raw article.tmpContent
+      = raw article.tmp_content
   .clear
   - unless article.garbage?
     - if article.clean_content.size != article.short_content.size

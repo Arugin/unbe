@@ -12,7 +12,7 @@ class OfficesController < ApplicationController
   def show
     @last_pages = []
 
-    elements = Impression.where(user_id: current_user._id).order_by([:created_at, :desc])
+    elements = Impression.where(user_id: current_user.id).order(created_at: :desc)
     elements.each do |element|
       break if @last_pages.size >= 10
       checking = element.impressionable_type.constantize.find(element.impressionable_id) rescue @last_pages.last
@@ -21,28 +21,23 @@ class OfficesController < ApplicationController
       end
     end
 
-    @my_activities = PublicActivity::Activity.where(owner_id: current_user.id).order_by(created_at: :desc).page(params[:page]).per(20)
-    @comments = PublicActivity::Activity.where(:recipient_id.in => current_user.all_resources_ids).order_by(created_at: :desc).page(params[:page]).per(20)
+    @my_activities = PublicActivity::Activity.where(owner_id: current_user.id).order(created_at: :desc).page(params[:page]).per(20)
+    @comments = PublicActivity::Activity.where('recipient_id IN (?)', current_user.all_resources_ids).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def articles
-    params[:sort_by] ||= 'created_at'
-    params[:direction] ||= 'desc'
     if params[:unprocessed]
-      scope = Article.unprocessed(current_user, params)
+      scope = Article.unprocessed(current_user)
     else
-      scope = Article.unscoped.search_for(current_user, params)
+      scope = Article.where(author: current_user)
     end
-    @articles = scope.order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+    @articles = Article.search_for(params, scope).page(params[:page]).per(15)
 
     respond_with @articles
   end
 
   def cycles
-    params[:sort_by] ||= 'created_at'
-    params[:direction] ||= 'desc'
-
-    @cycles = Cycle.unscoped.search_for(current_user, params).order_by(params[:sort_by].to_sym => params[:direction].to_sym).page(params[:page]).per(15)
+    @cycles = Cycle.search_for(params, Cycle.where(author: current_user)).page(params[:page]).per(15)
 
     respond_with @cycles
   end
@@ -54,19 +49,23 @@ class OfficesController < ApplicationController
   end
 
   def non_approved_articles
-    @articles = Article.non_approved(current_user, params).page(params[:page]).per(15)
     authorize! :approve, Article
+    scope = Article.non_approved
+    @articles = Article.search_for(params, scope).page(params[:page]).per(25)
     respond_with @articles
   end
 
   def galleries
-    @galleries = Gallery.search_for(current_user,params).page(params[:page]).per(10)
+    @galleries = Gallery.search_for(params, Gallery.where(author: current_user)).page(params[:page]).per(10)
     respond_with @galleries
   end
 
   def non_approved_contents
-    @contents = Content::BaseContent.non_approved(current_user, params).page(params[:page])
-    authorize! :approve, Content::BaseContent
+    authorize! :approve, Content
+
+    scope = Content.non_approved
+    @contents = Content.search_for(params, scope).page(params[:page]).per(25)
+
     respond_with @contents
   end
 

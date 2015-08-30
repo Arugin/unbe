@@ -6,17 +6,12 @@ if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
   Encoding.default_internal = Encoding::UTF_8
 end
 
-gem 'rails', '~> 4.1'
+gem 'rails', '~> 4.2'
 gem 'sass-rails', '~> 4.0.3'
 
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead:
-gem 'bson_ext'
-gem "bson"
-gem "moped"
-gem 'mongoid'
-gem 'mongoid_search'
 gem 'rake', '>= 10.0'
 gem 'haml'
 gem 'spring',        group: :development
@@ -26,15 +21,12 @@ gem 'cancancan', '~> 1.9'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'
-gem "mongoid-paperclip", require: "mongoid_paperclip", git: 'https://github.com/Arugin/mongoid-paperclip', ref: '8abbab9085'
+gem "paperclip"
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor', group: :production
-gem 'mongoid_rails_migrations', '>= 1.0.0'
-gem 'voteable_mongo', git: 'https://github.com/Arugin/voteable_mongo'
 gem 'russian', '~> 0.6.0'
 gem 'impressionist'
 gem 'meta-tags', require: 'meta_tags'
-gem 'mongoid_slug', github: 'digitalplaywright/mongoid-slug'
 gem 'nokogiri'
 gem 'clockwork'
 gem 'active_link_to'
@@ -44,6 +36,13 @@ gem 'public_activity'
 gem 'gon'
 gem 'whenever', require: false
 gem 'eventmachine', '~> 1.0.4'
+gem 'acts_as_votable'
+gem 'friendly_id'
+gem 'pg'
+gem 'pg_search'
+gem 'responders'
+gem 'activerecord-session_store'
+gem 'sanitize'
 
 # migration
 gem 'rails-observers'
@@ -56,7 +55,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'kaminari'
-gem 'simple_form', '~> 3.1.0.rc2', github: 'plataformatec/simple_form'
+gem 'simple_form'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'fotoramajs'
 gem 'select2-rails'

@@ -161,7 +161,7 @@ ru:
       gallery:
         create: "Создать %{model}"
         update: Сохранить изменения
-      content_base_content:
+      content:
         create: Добавить работу
         update: Сохранить изменения
 
@@ -185,8 +185,7 @@ ru:
   COMMENTS_COUNT: Комментарии
   NO_INFO: не указано
   NO_ABOUT: ещё ничего нет
-  VOTES:
-    POINT: Рейтинг
+  CACHED_VOTES_TOTAL: Рейтинг
 
   MALE: мужской
   FEMALE: женский
@@ -235,13 +234,13 @@ ru:
           tb: "TB"
 
 
-  mongoid:
+  activerecord:
     attributes:
       article:
         title: Заголовок
         article_area: Область
         article_type: Тип статьи
-        tmpContent: Содержание
+        tmp_content: Содержание
         cycle: Цикл статей
         tag_list: Ключевые слова
         script: Разного рода скрипты
@@ -268,7 +267,7 @@ ru:
         name: Название
         description: Описание
         tag_list: Ключевые слова
-      content/base_content:
+      content:
         tag_list: Ключевые слова
     models:
       article: статью
@@ -301,7 +300,7 @@ ru:
               blank: У статьи должен быть заголовок
               too_short: Длина заголовка должна быть больше 4 символов
               too_long: Длина заголовка должна быть меньше 70 символов
-        content/base_content:
+        content:
           attributes:
             src:
               invalid: Ссылка должна вести на youtube или vimeo

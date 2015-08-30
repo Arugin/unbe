@@ -5,11 +5,11 @@
     = f.input :title, input_html: { class: "span8" }
     = f.input :logo, input_html: { class: "span8" }
     = render 'common/form_note', text: 'Если логотип не указан, то будет взято первое изображение из содержания статьи', full: true
-    = f.association :article_area, collection: ArticleArea.all.order_by([:title, :desc]), input_html: { class: "select2" }, selected: @article.article_area_id, label_method: lambda { |area| t(area.title) }
-    = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "select2" }, selected: @article.article_type_id, label_method: lambda { |type| t(type.title) }
-    = f.association :cycle, collection: Cycle.search_for(current_user,{scope:'current_user'}).order_by([:title, :asc]), input_html: { class: "select2" }, selected: @article.cycle_id, label_method: lambda { |cycle| cycle.correct_title }
+    = f.association :article_area, collection: ArticleArea.all.order(title: :desc), input_html: { class: "select2" }, selected: @article.article_area_id, label_method: lambda { |area| t(area.title) }
+    = f.association :article_type, collection: ArticleType.all.order(title: :desc), input_html: { class: "select2" }, selected: @article.article_type_id, label_method: lambda { |type| t(type.title) }
+    = f.association :cycle, collection: Cycle.where(author: current_user).order(title: :asc), input_html: { class: "select2" }, selected: @article.cycle_id, label_method: lambda { |cycle| cycle.correct_title }
     = render 'common/form_note', text: 'Объединяя статьи в цикл, вы устанавливаете связь между ними. На странице статьи появятся ссылки \'Следующая статья\' и \'Предыдущая статья\'', full: true
-    = render partial: 'common/text_editor', locals: {f: f, field: :tmpContent, type: :default, id: 'tmpContent', html_class: 'span12', label: nil}
+    = render partial: 'common/text_editor', locals: {f: f, field: :tmp_content, type: :default, id: 'tmp_content', html_class: 'span12', label: nil}
     = f.input :script, as: :text, input_html: { class: "span12", rows: 5 } if can? :script, Article
     = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Article}
     = f.input :system_tag, :label => "Пометить" if can? :system_tag, Article

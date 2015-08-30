@@ -12,23 +12,18 @@
             %li.select-none
               %a Выбрать ничего
 
-      .col-md-2.hidden-xs.hidden-sm.buttons-container
+      .col-md-1.hidden-xs.hidden-sm.buttons-container
         - if @_controller.respond_to? :bulk_delete
           = link_to [:bulk_delete, model], class: "btn btn-default btn-xs delete-selected",
            rel: :tooltip, title: "Delete selected", 'data-container' => 'body' do
             %i.fa.fa-times
 
-        - if @_controller.respond_to? :bulk_tag
-          = link_to [:bulk_tag, model], :class=>"btn btn-default btn-xs tag-selected",
-           :rel => :tooltip, :title => "Tag selected", 'data-container' => 'body' do
-            %i.fa.fa-tags
-
-      .col-md-6.center-group
+      .col-md-7.center-group
         .pull-left.scope-switch-container
           = render partial: "common/scope_switch", locals: { current_action: current_action, subject: list_title }
         .pull-left
           = render partial: "common/sort_control", locals: { current_action: current_action, model: model }
 
-      .col-md-3.hidden-xs.hidden-sm{style: "padding-right: 0px; width: 28.6%;"}
+      .col-md-3.hidden-xs.hidden-sm{style: "padding-right: 0px;"}
         .pull-right
-          = render :partial => "common/search_control", :locals => { :current_action_path => articles_office_path(scope:'current_user') }
+          = render "common/search_control", current_action_path: articles_office_path

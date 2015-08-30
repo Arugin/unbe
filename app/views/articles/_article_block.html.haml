@@ -34,7 +34,7 @@
     - unless article.clean_content.nil?
       = raw article.clean_content
     - else
-      = raw article.tmpContent
+      = raw article.tmp_content
   - if defined?(@related) && @related[:next].present? && @related[:next].approved?
     .next-article
       %p

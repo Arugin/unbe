@@ -1,17 +1,14 @@
-class User
-  include Mongoid::Document
-  include Mongoid::Slug
-  rolify
-  include Mongoid::Timestamps
+class User < ActiveRecord::Base
+  include PgSearch
+  extend FriendlyId
   include Concerns::Searchable
   include Concerns::Randomizable
-  include Mongo::Voter
   include PublicActivity::Model
-  has_merit
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  has_merit
+  rolify
+  acts_as_voter
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
@@ -21,58 +18,33 @@ class User
   after_create :add_settings
   after_create :record_activity
 
-  field :name, type: String
-  field :second_name, type: String
-  field :first_name, type: String
-  field :email, type: String
-  field :encrypted_password, type: String, default: ''
-  field :subscribed, type: Boolean, default: true
-  field :comments_count, type: Integer, default: 0
+  friendly_id  :name,  use: [:history, :slugged, :finders]
 
-  ## Recoverable
-  field :reset_password_token, type: String
-  field :reset_password_sent_at, type: Time
-
-  ## Rememberable
-  field :remember_created_at, type: Time
-
-  ## Trackable
-  field :sign_in_count, type: Integer, default: 6
-  field :current_sign_in_at, type: Time
-  field :last_sign_in_at, type: Time
-  field :current_sign_in_ip, type: String
-  field :last_sign_in_ip, type: String
-
-  # Confirmable
-  field :confirmation_token, type: String
-  field :confirmed_at, type: Time
-  field :confirmation_sent_at, type: Time
-
-  field :from, type: String
-  field :is_active, type: Boolean, default: true
-  field :userAvatar, type: String
-  field :statusPoints, type: Integer
-  field :about, type: String
-
-  slug  :name, history: true, reserve: ['admin', 'root']
-
-  embeds_one :avatar, as: :imageable, class_name: 'Picture', cascade_callbacks: true
+  has_one :avatar, as: :imageable, class_name: 'Picture'
   belongs_to :gender
-  has_many :cycles, inverse_of: :author, dependent: :destroy
-  has_many :articles, dependent: :restrict, inverse_of: :author
-  has_many :comments, dependent: :restrict
-  has_many :galleries, dependent: :restrict, inverse_of: :author
-  has_many :contents, dependent: :restrict, inverse_of: :author, class_name: 'Content::BaseContent'
-  has_and_belongs_to_many :subscriptions, class_name: 'User', inverse_of: :subscribers
-  has_and_belongs_to_many :subscribers, class_name: 'User', inverse_of: :subscriptions
-  embeds_one :settings, class_name: 'Settings'
+  has_many :cycles, inverse_of: :author, dependent: :destroy, foreign_key: 'user_id'
+  has_many :articles, dependent: :restrict_with_error, inverse_of: :author, foreign_key: 'user_id'
+  has_many :comments, dependent: :restrict_with_error
+  has_many :galleries, dependent: :restrict_with_error, inverse_of: :author, foreign_key: 'user_id'
+  has_many :contents, dependent: :restrict_with_error, inverse_of: :author, foreign_key: 'user_id'
+  has_and_belongs_to_many :subscriptions,
+                          class_name: 'User',
+                          join_table: :subscriptions,
+                          foreign_key: :user_id,
+                          association_foreign_key: :subscription_id
+  has_and_belongs_to_many :subscribers,
+                          class_name: 'User',
+                          join_table: :subscriptions,
+                          foreign_key: :subscription_id,
+                          association_foreign_key: :user_id
+  has_one :settings, class_name: 'Settings'
 
-  accepts_nested_attributes_for :settings, autobuild: true
-  accepts_nested_attributes_for :avatar, class_name: 'Picture', allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
+  accepts_nested_attributes_for :settings
+  accepts_nested_attributes_for :avatar, allow_destroy: true, reject_if: lambda { |a| a[:file].blank? }
 
   has_many :authentications, dependent: :destroy
 
-  search_in :name, :email
+  pg_search_scope :search, against:[:name, :email]
 
   validates :name, presence: true, uniqueness: true,  length: {minimum: 3, maximum: 20}
   validates :second_name, length: {maximum: 20}
@@ -83,17 +55,9 @@ class User
   validates_presence_of :email
   validates_presence_of :encrypted_password
 
-  default_scope lambda {
-    order_by(created_at: :desc)
-  }
+  scope :random, lambda { where('NOT is_active = false') }
 
-  scope :random, lambda {
-    all.not_in(is_active: false)
-  }
-
-  scope :active, lambda {
-    all.not_in(is_active: false)
-  }
+  scope :active, lambda { where('NOT is_active = false') }
 
   def self.very_active
     User.all.sort{|a, b| b.points <=> a.points}[0..10]
@@ -120,7 +84,7 @@ class User
   end
 
   def unpublished_articles
-    self.articles.any_of({state: 'Article::Initial'}, {state: 'Article::Changed'})
+    self.articles.where("state = 'Article::Initial' OR state = 'Article::Changed'")
   end
 
   def unapproved_articles
@@ -173,7 +137,7 @@ class User
   end
 
   def all_resources_ids
-    articles.map(&:_id).concat(cycles.map(&:_id)).concat(contents.map(&:_id)).concat(galleries.map(&:_id))
+    articles.map(&:id).concat(cycles.map(&:id)).concat(contents.map(&:id)).concat(galleries.map(&:id))
   end
 
   def subscribe(user)
@@ -235,7 +199,7 @@ class User
   protected
 
   def remove_all_roles
-    self.roles = nil
+    self.roles.delete_all
     save
   end
 

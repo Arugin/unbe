@@ -3,22 +3,20 @@ class ContentsController < ApplicationController
   include Concerns::Votable
 
   before_filter :authenticate_user!, :except => [:show, :index]
-  load_and_authorize_resource class: 'Content::BaseContent', except: [:show, :index], param_method: :content_base_content_params
-
+  load_and_authorize_resource except: [:show, :index]
 
   respond_to :html, :js
-  resource_name Content::BaseContent
 
   def show
-    @content = Content::BaseContent.find(params[:id])
+    @content = Content.find(params[:id])
     @comments = @content.comments.page(params[:page]).per(25)
     impressionist(@content,'', unique: [:session_hash, :ip_address])
     respond_with @comments
   end
 
   def approve
-    off_public_activity(Content::BaseContent) do
-      @content = Content::BaseContent.find(params[:id])
+    off_public_activity(Content) do
+      @content = Content.find(params[:id])
       @content.author.add_points(10) unless @content.approved_to_news
       @content.approved_to_news = params[:approved]
       @content.reviewed = true
@@ -28,10 +26,9 @@ class ContentsController < ApplicationController
   end
 
   def index
-    params[:sort_by] ||= 'created_at'
-    params[:direction] ||= 'desc'
+    scope = Content.approved(current_user, params)
 
-    @contents = Content::BaseContent.approved(current_user, params).page(params[:page]).per(12)
+    @contents = Content.search_for(params, scope).page(params[:page]).per(12)
 
     respond_with @contents
   end
@@ -39,7 +36,7 @@ class ContentsController < ApplicationController
   def create
     session[:gallery] ||= request.referer
     @gallery = Gallery.find params[:gallery_id]
-    @content = @gallery.contents.build(content_base_content_params)
+    @content = @gallery.contents.build(content_params)
     @content.author = current_user
     if @content.save
       flash[:notice] = t :CONTENT_ADD_SUCCESSFULLY
@@ -50,17 +47,17 @@ class ContentsController < ApplicationController
   end
 
   def edit
-    @content = Content::BaseContent.find(params[:id])
+    @content = Content.find(params[:id])
   end
 
   def update
-    @content = Content::BaseContent.find(params[:id])
+    @content = Content.find(params[:id])
 
     if @content.author.nil?
       @content.author = current_user
       @content.save
     end
-    if @content.update_attributes(content_base_content_params)
+    if @content.update_attributes(content_params)
       @content.reviewed = false
       @content.save
       redirect_to edit_gallery_path(@content.contentable), notice: t(:CONTENT_UPDATE_SUCCESS)
@@ -71,7 +68,7 @@ class ContentsController < ApplicationController
 
   def destroy
     session[:destroy_gallery] ||= request.referer
-    @content = Content::BaseContent.find(params[:id])
+    @content = Content.find(params[:id])
 
     message = t :UNABLE_TO_DELETE_CONTENT
     begin
@@ -88,14 +85,8 @@ class ContentsController < ApplicationController
 
   private
 
-  def custom_resource_name
-    :content_base_content
-  end
-
-  def content_base_content_params
-    #params[:content_base_content] = params.delete(:content_base_content)
-    #puts 'ttttttttttt', params[:content]
-    params.require(:content_base_content).permit(:title, :description, :src, :tag_list, :contentable_id)
+  def content_params
+    params.require(:content).permit(:title, :description, :src, :tag_list, :contentable_id)
   end
 
 end

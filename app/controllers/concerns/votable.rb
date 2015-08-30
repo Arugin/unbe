@@ -5,8 +5,8 @@ module Concerns
     def vote_up
       session[:votable] ||= request.referer
       item = instance_variable_set(:"@#{controller_name.singularize}", resource.find(params[:id]))
-      unless current_user.voted?(item)
-        current_user.vote(item, :up)
+      unless current_user.voted_for?(item)
+        item.liked_by current_user
         item.author.add_points 1
       end
       redirect_to session.delete(:votable)
@@ -15,8 +15,8 @@ module Concerns
     def vote_down
       session[:votable] ||= request.referer
       item = instance_variable_set(:"@#{controller_name.singularize}", resource.find(params[:id]))
-      unless current_user.voted?(item)
-        current_user.vote(item, :down)
+      unless current_user.voted_for?(item)
+        item.disliked_by current_user
         item.author.subtract_points 1
       end
       redirect_to session.delete(:votable)

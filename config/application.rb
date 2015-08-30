@@ -1,14 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "rails/test_unit/railtie"
+require 'rails/all'
 require "sprockets/railtie"
 require 'net/http'
-
-require "bson"
-require "moped"
-Moped::BSON = BSON
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -68,5 +62,7 @@ module Unbe
     I18n.config.enforce_available_locales = true
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

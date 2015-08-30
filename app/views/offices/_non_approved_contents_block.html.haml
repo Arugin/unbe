@@ -6,7 +6,7 @@
       %tr
         %td
           .office-header
-            = link_to content_base_content_path(content) do
+            = link_to content_path(content) do
               %span= content.title
           .publishDate
             - unless content.updated_at.nil?
@@ -17,16 +17,16 @@
           .options
             .btn-group
               %button.btn.btn-default
-                = link_to approve_content_base_content_path(content, approved: true) do
+                = link_to approve_content_path(content, approved: true) do
                   = t :APPROVE
               %button.btn.btn-default.dropdown-toggle{data:{toggle:"dropdown"}}
                 %span.caret
               %ul.dropdown-menu
                 %li
-                  = link_to approve_content_base_content_path(content,  approved: true) do
+                  = link_to approve_content_path(content,  approved: true) do
                     = t :APPROVE
                 %li
-                  = link_to approve_content_base_content_path(content,  approved: false) do
+                  = link_to approve_content_path(content,  approved: false) do
                     = t :NO_APPROVE
         %td
           = button_to "Удалить", [content], :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "btn btn-danger"

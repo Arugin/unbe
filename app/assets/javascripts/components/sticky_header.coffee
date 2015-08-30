@@ -1,6 +1,7 @@
 # Add ability to stick to the top for list-header
 (($) ->
   $.fn.stickyHeader = (opts = {}) ->
+    return if this.length == 0
     topElementSelector = opts.topElementSelector || '.o-item'
     cloneOffset = opts.cloneOffset || 20
     containerElement = opts.containerElement || '.ujs-pagination'

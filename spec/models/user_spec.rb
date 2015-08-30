@@ -6,11 +6,11 @@ describe User do
   end
 
   it "should have USER role by default" do
-    @user.highest_role.should eq 'USER'
+    expect(@user.highest_role).to eq 'USER'
   end
 
   it "should change to correct role" do
     @user.change_role :ADMIN
-    @user.highest_role.should eq 'ADMIN'
+    expect(@user.highest_role).to eq 'ADMIN'
   end
 end

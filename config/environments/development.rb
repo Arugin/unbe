@@ -1,6 +1,5 @@
 Unbe::Application.configure do
-  Mongoid.logger.level = Logger::ERROR
-  Moped.logger.level = Logger::ERROR
+  config.log_level = :error
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -30,7 +29,7 @@ Unbe::Application.configure do
   config.assets.js_compressor = :uglifier
   config.assets.compile = true
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
   config.assets.initialize_on_precompile = false
   config.eager_load = false
 end

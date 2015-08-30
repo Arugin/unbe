@@ -4,13 +4,13 @@ class Article::Published < Article::BaseState
   end
 
   def to_changed
-    unless stateful.tmpContent != stateful.content
+    unless stateful.tmp_content != stateful.content
       transition_to(Article::Initial)
     end
   end
 
   def approve
-    if stateful.tmpContent.present?
+    if stateful.tmp_content.present?
       grant_points
       create_activity
       prepare_approve
@@ -25,7 +25,7 @@ class Article::Published < Article::BaseState
   end
 
   def to_garbage
-    if stateful.tmpContent.present?
+    if stateful.tmp_content.present?
       prepare_approve
       transition_to(Article::Garbage)
       stateful.save!
@@ -37,7 +37,7 @@ class Article::Published < Article::BaseState
   end
 
   def is_updated?
-    stateful.content.present? && (stateful.tmpContent != stateful.content)
+    stateful.content.present? && (stateful.tmp_content != stateful.content)
   end
 
   private
@@ -57,8 +57,8 @@ class Article::Published < Article::BaseState
   end
 
   def prepare_approve
-    stateful.content = stateful.tmpContent
-    stateful.tmpContent = nil
+    stateful.content = stateful.tmp_content
+    stateful.tmp_content = nil
   end
 
 

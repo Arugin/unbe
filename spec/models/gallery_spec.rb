@@ -6,7 +6,7 @@ describe User do
   end
 
   it "title and name should be eq" do
-    @gallery = FactoryGirl.create(:gallery, author: @user)
-    @gallery.title.should eq @gallery.name
+    gallery = FactoryGirl.create(:gallery, author: @user)
+    expect(gallery.title).to eq gallery.name
   end
 end

@@ -1,10 +1,7 @@
-class Picture
-  include Mongoid::Document
-  include Mongoid::Paperclip
+class Picture < ActiveRecord::Base
+  belongs_to :imageable, polymorphic: true
 
-  embedded_in :imageable, polymorphic: true
-
-  has_mongoid_attached_file :file,
+  has_attached_file :file,
                             path: '/:class/:attachment/:id_partition/:style/:filename',
                             storage: :s3,
                             url: ':s3_domain_url',

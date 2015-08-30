@@ -5,7 +5,7 @@
   - @contents.each do |content|
     .video
       .title
-        = link_to content_base_content_path(content) do
+        = link_to content_path(content) do
           = content.title
       .fotorama-box
         .fotorama{data:{width:'200px',ratio:"800/600", keyboard: 'true'}}
@@ -15,7 +15,7 @@
           = button_to "Удалить", [content], :method => :delete, data:{confirm: "#{t(:SURE)}"}, :class => "btn btn-danger"
         - if can? :edit, content
           .pull-right
-            = link_to edit_content_base_content_path(content), :class=>'btn btn-primary' do
+            = link_to edit_content_path(content), :class=>'btn btn-primary' do
               Изменить
 
 = paginate @contents, :remote => true

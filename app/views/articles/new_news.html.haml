@@ -4,10 +4,10 @@
 
   .form-inputs
     = f.input :title, input_html: { class: "span8" }
-    = f.association :article_area, collection: ArticleArea.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: ArticleArea.find_by(title: :NEWS)._id, label_method: lambda { |area| "#{t(area.title)}" }
-    = f.association :article_type, collection: ArticleType.all.order_by([:title, :desc]), input_html: { class: "span8" }, selected: ArticleType.find_by(title: :NEWS)._id, label_method: lambda { |type| "#{t(type.title)}" }
-    = f.association :cycle, collection: Cycle.search_for(current_user,{scope:'current_user'}).order_by([:title, :asc]), input_html: { class: "span8" }, selected: Cycle.search_for(current_user, {scope: 'current_user'}).where(title: 'Новости').first._id, label_method: lambda { |cycle| cycle.correct_title }
-    = render partial: 'common/text_editor', locals: {f: f, field: :tmpContent, type: :default, id: 'tmpContent', html_class: 'span12', label: nil}
+    = f.association :article_area, collection: ArticleArea.all.order(title: :desc), input_html: { class: "span8" }, selected: ArticleArea.find_by(title: :NEWS).id, label_method: lambda { |area| "#{t(area.title)}" }
+    = f.association :article_type, collection: ArticleType.all.order(title: :desc), input_html: { class: "span8" }, selected: ArticleType.find_by(title: :NEWS).id, label_method: lambda { |type| "#{t(type.title)}" }
+    = f.association :cycle, collection: Cycle.where(author: current_user).order(title: :asc), input_html: { class: "span8" }, selected: Cycle.where(author: current_user).where(title: 'Новости').first.id, label_method: lambda { |cycle| cycle.correct_title }
+    = render partial: 'common/text_editor', locals: {f: f, field: :tmp_content, type: :default, id: 'tmp_content', html_class: 'span12', label: nil}
     = render :partial => "common/tags_input", :locals => {:f => f, :taggable => Article}
     = f.input :system_tag, :label => "Пометить" if can? :system_tag, Article
 

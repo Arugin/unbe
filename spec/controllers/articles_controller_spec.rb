@@ -26,7 +26,7 @@ describe ArticlesController, type: :controller do
       FactoryGirl.create(:article, author: @user)
       get :index, {}
 
-      assigns(:articles).should eq []
+      expect(assigns(:articles)).to eq []
     end
 
     it "should not show not approved articles" do
@@ -34,7 +34,7 @@ describe ArticlesController, type: :controller do
 
       get :index, {}
 
-      assigns(:articles).should eq []
+      expect(assigns(:articles)).to eq []
     end
 
     it "should not show garbage articles" do
@@ -42,15 +42,15 @@ describe ArticlesController, type: :controller do
 
       get :index, {}
 
-      assigns(:articles).should eq []
+      expect(assigns(:articles)).to eq []
     end
 
-    it "should show approved articles" do
-      article = FactoryGirl.create(:article, author: @user, content: 'Daddy', state: 'Article::Approved')
+    it "shows approved articles" do
+      article = FactoryGirl.create(:article, author: @user, content: 'Daddy', state: 'Article::Approved', to_news: true)
 
       get :index, {}
 
-      assigns(:articles).should eq [article]
+      expect(assigns(:articles)).to eq [article]
     end
   end
 
@@ -61,12 +61,12 @@ describe ArticlesController, type: :controller do
       expect(response.status).to eq(200)
     end
 
-    it "should show approved to news articles" do
-      article = FactoryGirl.create(:article, author: @user, content: 'Daddy', state: 'Article::Approved', to_news: true)
+    it "shows approved to news articles" do
+      article = FactoryGirl.create(:article, author: @user, content: 'Daddy', state: 'Article::Approved', to_news: true, article_type: ArticleType.first)
 
       get :news, {}
 
-      assigns(:articles).should eq [article]
+      expect(assigns(:articles)).to eq [article]
     end
 
     it "should show approved to news articles" do
@@ -74,7 +74,7 @@ describe ArticlesController, type: :controller do
 
       get :news, {}
 
-      assigns(:articles).should eq [article]
+      expect(assigns(:articles)).to eq [article]
     end
   end
 

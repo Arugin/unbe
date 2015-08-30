@@ -1,10 +1,7 @@
-class ArticleArea
-  include Mongoid::Document
-  field :title, type: Symbol
-
-  has_many :articles, dependent: :restrict
+class ArticleArea < ActiveRecord::Base
+  has_many :articles, dependent: :restrict_with_error
 
   def self.default_id
-    where(title: :NO_AREA).first._id
+    where(title: :NO_AREA).first.id
   end
 end

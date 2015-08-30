@@ -1,8 +1,3 @@
-class Authentication
-  include Mongoid::Document
-  field :user_id, type: Integer
-  field :provider, type: String
-  field :uid, type: String
-
+class Authentication < ActiveRecord::Base
   belongs_to :user
 end

@@ -32,10 +32,10 @@ Unbe::Application.routes.draw do
   end
 
   resources :galleries do
-    resources :contents, as: :content_base_contents, controller: :contents, shallow: true
+    resources :contents, shallow: true
     resources :comments
   end
-  resources :contents, as: :content_base_contents do
+  resources :contents  do
     resources :comments
     member do
       get 'approve'

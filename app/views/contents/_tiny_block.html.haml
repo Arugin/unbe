@@ -5,8 +5,8 @@
   .clear
   %br
   .more-info
-    = link_to content_base_content_path(content) do
+    = link_to content_path(content) do
       =t 'Посмотреть'
   .more-info
-    = link_to content_base_content_path(content, anchor:'comments'), itemprop:"url" do
+    = link_to content_path(content, anchor:'comments'), itemprop:"url" do
       =t 'COMMENTS', count: content.comments_count, comment: Russian::pluralize(content.comments_count, 'комментарий','комментария','комментариев')

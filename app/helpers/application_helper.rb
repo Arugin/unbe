@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def votable_class(action, votable)
-    if cannot?(action, votable) || current_user.voted?(votable)
+    if cannot?(action, votable) || current_user.voted_for?(votable)
       'inactive'
     end
   end
@@ -21,7 +21,7 @@ module ApplicationHelper
     if cannot? action, votable
       title = user_signed_in? ? "Вы не можете #{action_title[action]} рейтинг, пока ваш опыт не достиг #{required_points[action]}" : "Вы должны войти на сайт, чтобы голосовать"
       title = 'Вы не можете голосовать за себя' if votable.author == current_user
-    elsif current_user.voted?(votable)
+    elsif current_user.voted_for?(votable)
       title = 'Вы уже отдали свой голос'
     end
     title

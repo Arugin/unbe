@@ -1,5 +1,5 @@
 default:
-  selector: "textarea#tmpContent"
+  selector: "textarea#tmp_content"
   language: 'ru'
   height: 550
   plugins:

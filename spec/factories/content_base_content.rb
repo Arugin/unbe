@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :content_base_content, class: Content::BaseContent do
+  factory :content, class: Content do
     title "My content"
     src 'http://www.youtube.com/watch?v=zqrBkgrzLik'
   end

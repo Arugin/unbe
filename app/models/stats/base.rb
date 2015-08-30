@@ -1,9 +1,7 @@
 module Stats
   class Base
-    include Mongoid::Document
-
     def articles_count
-      Article.where(state: 'Article::Approved').not_in(article_area: ArticleArea.where(title: "NEWS").first).count
+      Article.joins(:article_area).where("article_areas.title NOT IN ('NEWS')").where(state: 'Article::Approved').count
     end
 
     def users_count
@@ -15,7 +13,7 @@ module Stats
     end
 
     def content_count
-      Content::BaseContent.where(approved_to_news: true).count
+      Content.where(approved_to_news: true).count
     end
 
   end

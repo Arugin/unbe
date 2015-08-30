@@ -22,17 +22,17 @@ describe ContentsController, type: :controller do
     end
 
     it "should not show not approved content" do
-      content = FactoryGirl.create(:content_base_content, author: @user)
+      content = FactoryGirl.create(:content, author: @user)
       get :index, {}
 
-      assigns(:contents).should eq []
+      expect(assigns(:contents)).to eq []
     end
 
     it "should show approved content" do
-      content = FactoryGirl.create(:content_base_content, author: @user, approved_to_news: true, reviewed: true)
+      content = FactoryGirl.create(:content, author: @user, approved_to_news: true, reviewed: true)
       get :index, {}
 
-      assigns(:contents).should eq [content]
+      expect(assigns(:contents)).to eq [content]
     end
   end
 end

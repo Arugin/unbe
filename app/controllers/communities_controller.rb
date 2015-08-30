@@ -2,7 +2,7 @@
 class CommunitiesController < ApplicationController
 
   def show
-    @activities = PublicActivity::Activity.all.order_by(created_at: :desc).page(params[:page]).per(20)
+    @activities = PublicActivity::Activity.all.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def about

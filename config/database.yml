@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_development
+  pool: 5
+  username: unbe
+  password: mypgpassword
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_test
+  pool: 5
+  username: unbe
+  password: mypgpassword
+
+production:
+  url: <%= ENV['POSTGRESS_URL'] %>

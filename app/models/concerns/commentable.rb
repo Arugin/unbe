@@ -3,8 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      has_many :comments, dependent: :restrict, as: :commentable, class_name: 'Comment'
-      field :comments_count, type: Integer, default: 0
+      has_many :comments, as: :commentable, dependent: :restrict_with_error
     end
 
     def article?
