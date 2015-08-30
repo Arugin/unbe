@@ -59,9 +59,9 @@ class User < ActiveRecord::Base
 
   scope :active, lambda { where('NOT is_active = false') }
 
-  def self.very_active
-    User.all.sort{|a, b| b.points <=> a.points}[0..10]
-  end
+  scope :very_active, -> { User.joins('RIGHT JOIN merit_scores ON merit_scores.sash_id = users.sash_id
+                                RIGHT JOIN merit_score_points ON merit_score_points.score_id = merit_scores.id')
+                               .group('users.id', 'merit_scores.sash_id').order('SUM(num_points) DESC').limit(10) }
 
   def highest_role
     curr_role = nil
