@@ -26,7 +26,7 @@ class ContentsController < ApplicationController
   end
 
   def index
-    scope = Content.approved(current_user, params)
+    scope = Content.includes(:author).approved(current_user, params)
 
     @contents = Content.search_for(params, scope).page(params[:page]).per(12)
 

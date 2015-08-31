@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    scope = Article.by_area(params[:article_area])
+    scope = Article.includes(:author).by_area(params[:article_area])
     @articles = Article.search_for(params, scope).page(params[:page]).per(12)
 
     @article_areas = ArticleArea.all
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     impressionist(@article, '', unique: [:session_hash, :ip_address])
-    @comments = @article.comments.page(params[:page]).per(25)
+    @comments = @article.comments.includes(:user).page(params[:page]).per(25)
     @related = {prev: @article.cycle.previous_article(@article), next: @article.cycle.next_article(@article)}
 
     respond_with @comments
@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.last_news(current_user, params).order(created_at: :desc).page(params[:page]).per(12)
+    @articles = Article.includes(:author).last_news(current_user, params).order(created_at: :desc).page(params[:page]).per(12)
     respond_with @articles
   end
 
