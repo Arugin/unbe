@@ -22,7 +22,11 @@ class OfficesController < ApplicationController
     end
 
     @my_activities = PublicActivity::Activity.where(owner_id: current_user.id).order(created_at: :desc).page(params[:page]).per(20)
-    @comments = PublicActivity::Activity.where('recipient_id IN (?)', current_user.all_resources_ids).order(created_at: :desc).page(params[:page]).per(20)
+    comments = PublicActivity::Activity.where(trackable_type: 'Comment').includes(trackable: :commentable).order(created_at: :desc).select do|activity|
+      resource = activity.trackable
+      resource.commentable.author == current_user if resource.present? && resource.commentable.present?
+    end
+    @comments = Kaminari.paginate_array(comments).page(params[:page]).per(20)
   end
 
   def articles

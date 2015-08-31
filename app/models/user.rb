@@ -136,10 +136,6 @@ class User < ActiveRecord::Base
     [ first_name, last_name ].filter(&:presence).compact.map(&:strip) * ' '
   end
 
-  def all_resources_ids
-    articles.map(&:id).concat(cycles.map(&:id)).concat(contents.map(&:id)).concat(galleries.map(&:id))
-  end
-
   def subscribe(user)
     subscriptions << user
     save

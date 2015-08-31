@@ -9,8 +9,8 @@
     %a{href: '#my-activity', data:{toggle: 'tab'}} Мои действия
 .tab-content
   #status.office.tab-pane.active
-
     .row
+      %br
       .col-md-1.col-md-2.pull-left
         = image_tag "/images/ranks/#{current_user.level}_big.png", title: "Ранг #{current_user.level}", data: {toggle: 'tooltip', placement:'top'}
       .col-md-8.inline-block.progress-status
