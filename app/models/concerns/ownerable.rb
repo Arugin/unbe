@@ -3,7 +3,7 @@ module Concerns
     extend ActiveSupport::Concern
 
     included do
-      belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+      belongs_to :author, class_name: 'User', foreign_key: 'user_id', counter_cache: true
       validates :author, presence: true
 
       #gives all objects that belong to the user

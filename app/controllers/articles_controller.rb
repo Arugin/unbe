@@ -21,9 +21,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.includes(:images).find(params[:id])
     impressionist(@article, '', unique: [:session_hash, :ip_address])
-    @comments = @article.comments.includes(:user).page(params[:page]).per(25)
+    @comments = @article.comments.includes(user: [:gender, :avatar]).page(params[:page]).per(25)
     @related = {prev: @article.cycle.previous_article(@article), next: @article.cycle.next_article(@article)}
 
     respond_with @comments
@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
   end
 
   def news
-    @articles = Article.includes(:author).last_news(current_user, params).order(created_at: :desc).page(params[:page]).per(12)
+    @articles = Article.includes(:images, author: [:gender, :avatar]).last_news(current_user, params).order(created_at: :desc).page(params[:page]).per(12)
     respond_with @articles
   end
 

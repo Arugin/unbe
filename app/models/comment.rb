@@ -16,6 +16,8 @@ class Comment < ActiveRecord::Base
   after_create :increment_counter
   before_destroy :decrement_counter
 
+  default_scope -> { order(created_at: :asc) }
+
   def short_content
     truncate(content, length: 50, omission: '...')
   end

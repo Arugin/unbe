@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823144844) do
+ActiveRecord::Schema.define(version: 20150901162423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -346,6 +346,10 @@ ActiveRecord::Schema.define(version: 20150823144844) do
     t.string   "unconfirmed_email"
     t.integer  "sash_id"
     t.integer  "level",                  default: 0
+    t.integer  "articles_count",         default: 0
+    t.integer  "cycles_count",           default: 0
+    t.integer  "galleries_count",        default: 0
+    t.integer  "contents_count",         default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
