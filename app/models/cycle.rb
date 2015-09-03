@@ -72,7 +72,7 @@ class Cycle < ActiveRecord::Base
   end
 
   def included_impressions
-    self.articles.inject(0){|sum, article| sum += article.impressionist_count}
+    self.articles.inject(0){|sum, article| sum += article.impressions_count}
   end
 
 end
