@@ -3,7 +3,7 @@ class LastArticlesMailer < ActionMailer::Base
 
   def articles(user)
     @user = user
-    @articles = Article.approved(user).where(:created_at.gt => 1.week.ago)
+    @articles = Article.approved(user).where('created_at > ?', 1.week.ago)
     mail(to: @user.email, subject: t(:WEEKLY_NEWS))
   end
 end

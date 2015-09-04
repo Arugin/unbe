@@ -51,7 +51,7 @@ Unbe::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
-      :address =>        'smtp.mandrillapp.com',
+      :address =>        'smtp.sendgrid.net',
       :user_name =>      ENV['MANDRILL_USERNAME'],
       :password =>       ENV['MANDRILL_APIKEY'],
       :domain =>         'unbe.ru',

@@ -17,4 +17,4 @@
       %li.publishDate{style:'font-size: 11px;display: block;font: 13px Tahoma;color: #ababab;margin-left: 2px;margin-right: 20px;float: left;'}
         %span
           %i.fa.fa-leaf{title: t(:PUBLISH_FULL), style:'opacity: 0.5;display: inline-block;width: 14px;height: 14px;line-height: 14px;vertical-align: text-top;background-image: url("http:/unbe.ru/assets/glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png");background-position: 14px 14px;background-repeat: no-repeat;margin-top: 1px;background-position: -48px -120px;'}
-          = item.created_at.nil? ? 'До начала времен': l(item.created_at.in_time_zone, format: :short)
+          = l(item.created_at.in_time_zone, format: :short)
