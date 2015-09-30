@@ -2,6 +2,7 @@ class Image < ActiveRecord::Base
   belongs_to :article
 
   has_attached_file :file,
+                            s3_protocol: :https,
                             path:           '/articles/:attachment/:special_id/:style/:filename',
                             storage:        :s3,
                             url:            ':s3_domain_url',

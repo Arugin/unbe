@@ -131,7 +131,7 @@ class Article < ActiveRecord::Base
       images.first.file.url :thumb
     else
       image = content_images.first
-      image['src'] if image.present? and image['src'].index('http://').present?
+      image['src'] if image.present? and image['src'].index('https://').present?
     end
   end
 

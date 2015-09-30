@@ -81,5 +81,6 @@ Unbe::Application.configure do
 
   config.eager_load = true
   config.dependency_loading = true
+  config.force_ssl = true
 
 end

@@ -2,6 +2,7 @@ class Picture < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
 
   has_attached_file :file,
+                            s3_protocol: :https,
                             path: '/:class/:attachment/:id_partition/:style/:filename',
                             storage: :s3,
                             url: ':s3_domain_url',
