@@ -72,7 +72,7 @@ Unbe::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  config.action_mailer.default_url_options = { host: 'unbe.ru' }
+  config.action_mailer.default_url_options = { host: 'unbe.ru', protocol: 'https' }
 
   # If return to heroku will be needed
   #config.action_controller.asset_host = Proc.new do |source|
