@@ -67,8 +67,9 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-passenger (0.1.1)
-      capistrano (~> 3.0)
+    capistrano-eye (0.0.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
     capistrano-rails (1.1.3)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -243,9 +244,6 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    passenger (5.0.15)
-      rack
-      rake (>= 0.8.1)
     pg (0.18.2)
     pg_search (1.0.4)
       activerecord (>= 3.1)
@@ -256,6 +254,7 @@ GEM
       activerecord (>= 3.0)
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
+    puma (3.2.0)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -405,7 +404,7 @@ DEPENDENCIES
   cancancan (~> 1.9)
   capistrano (~> 3.0)
   capistrano-bundler
-  capistrano-passenger
+  capistrano-eye
   capistrano-rails
   capistrano-rbenv
   capybara (>= 1.1.2)
@@ -438,10 +437,10 @@ DEPENDENCIES
   omniauth-twitter
   omniauth-vkontakte
   paperclip
-  passenger
   pg
   pg_search
   public_activity
+  puma
   rack-cors
   rails (~> 4.2)
   rails-observers
@@ -466,4 +465,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.10.4
+   1.11.2

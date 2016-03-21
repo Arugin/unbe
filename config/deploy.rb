@@ -12,6 +12,9 @@ set :format, :pretty
 set :default_shell, "bash -l"
 set :rails_env, 'production'
 
+set :eye_application, 'unbe'
+set :eye_config, '/home/ec2-user/unbe/current/unbe.eye'
+
 # Default value for :log_level is :debug
 # set :log_level, :debug
 
@@ -22,7 +25,7 @@ set :pty, true
 set :linked_files, fetch(:linked_files, []).push('.env')
 
 # Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('log')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

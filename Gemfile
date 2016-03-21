@@ -1,11 +1,6 @@
 #encoding: utf-8
 source 'https://rubygems.org'
 
-if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
-  Encoding.default_external = Encoding::UTF_8
-  Encoding.default_internal = Encoding::UTF_8
-end
-
 gem 'rails', '~> 4.2'
 gem 'sass-rails', '~> 4.0.3'
 
@@ -16,12 +11,12 @@ gem 'rake', '>= 10.0'
 gem 'haml'
 gem 'spring',        group: :development
 gem 'thin', '>= 1.5.0', group: :development
-gem 'passenger', group: :production
+gem 'puma'
 gem 'cancancan', '~> 1.9'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'devise', '>= 2.1.2'
 gem 'rolify', '>= 3.2.0'
-gem "paperclip"
+gem 'paperclip'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'rails_12factor', group: :production
 gem 'russian', '~> 0.6.0'
@@ -61,21 +56,21 @@ gem 'fotoramajs'
 gem 'select2-rails'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem "omniauth-twitter"
+gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 gem 'rack-cors'
 gem 'therubyracer', group: :production
 
 ### development and test
-gem "haml-rails", group: :development
-gem "rspec-rails", ">= 2.11.4", group: [:development, :test]
-gem "capybara", ">= 1.1.2", group: :test
-gem "factory_girl_rails", ">= 4.1.0", group: [:development, :test]
-gem "database_cleaner", ">= 0.9.1", group: :test
+gem 'haml-rails', group: :development
+gem 'rspec-rails', ">= 2.11.4", group: [:development, :test]
+gem 'capybara', ">= 1.1.2", group: :test
+gem 'factory_girl_rails', ">= 4.1.0", group: [:development, :test]
+gem 'database_cleaner', ">= 0.9.1", group: :test
 gem 'coveralls', require: false
 
 group :development do
@@ -83,7 +78,7 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rbenv', require: false
-  gem 'capistrano-passenger', require: false
+  gem 'capistrano-eye', require: false
 end
 
 gem 'newrelic_rpm'
