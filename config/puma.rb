@@ -10,13 +10,8 @@ shared_dir = "#{app_dir}/tmp"
 rails_env = ENV['RAILS_ENV'] || 'production'
 environment rails_env
 
-# Set up socket location
-bind 'unix:/tmp/unbe.sock'
 
 # Logging
 stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
 
-# Set master PID and state locations
-pidfile "#{shared_dir}/puma.pid"
-state_path "#{shared_dir}/pids/puma.state"
 activate_control_app
