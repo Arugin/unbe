@@ -1,7 +1,7 @@
 Eye.application 'unbe' do
   stdall 'log/trash.log'
   working_dir File.expand_path(File.dirname(__FILE__))
-  env 'RBENV_ROOT' => '~/.rbenv', 'RBENV_VERSION' => '2.2.2', 'PATH' => "~/.rbenv/shims:~/.rbenv/bin:#{ENV['PATH']}"
+  env 'RBENV_ROOT' => '~/.rbenv', 'RBENV_VERSION' => '2.3.0', 'PATH' => "~/.rbenv/shims:~/.rbenv/bin:#{ENV['PATH']}"
   trigger :flapping, times: 10, within: 1.minute, retry_in: 10.minutes
   check :cpu, every: 60.seconds, below: 100, times: 3
   stop_on_delete true
