@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :rbenv_ruby, '2.3.0'
-set :rbenv_map_bins, %w{rake gem bundle ruby rails eye whenever}
+set :rbenv_map_bins, %w{rake gem bundle ruby rails whenever}
 
 set :application, 'unbe'
 set :repo_url, 'https://github.com/Arugin/unberails.git'
