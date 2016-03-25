@@ -1,10 +1,9 @@
 workers 1
 
 # Min and Max threads per worker
-threads 1, 1
+threads 1, 8
 
 app_dir = File.expand_path('../..', __FILE__)
-shared_dir = "#{app_dir}/tmp"
 
 # Default to production
 rails_env = ENV['RAILS_ENV'] || 'production'
