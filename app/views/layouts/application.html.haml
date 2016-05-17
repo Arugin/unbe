@@ -6,3 +6,10 @@
     %script{ async: true, src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' }
     %link{ rel:'shortcut icon',href:'/images/favicon.ico' }
   %body
+    .uk-grid
+      = render 'layouts/header'
+    .uk-grid
+      .uk-width-8-10.uk-push-1-10
+        = yield
+    .uk-grid
+      = render 'layouts/footer'
