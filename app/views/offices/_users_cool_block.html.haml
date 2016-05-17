@@ -1,8 +1,0 @@
-- if users.empty?
-  %p= t :NO_SUBSCRIPTIONS_FOUND
-- else
-  %ul.o-item-list
-    - users.each do |user|
-      = render partial: 'offices/item_block', locals: {item: user, collection: 'users'}
-
-  = paginate users

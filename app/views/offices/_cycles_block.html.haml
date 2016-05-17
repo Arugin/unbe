@@ -1,9 +1,0 @@
-- if @cycles.blank?
-  %p= t("NO_OFFICE_CYCLES")
-- else
-  %ul.o-item-list
-    - @cycles.each do |cycle|
-      = render partial: 'item_block', locals: {item: cycle, collection: 'cycles'}
-
-
-= paginate @cycles, :remote => true

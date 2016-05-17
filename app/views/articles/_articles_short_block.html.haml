@@ -1,7 +1,0 @@
-- if @articles.blank?
-  %p= t("NO_ARTICLES_FOUND")
-- else
-  - @articles.each do |article|
-    = render :partial => 'article_short_block', :locals => { :article => article }
-
-= paginate @articles, :remote => true

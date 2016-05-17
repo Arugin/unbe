@@ -1,8 +1,0 @@
-.control-panel
-  .edit
-    - if can? :update, article
-      = link_to edit_article_path(article) do
-        %i.fa.fa-pencil{title: t(:EDIT_ARTICLE), data: {toggle: 'tooltip', placement:'top'}}
-  = render :partial => 'common/views_count', locals: { subject: article, growth: false }
-  %div{class:"vote-#{article.id}"}
-    = render :partial => 'common/vote_block', locals: { votable: article }

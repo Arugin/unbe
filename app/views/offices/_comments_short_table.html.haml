@@ -1,8 +1,0 @@
-%table.articles-short.table-striped
-  - comments.each do |comment|
-    %tr
-      %td
-        = link_to polymorphic_path(comment.commentable) do
-          %span= comment.commentable.short_title
-      %td
-        = strip_tags(comment.short_content)

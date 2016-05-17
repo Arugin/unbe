@@ -1,4 +1,0 @@
-.rate-count{title: t(:RATING), data: {toggle: 'tooltip', placement:'top'}}
-  %i.fa.fa-thumbs-o-up
-  .count{:class => ((subject.count_votes_up - subject.count_votes_down > 0 ? 'positive' : 'negative') unless subject.count_votes_total == 0 )}
-    = subject.count_votes_up - subject.count_votes_down

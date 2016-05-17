@@ -1,8 +1,0 @@
-%hr
-- if can? :create, Comment
-  %h4 Комментировать
-
-  = render partial: 'form', locals: {commentable: @commentable, comment: @comment}
-
-- else
-  .description Чтобы оставлять комментарии, необходимо зарегистрироваться
