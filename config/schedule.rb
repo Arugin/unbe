@@ -1,4 +1,4 @@
-set :output, '/home/ec2-user/unbe/file.log'
+set :output, '/home/centos/unbe/file.log'
 
 job_type :rake, "cd :path && :environment_variable=:environment rake :task --silent :output"
 

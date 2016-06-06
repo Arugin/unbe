@@ -7,13 +7,13 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails whenever}
 set :application, 'unbe'
 set :repo_url, 'https://github.com/Arugin/unberails.git'
 
-set :deploy_to, '/home/ec2-user/unbe'
+set :deploy_to, '/home/centos/unbe'
 set :format, :pretty
 set :default_shell, "bash -l"
 set :rails_env, 'production'
 
 set :eye_application, 'unbe'
-set :eye_config, '/home/ec2-user/unbe/current/unbe.eye'
+set :eye_config, '/home/centos/unbe/current/unbe.eye'
 
 # Default value for :log_level is :debug
 # set :log_level, :debug
