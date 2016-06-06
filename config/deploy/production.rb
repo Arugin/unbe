@@ -1,4 +1,4 @@
-server '54.84.121.120', user: 'ec2-user', roles: %w{app web}
+server '52.87.254.70', user: 'centos', roles: %w{app web}
 
 set :ssh_options, {
     forward_agent: false,
