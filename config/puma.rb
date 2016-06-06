@@ -4,7 +4,7 @@ workers 1
 threads 1, 8
 
 app_dir = File.expand_path('../..', __FILE__)
-
+directory app_dir
 # Default to production
 rails_env = ENV['RAILS_ENV'] || 'production'
 environment rails_env

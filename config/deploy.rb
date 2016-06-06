@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :rbenv_ruby, '2.3.0'
+set :rbenv_ruby, '2.3.1'
 set :rbenv_map_bins, %w{rake gem bundle ruby rails whenever}
 
 set :application, 'unbe'
