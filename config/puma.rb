@@ -9,7 +9,7 @@ directory app_dir
 rails_env = ENV['RAILS_ENV'] || 'production'
 environment rails_env
 
-bind 'unix:/tmp/unbe.sock'
+bind 'unix:/home/centos/tmp/unbe.sock'
 # Logging
 stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
 

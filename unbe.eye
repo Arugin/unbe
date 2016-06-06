@@ -14,7 +14,7 @@ Eye.application 'unbe' do
     restart_command "kill -USR1 {PID}"
 
     stop_signals [:QUIT, 2.seconds, :TERM, 1.seconds, :KILL]
-    check :socket, addr: 'unix:/tmp/unbe.sock', every: 20.seconds, times: 2,
+    check :socket, addr: 'unix:/home/centos/tmp/unbe.sock', every: 20.seconds, times: 2,
           timeout: 1.second
     monitor_children do
       checks :memory, every: 30, below: 300.megabytes, times: 5
