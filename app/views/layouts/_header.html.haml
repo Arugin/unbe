@@ -23,12 +23,8 @@
   .col-xs-6.col-sm-3.col-md-2#reg
     - unless user_signed_in?
       %div
-        = link_to main_app.new_user_registration_path do
-          Регистрация
-      %div
         = link_to main_app.new_user_session_path do
           Войти
-      = render 'common/omni_reg'
     - if user_signed_in?
       %div
         %div.inline-block
